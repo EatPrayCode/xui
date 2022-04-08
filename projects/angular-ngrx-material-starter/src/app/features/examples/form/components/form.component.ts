@@ -5,15 +5,13 @@ import { filter, take, tap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
-import {
-  ROUTE_ANIMATIONS_ELEMENTS,
-  NotificationService
-} from '../../../../core/core.module';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 
 import { actionFormReset, actionFormUpdate } from '../form.actions';
 import { selectFormState } from '../form.selectors';
 import { Form } from '../form.model';
 import { State } from '../../examples.state';
+import { NotificationService } from '../../../../services/notification.service';
 
 @Component({
   selector: 'anms-form',

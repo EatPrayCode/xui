@@ -37,7 +37,7 @@ import { State } from './settings.model';
 
 export const SETTINGS_KEY = 'SETTINGS';
 
-const INIT = of('anms-init-effect-trigger');
+const INIT = of('app-init-effect-trigger');
 
 @Injectable()
 export class SettingsEffects {
@@ -68,9 +68,9 @@ export class SettingsEffects {
           actionSettingsChangeTheme
         ),
         withLatestFrom(this.store.pipe(select(selectSettingsState))),
-        tap(([action, settings]) =>
-          this.localStorageService.setItem(SETTINGS_KEY, settings)
-        )
+        tap(([action, settings]) => {
+          this.localStorageService.setItem(SETTINGS_KEY, settings);
+        })
       ),
     { dispatch: false }
   );

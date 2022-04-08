@@ -14,6 +14,8 @@ export interface SettingsState {
   pageAnimationsDisabled: boolean;
   elementsAnimations: boolean;
   hour: number;
+  customSettings: any;
+  netaPreferences: any;
 }
 
 export interface State extends AppState {

@@ -20,5 +20,14 @@ export const environment = {
     typescript: packageJson.devDependencies['typescript'],
     cypress: packageJson.devDependencies['cypress'],
     eslint: packageJson.devDependencies['eslint']
+  },
+  firebase: {
+    apiKey: 'AIzaSyBftNmBTAU9tOJIJY82wftmLWmftwxqRJs',
+    authDomain: 'projectx-dev-92d22.firebaseapp.com',
+    projectId: 'projectx-dev-92d22',
+    storageBucket: 'projectx-dev-92d22.appspot.com',
+    messagingSenderId: '156981973074',
+    appId: '1:156981973074:web:8198c99eb27345b294cf8b',
+    measurementId: 'G-7VTSSVMG4D'
   }
 };

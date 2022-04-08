@@ -7,14 +7,15 @@ import { take } from 'rxjs/operators';
 import { Observable, of as observableOf } from 'rxjs';
 
 import {
-  ROUTE_ANIMATIONS_ELEMENTS,
-  NotificationService
-} from '../../../../core/core.module';
+  ROUTE_ANIMATIONS_ELEMENTS
+  // NotificationService
+} from './../../../../core/core.module';
 
 import * as todoActions from '../todos.actions';
 import { Todo, TodosFilter } from '../todos.model';
 import { selectTodos, selectRemoveDoneTodosDisabled } from '../todos.selectors';
 import { State } from '../../examples.state';
+import { NotificationService } from '../../../../services/notification.service';
 
 @Component({
   selector: 'anms-todos',

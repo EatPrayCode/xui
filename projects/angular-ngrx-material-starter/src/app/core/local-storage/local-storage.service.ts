@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const APP_PREFIX = 'ANMS-';
+const APP_PREFIX = 'app-';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +39,14 @@ export class LocalStorageService {
       }
       return state;
     }, {});
+  }
+
+  static getItemStatic(key: string) {
+    return JSON.parse(localStorage.getItem(`${APP_PREFIX}${key}`) || '{}');
+  }
+
+  static persistState(key: string, value: any) {
+    localStorage.setItem(`${APP_PREFIX}${key}`, JSON.stringify(value));
   }
 
   setItem(key: string, value: any) {

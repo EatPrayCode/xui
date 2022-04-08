@@ -2,16 +2,13 @@ import browser from 'browser-detect';
 import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { environment as env } from '../../environments/environment';
 
 import {
-  authLogin,
-  authLogout,
   routeAnimations,
   LocalStorageService,
-  selectIsAuthenticated,
   selectSettingsStickyHeader,
   selectSettingsLanguage,
   selectEffectiveTheme,
@@ -69,18 +66,18 @@ export class AppComponent implements OnInit {
       );
     }
 
-    this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
+    this.isAuthenticated$ = of(true);
     this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
     this.language$ = this.store.pipe(select(selectSettingsLanguage));
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
   }
 
   onLoginClick() {
-    this.store.dispatch(authLogin());
+    // this.store.dispatch(authLogin());
   }
 
   onLogoutClick() {
-    this.store.dispatch(authLogout());
+    // this.store.dispatch(authLogout());
   }
 
   onLanguageSelect(event: MatSelectChange) {

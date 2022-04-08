@@ -1,0 +1,35 @@
+<section class="wrapper">
+    <div class="content">
+        <header>
+            <h1>nconnect</h1>
+        </header>
+        <section>
+            <form action="" class="login-form">
+                <div class="input-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" placeholder="Username or Email" id="username">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Password" id="password">
+                </div>
+                <div class="input-group"><button>Login</button></div>
+            </form>
+            <div class="social-login">
+                <button (click)="signInWithGoogle()"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google" width="20"><span>Google</span></button>
+                <button (click)="signInAnonymously()"><img src="https://cdn.freebiesupply.com/logos/large/2x/facebook-2-logo-svg-vector.svg" alt="facebook" width="10"><span>Facebook</span></button>
+                <!-- 
+                <button class="btn btn-primary btn-block phone" (click)="togglePhoneSignIn()"><i class="fas fa-phone"></i> Login with
+                Phone
+            </button>
+
+                <button class="btn btn-primary btn-block anonymous " (click)="signInAnonymously()"><i class="fas fa-user"></i> Continue
+                as Guest
+            </button> -->
+            </div>
+        </section>
+        <footer>
+            <a href="#" title="Forgot Password">Forgot Password</a>
+        </footer>
+    </div>
+</section>

@@ -20,7 +20,9 @@ export const initialState: SettingsState = {
   pageAnimations: true,
   pageAnimationsDisabled: false,
   elementsAnimations: true,
-  hour: 0
+  hour: 0,
+  customSettings: false,
+  netaPreferences: null
 };
 
 const reducer = createReducer(
