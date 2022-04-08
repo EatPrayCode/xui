@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { BlankComponent } from './layouts/blank/blank.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,22 @@ const routes: Routes = [
       import('./features/examples/examples.module').then(
         (m) => m.ExamplesModule
       )
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./modules/home/setup.module').then((m) => m.SetupModule)
+  },
+  {
+    path: '',
+    component: BlankComponent,
+    children: [
+      {
+        path: ':id',
+        loadChildren: () =>
+          import('./modules/neta/neta.module').then((m) => m.NetaModule)
+      }
+    ]
   },
   {
     path: '**',
