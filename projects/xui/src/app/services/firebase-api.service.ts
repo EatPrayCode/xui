@@ -1,5 +1,5 @@
 import { delay, switchMap, tap, take } from 'rxjs/operators';
-import { appState, appStateFirebaseAnonymous, appStateFirebaseNull, appStateFirebaseSample, userSettings, userSettingsAnonymous, userSettingsNull, userSettingsSample } from './../models/app.state';
+import { appState, appStateFirebaseNull } from './../models/app.state';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';

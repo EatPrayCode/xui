@@ -88,6 +88,9 @@ export class AppComponent implements OnInit {
     this.stickyHeader$ = this.appService.stickyHeader$
     this.language$ = this.appService.language$;
     this.theme$ = this.appService.theme$;
+    this.user$.subscribe(res=>{
+      console.log(res);
+    });
   }
 
   openSettingsDialog(): void {
@@ -127,8 +130,6 @@ export class AppComponent implements OnInit {
     //   console.log('The dialog was closed');
     // });
   }
-
-  onLoginClick() { }
 
   onLogoutClick() {
     this.appService.logout();

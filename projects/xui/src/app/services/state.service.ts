@@ -1,4 +1,4 @@
-import { appState, appStateFirebaseAnonymous, appStateFirebaseNull, appStateFirebaseSample, userSettings, userSettingsAnonymous, userSettingsNull, userSettingsSample } from '../models/app.state';
+import { appState, appStateFirebaseNull } from '../models/app.state';
 
 import { switchMap, take, tap, delay } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
@@ -11,8 +11,7 @@ import { AuthService } from './auth.service';
 })
 export class StateService {
 
-  appSettingsSubject: BehaviorSubject<appState> =
-    new BehaviorSubject<appState>(appStateFirebaseAnonymous);
+  appSettingsSubject: BehaviorSubject<appState> = new BehaviorSubject<appState>(appStateFirebaseNull);
 
   constructor(
     public localStorageService: LocalStorageService,
@@ -23,24 +22,12 @@ export class StateService {
     return this.authService.getAppUserSettings();
   }
 
-  setUser(user) {
-  }
-
-  handleAuthJourney(user){
+  handleAuthJourney(user) {
     this.authService.handleAuthJourney(user);
   }
 
-  // handleAuthJourney(authUser: any) {
-  //   authUser.getIdTokenResult()
-  //     .then((idTokenResult: any) => {
-  //       const claims = idTokenResult.claims;
-  //       this.initLoggedInAppSettingsState(claims);
-  //     });
-  //   this.afStore.doc<any>(`users/${authUser.uid}`).get()
-  //     .subscribe((snapshot: DocumentSnapshot<any>) => {
-  //       const user = snapshot.data();
-  //       this.stateService.updateUserObject(user);
-  //     });
-  // }
+  resetState() {
+    this.appSettingsSubject.next(appStateFirebaseNull);
+  }
 
 }

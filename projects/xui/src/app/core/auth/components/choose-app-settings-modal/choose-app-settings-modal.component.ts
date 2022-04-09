@@ -1,4 +1,3 @@
-import { appStateFirebaseSample } from './../../../../models/app.state';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core.module';
@@ -114,7 +113,7 @@ export class ChooseAppSettingsModalComponent implements OnInit {
   selectedSettings(payload: any) {
     let appSettingsObj: any = {};
     if (payload == 'Bangalore') {
-      appSettingsObj = appStateFirebaseSample;
+      appSettingsObj = appStateFirebaseNull;
     } else {
       appSettingsObj = appStateFirebaseNull;
     }

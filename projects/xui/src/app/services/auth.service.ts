@@ -28,19 +28,6 @@ export class AuthService {
     this.firebaseApi.handleAuthJourney(authUser);
   }
 
-  // handleAuthJourney(authUser: any) {
-  //   authUser.getIdTokenResult()
-  //     .then((idTokenResult: any) => {
-  //       const claims = idTokenResult.claims;
-  //       // this.initLoggedInAppSettingsState(claims);
-  //     });
-  //   this.afStore.doc<any>(`users/${authUser.uid}`).get()
-  //     .subscribe((snapshot: DocumentSnapshot<any>) => {
-  //       const user = snapshot.data();
-  //       this.stateService.updateUserObject(user);
-  //     });
-  // }
-
   logout() {
     return this.firebaseApi.logout();
   }

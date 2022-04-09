@@ -6,6 +6,7 @@ import browser from 'browser-detect';
 import { Observable, of } from "rxjs";
 import { StateService } from "./state.service";
 import { AuthService } from "./auth.service";
+import { appStateFirebaseNull } from "../models/app.state";
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +31,8 @@ export class AppService {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
     this.testLocalStorage();
     this.initializeAnimations();
-    this.user$ = this.getAppUserSettings();
-    this.user$.subscribe(res => {
-      // console.log(res);
-    });
+    this.user$ = this.stateService.appSettingsSubject;
+    this.stateService.getAppUserSettings().subscribe();
   }
 
   testLocalStorage() {
@@ -72,16 +71,13 @@ export class AppService {
     });
   }
 
-  setUser(user) {
-    this.stateService.setUser(user);
-  }
-
   getAppUserSettings() {
     return this.stateService.getAppUserSettings();
   }
 
-  logout(): void { 
+  logout(): void {
     this.authService.logout();
+    this.stateService.resetState();
   }
 
 }

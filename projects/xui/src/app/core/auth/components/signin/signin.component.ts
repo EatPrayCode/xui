@@ -1,5 +1,3 @@
-import { appStateFirebaseAnonymous, appStateFirebaseSample } from './../../../../models/app.state';
-import { Router } from '@angular/router';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -35,8 +33,8 @@ export class SigninComponent implements OnInit {
   signInAnonymously() {
     this.appService.signInAnonymously().then((result) => {
       this.appService.getAppUserSettings().subscribe(res=>{
-        this.closeAuthDialog(result);
       });
+      this.closeAuthDialog(result);
     });
   }
 
