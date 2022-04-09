@@ -16,6 +16,7 @@ import {
 } from '../../../core/settings/settings.actions';
 import { SettingsState, State } from '../../../core/settings/settings.model';
 import { selectSettings } from '../../../core/settings/settings.selectors';
+import { FirebaseApiService } from '../../../services/firebase-api.service';
 
 @Component({
   selector: 'app-settings',
@@ -46,13 +47,16 @@ export class SettingsContainerComponent implements OnInit {
     { value: 'ar', label: 'اللغة العربية' }
   ];
 
-  constructor(private store: Store<State>) { }
+  constructor(
+    private store: Store<State>,
+    private firebaseApiService: FirebaseApiService
+  ) { }
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
     this.settings$.subscribe(res => {
-      // console.log(res);
-    })
+      console.log(res);
+    });
   }
 
   onLanguageSelect(change: MatSelectChange) {
@@ -89,5 +93,11 @@ export class SettingsContainerComponent implements OnInit {
         elementsAnimations: event.checked
       })
     );
+  }
+
+  save() {
+    this.settings$.subscribe(res => {
+      this.firebaseApiService.test(res);
+    });
   }
 }

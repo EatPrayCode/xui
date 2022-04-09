@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
 
 import firebase from 'firebase/app';
-import { AngularFirestore, DocumentSnapshot } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentSnapshot, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +65,30 @@ export class FirebaseApiService {
 
   getDefaultAppSettings(): Observable<appState> {
     return of(appStateFirebaseNull);
+  }
+
+  test(settings: any) {
+    const auth$ = this.getUserFirebase().subscribe(user=>{
+      if (user && user.uid) {
+
+        this.setUserData(user,settings);
+      }
+    });
+  }
+
+  setUserData(user: any, data) {
+    const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/${user.uid}`);
+    const userData: any = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified,
+      settings: data
+    };
+    return userRef.set(userData, {
+      merge: true
+    });
   }
 
   logout() {

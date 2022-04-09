@@ -32,7 +32,7 @@ export class AppService {
     this.initializeAnimations();
     this.user$ = this.getAppUserSettings();
     this.user$.subscribe(res => {
-      console.log(res);
+      // console.log(res);
     });
   }
 

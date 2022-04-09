@@ -43,8 +43,8 @@ export class SigninComponent implements OnInit {
   signInWithGoogle() {
     this.appService.signInWithGoogle().then((result: any) => {
       this.appService.getAppUserSettings().subscribe(res=>{
-        this.closeAuthDialog(result);
       });
+      this.closeAuthDialog(result);
     });
   }
 
