@@ -7,7 +7,6 @@ import {
 } from '@angular/router';
 
 import {
-  loginAction,
   SigninComponent
 } from '../components/signin/signin.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -29,7 +28,7 @@ export class AuthGuard implements CanActivateChild {
 
   public prompt(): Promise<any> {
     return this.dialog
-      .open<SigninComponent, loginAction, {}>(SigninComponent, {})
+      .open<SigninComponent, '', {}>(SigninComponent, {})
       .afterClosed()
       .toPromise();
   }

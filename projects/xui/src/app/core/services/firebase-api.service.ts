@@ -5,7 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { HttpClient } from '@angular/common/http';
 
-import { appSettingsState } from '../../models/appStateDefault';
+import { appState as appSettingsState } from '../../models/app.state';
 import { appSettingsStateDefault } from '../auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
 // import { appSettingsStateDefault } from './auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
 // import { appSettingsState } from '../mocks/appStateDefault';

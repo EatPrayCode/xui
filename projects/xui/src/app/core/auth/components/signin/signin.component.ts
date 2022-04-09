@@ -1,22 +1,8 @@
-import {
-  AngularFirestore,
-  AngularFirestoreDocument
-} from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { StateService } from '../../../services/state.service';
-import { AuthService } from '../../../../services/auth.service';
-
-export type loginAction =
-  | 'register'
-  | 'signIn'
-  | 'forgotPassword'
-  | 'changePassword'
-  | 'changeEmail'
-  | 'delete'
-  | 'signOut';
+import { AppService } from '../../../../services/app.service';
 
 @Component({
   selector: 'app-signin',
@@ -24,18 +10,16 @@ export type loginAction =
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+  
   form: FormGroup = new FormGroup({});
   errorMessage = '';
   loading = false;
 
   constructor(
-    public authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
-    private afStore: AngularFirestore,
     private ref: MatDialogRef<SigninComponent>,
-    @Inject(MAT_DIALOG_DATA) private action: loginAction,
-    public stateService: StateService
+    public appService: AppService
   ) {}
 
   ngOnInit() {
@@ -49,32 +33,19 @@ export class SigninComponent implements OnInit {
   }
 
   signInAnonymously() {
-    this.authService.signInAnonymously().then((result) => {
+    this.appService.signInAnonymously().then((result) => {
       this.doClaimsNavigation(result);
     });
   }
 
   signInWithGoogle() {
-    this.authService.signInWithGoogle().then((result: any) => {
+    this.appService.signInWithGoogle().then((result: any) => {
       this.doClaimsNavigation(result);
     });
   }
 
   setUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afStore.doc(
-      `users/${user.uid}`
-    );
-    const userData: any = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified
-    };
-    this.stateService.appSettingsSubject.next(userData);
-    return userRef.set(userData, {
-      merge: true
-    });
+    this.appService.setUserData(user);
   }
 
   togglePhoneSignIn() {

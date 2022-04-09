@@ -6,7 +6,7 @@ import {
   Output,
   Input
 } from '@angular/core';
-import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../../../core/core.module';
 
 import { Feature, features } from '../netas-list.data';
 

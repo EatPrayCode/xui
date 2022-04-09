@@ -5,6 +5,8 @@ import { actionSettingsChangeAnimationsPageDisabled, actionSettingsChangeLanguag
 import browser from 'browser-detect';
 import { Observable, of } from "rxjs";
 import { StateService } from "../core/services/state.service";
+import { AuthService } from "./auth.service";
+import { appState } from "../models/app.state";
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +22,11 @@ export class AppService {
   constructor(
     private store: Store<AppState>,
     private storageService: LocalStorageService,
-    public stateService: StateService
+    public stateService: StateService,
+    public authService: AuthService
   ) { }
 
-  initAppService(){
+  initAppService() {
     this.isAuthenticated$ = of(false);
     this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
     this.language$ = this.store.pipe(select(selectSettingsLanguage));
@@ -55,6 +58,18 @@ export class AppService {
     this.store.dispatch(
       actionSettingsChangeLanguage({ language: language })
     );
+  }
+
+  signInAnonymously() {
+    return this.authService.signInAnonymously();
+  }
+
+  signInWithGoogle() {
+    return this.authService.signInWithGoogle();
+  }
+
+  setUserData(user){
+    this.authService.setUserData(user);
   }
 
   logout(): void {

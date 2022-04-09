@@ -9,6 +9,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { NetasForYouComponent } from './components/netas-for-you/netas-for-you.component';
 import { environment } from '../../../environments/environment';
 import { NetasService } from './netas.service';
+import { NetasListComponent } from './components/netas-for-you/netas-list/netas-list/netas-list.component';
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -32,7 +33,7 @@ export function httpLoaderFactory(http: HttpClient) {
       isolate: true
     })
   ],
-  declarations: [NetasComponent, NetasForYouComponent],
+  declarations: [NetasComponent, NetasForYouComponent, NetasListComponent],
   providers: [NetasService]
 })
 export class NetasModule {

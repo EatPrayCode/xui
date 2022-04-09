@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core.module';
-import { appSettingsState } from '../../../../models/appStateDefault';
+import { appState as appSettingsState } from '../../../../models/app.state';
 import { DataService } from '../../../../services/data.service';
 import { StateService } from '../../../services/state.service';
 

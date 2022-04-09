@@ -7,7 +7,7 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Injectable({
   providedIn: 'root'

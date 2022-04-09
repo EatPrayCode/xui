@@ -9,7 +9,7 @@ import {
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs/internal/Observable';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Injectable({
   providedIn: 'root'

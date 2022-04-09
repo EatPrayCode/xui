@@ -5,7 +5,7 @@ import { switchMap, take, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { DataService } from '../../services/data.service';
-import { appSettingsState } from '../../models/appStateDefault';
+import { appState as appSettingsState } from '../../models/app.state';
 import { appSettingsStateFirebaseBellary, appSettingsStateNull } from '../auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
 import { LocalStorageService } from '../core.module';
 

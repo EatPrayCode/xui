@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { appSettingsState } from '../../models/appStateDefault';
+import { appState as appSettingsState } from '../../models/app.state';
 
 const APP_PREFIX = 'app-';
 

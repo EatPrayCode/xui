@@ -2,7 +2,7 @@ import { take } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
-import { AngularFirestore, DocumentSnapshot } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument, DocumentSnapshot } from '@angular/fire/firestore';
 import { FirebaseApiService } from '../core/services/firebase-api.service';
 import { StateService } from '../core/services/state.service';
 
@@ -15,7 +15,7 @@ export class AuthService {
     public afStore: AngularFirestore,
     public firebaseApiService: FirebaseApiService,
     public stateService: StateService
-  ) {}
+  ) { }
 
   init() {
     this.afAuth.authState.pipe().subscribe((authUser: any) => {
@@ -72,5 +72,22 @@ export class AuthService {
 
   signInAnonymously() {
     return this.afAuth.signInAnonymously();
+  }
+
+  setUserData(user: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afStore.doc(
+      `users/${user.uid}`
+    );
+    const userData: any = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified
+    };
+    this.stateService.appSettingsSubject.next(userData);
+    return userRef.set(userData, {
+      merge: true
+    });
   }
 }

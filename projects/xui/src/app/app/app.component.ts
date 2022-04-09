@@ -11,6 +11,7 @@ import {
 import { ChooseAppSettingsModalComponent } from './../core/auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
 import { SigninComponent } from './../core/auth/components/signin/signin.component';
 import { AppService } from '../services/app.service';
+import { appState } from '../models/app.state';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -70,7 +71,7 @@ export class AppComponent implements OnInit {
   language$: Observable<string> | undefined;
   theme$: Observable<string> | undefined;
 
-  user$: any = of(null);
+  user$: Observable<any> = of(null);
 
   constructor(
     private dialog: MatDialog,
@@ -78,6 +79,10 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initApp();
+  }
+
+  initApp() {
     this.appService.initAppService();
     this.user$ = this.appService.user$;
     this.isAuthenticated$ = this.appService.isAuthenticated$;
@@ -119,7 +124,6 @@ export class AppComponent implements OnInit {
         obj: {}
       }
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });

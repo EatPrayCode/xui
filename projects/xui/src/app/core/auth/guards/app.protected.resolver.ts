@@ -8,10 +8,9 @@ import {
 import { forkJoin, zip } from 'rxjs';
 import { Observable, of } from 'rxjs';
 import { delay, map, switchMap, take, tap } from 'rxjs/operators';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { StateService } from '../../services/state.service';
 import {
-  loginAction,
   SigninComponent
 } from '../components/signin/signin.component';
 
@@ -27,7 +26,7 @@ export class AppProtectedResolver implements Resolve<any> {
 
   public prompt(): Observable<any> {
     return this.dialog
-      .open<SigninComponent, loginAction, {}>(SigninComponent, {})
+      .open<SigninComponent, '', {}>(SigninComponent, {})
       .afterClosed();
   }
 

@@ -6,7 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { DemoMaterialModule } from './demo-material-module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NetasListComponent } from './netas-list/netas-list/netas-list.component';
 import { SpeedDialFabComponent } from './speed-dial-fab/speed-dial-fab.component';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -24,7 +23,7 @@ import { CardModule } from 'primeng/card';
     CardModule,
     ButtonModule
   ],
-  declarations: [NetasListComponent, SpeedDialFabComponent],
+  declarations: [SpeedDialFabComponent],
   exports: [
     CommonModule,
     FormsModule,
@@ -34,8 +33,6 @@ import { CardModule } from 'primeng/card';
     DemoMaterialModule,
     CardModule,
     ButtonModule,
-
-    NetasListComponent,
     SpeedDialFabComponent
   ]
 })

@@ -1,4 +1,4 @@
-import { SharedModule } from '../../shared.module';
+import { SharedModule } from '../../../../../../shared/shared.module';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';

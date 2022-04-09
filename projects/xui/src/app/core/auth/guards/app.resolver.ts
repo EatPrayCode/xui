@@ -7,8 +7,8 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { delay, map, switchMap, take, tap } from 'rxjs/operators';
-import { StateService } from './state.service';
-import { ChooseAppSettingsModalComponent } from '../core/auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
+import { StateService } from '../../services/state.service';
+import { ChooseAppSettingsModalComponent } from '../components/choose-app-settings-modal/choose-app-settings-modal.component';
 
 @Injectable({
   providedIn: 'root'
