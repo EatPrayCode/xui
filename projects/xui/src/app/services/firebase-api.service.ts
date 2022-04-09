@@ -1,4 +1,4 @@
-import { delay, switchMap, tap } from 'rxjs/operators';
+import { delay, switchMap, tap, take } from 'rxjs/operators';
 import { appState, appStateFirebaseAnonymous, appStateFirebaseNull, appStateFirebaseSample, userSettings, userSettingsAnonymous, userSettingsNull, userSettingsSample } from './../models/app.state';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -32,6 +32,7 @@ export class FirebaseApiService {
   getAppUserSettings(): Observable<appState> {
     const auth$ = this.getUserFirebase();
     return auth$.pipe(
+      take(1),
       switchMap((user: appState) => {
         if (user && user.uid) {
           return this.getUserSettings(user);
@@ -45,9 +46,12 @@ export class FirebaseApiService {
 
   getUserSettings(user: any): Observable<any> {
     return this.afStore.doc<any>(`users/${user.uid}`).get().pipe(
+      take(1),
       switchMap((snapshot: DocumentSnapshot<any>) => {
         const test = snapshot.data();
-        console.log(test);
+        if (test && test.settings) {
+          console.log(test);
+        }
         return of(user);
       }));
   }
@@ -68,10 +72,10 @@ export class FirebaseApiService {
   }
 
   test(settings: any) {
-    const auth$ = this.getUserFirebase().subscribe(user=>{
+    const auth$ = this.getUserFirebase().pipe(take(1)).subscribe(user => {
       if (user && user.uid) {
 
-        this.setUserData(user,settings);
+        this.setUserData(user, settings);
       }
     });
   }
