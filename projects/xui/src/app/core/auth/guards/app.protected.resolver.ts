@@ -9,7 +9,7 @@ import { forkJoin, zip } from 'rxjs';
 import { Observable, of } from 'rxjs';
 import { delay, map, switchMap, take, tap } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
-import { StateService } from '../../services/state.service';
+import { StateService } from '../../../services/state.service';
 import {
   SigninComponent
 } from '../components/signin/signin.component';

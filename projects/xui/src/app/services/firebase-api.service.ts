@@ -5,10 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { HttpClient } from '@angular/common/http';
 
-import { appState as appSettingsState } from '../../models/app.state';
-import { appSettingsStateDefault } from '../auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
-// import { appSettingsStateDefault } from './auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
-// import { appSettingsState } from '../mocks/appStateDefault';
+import { appState as appSettingsState, appStateFirebaseNull } from '../models/app.state';
 
 @Injectable({
   providedIn: 'root'
@@ -88,7 +85,7 @@ export class FirebaseApiService {
     if (uid) {
       return this.httpClient.post<appSettingsState>(url, extraData);
     } else {
-      return of(appSettingsStateDefault);
+      return of(appStateFirebaseNull);
     }
   }
 

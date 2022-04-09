@@ -4,7 +4,7 @@ import { LocalStorageService, AppState, selectSettingsStickyHeader, selectSettin
 import { actionSettingsChangeAnimationsPageDisabled, actionSettingsChangeLanguage } from "../core/settings/settings.actions";
 import browser from 'browser-detect';
 import { Observable, of } from "rxjs";
-import { StateService } from "../core/services/state.service";
+import { StateService } from "./state.service";
 import { AuthService } from "./auth.service";
 import { appState } from "../models/app.state";
 
@@ -73,7 +73,7 @@ export class AppService {
   }
 
   logout(): void {
-    this.stateService.logout();
+    // this.stateService.logout();
   }
 
 }

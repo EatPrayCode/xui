@@ -1,10 +1,10 @@
-import { take } from 'rxjs/operators';
+
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument, DocumentSnapshot } from '@angular/fire/firestore';
-import { FirebaseApiService } from '../core/services/firebase-api.service';
-import { StateService } from '../core/services/state.service';
+import { FirebaseApiService } from './firebase-api.service';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,25 +14,10 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     public afStore: AngularFirestore,
     public firebaseApiService: FirebaseApiService,
-    public stateService: StateService
+    public stateService: StateService,
   ) { }
 
-  init() {
-    this.afAuth.authState.pipe().subscribe((authUser: any) => {
-      if (authUser) {
-        console.log('Auth Service says: User is logged in.');
-        this.handleAuthJourney(authUser);
-      } else {
-        console.log('Auth Service says: no User is logged in.');
-        this.handleNoAuthJourney();
-        alert();
-      }
-    });
-  }
-
-  // init() {
-  //   this.handleNoAuthJourney();
-  // }
+  init() {}
 
   handleAuthJourney(authUser: any) {
     authUser.getIdTokenResult().then((idTokenResult: any) => {
@@ -44,7 +29,7 @@ export class AuthService {
       .get()
       .subscribe((snapshot: DocumentSnapshot<any>) => {
         const user = snapshot.data();
-        this.stateService.updateUserObject(user);
+        // this.stateService.updateUserObject(user);
       });
   }
 
@@ -57,7 +42,7 @@ export class AuthService {
   }
 
   resetState() {
-    this.stateService.resetState();
+    // this.stateService.resetState();
   }
 
   // logout(): Promise<void> {

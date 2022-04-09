@@ -1,66 +1,10 @@
+import { appStateFirebaseSample } from './../../../../models/app.state';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core.module';
-import { appState as appSettingsState } from '../../../../models/app.state';
+import { appState as appSettingsState, appStateFirebaseNull } from '../../../../models/app.state';
 import { DataService } from '../../../../services/data.service';
-import { StateService } from '../../../services/state.service';
-
-export const appSettingsStateFirebaseBangalore: appSettingsState = {
-  uid: 'tNxAZbKtgdfxqilfUyivKz0hzDj1',
-  country: 'IND',
-  pinCode: 'Bangalore',
-  isPremium: true,
-  customerType: 'B2C',
-  customerAccountType: 'customerAccountType',
-  isLoggedIn: true,
-  customerDetails: {},
-  customerAddresses: {
-    billing: {},
-    shipping: {}
-  }
-};
-
-export const appSettingsStateFirebaseBellary: appSettingsState = {
-  uid: 'tNxAZbKtgdfxqilfUyivKz0hzDj1',
-  country: 'IND',
-  pinCode: 'Bellary',
-  isPremium: true,
-  customerType: 'B2C',
-  customerAccountType: 'customerAccountType',
-  isLoggedIn: true,
-  customerDetails: {},
-  customerAddresses: {
-    billing: {},
-    shipping: {}
-  }
-};
-
-export const appSettingsStateDefault: appSettingsState = {
-  uid: 'DEFAULT',
-  country: 'DEFAULT',
-  pinCode: 'DEFAULT',
-  isPremium: false,
-  customerType: 'B2C',
-  customerAccountType: null,
-  isLoggedIn: false,
-  customerDetails: null,
-  customerAddresses: {
-    billing: {},
-    shipping: {}
-  }
-};
-
-export const appSettingsStateNull: appSettingsState = {
-  uid: null,
-  country: null,
-  pinCode: null,
-  isPremium: false,
-  customerType: null,
-  customerAccountType: null,
-  isLoggedIn: false,
-  customerDetails: null,
-  customerAddresses: null
-};
+import { StateService } from '../../../../services/state.service';
 
 @Component({
   selector: 'app-choose-app-settings-modal',
@@ -170,21 +114,21 @@ export class ChooseAppSettingsModalComponent implements OnInit {
   selectedSettings(payload: any) {
     let appSettingsObj: any = {};
     if (payload == 'Bangalore') {
-      appSettingsObj = appSettingsStateFirebaseBangalore;
+      appSettingsObj = appStateFirebaseSample;
     } else {
-      appSettingsObj = appSettingsStateFirebaseBellary;
+      appSettingsObj = appStateFirebaseNull;
     }
     this.stateService.appSettingsSubject.next(appSettingsObj);
-    this.stateService.saveToLocalStorage(appSettingsObj);
-    this.stateService
-      .saveUserSettingsToFirebase(appSettingsObj)
-      .subscribe((res) => {});
+    // this.stateService.saveToLocalStorage(appSettingsObj);
+    // this.stateService
+    //   .saveUserSettingsToFirebase(appSettingsObj)
+    //   .subscribe((res) => {});
     // this.ref.close(appSettingsObj);
   }
 
   unSelectedSettings() {
-    this.stateService.appSettingsSubject.next(appSettingsStateDefault);
-    this.stateService.saveToLocalStorage(appSettingsStateDefault);
+    this.stateService.appSettingsSubject.next(appStateFirebaseNull);
+    // this.stateService.saveToLocalStorage(appStateDefault);
     // this.ref.close(appSettingsStateDefault);
   }
 

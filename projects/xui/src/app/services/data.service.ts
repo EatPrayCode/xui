@@ -5,7 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
-import { FirebaseApiService } from '../core/services/firebase-api.service';
+import { FirebaseApiService } from './firebase-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,9 @@ export class DataService {
     public afs: AngularFirestore,
     public router: Router,
     private firebaseApiService: FirebaseApiService
-  ) {}
+  ) { }
 
-  apiURL = 'sampleurl';
+  apiURL: any = 'sampleurl';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -219,12 +219,12 @@ export class DataService {
     return this.afs
       .collection(
         'states/' +
-          stateId +
-          '/districts/' +
-          districtId +
-          '/constituencies/' +
-          constituencyId +
-          '/villages/'
+        stateId +
+        '/districts/' +
+        districtId +
+        '/constituencies/' +
+        constituencyId +
+        '/villages/'
       )
       .snapshotChanges()
       .pipe(
@@ -293,12 +293,12 @@ export class DataService {
     return this.afs
       .collection(
         'states/' +
-          gid +
-          '/districts/' +
-          districtId +
-          '/constituencies/' +
-          constituencyId +
-          '/villages/'
+        gid +
+        '/districts/' +
+        districtId +
+        '/constituencies/' +
+        constituencyId +
+        '/villages/'
       )
       .add(village);
   }

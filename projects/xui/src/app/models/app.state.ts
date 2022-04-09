@@ -7,14 +7,14 @@ export class appState {
   customerAccountType?: any;
   isLoggedIn?: any;
   customerDetails?: any;
-  packs?: any;
   customerAddresses?: any;
   categories?: any;
   orderHistory?: any;
-  uid?: any;
+  isGuest: boolean;
+  uid: any;
 }
 
-export const appStateDefault = {
+export const appStateFirebaseNull = {
   country: null,
   pinCode: null,
   pinCodes: [],
@@ -30,5 +30,22 @@ export const appStateDefault = {
   },
   categories: [],
   orderHistory: [],
-  uid: ''
+  uid: '',
+  isGuest: true
+};
+
+export const appStateFirebaseSample: appState = {
+  uid: 'tNxAZbKtgdfxqilfUyivKz0hzDj1',
+  country: 'IND',
+  pinCode: 'Bangalore',
+  isPremium: true,
+  customerType: 'B2C',
+  customerAccountType: 'customerAccountType',
+  isLoggedIn: true,
+  customerDetails: {},
+  customerAddresses: {
+    billing: {},
+    shipping: {}
+  },
+  isGuest: true
 };

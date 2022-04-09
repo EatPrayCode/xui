@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { switchMap, take, tap } from 'rxjs/operators';
 
 import { of } from 'rxjs';
-import { StateService } from '../../services/state.service';
+import { StateService } from '../../../services/state.service';
 import { AuthService } from '../../../services/auth.service';
 
 @Injectable({
