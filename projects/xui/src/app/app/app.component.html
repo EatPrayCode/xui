@@ -51,6 +51,10 @@
                             Guest
                         </button>
 
+                        <button *ngIf="!user?.isAnonymous" mat-icon-button>
+                            {{user.displayName}}
+                        </button>
+
                     </ng-container>
 
                     <!-- <button mat-icon-button (click)="openSettingsDialog()" class="d-sm-inline">

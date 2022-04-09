@@ -80,6 +80,8 @@ export class AppService {
     return this.stateService.getAppUserSettings();
   }
 
-  logout(): void { }
+  logout(): void { 
+    this.authService.logout();
+  }
 
 }
