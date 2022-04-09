@@ -1,3 +1,4 @@
+import { appStateFirebaseAnonymous, appStateFirebaseSample } from './../../../../models/app.state';
 import { Router } from '@angular/router';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -33,15 +34,17 @@ export class SigninComponent implements OnInit {
   }
 
   signInAnonymously() {
-    this.appService.signInAnonymously().then((result) => {
-      this.doClaimsNavigation(result);
-    });
+    this.doClaimsNavigation(appStateFirebaseAnonymous);
+    // this.appService.signInAnonymously().then((result) => {
+    //   this.doClaimsNavigation(result);
+    // });
   }
 
   signInWithGoogle() {
-    this.appService.signInWithGoogle().then((result: any) => {
-      this.doClaimsNavigation(result);
-    });
+    this.doClaimsNavigation(appStateFirebaseSample);
+    // this.appService.signInWithGoogle().then((result: any) => {
+    //   this.doClaimsNavigation(result);
+    // });
   }
 
   setUserData(user: any) {
@@ -52,9 +55,9 @@ export class SigninComponent implements OnInit {
     this.router.navigate(['/login-mobile']);
   }
 
-  doClaimsNavigation(result: any) {
-    this.setUserData(result.user);
-    this.ref.close(result.user);
-    console.log('\nWaiting for claims navigation...');
+  doClaimsNavigation(user: any) {
+    this.setUserData(user);
+    this.ref.close(user);
+    console.log('\nDone for claims navigation...');
   }
 }

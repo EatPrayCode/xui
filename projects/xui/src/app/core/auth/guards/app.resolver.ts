@@ -44,7 +44,7 @@ export class AppResolver implements Resolve<any> {
       take(1),
       tap((s) => {}),
       switchMap((appSettings) =>
-        !appSettings || !appSettings.country
+        !appSettings || !appSettings.userSettings
           ? this.promptAppSettings()
           : of(appSettings)
       )

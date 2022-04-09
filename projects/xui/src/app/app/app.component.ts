@@ -85,7 +85,6 @@ export class AppComponent implements OnInit {
   initApp() {
     this.appService.initAppService();
     this.user$ = this.appService.user$;
-    this.isAuthenticated$ = this.appService.isAuthenticated$;
     this.stickyHeader$ = this.appService.stickyHeader$
     this.language$ = this.appService.language$;
     this.theme$ = this.appService.theme$;

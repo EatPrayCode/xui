@@ -47,6 +47,10 @@
                             <fa-icon icon="user-circle"></fa-icon>
                         </button>
 
+                        <button *ngIf="user?.isAnonymous" mat-icon-button>
+                            Guest
+                        </button>
+
                     </ng-container>
 
                     <!-- <button mat-icon-button (click)="openSettingsDialog()" class="d-sm-inline">

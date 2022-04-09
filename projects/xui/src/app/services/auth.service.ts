@@ -14,7 +14,7 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     public afStore: AngularFirestore,
     public firebaseApiService: FirebaseApiService,
-    public stateService: StateService,
+    // public stateService: StateService,
   ) { }
 
   init() {}
@@ -45,11 +45,11 @@ export class AuthService {
     // this.stateService.resetState();
   }
 
-  // logout(): Promise<void> {
-  //   this.resetState();
-  //   console.log('User just signed out.');
-  //   return this.afAuth.signOut();
-  // }
+  logout() {
+    this.resetState();
+    console.log('User just signed out.');
+    // return this.afAuth.signOut();
+  }
 
   signInWithGoogle() {
     return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
@@ -59,20 +59,20 @@ export class AuthService {
     return this.afAuth.signInAnonymously();
   }
 
-  setUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afStore.doc(
-      `users/${user.uid}`
-    );
-    const userData: any = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified
-    };
-    this.stateService.appSettingsSubject.next(userData);
-    return userRef.set(userData, {
-      merge: true
-    });
-  }
+  // setUserData(user: any) {
+  //   const userRef: AngularFirestoreDocument<any> = this.afStore.doc(
+  //     `users/${user.uid}`
+  //   );
+  //   const userData: any = {
+  //     uid: user.uid,
+  //     email: user.email,
+  //     displayName: user.displayName,
+  //     photoURL: user.photoURL,
+  //     emailVerified: user.emailVerified
+  //   };
+  //   this.stateService.appSettingsSubject.next(userData);
+  //   return userRef.set(userData, {
+  //     merge: true
+  //   });
+  // }
 }

@@ -13,7 +13,6 @@ import { appState } from "../models/app.state";
 })
 export class AppService {
 
-  isAuthenticated$: Observable<boolean> | undefined;
   stickyHeader$: Observable<boolean> | undefined;
   language$: Observable<string> | undefined;
   theme$: Observable<string> | undefined;
@@ -22,12 +21,11 @@ export class AppService {
   constructor(
     private store: Store<AppState>,
     private storageService: LocalStorageService,
-    public stateService: StateService,
-    public authService: AuthService
+    private stateService: StateService,
+    private authService: AuthService
   ) { }
 
   initAppService() {
-    this.isAuthenticated$ = of(false);
     this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
     this.language$ = this.store.pipe(select(selectSettingsLanguage));
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
@@ -69,11 +67,12 @@ export class AppService {
   }
 
   setUserData(user){
-    this.authService.setUserData(user);
+    this.stateService.setUserData(user);
   }
 
   logout(): void {
-    // this.stateService.logout();
+    this.authService.logout();
+    this.stateService.resetState();
   }
 
 }

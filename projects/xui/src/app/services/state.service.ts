@@ -1,4 +1,4 @@
-import { appStateFirebaseNull, appStateFirebaseSample } from '../models/app.state';
+import { appStateFirebaseAnonymous, appStateFirebaseNull, appStateFirebaseSample } from '../models/app.state';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -19,8 +19,8 @@ export class StateService {
 
   constructor(
     private dataService: DataService,
-    public afAuth: AngularFireAuth,
-    public afStore: AngularFirestore,
+    // public afAuth: AngularFireAuth,
+    // public afStore: AngularFirestore,
     public localStorageService: LocalStorageService
   ) { }
 
@@ -42,10 +42,14 @@ export class StateService {
     return this.appSettingsSubject;
   }
 
-  // getUserFirebaseSettings(user: any) {
-  //   return this.dataService.loadUserSettingsFromFirebase(user);
-  //   // return of(appStateNull);
-  // }
+  setUserData(user){
+    this.appSettingsSubject.next(user);
+  }
+
+  getUserFirebaseSettings(user: any) {
+    return this.dataService.loadUserSettingsFromFirebase(user);
+    // return of(appStateNull);
+  }
 
   // saveUserSettingsToFirebase(payload: any) {
   //   return this.dataService.saveUserSettingsToFirebase(
@@ -53,38 +57,38 @@ export class StateService {
   //   );
   // }
 
-  // getDefaultAppSettings(): Observable<appSettingsState> {
-  //   if (this.localStorageService.doesExists()) {
-  //     const data = this.localStorageService.retrieve();
-  //     this.appSettingsSubject.next(data);
-  //     return this.appSettingsSubject;
-  //   } else {
-  //     return this.appSettingsSubject;
-  //   }
-  // }
+  getDefaultAppSettings(): Observable<appSettingsState> {
+    if (this.localStorageService.doesExists()) {
+      const data = this.localStorageService.retrieve();
+      this.appSettingsSubject.next(data);
+      return this.appSettingsSubject;
+    } else {
+      return this.appSettingsSubject;
+    }
+  }
 
-  // initAppSettingTest(): Observable<appSettingsState> {
-  //   const auth$ = this.getAppUser();
-  //   return auth$.pipe(
-  //     take(1),
-  //     tap((authUser) => {}),
-  //     switchMap((user: appSettingsState) => {
-  //       if (user && user.isLoggedIn) {
-  //         return this.getUserFirebaseSettings(user).pipe(
-  //           tap((locationSettingsResponse: appSettingsState) => {
-  //             this.appSettingsSubject.next(locationSettingsResponse);
-  //           })
-  //         );
-  //       } else {
-  //         return this.getDefaultAppSettings();
-  //       }
-  //     })
-  //   );
-  // }
+  initAppSettingTest(): Observable<any> {
+    const auth$ = this.getAppUser();
+    return auth$.pipe(
+      take(1),
+      tap((authUser) => {}),
+      switchMap((user: appSettingsState) => {
+        if (user && user.uid) {
+          return this.getUserFirebaseSettings(user).pipe(
+            tap((locationSettingsResponse: appSettingsState) => {
+              this.appSettingsSubject.next(locationSettingsResponse);
+            })
+          );
+        } else {
+          return this.getDefaultAppSettings();
+        }
+      })
+    );
+  }
 
-  // getAppSettings() {
-  //   return this.initAppSettingTest();
-  // }
+  getAppSettings() {
+    return this.initAppSettingTest();
+  }
 
   // saveToLocalStorage(payload: appSettingsState) {
   //   this.localStorageService.store(payload);
@@ -118,13 +122,12 @@ export class StateService {
   //   // });
   // }
 
-  // resetState() {
-  //   // this.userSubject.next(UserStateNull);
-  // }
+  resetState() {
+    this.appSettingsSubject.next(appStateFirebaseNull);
+  }
 
-  // logout(): Promise<void> {
-  //   this.resetState();
-  //   console.log('User just signed out.');
-  //   return this.afAuth.signOut();
-  // }
+  logout(): void{
+    this.resetState();
+    console.log('User just signed out.');
+  }
 }

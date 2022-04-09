@@ -34,7 +34,7 @@ export class SettingsGuard implements CanActivate {
         take(1),
         tap((s) => {}),
         switchMap((appSettings) =>
-          !appSettings || !appSettings.country
+          !appSettings || !appSettings.userSettings
             ? this.promptAppSettings()
             : of(appSettings)
         )
@@ -44,7 +44,7 @@ export class SettingsGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.checkForAppSettings()
-      .then((appSettings) => !!appSettings.country)
+      .then((appSettings) => !!appSettings.userSettings)
       .finally(() => {
         this.stateService.appSettingsSubject.subscribe((res) => {});
       });

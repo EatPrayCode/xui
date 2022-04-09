@@ -1,51 +1,35 @@
 export class appState {
-  country?: any;
-  pinCode?: any;
-  pinCodes?: any;
-  isPremium?: any;
-  customerType?: any;
-  customerAccountType?: any;
-  isLoggedIn?: any;
-  customerDetails?: any;
-  customerAddresses?: any;
-  categories?: any;
-  orderHistory?: any;
-  isGuest: boolean;
-  uid: any;
+  uid: string;
+  customSettingsEnabled: boolean;
+  isAnonymous: boolean;
+  userSettings: any;
 }
 
-export const appStateFirebaseNull = {
-  country: null,
-  pinCode: null,
-  pinCodes: [],
-  isPremium: false,
-  customerType: 'B2C',
-  customerAccountType: null,
-  isLoggedIn: false,
-  customerDetails: null,
-  packs: [],
-  customerAddresses: {
-    billing: null,
-    shipping: null
-  },
-  categories: [],
-  orderHistory: [],
+export const appStateFirebaseNull: appState = {
   uid: '',
-  isGuest: true
+  isAnonymous: false,
+  customSettingsEnabled: false,
+  userSettings: null
 };
 
 export const appStateFirebaseSample: appState = {
   uid: 'tNxAZbKtgdfxqilfUyivKz0hzDj1',
-  country: 'IND',
-  pinCode: 'Bangalore',
-  isPremium: true,
-  customerType: 'B2C',
-  customerAccountType: 'customerAccountType',
-  isLoggedIn: true,
-  customerDetails: {},
-  customerAddresses: {
-    billing: {},
-    shipping: {}
-  },
-  isGuest: true
+  isAnonymous: false,
+  customSettingsEnabled: true,
+  userSettings: {
+    theme: '',
+    timeZone: '',
+    location: {}
+  }
+};
+
+export const appStateFirebaseAnonymous: appState = {
+  uid: 'tNxAZbKtgdfxqilfUyivKz0hzDj7',
+  customSettingsEnabled: false,
+  isAnonymous: true,
+  userSettings: {
+    theme: '',
+    timeZone: '',
+    location: {}
+  }
 };
