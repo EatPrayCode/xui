@@ -84,28 +84,28 @@
                 <div class="row">
                     <div class="col-sm-12 links">
                         <a href="https://www.github.com/tomastrajan" target="_blank" rel="noopener noreferrer">
-                            <!-- <fa-icon [icon]="['fab','github']"></fa-icon> -->
+                            <fa-icon [icon]="['fab','github']"></fa-icon>
                             <span>Github</span>
                         </a>
                         <a href="https://www.medium.com/@tomastrajan" target="_blank" rel="noopener noreferrer">
-                            <!-- <fa-icon [icon]="['fab','medium-m']"></fa-icon> -->
+                            <fa-icon [icon]="['fab','medium-m']"></fa-icon>
                             <span>Medium</span>
                         </a>
                         <a href="https://www.twitter.com/tomastrajan" target="_blank" rel="noopener noreferrer">
-                            <!-- <fa-icon [icon]="['fab','twitter']"></fa-icon> -->
+                            <fa-icon [icon]="['fab','twitter']"></fa-icon>
                             <span>Twitter</span>
                         </a>
                         <a href="https://www.youtube.com/channel/UC7XgRHIVoqnh3U5Vmly9ofQ" target="_blank"
                             rel="noopener noreferrer">
-                            <!-- <fa-icon [icon]="['fab','youtube']"></fa-icon> -->
+                            <fa-icon [icon]="['fab','youtube']"></fa-icon>
                             <span>Youtube</span>
                         </a>
                         <a href="https://www.instagram.com/tomastrajan" target="_blank" rel="noopener noreferrer">
-                            <!-- <fa-icon [icon]="['fab','instagram']"></fa-icon> -->
+                            <fa-icon [icon]="['fab','instagram']"></fa-icon>
                             <span>Instagram</span>
                         </a>
                         <a href="https://www.slides.com/tomastrajan" target="_blank" rel="noopener noreferrer">
-                            <!-- <fa-icon icon="play-circle"></fa-icon> -->
+                            <fa-icon icon="play-circle"></fa-icon>
                             <span>Slides</span>
                         </a>
                     </div>
@@ -116,7 +116,7 @@
                         <br class="d-block d-sm-none" />
                         <a [matTooltip]="'app.footer.changelog' | translate" matTooltipPosition="before"
                             href="https://github.com/tomastrajan/nconnect/blob/master/CHANGELOG.md">
-                            <!-- <fa-icon icon="rocket"></fa-icon> -->
+                            <fa-icon icon="rocket"></fa-icon>
                             {{version}} <span *ngIf="!isProd">[{{envName}}]</span>
                         </a>
                     </div>
@@ -125,17 +125,3 @@
         </div>
     </mat-sidenav-container>
 </div>
-
-<header class="header d-inline d-sm-inline d-md-inline">
-    <div class="container-fluid">
-        <nav class="bottom-nav">
-            <div class="bottom-nav-item" *ngFor="let item of navigation" [routerLink]="[item.link]"
-                routerLinkActive="active">
-                <div class="bottom-nav-link">
-                    <!-- <fa-icon [icon]="item.icon"></fa-icon> -->
-                    <span>{{item.label | translate}}</span>
-                </div>
-            </div>
-        </nav>
-    </div>
-</header>
