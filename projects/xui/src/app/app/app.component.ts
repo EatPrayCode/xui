@@ -1,27 +1,16 @@
 import { MatDialog } from '@angular/material/dialog';
-import browser from 'browser-detect';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
-import { Store, select } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 
 import { environment as env } from './../../environments/environment';
 
 import {
-  routeAnimations,
-  LocalStorageService,
-  selectSettingsStickyHeader,
-  selectSettingsLanguage,
-  selectEffectiveTheme,
-  AppState
+  routeAnimations
 } from './../core/core.module';
-import {
-  actionSettingsChangeAnimationsPageDisabled,
-  actionSettingsChangeLanguage
-} from './../core/settings/settings.actions';
 import { ChooseAppSettingsModalComponent } from './../core/auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
 import { SigninComponent } from './../core/auth/components/signin/signin.component';
-import { StateService } from './../services/state.service';
+import { AppService } from '../services/app.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,24 +26,14 @@ export class AppComponent implements OnInit {
   languages = ['en', 'fr', 'es'];
   navigation: any = [
     {
-      link: 'connect',
-      label: 'app.menu.connect',
-      icon: 'envelope'
-    },
-    {
       link: 'netas',
       label: 'app.menu.netas',
       icon: 'book-open'
     },
-    // {
-    //   link: 'dashboard',
-    //   label: 'app.menu.dashboard',
-    //   icon: 'bullhorn'
-    // },
     {
-      link: 'admin-dashboard',
-      label: 'app.menu.admin-dashboard',
-      icon: 'user'
+      link: 'dashboard',
+      label: 'app.menu.dashboard',
+      icon: 'bullhorn'
     },
     // {
     //   link: 'visualize',
@@ -91,31 +70,20 @@ export class AppComponent implements OnInit {
   language$: Observable<string> | undefined;
   theme$: Observable<string> | undefined;
 
-  constructor(
-    private store: Store<AppState>,
-    private storageService: LocalStorageService,
-    private dialog: MatDialog,
-    public stateService: StateService
-  ) {}
+  user$: any = of(null);
 
-  private static isIEorEdgeOrSafari() {
-    return ['ie', 'edge', 'safari'].includes(browser().name || '');
-  }
+  constructor(
+    private dialog: MatDialog,
+    public appService: AppService
+  ) { }
 
   ngOnInit(): void {
-    this.storageService.testLocalStorage();
-    if (AppComponent.isIEorEdgeOrSafari()) {
-      this.store.dispatch(
-        actionSettingsChangeAnimationsPageDisabled({
-          pageAnimationsDisabled: true
-        })
-      );
-    }
-
-    this.isAuthenticated$ = of(false);
-    this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
-    this.language$ = this.store.pipe(select(selectSettingsLanguage));
-    this.theme$ = this.store.pipe(select(selectEffectiveTheme));
+    this.appService.initAppService();
+    this.user$ = this.appService.user$;
+    this.isAuthenticated$ = this.appService.isAuthenticated$;
+    this.stickyHeader$ = this.appService.stickyHeader$
+    this.language$ = this.appService.language$;
+    this.theme$ = this.appService.theme$;
   }
 
   openSettingsDialog(): void {
@@ -132,7 +100,6 @@ export class AppComponent implements OnInit {
         obj: {}
       }
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
@@ -158,15 +125,13 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onLoginClick() {}
+  onLoginClick() { }
 
   onLogoutClick() {
-    this.stateService.logout();
+    this.appService.logout();
   }
 
   onLanguageSelect(event: MatSelectChange) {
-    this.store.dispatch(
-      actionSettingsChangeLanguage({ language: event.value })
-    );
+    this.appService.onLanguageSelect(event.value);
   }
 }

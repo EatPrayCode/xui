@@ -46,10 +46,13 @@ export class SettingsContainerComponent implements OnInit {
     { value: 'ar', label: 'اللغة العربية' }
   ];
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
+    this.settings$.subscribe(res => {
+      console.log(res);
+    })
   }
 
   onLanguageSelect(change: MatSelectChange) {

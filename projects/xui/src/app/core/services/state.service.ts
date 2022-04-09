@@ -1,15 +1,13 @@
-import {
-  appSettingsStateNull,
-  appSettingsStateFirebaseBellary
-} from '../core/auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
-import { LocalStorageService } from './localstorage.service';
+
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { appSettingsState } from '../models/appStateDefault';
 import { switchMap, take, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { DataService } from './data.service';
+import { DataService } from '../../services/data.service';
+import { appSettingsState } from '../../models/appStateDefault';
+import { appSettingsStateFirebaseBellary, appSettingsStateNull } from '../auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
+import { LocalStorageService } from '../core.module';
 
 @Injectable({
   providedIn: 'root'

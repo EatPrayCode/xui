@@ -1,12 +1,9 @@
-import { AuthService } from '../../auth.service';
-import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core.module';
 import { appSettingsState } from '../../../../models/appStateDefault';
-import { AppService } from '../../../../services/app.service';
 import { DataService } from '../../../../services/data.service';
-import { StateService } from '../../../../services/state.service';
+import { StateService } from '../../../services/state.service';
 
 export const appSettingsStateFirebaseBangalore: appSettingsState = {
   uid: 'tNxAZbKtgdfxqilfUyivKz0hzDj1',
@@ -129,7 +126,6 @@ export class ChooseAppSettingsModalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,
-    public appService: AppService,
     public stateService: StateService
   ) {}
 

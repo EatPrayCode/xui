@@ -11,7 +11,7 @@ import { actionFormReset, actionFormUpdate } from '../form.actions';
 import { selectFormState } from '../form.selectors';
 import { Form } from '../form.model';
 import { State } from '../../examples.state';
-import { NotificationService } from '../../../../services/notification.service';
+import { NotificationService } from '../../../../core/notifications/notification.service';
 
 @Component({
   selector: 'app-form',

@@ -5,9 +5,10 @@ import {
 import { Router } from '@angular/router';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../auth.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { StateService } from '../../../../services/state.service';
+import { StateService } from '../../../services/state.service';
+import { AuthService } from '../../../../services/auth.service';
+
 export type loginAction =
   | 'register'
   | 'signIn'

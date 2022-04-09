@@ -5,8 +5,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { HttpClient } from '@angular/common/http';
 
-import { appSettingsStateDefault } from './components/choose-app-settings-modal/choose-app-settings-modal.component';
 import { appSettingsState } from '../../models/appStateDefault';
+import { appSettingsStateDefault } from '../auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
 // import { appSettingsStateDefault } from './auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
 // import { appSettingsState } from '../mocks/appStateDefault';
 
@@ -15,7 +15,6 @@ import { appSettingsState } from '../../models/appStateDefault';
 })
 export class FirebaseApiService {
   constructor(
-    private afs: AngularFirestore,
     private afAuth: AngularFireAuth,
     private httpClient: HttpClient
   ) {}
@@ -32,17 +31,17 @@ export class FirebaseApiService {
   // appStateUrl = 'http://localhost:3000/api/appstate';
   // packsUrl = 'http://localhost:3000/api/packs';
 
-  apiServer = 'https://api.overthemoon.io/api/orders';
-  initialiseuserUrl = 'https://api.overthemoon.io/api/initialiseuser';
-  addressesUrl = 'https://api.overthemoon.io/api/addresses';
-  ordersUrl = 'https://api.overthemoon.io/api/orders';
-  pincodePacksUrl = 'https://api.overthemoon.io/api/pincodepacks';
-  pincodeUrl = 'https://api.overthemoon.io/api/pincodes';
-  countryUrl = 'https://api.overthemoon.io/api/countries';
-  accessClaimsUrl = 'https://api.overthemoon.io/api/accessclaims';
-  userDataUrl = 'https://api.overthemoon.io/api/userdata';
-  appStateUrl = 'https://api.overthemoon.io/api/appstate';
-  packsUrl = 'https://api.overthemoon.io/api/packs';
+  apiServer = 'https://xui-api.vercel.app/api/orders';
+  initialiseuserUrl = 'https://xui-api.vercel.app/api/initialiseuser';
+  addressesUrl = 'https://xui-api.vercel.app/api/addresses';
+  ordersUrl = 'https://xui-api.vercel.app/api/orders';
+  pincodePacksUrl = 'https://xui-api.vercel.app/api/pincodepacks';
+  pincodeUrl = 'https://xui-api.vercel.app/api/pincodes';
+  countryUrl = 'https://xui-api.vercel.app/api/countries';
+  accessClaimsUrl = 'https://xui-api.vercel.app/api/accessclaims';
+  userDataUrl = 'https://xui-api.vercel.app/api/userdata';
+  appStateUrl = 'https://xui-api.vercel.app/api/appstate';
+  packsUrl = 'https://xui-api.vercel.app/api/packs';
 
   loadFirebasePacks(payload: any): Observable<any> {
     const queryArray = [
@@ -70,6 +69,10 @@ export class FirebaseApiService {
     };
     const url = `${this.packsUrl}?pinCodeId=${pinCode.id}&packId=${packId}`;
     return this.httpClient.get(url);
+  }
+
+  getUserState() {
+    return this.afAuth.authState.pipe();
   }
 
   loadUserSettingsFromFirebase(payload: any): Observable<any> {

@@ -10,7 +10,7 @@ import { switchMap, take, tap } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 import { ChooseAppSettingsModalComponent } from '../components/choose-app-settings-modal/choose-app-settings-modal.component';
-import { StateService } from '../../../services/state.service';
+import { StateService } from '../../services/state.service';
 
 @Injectable({
   providedIn: 'root'

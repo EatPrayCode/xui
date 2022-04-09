@@ -8,12 +8,12 @@ import {
 import { forkJoin, zip } from 'rxjs';
 import { Observable, of } from 'rxjs';
 import { delay, map, switchMap, take, tap } from 'rxjs/operators';
-import { AuthService } from '../core/auth/auth.service';
+import { AuthService } from '../../services/auth.service';
+import { StateService } from '../../services/state.service';
 import {
   loginAction,
   SigninComponent
-} from '../core/auth/components/signin/signin.component';
-import { StateService } from './state.service';
+} from '../components/signin/signin.component';
 
 @Injectable({
   providedIn: 'root'

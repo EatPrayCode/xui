@@ -7,7 +7,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { SharedModule } from '../../shared/shared.module';
 import { environment } from '../../../environments/environment';
-import { NetaService } from '../../services/neta.service';
+import { NetaService } from './neta.service';
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(

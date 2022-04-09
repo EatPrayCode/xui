@@ -8,7 +8,7 @@ import { NetasComponent } from './containers/netas/netas.component';
 import { SharedModule } from '../../shared/shared.module';
 import { NetasForYouComponent } from './components/netas-for-you/netas-for-you.component';
 import { environment } from '../../../environments/environment';
-import { NetasService } from '../../services/netas.service';
+import { NetasService } from './netas.service';
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(

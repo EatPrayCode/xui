@@ -3,8 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
 import { AngularFirestore, DocumentSnapshot } from '@angular/fire/firestore';
-import { FirebaseApiService } from './firebase-api.service';
-import { StateService } from '../../services/state.service';
+import { FirebaseApiService } from '../core/services/firebase-api.service';
+import { StateService } from '../core/services/state.service';
 
 @Injectable({
   providedIn: 'root'

@@ -15,7 +15,7 @@ import * as todoActions from '../todos.actions';
 import { Todo, TodosFilter } from '../todos.model';
 import { selectTodos, selectRemoveDoneTodosDisabled } from '../todos.selectors';
 import { State } from '../../examples.state';
-import { NotificationService } from '../../../../services/notification.service';
+import { NotificationService } from '../../../../core/notifications/notification.service';
 
 @Component({
   selector: 'app-todos',

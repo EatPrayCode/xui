@@ -30,11 +30,11 @@
                       </button>
                   </span>
 
-                  <button mat-button mat-stroked-button color="accent" *ngIf="!(stateService.appSettingsSubject | async)?.uid" (click)="openLoginDialog()">
+                  <button mat-button mat-stroked-button color="accent" *ngIf="!(user$ | async)?.uid" (click)="openLoginDialog()">
                       {{ 'app.menu.login' | translate }}
                   </button>
 
-                  <button *ngIf="(stateService.appSettingsSubject | async)?.uid" mat-icon-button [matMenuTriggerFor]="toolbarUserMenu">
+                  <button *ngIf="(user$ | async)?.uid" mat-icon-button [matMenuTriggerFor]="toolbarUserMenu">
                       <fa-icon icon="user-circle"></fa-icon>
                   </button>
 

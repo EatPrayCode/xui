@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
+import { appSettingsState } from '../../models/appStateDefault';
 
 const APP_PREFIX = 'app-';
 
@@ -74,5 +76,33 @@ export class LocalStorageService {
     if (retrievedValue !== testValue) {
       throw new Error(errorMessage);
     }
+  }
+
+  public tokenKey: string = 'appSettings';
+
+  store(content: appSettingsState) {
+    localStorage.setItem(this.tokenKey, JSON.stringify(content));
+  }
+
+  retrieve() {
+    let storedToken: any = localStorage.getItem(this.tokenKey);
+    storedToken = storedToken ? JSON.parse(storedToken) : storedToken;
+    // this.clearSettingsHelper();
+    return storedToken;
+  }
+
+  doesExists() {
+    let storedToken: any = localStorage.getItem(this.tokenKey);
+    return storedToken ? true : false;
+  }
+
+  clearSettingsHelper() {
+    localStorage.removeItem(this.tokenKey);
+  }
+
+  retrieveAsObservable() {
+    let storedToken: any = localStorage.getItem(this.tokenKey);
+    storedToken = storedToken ? JSON.parse(storedToken) : storedToken;
+    return of(storedToken);
   }
 }

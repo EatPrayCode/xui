@@ -5,9 +5,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
-import { FirebaseApiService } from '../core/auth/firebase-api.service';
+import { FirebaseApiService } from '../core/services/firebase-api.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class DataService {
   constructor(
     public afs: AngularFirestore,
