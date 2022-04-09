@@ -1,10 +1,11 @@
+import { MatDialog } from '@angular/material/dialog';
 import browser from 'browser-detect';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { Store, select } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 
-import { environment as env } from '../../environments/environment';
+import { environment as env } from './../../environments/environment';
 
 import {
   routeAnimations,
@@ -13,14 +14,16 @@ import {
   selectSettingsLanguage,
   selectEffectiveTheme,
   AppState
-} from '../core/core.module';
+} from './../core/core.module';
 import {
   actionSettingsChangeAnimationsPageDisabled,
   actionSettingsChangeLanguage
-} from '../core/settings/settings.actions';
-
+} from './../core/settings/settings.actions';
+import { ChooseAppSettingsModalComponent } from './../core/auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
+import { SigninComponent } from './../core/auth/components/signin/signin.component';
+import { StateService } from './../services/state.service';
 @Component({
-  selector: 'anms-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [routeAnimations]
@@ -31,15 +34,56 @@ export class AppComponent implements OnInit {
   version = env.versions.app;
   year = new Date().getFullYear();
   logo = 'assets/logo.png';
-  languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br', 'zh-cn', 'he', 'ar'];
-  navigation = [
-    { link: 'about', label: 'anms.menu.about' },
-    { link: 'feature-list', label: 'anms.menu.features' },
-    { link: 'examples', label: 'anms.menu.examples' }
+  languages = ['en', 'fr', 'es'];
+  navigation: any = [
+    {
+      link: 'connect',
+      label: 'app.menu.connect',
+      icon: 'envelope'
+    },
+    {
+      link: 'netas',
+      label: 'app.menu.netas',
+      icon: 'book-open'
+    },
+    // {
+    //   link: 'dashboard',
+    //   label: 'app.menu.dashboard',
+    //   icon: 'bullhorn'
+    // },
+    {
+      link: 'admin-dashboard',
+      label: 'app.menu.admin-dashboard',
+      icon: 'user'
+    },
+    // {
+    //   link: 'visualize',
+    //   label: 'app.menu.visualise',
+    //   icon: 'cog'
+    // },
+    // {
+    //   link: 'blog',
+    //   label: 'app.menu.blog',
+    //   icon: 'blog'
+    // },
+    {
+      link: 'about',
+      label: 'app.menu.about',
+      icon: 'link'
+    }
   ];
   navigationSideMenu = [
     ...this.navigation,
-    { link: 'settings', label: 'anms.menu.settings' }
+    {
+      link: 'settings',
+      label: 'app.menu.settings',
+      icon: 'github'
+    },
+    {
+      link: 'preferences',
+      label: 'app.menu.settings',
+      icon: 'github'
+    }
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;
@@ -49,7 +93,9 @@ export class AppComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private storageService: LocalStorageService
+    private storageService: LocalStorageService,
+    private dialog: MatDialog,
+    public stateService: StateService
   ) {}
 
   private static isIEorEdgeOrSafari() {
@@ -66,18 +112,56 @@ export class AppComponent implements OnInit {
       );
     }
 
-    this.isAuthenticated$ = of(true);
+    this.isAuthenticated$ = of(false);
     this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
     this.language$ = this.store.pipe(select(selectSettingsLanguage));
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
   }
 
-  onLoginClick() {
-    // this.store.dispatch(authLogin());
+  openSettingsDialog(): void {
+    let dialogRef = this.dialog.open(ChooseAppSettingsModalComponent, {
+      hasBackdrop: true,
+      disableClose: false,
+      height: '100vh',
+      minWidth: '90%',
+      position: {
+        right: '0px',
+        bottom: '0px'
+      },
+      data: {
+        obj: {}
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 
+  openLoginDialog(): void {
+    let dialogRef = this.dialog.open(SigninComponent, {
+      hasBackdrop: true,
+      disableClose: false,
+      height: '100vh',
+      minWidth: '90%',
+      position: {
+        right: '0px',
+        bottom: '0px'
+      },
+      data: {
+        obj: {}
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  onLoginClick() {}
+
   onLogoutClick() {
-    // this.store.dispatch(authLogout());
+    this.stateService.logout();
   }
 
   onLanguageSelect(event: MatSelectChange) {

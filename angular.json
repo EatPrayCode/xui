@@ -13,7 +13,7 @@
       },
       "root": "projects/xui",
       "sourceRoot": "projects/xui/src",
-      "prefix": "anms",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

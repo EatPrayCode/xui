@@ -1,7 +1,19 @@
+// @use '~@angular/material' as mat;
+
+// $app-primary: mat.define-palette(mat.$indigo-palette, 800, 300, 900);
+// $app-accent: mat.define-palette(mat.$light-blue-palette);
+// $app-warn: mat.define-palette(mat.$pink-palette, 600);
+
+// $app-theme: mat.define-light-theme($app-primary, $app-accent, $app-warn);
+
 @use '~@angular/material' as mat;
 
-$anms-primary: mat.define-palette(mat.$indigo-palette, 800, 300, 900);
-$anms-accent: mat.define-palette(mat.$light-blue-palette);
-$anms-warn: mat.define-palette(mat.$pink-palette, 600);
+$app-light-primary: mat.define-palette(mat.$grey-palette, 200, 500, 300);
+$app-light-accent: mat.define-palette(mat.$brown-palette, 200);
+$app-light-warn: mat.define-palette(mat.$deep-orange-palette, 200);
 
-$anms-theme: mat.define-light-theme($anms-primary, $anms-accent, $anms-warn);
+$app-theme: mat.define-dark-theme(
+    $app-light-primary,
+    $app-light-accent,
+    $app-light-warn
+);

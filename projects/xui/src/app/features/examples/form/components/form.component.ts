@@ -14,7 +14,7 @@ import { State } from '../../examples.state';
 import { NotificationService } from '../../../../services/notification.service';
 
 @Component({
-  selector: 'anms-form',
+  selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -72,10 +72,10 @@ export class FormComponent implements OnInit {
       this.save();
       this.notificationService.info(
         (this.form.value.requestGift
-          ? this.translate.instant('anms.examples.form.text4')
-          : this.translate.instant('anms.examples.form.text5')) +
+          ? this.translate.instant('app.examples.form.text4')
+          : this.translate.instant('app.examples.form.text5')) +
           ' : ' +
-          this.translate.instant('anms.examples.form.text6')
+          this.translate.instant('app.examples.form.text6')
       );
     }
   }

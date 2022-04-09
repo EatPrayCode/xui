@@ -4,7 +4,7 @@ import { NotificationService } from '../../../../services/notification.service';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 
 @Component({
-  selector: 'anms-notifications',
+  selector: 'app-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
