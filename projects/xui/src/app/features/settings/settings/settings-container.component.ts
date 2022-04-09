@@ -51,7 +51,7 @@ export class SettingsContainerComponent implements OnInit {
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
     this.settings$.subscribe(res => {
-      console.log(res);
+      // console.log(res);
     })
   }
 

@@ -31,7 +31,7 @@ export class AppService {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
     this.testLocalStorage();
     this.initializeAnimations();
-    this.user$ = this.stateService.getAppUser();
+    this.user$ = this.stateService.getAppUserSettings();
   }
 
   testLocalStorage() {

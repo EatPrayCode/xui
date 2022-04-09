@@ -1,4 +1,4 @@
-import { appStateFirebaseAnonymous, appStateFirebaseNull, appStateFirebaseSample } from '../models/app.state';
+import { appState, appStateFirebaseAnonymous, appStateFirebaseNull, appStateFirebaseSample } from '../models/app.state';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -6,7 +6,7 @@ import { switchMap, take, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { DataService } from './data.service';
-import { appState as appSettingsState } from '../models/app.state';
+// import { appState as appSettingsState } from '../models/app.state';
 import { LocalStorageService } from '../core/core.module';
 
 @Injectable({
@@ -14,8 +14,8 @@ import { LocalStorageService } from '../core/core.module';
 })
 export class StateService {
 
-  appSettingsSubject: BehaviorSubject<appSettingsState> =
-    new BehaviorSubject<appSettingsState>(appStateFirebaseNull);
+  appSettingsSubject: BehaviorSubject<appState> =
+    new BehaviorSubject<appState>(appStateFirebaseNull);
 
   constructor(
     private dataService: DataService,
@@ -36,12 +36,6 @@ export class StateService {
   //   return this.appSettingsSubject;
   // }
 
-  getAppUser(): Observable<appSettingsState> {
-    this.appSettingsSubject.next(appStateFirebaseNull);
-    // console.log("User logged In");
-    return this.appSettingsSubject;
-  }
-
   setUserData(user){
     this.appSettingsSubject.next(user);
   }
@@ -57,7 +51,7 @@ export class StateService {
   //   );
   // }
 
-  getDefaultAppSettings(): Observable<appSettingsState> {
+  getDefaultAppSettings(): Observable<appState> {
     if (this.localStorageService.doesExists()) {
       const data = this.localStorageService.retrieve();
       this.appSettingsSubject.next(data);
@@ -67,16 +61,25 @@ export class StateService {
     }
   }
 
-  initAppSettingTest(): Observable<any> {
+  getAppUser(): Observable<any> {
+    // this.appSettingsSubject.next(appStateFirebaseAnonymous);
+    // console.log("User logged In");
+    return this.appSettingsSubject;
+  }
+
+  getAppUserSettings(): Observable<appState> {
     const auth$ = this.getAppUser();
     return auth$.pipe(
       take(1),
-      tap((authUser) => {}),
-      switchMap((user: appSettingsState) => {
+      tap((authUser) => {
+        console.log(authUser);
+      }),
+      switchMap((user: appState) => {
         if (user && user.uid) {
           return this.getUserFirebaseSettings(user).pipe(
-            tap((locationSettingsResponse: appSettingsState) => {
-              this.appSettingsSubject.next(locationSettingsResponse);
+            tap((locationSettingsResponse: any) => {
+              console.log(locationSettingsResponse);
+              // this.appSettingsSubject.next(locationSettingsResponse);
             })
           );
         } else {
@@ -84,10 +87,6 @@ export class StateService {
         }
       })
     );
-  }
-
-  getAppSettings() {
-    return this.initAppSettingTest();
   }
 
   // saveToLocalStorage(payload: appSettingsState) {
