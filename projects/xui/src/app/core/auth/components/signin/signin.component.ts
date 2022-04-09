@@ -11,17 +11,16 @@ import { AppService } from '../../../../services/app.service';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  
+
   form: FormGroup = new FormGroup({});
   errorMessage = '';
   loading = false;
 
   constructor(
-    private router: Router,
     private fb: FormBuilder,
     private ref: MatDialogRef<SigninComponent>,
     public appService: AppService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -34,30 +33,23 @@ export class SigninComponent implements OnInit {
   }
 
   signInAnonymously() {
-    this.doClaimsNavigation(appStateFirebaseAnonymous);
-    // this.appService.signInAnonymously().then((result) => {
-    //   this.doClaimsNavigation(result);
-    // });
+    this.appService.signInAnonymously().then((result) => {
+      this.appService.getAppUserSettings().subscribe(res=>{
+        this.closeAuthDialog(result);
+      });
+    });
   }
 
   signInWithGoogle() {
-    this.doClaimsNavigation(appStateFirebaseSample);
-    // this.appService.signInWithGoogle().then((result: any) => {
-    //   this.doClaimsNavigation(result);
-    // });
+    this.appService.signInWithGoogle().then((result: any) => {
+      this.appService.getAppUserSettings().subscribe(res=>{
+        this.closeAuthDialog(result);
+      });
+    });
   }
 
-  setUserData(user: any) {
-    this.appService.setUserData(user);
-  }
-
-  togglePhoneSignIn() {
-    this.router.navigate(['/login-mobile']);
-  }
-
-  doClaimsNavigation(user: any) {
-    this.setUserData(user);
+  closeAuthDialog(user: any) {
     this.ref.close(user);
-    console.log('\nDone for claims navigation...');
+    console.log('\Closed auth dialog...');
   }
 }

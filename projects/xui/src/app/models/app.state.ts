@@ -2,7 +2,7 @@ export class appState {
   uid: string;
   customSettingsEnabled: boolean;
   isAnonymous: boolean;
-  userSettings: any;
+  userSettings: userSettings;
 }
 
 export const appStateFirebaseNull: appState = {
@@ -17,9 +17,11 @@ export const appStateFirebaseSample: appState = {
   isAnonymous: false,
   customSettingsEnabled: true,
   userSettings: {
-    theme: '',
-    timeZone: '',
-    location: {}
+    theme: 'light',
+    timeZone: 'IST',
+    location: {
+      pin: ''
+    }
   }
 };
 
@@ -31,5 +33,31 @@ export const appStateFirebaseAnonymous: appState = {
     theme: '',
     timeZone: '',
     location: {}
+  }
+};
+
+export class userSettings {
+  theme: any;
+  timeZone: any;
+  location: any
+}
+
+export const userSettingsAnonymous: userSettings = {
+  theme: '',
+  timeZone: '',
+  location: {}
+};
+
+export const userSettingsNull: userSettings = {
+  theme: null,
+  timeZone: null,
+  location: null
+};
+
+export const userSettingsSample: userSettings = {
+  theme: 'light',
+  timeZone: 'IST',
+  location: {
+    pin: ''
   }
 };

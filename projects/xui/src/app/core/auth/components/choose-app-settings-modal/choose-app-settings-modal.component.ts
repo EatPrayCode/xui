@@ -106,7 +106,7 @@ export class ChooseAppSettingsModalComponent implements OnInit {
   }
 
   getZipCode(payload: any) {
-    this.dataService.getZipCode(payload).subscribe((res) => {});
+    // this.dataService.getZipCode(payload).subscribe((res) => {});
   }
 
   explore() {}

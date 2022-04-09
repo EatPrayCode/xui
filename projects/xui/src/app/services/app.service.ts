@@ -6,7 +6,6 @@ import browser from 'browser-detect';
 import { Observable, of } from "rxjs";
 import { StateService } from "./state.service";
 import { AuthService } from "./auth.service";
-import { appState } from "../models/app.state";
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +30,10 @@ export class AppService {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
     this.testLocalStorage();
     this.initializeAnimations();
-    this.user$ = this.stateService.getAppUserSettings();
+    this.user$ = this.getAppUserSettings();
+    this.user$.subscribe(res => {
+      console.log(res);
+    });
   }
 
   testLocalStorage() {
@@ -59,20 +61,25 @@ export class AppService {
   }
 
   signInAnonymously() {
-    return this.authService.signInAnonymously();
+    return this.authService.signInAnonymously().then(res => {
+      this.getAppUserSettings();
+    });
   }
 
   signInWithGoogle() {
-    return this.authService.signInWithGoogle();
+    return this.authService.signInWithGoogle().then(res => {
+      this.getAppUserSettings();
+    });
   }
 
-  setUserData(user){
-    this.stateService.setUserData(user);
+  setUser(user) {
+    this.stateService.setUser(user);
   }
 
-  logout(): void {
-    this.authService.logout();
-    this.stateService.resetState();
+  getAppUserSettings() {
+    return this.stateService.getAppUserSettings();
   }
+
+  logout(): void { }
 
 }

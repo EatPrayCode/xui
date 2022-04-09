@@ -123,9 +123,9 @@ export class AppComponent implements OnInit {
         obj: {}
       }
     });
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log('The dialog was closed');
+    // });
   }
 
   onLoginClick() { }
