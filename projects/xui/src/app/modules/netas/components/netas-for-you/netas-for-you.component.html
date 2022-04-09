@@ -1,0 +1,5 @@
+<app-netas-list
+ (connectNeta)="handleMessageNeta($event)"
+ (viewNetaDetails)="handleViewNetaDetails($event)"
+ [netas]="allNetas$ | async"
+ ></app-netas-list>
