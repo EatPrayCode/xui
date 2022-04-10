@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   navigation: any = [
     {
       link: 'about',
-      label: 'app.menu.visualise',
+      label: 'app.menu.home',
       icon: 'mail'
     },
     {
@@ -52,19 +52,20 @@ export class AppComponent implements OnInit {
     //   label: 'app.menu.blog',
     //   icon: 'blog'
     // },
-    {
-      link: 'about',
-      label: 'app.menu.about',
-      icon: 'mail'
-    },
-  ];
-  navigationSideMenu = [
-    ...this.navigation,
+    // {
+    //   link: 'about',
+    //   label: 'app.menu.about',
+    //   icon: 'mail'
+    // },
     {
       link: 'settings',
       label: 'app.menu.settings',
       icon: 'mail'
     },
+  ];
+  navigationSideMenu = [
+    ...this.navigation,
+
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;
