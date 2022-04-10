@@ -1,3 +1,4 @@
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FirebaseModule } from './auth/firebase.module';
 import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
@@ -169,6 +170,7 @@ export function httpLoaderFactory(http: HttpClient) {
     MatTooltipModule,
     MatSnackBarModule,
     MatButtonModule,
+    MatProgressBarModule,
 
     // 3rd party
     TranslateModule,
