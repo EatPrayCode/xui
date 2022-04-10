@@ -1,5 +1,6 @@
 import { SettingsState, NIGHT_MODE_THEME } from './settings.model';
 import {
+  actionInitialiseSettings,
   actionSettingsChangeAnimationsElements,
   actionSettingsChangeAnimationsPage,
   actionSettingsChangeAnimationsPageDisabled,
@@ -44,6 +45,10 @@ const reducer = createReducer(
       pageAnimationsDisabled,
       pageAnimations: false
     })
+  ),
+  on(
+    actionInitialiseSettings,
+    (state, {payload}) => ({ ...state, ...payload })
   )
 );
 

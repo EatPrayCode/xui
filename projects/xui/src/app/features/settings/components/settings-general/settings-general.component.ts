@@ -1,3 +1,4 @@
+import { userSettings } from './../../../../models/app.state';
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -6,9 +7,10 @@ import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
-import { actionSettingsChangeLanguage, actionSettingsChangeTheme, actionSettingsChangeAutoNightMode, actionSettingsChangeStickyHeader, actionSettingsChangeAnimationsPage, actionSettingsChangeAnimationsElements } from '../../../../core/settings/settings.actions';
+import { actionSettingsChangeLanguage, actionSettingsChangeTheme, actionSettingsChangeAutoNightMode, actionSettingsChangeStickyHeader, actionSettingsChangeAnimationsPage, actionSettingsChangeAnimationsElements, actionInitialiseSettings } from '../../../../core/settings/settings.actions';
 import { SettingsState, State } from '../../../../core/settings/settings.model';
 import { selectSettings } from '../../../../core/settings/settings.selectors';
+import { AppService } from '../../../../services/app.service';
 import { FirebaseAuthService } from '../../../../services/firebase-auth.service';
 
 @Component({
@@ -20,7 +22,7 @@ import { FirebaseAuthService } from '../../../../services/firebase-auth.service'
 export class SettingsGeneralComponent implements OnInit {
 
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  settings$: Observable<SettingsState> | undefined;
+  settings$: Observable<any> | undefined;
 
   themes = [
     { value: 'DEFAULT-THEME', label: 'blue' },
@@ -46,13 +48,18 @@ export class SettingsGeneralComponent implements OnInit {
   constructor(
     private store: Store<State>,
     private firebaseApiService: FirebaseAuthService,
-    private router: Router
+    private router: Router,
+    private appService: AppService
   ) { }
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
-    this.settings$.subscribe(res => {
-      console.log(res);
+    this.appService.appSettingsSubject.subscribe(res => {
+      if (res.dataLoaded) {
+        this.store.dispatch(
+          actionInitialiseSettings({ payload: res.userSettings })
+        );
+      }
     });
   }
 

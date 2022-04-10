@@ -50,10 +50,10 @@ export class FirebaseAuthService {
       switchMap((snapshot: DocumentSnapshot<any>) => {
         const test = snapshot.data();
         if (test && test.settings) {
-          return of(user);
+          return of({...user, userSettings: test.settings});
         }
         else {
-          return of(user);
+          return of({...user, userSettings: null});
         }
       }));
   }

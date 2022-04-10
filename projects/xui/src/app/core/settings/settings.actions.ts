@@ -2,6 +2,12 @@ import { createAction, props } from '@ngrx/store';
 
 import { Language } from './settings.model';
 
+export const actionInitialiseSettings = createAction(
+  '[Settings] Change Language',
+  props<{ payload: any }>()
+);
+
+
 export const actionSettingsChangeLanguage = createAction(
   '[Settings] Change Language',
   props<{ language: Language }>()
