@@ -29,12 +29,12 @@ export class AppComponent implements OnInit {
     {
       link: 'netas',
       label: 'app.menu.netas',
-      icon: 'book-open'
+      icon: 'phone'
     },
     {
       link: 'dashboard',
       label: 'app.menu.dashboard',
-      icon: 'bullhorn'
+      icon: 'person'
     },
     // {
     //   link: 'visualize',
@@ -49,7 +49,12 @@ export class AppComponent implements OnInit {
     {
       link: 'about',
       label: 'app.menu.about',
-      icon: 'link'
+      icon: 'mail'
+    },
+    {
+      link: 'preferences',
+      label: 'app.menu.settings',
+      icon: 'mail'
     }
   ];
   navigationSideMenu = [
@@ -57,13 +62,8 @@ export class AppComponent implements OnInit {
     {
       link: 'settings',
       label: 'app.menu.settings',
-      icon: 'github'
+      icon: 'mail'
     },
-    {
-      link: 'preferences',
-      label: 'app.menu.settings',
-      icon: 'github'
-    }
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;
