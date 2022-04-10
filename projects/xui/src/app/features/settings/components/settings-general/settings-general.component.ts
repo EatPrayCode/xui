@@ -33,14 +33,8 @@ export class SettingsGeneralComponent implements OnInit {
 
   languages = [
     { value: 'en', label: 'English' },
-    { value: 'de', label: 'Deutsch' },
-    { value: 'sk', label: 'Slovenčina' },
     { value: 'fr', label: 'Français' },
-    { value: 'es', label: 'Español' },
-    { value: 'pt-br', label: 'Português' },
-    { value: 'zh-cn', label: '简体中文' },
-    { value: 'he', label: 'עברית' },
-    { value: 'ar', label: 'اللغة العربية' }
+    { value: 'es', label: 'Español' }
   ];
 
 
@@ -54,13 +48,13 @@ export class SettingsGeneralComponent implements OnInit {
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
-    this.appService.appSettingsSubject.subscribe(res => {
-      if (res.dataLoaded) {
-        this.store.dispatch(
-          actionInitialiseSettings({ payload: res.userSettings })
-        );
-      }
-    });
+    // this.appService.appSettingsSubject.subscribe(res => {
+    //   if (res.dataLoaded) {
+    //     this.store.dispatch(
+    //       actionInitialiseSettings({ payload: res.userSettings })
+    //     );
+    //   }
+    // });
   }
 
   onLanguageSelect(change: MatSelectChange) {

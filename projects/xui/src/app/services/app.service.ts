@@ -2,7 +2,7 @@ import { tap } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { select, Store } from "@ngrx/store";
 import { LocalStorageService, AppState, selectSettingsStickyHeader, selectSettingsLanguage, selectEffectiveTheme } from "../core/core.module";
-import { actionSettingsChangeAnimationsPageDisabled, actionSettingsChangeLanguage } from "../core/settings/settings.actions";
+import { actionInitialiseSettings, actionSettingsChangeAnimationsPageDisabled, actionSettingsChangeLanguage } from "../core/settings/settings.actions";
 import browser from 'browser-detect';
 import { BehaviorSubject, Observable, of } from "rxjs";
 import { FirebaseAuthService } from "./firebase-auth.service";
@@ -68,6 +68,9 @@ export class AppService {
   getAppUserSettings() {
     this.firebaseAuth.getAppUserSettings().pipe(tap(res => {
       this.appSettingsSubject.next({ ...res, dataLoaded: true });
+      this.store.dispatch(
+        actionInitialiseSettings({ payload: res.userSettings })
+      );
     })).subscribe();
   }
 
