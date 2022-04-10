@@ -17,14 +17,6 @@
   
   </mat-tab-group>
   
-  <!-- 
-  <nav class="mat-elevation-z4" mat-tab-nav-bar>
-    <a *ngFor="let link of mainMenuItems" mat-tab-link #rla="routerLinkActive"
-      [active]="isViewInitialized && isLinkActive(rla)" [routerLink]="link.link" routerLinkActive>
-      {{link.label}}
-    </a>
-  </nav> -->
-  
   <div class="search-box mat-elevation-z4">
     <button mat-button mat-icon-button (click)="OnSearch()" matTooltip="Search">
       <mat-icon>search</mat-icon>
@@ -43,9 +35,7 @@
     </button>
   </div>
   <router-outlet></router-outlet>
-  
-  <router-outlet></router-outlet>
-  
+
 </div>
 
 <mat-menu #menu="matMenu">
@@ -84,26 +74,3 @@
     </p>
   </form>
 </mat-menu>
-
-<style>
-  .tab-header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .search-box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0.5rem;
-    border-radius: 4px;
-  }
-
-  .form-field {
-    flex: 1 auto;
-  }
-
-  .sub-header {
-    padding-left: 1rem;
-  }
-</style>

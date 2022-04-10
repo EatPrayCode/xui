@@ -10,6 +10,7 @@ import { map } from 'highcharts';
 import { Observable, of } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
+import { DataService } from '../../../../services/data.service';
 
 @Component({
   selector: 'app-netas-for-you',
@@ -92,7 +93,7 @@ export class NetasForYouComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    // public dataService: DataService
+    public dataService: DataService
   ) {}
 
   handleViewNetaDetails($event: any) {
@@ -100,7 +101,7 @@ export class NetasForYouComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.allNetas$ = this.dataService.getAllNetas({});
+    this.allNetas$ = this.dataService.getAllNetas({});
   }
 
   handleMessageOptionClick(event: any) {
