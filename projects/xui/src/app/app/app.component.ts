@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   year = new Date().getFullYear();
   logo = 'assets/logo.png';
   languages = ['en', 'fr', 'es'];
+  loaderMode: any = 'indeterminate';
   navigation: any = [
     {
       link: 'netas',
@@ -72,7 +73,7 @@ export class AppComponent implements OnInit {
   theme$: Observable<string> | undefined;
 
   user$: Observable<any> = of(null);
-  loading:any = true;
+  loading: any = true;
 
   constructor(
     private dialog: MatDialog,
@@ -91,6 +92,7 @@ export class AppComponent implements OnInit {
     this.theme$ = this.appService.theme$;
     this.user$.subscribe(res => {
       console.log(res);
+      (res.dataLoaded && res.dataLoaded) ? this.loaderMode = 'determinate': this.loaderMode = 'indeterminate';
     });
   }
 

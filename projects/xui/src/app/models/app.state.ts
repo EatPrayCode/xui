@@ -3,6 +3,7 @@ export class appState {
   customSettingsEnabled: boolean;
   isAnonymous: boolean;
   userSettings: userSettings;
+  dataLoaded?: boolean;
 }
 
 export const appStateFirebaseNull: appState = {

@@ -52,8 +52,6 @@ export class NetaComponent implements OnInit {
       .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         this.currentRoute = event.url.split('?')[0];
-        console.log(event);
-        console.log(event.url.split('?')[0]);
       });
   }
 

@@ -30,7 +30,7 @@ export class AppService {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
     this.testLocalStorage();
     this.initializeAnimations();
-    this.getAppUserSettings().subscribe();
+    this.getAppUserSettings();
   }
 
   testLocalStorage() {
@@ -66,9 +66,9 @@ export class AppService {
   }
 
   getAppUserSettings() {
-    return this.firebaseAuth.getAppUserSettings().pipe(tap(res => {
-      this.appSettingsSubject.next(res);
-    }));
+    this.firebaseAuth.getAppUserSettings().pipe(tap(res => {
+      this.appSettingsSubject.next({ ...res, dataLoaded: true });
+    })).subscribe();
   }
 
   logout(): void {

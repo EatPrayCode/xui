@@ -44,7 +44,7 @@ export class SigninComponent implements OnInit {
 
   closeAuthDialog(user: any) {
     this.ref.close(user);
-    this.appService.getAppUserSettings().subscribe(res => { });
+    this.appService.getAppUserSettings();
     console.log('\Closed auth dialog...');
   }
 }

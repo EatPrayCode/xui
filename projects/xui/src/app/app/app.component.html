@@ -79,7 +79,7 @@
                     </span>
                 </mat-toolbar>
 
-                <mat-progress-bar mode="indeterminate" value="100"></mat-progress-bar>
+                <mat-progress-bar [mode]="loaderMode" value="100"></mat-progress-bar>
 
             </div>
             <div class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig?.data?.title">
@@ -141,23 +141,4 @@
 			{{obj.link}}
 		</div>		
 	</div>
-	<!-- <div class="mobile-bottom-nav__item">		
-		<div class="mobile-bottom-nav__item-content">
-			<i class="material-icons">mail</i>
-			two
-		</div>
-	</div>
-	<div class="mobile-bottom-nav__item">
-		<div class="mobile-bottom-nav__item-content">
-			<i class="material-icons">person</i>
-			three
-		</div>		
-	</div>
-	
-	<div class="mobile-bottom-nav__item">
-		<div class="mobile-bottom-nav__item-content">
-			<i class="material-icons">phone</i>
-			four
-		</div>		
-	</div> -->
 </nav>
