@@ -1,30 +1,24 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { MatTabChangeEvent } from '@angular/material/tabs';
+import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
-import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
-
-import {
-  actionSettingsChangeAnimationsElements,
-  actionSettingsChangeAnimationsPage,
-  actionSettingsChangeAutoNightMode,
-  actionSettingsChangeLanguage,
-  actionSettingsChangeTheme,
-  actionSettingsChangeStickyHeader
-} from '../../../core/settings/settings.actions';
-import { SettingsState, State } from '../../../core/settings/settings.model';
-import { selectSettings } from '../../../core/settings/settings.selectors';
-import { FirebaseAuthService } from '../../../services/firebase-auth.service';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
+import { actionSettingsChangeLanguage, actionSettingsChangeTheme, actionSettingsChangeAutoNightMode, actionSettingsChangeStickyHeader, actionSettingsChangeAnimationsPage, actionSettingsChangeAnimationsElements } from '../../../../core/settings/settings.actions';
+import { SettingsState, State } from '../../../../core/settings/settings.model';
+import { selectSettings } from '../../../../core/settings/settings.selectors';
+import { FirebaseAuthService } from '../../../../services/firebase-auth.service';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings-container.component.html',
-  styleUrls: ['./settings-container.component.scss'],
+  selector: 'app-settings-general',
+  templateUrl: './settings-general.component.html',
+  styleUrls: ['./settings-general.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsContainerComponent implements OnInit {
+export class SettingsGeneralComponent implements OnInit {
+
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   settings$: Observable<SettingsState> | undefined;
 
@@ -47,9 +41,12 @@ export class SettingsContainerComponent implements OnInit {
     { value: 'ar', label: 'اللغة العربية' }
   ];
 
+
+
   constructor(
     private store: Store<State>,
-    private firebaseApiService: FirebaseAuthService
+    private firebaseApiService: FirebaseAuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {

@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 
 import { SettingsRoutingModule } from './settings-routing.module';
-import { SettingsContainerComponent } from './settings/settings-container.component';
+import { SettingsGeneralComponent } from './components/settings-general/settings-general.component';
+import { SettingsNetasComponent } from './components/settings-netas/settings-netas.component';
+import { SettingsContainerComponent } from './containers/settings-container/settings-container.component';
 
 @NgModule({
-  declarations: [SettingsContainerComponent],
+  declarations: [SettingsContainerComponent, SettingsGeneralComponent, SettingsNetasComponent],
   imports: [CommonModule, SharedModule, SettingsRoutingModule]
 })
 export class SettingsModule {}
