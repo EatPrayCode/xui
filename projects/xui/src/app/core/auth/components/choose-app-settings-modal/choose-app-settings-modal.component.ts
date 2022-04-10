@@ -2,8 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core.module';
 import { appState as appSettingsState, appStateFirebaseNull } from '../../../../models/app.state';
-import { DataService } from '../../../../services/data.service';
-import { StateService } from '../../../../services/state.service';
+// import { DataService } from '../../../../services/data.service';
+import { FirebaseAuthService } from '../../../../services/firebase-auth.service';
 
 @Component({
   selector: 'app-choose-app-settings-modal',
@@ -68,8 +68,7 @@ export class ChooseAppSettingsModalComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private dataService: DataService,
-    public stateService: StateService
+    public stateService: FirebaseAuthService
   ) {}
 
   ngOnInit() {
@@ -117,7 +116,7 @@ export class ChooseAppSettingsModalComponent implements OnInit {
     } else {
       appSettingsObj = appStateFirebaseNull;
     }
-    this.stateService.appSettingsSubject.next(appSettingsObj);
+    // this.stateService.appSettingsSubject.next(appSettingsObj);
     // this.stateService.saveToLocalStorage(appSettingsObj);
     // this.stateService
     //   .saveUserSettingsToFirebase(appSettingsObj)
@@ -126,7 +125,7 @@ export class ChooseAppSettingsModalComponent implements OnInit {
   }
 
   unSelectedSettings() {
-    this.stateService.appSettingsSubject.next(appStateFirebaseNull);
+    // this.stateService.appSettingsSubject.next(appStateFirebaseNull);
     // this.stateService.saveToLocalStorage(appStateDefault);
     // this.ref.close(appSettingsStateDefault);
   }

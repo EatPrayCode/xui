@@ -1,12 +1,12 @@
+import { tap } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { select, Store } from "@ngrx/store";
 import { LocalStorageService, AppState, selectSettingsStickyHeader, selectSettingsLanguage, selectEffectiveTheme } from "../core/core.module";
 import { actionSettingsChangeAnimationsPageDisabled, actionSettingsChangeLanguage } from "../core/settings/settings.actions";
 import browser from 'browser-detect';
-import { Observable, of } from "rxjs";
-import { StateService } from "./state.service";
-import { AuthService } from "./auth.service";
-import { appStateFirebaseNull } from "../models/app.state";
+import { BehaviorSubject, Observable, of } from "rxjs";
+import { FirebaseAuthService } from "./firebase-auth.service";
+import { appState, appStateFirebaseNull } from "../models/app.state";
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +16,12 @@ export class AppService {
   stickyHeader$: Observable<boolean> | undefined;
   language$: Observable<string> | undefined;
   theme$: Observable<string> | undefined;
-  user$: Observable<any> | undefined;
+  appSettingsSubject: BehaviorSubject<appState> = new BehaviorSubject<appState>(appStateFirebaseNull);
 
   constructor(
     private store: Store<AppState>,
     private storageService: LocalStorageService,
-    private stateService: StateService,
-    private authService: AuthService
+    private firebaseAuth: FirebaseAuthService
   ) { }
 
   initAppService() {
@@ -31,8 +30,7 @@ export class AppService {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
     this.testLocalStorage();
     this.initializeAnimations();
-    this.user$ = this.stateService.appSettingsSubject;
-    this.stateService.getAppUserSettings().subscribe();
+    this.getAppUserSettings().subscribe();
   }
 
   testLocalStorage() {
@@ -60,24 +58,22 @@ export class AppService {
   }
 
   signInAnonymously() {
-    return this.authService.signInAnonymously().then(res => {
-      this.getAppUserSettings();
-    });
+    return this.firebaseAuth.signInAnonymously();
   }
 
   signInWithGoogle() {
-    return this.authService.signInWithGoogle().then(res => {
-      this.getAppUserSettings();
-    });
+    return this.firebaseAuth.signInWithGoogle();
   }
 
   getAppUserSettings() {
-    return this.stateService.getAppUserSettings();
+    return this.firebaseAuth.getAppUserSettings().pipe(tap(res => {
+      this.appSettingsSubject.next(res);
+    }));
   }
 
   logout(): void {
-    this.authService.logout();
-    this.stateService.resetState();
+    this.firebaseAuth.logout();
+    this.appSettingsSubject.next(appStateFirebaseNull);
   }
 
 }

@@ -16,7 +16,7 @@ import {
 } from '../../../core/settings/settings.actions';
 import { SettingsState, State } from '../../../core/settings/settings.model';
 import { selectSettings } from '../../../core/settings/settings.selectors';
-import { FirebaseApiService } from '../../../services/firebase-api.service';
+import { FirebaseAuthService } from '../../../services/firebase-auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -49,7 +49,7 @@ export class SettingsContainerComponent implements OnInit {
 
   constructor(
     private store: Store<State>,
-    private firebaseApiService: FirebaseApiService
+    private firebaseApiService: FirebaseAuthService
   ) { }
 
   ngOnInit() {

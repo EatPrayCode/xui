@@ -1,6 +1,6 @@
 import { delay, switchMap, tap, take } from 'rxjs/operators';
-import { appState, appStateFirebaseNull } from './../models/app.state';
-import { Observable, of } from 'rxjs';
+import { appState, appStateFirebaseNull } from '../models/app.state';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -12,7 +12,7 @@ import { AngularFirestore, DocumentSnapshot, AngularFirestoreDocument } from '@a
 @Injectable({
   providedIn: 'root'
 })
-export class FirebaseApiService {
+export class FirebaseAuthService {
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -44,15 +44,17 @@ export class FirebaseApiService {
     );
   }
 
-  getUserSettings(user: any): Observable<any> {
+  getUserSettings(user: any): Observable<appState> {
     return this.afStore.doc<any>(`users/${user.uid}`).get().pipe(
       take(1),
       switchMap((snapshot: DocumentSnapshot<any>) => {
         const test = snapshot.data();
         if (test && test.settings) {
-          console.log(test);
+          return of(user);
         }
-        return of(user);
+        else {
+          return of(user);
+        }
       }));
   }
 
@@ -60,21 +62,13 @@ export class FirebaseApiService {
     return this.afAuth.authState;
   }
 
-  handleAuthJourney(authUser: any) {
-    authUser.getIdTokenResult()
-      .then((idTokenResult: any) => {
-        const claims = idTokenResult.claims;
-      });
-  }
-
   getDefaultAppSettings(): Observable<appState> {
     return of(appStateFirebaseNull);
   }
 
   test(settings: any) {
-    const auth$ = this.getUserFirebase().pipe(take(1)).subscribe(user => {
+    this.getUserFirebase().pipe(take(1)).subscribe(user => {
       if (user && user.uid) {
-
         this.setUserData(user, settings);
       }
     });

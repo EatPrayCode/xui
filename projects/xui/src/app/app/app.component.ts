@@ -72,6 +72,7 @@ export class AppComponent implements OnInit {
   theme$: Observable<string> | undefined;
 
   user$: Observable<any> = of(null);
+  loading:any = true;
 
   constructor(
     private dialog: MatDialog,
@@ -84,11 +85,11 @@ export class AppComponent implements OnInit {
 
   initApp() {
     this.appService.initAppService();
-    this.user$ = this.appService.user$;
+    this.user$ = this.appService.appSettingsSubject;
     this.stickyHeader$ = this.appService.stickyHeader$
     this.language$ = this.appService.language$;
     this.theme$ = this.appService.theme$;
-    this.user$.subscribe(res=>{
+    this.user$.subscribe(res => {
       console.log(res);
     });
   }
