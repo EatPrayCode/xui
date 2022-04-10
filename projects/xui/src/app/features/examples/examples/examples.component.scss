@@ -1,5 +1,19 @@
 @import '../../../../styles-variables';
 
+.container {
+  margin-top: 20px;
+}
+
+h1 {
+  // margin: 0 0 20px 0;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+
 nav {
   margin-bottom: 20px;
 

@@ -28,6 +28,11 @@ export class AppComponent implements OnInit {
   loaderMode: any = 'indeterminate';
   navigation: any = [
     {
+      link: 'about',
+      label: 'app.menu.visualise',
+      icon: 'mail'
+    },
+    {
       link: 'netas',
       label: 'app.menu.netas',
       icon: 'phone'
@@ -52,11 +57,6 @@ export class AppComponent implements OnInit {
       label: 'app.menu.about',
       icon: 'mail'
     },
-    {
-      link: 'preferences',
-      label: 'app.menu.settings',
-      icon: 'mail'
-    }
   ];
   navigationSideMenu = [
     ...this.navigation,
@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
     this.theme$ = this.appService.theme$;
     this.user$.subscribe(res => {
       console.log(res);
-      (res.dataLoaded && res.dataLoaded) ? this.loaderMode = 'determinate': this.loaderMode = 'indeterminate';
+      (res.dataLoaded && res.dataLoaded) ? this.loaderMode = 'determinate' : this.loaderMode = 'indeterminate';
     });
   }
 
