@@ -65,7 +65,6 @@ export class AppComponent implements OnInit {
   ];
   navigationSideMenu = [
     ...this.navigation,
-
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;

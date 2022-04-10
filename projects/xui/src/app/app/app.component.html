@@ -134,11 +134,13 @@
 </div>
 
 
-<nav class="mobile-bottom-nav">
-    <div *ngFor="let obj of navigation" class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+<nav class="mobile-bottom-nav" *ngIf="theme$ | async as theme">
+    <div *ngFor="let item of navigation"
+        class="mobile-bottom-nav__item {{theme=='black-theme' ? 'bottom-nav-dark' : 'bottom-nav-light'}}"
+        [routerLink]="[item.link]" routerLinkActive="active">
         <div class="mobile-bottom-nav__item-content">
-            <i class="material-icons">{{obj.icon}}</i>
-            {{obj.label|translate}}
+            <i class="material-icons">{{item.icon}}</i>
+            {{item.label | translate}}
         </div>
     </div>
 </nav>
