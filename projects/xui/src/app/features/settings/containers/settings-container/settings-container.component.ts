@@ -15,13 +15,13 @@ export class SettingsContainerComponent {
       id: 'settings-general',
       link: 'settings-general',
       name: 'settings-general',
-      label: 'settings-general'
+      label: 'General'
     },
     {
       id: 'settings-netas',
       link: 'settings-netas',
       name: 'settings-netas',
-      label: 'settings-netas'
+      label: 'Netas'
     }
   ];
 

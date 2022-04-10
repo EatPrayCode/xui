@@ -1,13 +1,22 @@
-<mat-tab-group class="mat-elevation-z4" disablePagination=true (selectedTabChange)="onSequenceChangeEvent($event)">
+<div class="container">
+  <div class="row" rtl>
+    <div class="col-sm-12">
+      <h1>{{ 'app.settings.title' | translate }}</h1>
+    </div>
+  </div>
+  <br>
+  <mat-tab-group class="mat-elevation-z4" disablePagination=true (selectedTabChange)="onSequenceChangeEvent($event)">
   
-  <mat-tab *ngFor="let link of mainMenuItems" [label]="link" [routerLink]="link.link">
-
-    <ng-template mat-tab-label>
-      <span>{{link.label}}</span>
-    </ng-template>
-
-  </mat-tab>
-
-</mat-tab-group>
-
-<router-outlet></router-outlet>
+    <mat-tab *ngFor="let link of mainMenuItems" [label]="link" [routerLink]="link.link">
+  
+      <ng-template mat-tab-label>
+        <span>{{link.label}}</span>
+      </ng-template>
+  
+    </mat-tab>
+  
+  </mat-tab-group>
+  
+  <router-outlet></router-outlet>
+  
+</div>
