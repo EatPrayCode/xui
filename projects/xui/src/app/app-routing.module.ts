@@ -5,44 +5,44 @@ import { BlankComponent } from './layouts/blank/blank.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'about',
-    pathMatch: 'full'
-  },
-  {
-    path: 'about',
-    loadChildren: () =>
-      import('./features/about/about.module').then((m) => m.AboutModule)
-  },
-  {
-    path: 'feature-list',
-    loadChildren: () =>
-      import('./features/feature-list/feature-list.module').then(
-        (m) => m.FeatureListModule
-      )
-  },
-  {
-    path: 'settings',
-    loadChildren: () =>
-      import('./features/settings/settings.module').then(
-        (m) => m.SettingsModule
-      )
-  },
-  {
-    path: 'examples',
-    loadChildren: () =>
-      import('./features/examples/examples.module').then(
-        (m) => m.ExamplesModule
-      )
-  },
-  {
-    path: 'home',
-    loadChildren: () =>
-      import('./modules/home/setup.module').then((m) => m.SetupModule)
-  },
-  {
-    path: '',
     component: BlankComponent,
     children: [
+      {
+        path: '',
+        redirectTo: 'about',
+        pathMatch: 'full'
+      },
+      {
+        path: 'about',
+        loadChildren: () =>
+          import('./features/about/about.module').then((m) => m.AboutModule)
+      },
+      {
+        path: 'feature-list',
+        loadChildren: () =>
+          import('./features/feature-list/feature-list.module').then(
+            (m) => m.FeatureListModule
+          )
+      },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./features/settings/settings.module').then(
+            (m) => m.SettingsModule
+          )
+      },
+      {
+        path: 'examples',
+        loadChildren: () =>
+          import('./features/examples/examples.module').then(
+            (m) => m.ExamplesModule
+          )
+      },
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('./modules/home/setup.module').then((m) => m.SetupModule)
+      },
       {
         path: 'netas',
         loadChildren: () =>
