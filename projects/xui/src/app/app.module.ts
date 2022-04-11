@@ -21,6 +21,7 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,7 @@ import { environment } from '../environments/environment';
     // app
     AppRoutingModule
   ],
-  declarations: [AppComponent, BlankComponent],
+  declarations: [AppComponent, BlankComponent, AboutComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

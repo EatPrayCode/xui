@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AboutComponent } from './about/about.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 
 const routes: Routes = [
@@ -14,8 +15,9 @@ const routes: Routes = [
       },
       {
         path: 'about',
-        loadChildren: () =>
-          import('./features/about/about.module').then((m) => m.AboutModule)
+        component: AboutComponent
+        // loadChildren: () =>
+        //   import('./features/about/about.module').then((m) => m.AboutModule)
       },
       {
         path: 'feature-list',
