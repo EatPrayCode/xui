@@ -10,21 +10,21 @@ import { DemoMaterialModule } from '../../shared/demo-material-module';
 
 @NgModule({
   declarations: [
-    SigninComponent,
-    ChooseAppSettingsModalComponent
+    // SigninComponent,
+    // ChooseAppSettingsModalComponent
   ],
   imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    DemoMaterialModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    // DemoMaterialModule,
     // CommonModule
   ],
   exports: [
     SigninComponent,
     ChooseAppSettingsModalComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    DemoMaterialModule
+    // FormsModule,
+    // ReactiveFormsModule,
+    // DemoMaterialModule
   ],
 })
 export class FirebaseModule { }

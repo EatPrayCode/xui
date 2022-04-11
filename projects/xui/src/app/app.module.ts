@@ -1,3 +1,4 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from './shared/demo-material-module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,16 +11,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideAnalytics,getAnalytics } from '@angular/fire/analytics';
-import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideMessaging,getMessaging } from '@angular/fire/messaging';
-import { providePerformance,getPerformance } from '@angular/fire/performance';
-import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAnalytics, getAnalytics } from '@angular/fire/analytics';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { provideMessaging, getMessaging } from '@angular/fire/messaging';
+import { providePerformance, getPerformance } from '@angular/fire/performance';
+import { provideRemoteConfig, getRemoteConfig } from '@angular/fire/remote-config';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { AboutComponent } from './about/about.component';
 
@@ -42,14 +43,15 @@ import { AboutComponent } from './about/about.component';
 
     // core
     CoreModule,
-    ReactiveFormsModule,
-
-    DemoMaterialModule,
 
     // app
     AppRoutingModule
   ],
-  declarations: [AppComponent, BlankComponent, AboutComponent],
+  declarations: [
+    AppComponent,
+    BlankComponent,
+    AboutComponent
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

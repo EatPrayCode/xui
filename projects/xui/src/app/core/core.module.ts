@@ -1,5 +1,4 @@
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-// import { FirebaseModule } from './auth/firebase.module';
 import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import {
@@ -101,6 +100,7 @@ import {
   faInstagram,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -133,7 +133,6 @@ export function httpLoaderFactory(http: HttpClient) {
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([SettingsEffects, GoogleAnalyticsEffects]),
     FontAwesomeModule,
-    // FirebaseModule,
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
@@ -171,10 +170,10 @@ export function httpLoaderFactory(http: HttpClient) {
     MatSnackBarModule,
     MatButtonModule,
     MatProgressBarModule,
+    MatDialogModule,
 
     // 3rd party
     TranslateModule,
-    // FirebaseModule,
     FontAwesomeModule
   ]
 })
