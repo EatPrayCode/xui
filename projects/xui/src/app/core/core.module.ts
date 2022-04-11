@@ -1,5 +1,5 @@
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { FirebaseModule } from './auth/firebase.module';
+// import { FirebaseModule } from './auth/firebase.module';
 import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import {
@@ -133,7 +133,7 @@ export function httpLoaderFactory(http: HttpClient) {
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([SettingsEffects, GoogleAnalyticsEffects]),
     FontAwesomeModule,
-    FirebaseModule,
+    // FirebaseModule,
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
@@ -174,7 +174,7 @@ export function httpLoaderFactory(http: HttpClient) {
 
     // 3rd party
     TranslateModule,
-    FirebaseModule,
+    // FirebaseModule,
     FontAwesomeModule
   ]
 })

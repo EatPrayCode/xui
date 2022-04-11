@@ -16,7 +16,7 @@ export class AppService {
   stickyHeader$: Observable<boolean> | undefined;
   language$: Observable<string> | undefined;
   theme$: Observable<string> | undefined;
-  appSettingsSubject: BehaviorSubject<appState> = new BehaviorSubject<appState>(appStateFirebaseNull);
+  appSettingsSubject: BehaviorSubject<any> = new BehaviorSubject<appState>(appStateFirebaseNull);
 
   constructor(
     private store: Store<AppState>,
@@ -61,17 +61,17 @@ export class AppService {
     return this.firebaseAuth.signInAnonymously();
   }
 
-  signInWithGoogle() {
-    return this.firebaseAuth.signInWithGoogle();
-  }
+  // signInWithGoogle() {
+  //   return this.firebaseAuth.signInWithGoogle();
+  // }
 
   getAppUserSettings() {
-    this.firebaseAuth.getAppUserSettings().pipe(tap(res => {
-      this.appSettingsSubject.next({ ...res, dataLoaded: true });
-      this.store.dispatch(
-        actionInitialiseSettings({ payload: res.userSettings })
-      );
-    })).subscribe();
+    // this.firebaseAuth.getAppUserSettings().pipe(tap(res => {
+    //   // this.appSettingsSubject.next({ ...res, dataLoaded: true });
+    //   // this.store.dispatch(
+    //   //   actionInitialiseSettings({ payload: res.userSettings })
+    //   // );
+    // })).subscribe();
   }
 
   logout(): void {

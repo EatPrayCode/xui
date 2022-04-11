@@ -1,3 +1,4 @@
+import { UserService } from './../../../../services/user.service';
 import { userSettings } from './../../../../models/app.state';
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
@@ -12,6 +13,9 @@ import { SettingsState, State } from '../../../../core/settings/settings.model';
 import { selectSettings } from '../../../../core/settings/settings.selectors';
 import { AppService } from '../../../../services/app.service';
 import { FirebaseAuthService } from '../../../../services/firebase-auth.service';
+
+import { getAuth } from "firebase/auth";
+
 
 @Component({
   selector: 'app-settings-general',
@@ -41,9 +45,9 @@ export class SettingsGeneralComponent implements OnInit {
 
   constructor(
     private store: Store<State>,
-    private firebaseApiService: FirebaseAuthService,
+    private appService: AppService,
     private router: Router,
-    private appService: AppService
+    private userservice: UserService,
   ) { }
 
   ngOnInit() {
@@ -94,8 +98,10 @@ export class SettingsGeneralComponent implements OnInit {
   }
 
   save() {
-    this.settings$.subscribe(res => {
-      this.firebaseApiService.test(res);
+    this.settings$.subscribe(res1 => {
+      const auth = getAuth();
+      const user = auth.currentUser; // null if no user
+      this.userservice.setUserSettingsTestUid(user.uid, res1)
     });
   }
 }
