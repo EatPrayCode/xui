@@ -53,21 +53,21 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "2000kb"
+                  "maximumError": "3000kb"
                 },
                 {
                   "type": "bundle",
                   "name": "polyfills",
                   "baseline": "150kb",
                   "maximumWarning": "50kb",
-                  "maximumError": "2000kb"
+                  "maximumError": "3000kb"
                 },
                 {
                   "type": "bundle",
                   "name": "styles",
                   "baseline": "280kb",
                   "maximumWarning": "50kb",
-                  "maximumError": "2000kb"
+                  "maximumError": "3000kb"
                 },
                 {
                   "type": "bundle",

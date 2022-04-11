@@ -1,29 +1,62 @@
-import { delay, switchMap, tap, take } from 'rxjs/operators';
+import { Injectable, NgZone } from '@angular/core';
+
+import * as auth from 'firebase/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+  DocumentSnapshot,
+} from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+import { take, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { appState, appStateFirebaseNull } from '../models/app.state';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 
-import { HttpClient } from '@angular/common/http';
+export interface User {
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
+  emailVerified: boolean;
+  settings?: any;
+}
 
-import firebase from 'firebase/app';
-import { AngularFirestore, DocumentSnapshot, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FirebaseAuthService {
+  userData: any; // Save logged in user data
 
   constructor(
-    private afAuth: AngularFireAuth,
-    public afStore: AngularFirestore
+    public afs: AngularFirestore, // Inject Firestore service
+    public afAuth: AngularFireAuth, // Inject Firebase auth service
+    public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
-    // this.logout();
+    /* Saving user data in localstorage when 
+    logged in and setting up null when logged out */
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user')!);
+      } else {
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user')!);
+      }
+    });
   }
 
   signInWithGoogle() {
-    return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    return this.AuthLogin(new auth.GoogleAuthProvider());
   }
+
+  // Auth logic to run auth providers
+  AuthLogin(provider: any) {
+    return this.afAuth
+      .signInWithPopup(provider);
+  }
+
 
   signInAnonymously() {
     return this.afAuth.signInAnonymously();
@@ -45,7 +78,7 @@ export class FirebaseAuthService {
   }
 
   getUserSettings(user: any): Observable<appState> {
-    return this.afStore.doc<any>(`users/${user.uid}`).get().pipe(
+    return this.afs.doc<any>(`users/${user.uid}`).get().pipe(
       take(1),
       switchMap((snapshot: DocumentSnapshot<any>) => {
         const test = snapshot.data();
@@ -75,8 +108,10 @@ export class FirebaseAuthService {
   }
 
   setUserData(user: any, data) {
-    const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/${user.uid}`);
-    const userData: any = {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `users/${user.uid}`
+    );
+    const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
@@ -90,6 +125,8 @@ export class FirebaseAuthService {
   }
 
   logout() {
-    return this.afAuth.signOut();
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+    });
   }
 }

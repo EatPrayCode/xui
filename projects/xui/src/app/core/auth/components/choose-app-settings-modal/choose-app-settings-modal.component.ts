@@ -2,8 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core.module';
 import { appState as appSettingsState, appStateFirebaseNull } from '../../../../models/app.state';
-// import { DataService } from '../../../../services/data.service';
-import { FirebaseAuthService } from '../../../../services/firebase-auth.service';
 
 @Component({
   selector: 'app-choose-app-settings-modal',
@@ -68,7 +66,7 @@ export class ChooseAppSettingsModalComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public stateService: FirebaseAuthService
+    // public stateService: FirebaseAuthService
   ) {}
 
   ngOnInit() {
