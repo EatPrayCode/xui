@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   envName = env.envName;
   version = env.versions.app;
   year = new Date().getFullYear();
-  logo = 'assets/logo.png';
+  logo = 'assets/logo.webp';
   languages = ['en', 'fr', 'es'];
   loaderMode: any = 'indeterminate';
   navigation: any = [
