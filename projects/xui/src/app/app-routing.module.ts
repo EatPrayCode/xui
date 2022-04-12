@@ -51,6 +51,11 @@ const routes: Routes = [
           import('./modules/netas/netas.module').then((m) => m.NetasModule)
       },
       {
+        path: 'contacts',
+        loadChildren: () =>
+          import('./modules/contacts/contacts.module').then((m) => m.ContactsModule)
+      },
+      {
         path: ':id',
         loadChildren: () =>
           import('./modules/neta/neta.module').then((m) => m.NetaModule)

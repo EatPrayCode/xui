@@ -48,11 +48,11 @@ export class AppComponent implements OnInit {
       label: 'app.menu.netas',
       icon: 'phone'
     },
-    // {
-    //   link: 'dashboard',
-    //   label: 'app.menu.dashboard',
-    //   icon: 'person'
-    // },
+    {
+      link: 'contacts',
+      label: 'app.menu.dashboard',
+      icon: 'person'
+    },
     // {
     //   link: 'visualize',
     //   label: 'app.menu.visualise',

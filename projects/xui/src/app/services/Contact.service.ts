@@ -62,15 +62,23 @@ export class ContactService {
   }
 
   /// Create Contact /// OK
-  createContact(contact: Contact) {
-    addDoc(this.db, { key: this.utilsService.getKey(), 
-      name: contact.name, 
-      email: contact.email,
-      subject: contact.subject,
-      message: contact.message,
+  createContact() {
+    const contact: any = {
+      key: 'string',
+      name: 'string',
+      email: 'string',
+      subject: 'string',
+      message: 'string'
+    };
+    addDoc(this.db, {
+      key: this.utilsService.getKey(),
+      name: contact.name || formatDate(new Date(), 'dd/MM/yyyy', 'en'),
+      email: contact.email || '',
+      subject: contact.subject || '',
+      message: contact.message || '',
       dateCreation: formatDate(new Date(), 'dd/MM/yyyy', 'en'),
       dateModification: formatDate(new Date(), 'dd/MM/yyyy', 'en')
-     });
+    });
   }
 
   /// Update Contact /// OK
