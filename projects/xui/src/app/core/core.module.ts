@@ -56,21 +56,6 @@ import {
   FaIconLibrary,
   FontAwesomeModule
 } from '@fortawesome/angular-fontawesome';
-// import {
-//   faCog,
-//   faBars,
-//   faRocket,
-//   faPowerOff,
-//   faUserCircle,
-//   faPlayCircle
-// } from '@fortawesome/free-solid-svg-icons';
-// import {
-//   faGithub,
-//   faMediumM,
-//   faTwitter,
-//   faInstagram,
-//   faYoutube
-// } from '@fortawesome/free-brands-svg-icons';
 
 export {
   TitleService,

@@ -41,7 +41,6 @@ import { SharedModule } from './shared/shared.module';
 
     // core
     CoreModule,
-    SharedModule,
     // app
     AppRoutingModule
   ],
