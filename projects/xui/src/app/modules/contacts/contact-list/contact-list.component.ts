@@ -21,8 +21,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
   constructor(
     private contactService: ContactService,
     private dialog: MatDialog,
-    public appService: AppService,
-    private store: Store<AppState>) { }
+    public appService: AppService) { }
 
   ngOnInit() {
     this.contactSubscription = this.contactService.contactsSubject.subscribe(
@@ -34,7 +33,6 @@ export class ContactListComponent implements OnInit, OnDestroy {
   }
 
   createContact() {
-    // this.contactService.createContact();
     this.openSettingsDialog({});
   }
 
@@ -48,7 +46,6 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   onEditContact(data: any) {
     this.openSettingsDialog(data);
-    // this.router.navigate(['/contacts', 'edit', key]);
   }
 
   openSettingsDialog(data): void {

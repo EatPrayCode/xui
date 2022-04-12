@@ -15,14 +15,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-
     TranslateModule,
     FlexLayoutModule,
 
     DemoMaterialModule,
     RouterModule,
-
   ],
   declarations: [
     SpeedDialFabComponent,
@@ -34,7 +31,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
     TranslateModule,
     DemoMaterialModule,
 

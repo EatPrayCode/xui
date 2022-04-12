@@ -16,8 +16,6 @@ const routes: Routes = [
       {
         path: 'about',
         component: AboutComponent
-        // loadChildren: () =>
-        //   import('./features/about/about.module').then((m) => m.AboutModule)
       },
       {
         path: 'feature-list',

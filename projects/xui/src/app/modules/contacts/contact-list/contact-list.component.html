@@ -1,7 +1,9 @@
 
 
 <section class="inner-page">
-  <div class="container" >
+  <div class="container">
+    <app-spinner [loading]="true"></app-spinner>   
+
     <table *ngIf="contacts.length" class="table table-striped">
       <thead>
         <tr>
@@ -32,7 +34,6 @@
         </tr>
       </tbody>
     </table>
-    <app-spinner *ngIf="!contacts.length" [loading]="true"></app-spinner>   
   </div>
 </section>
 

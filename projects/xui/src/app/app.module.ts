@@ -20,7 +20,6 @@ import { provideRemoteConfig, getRemoteConfig } from '@angular/fire/remote-confi
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { AboutComponent } from './about/about.component';
-import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
@@ -41,6 +40,7 @@ import { SharedModule } from './shared/shared.module';
 
     // core
     CoreModule,
+
     // app
     AppRoutingModule
   ],

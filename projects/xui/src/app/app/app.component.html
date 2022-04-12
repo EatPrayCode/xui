@@ -46,6 +46,7 @@
 
                         <button class="" *ngIf="user?.uid" mat-icon-button [matMenuTriggerFor]="toolbarUserMenu">
                             <fa-icon icon="user-circle"></fa-icon>
+                            <!-- <app-spinner [loading]="'true'"></app-spinner>    -->
                         </button>
 
                         <mat-menu #toolbarUserMenu="matMenu">
@@ -61,10 +62,6 @@
                         </mat-menu>
 
                     </ng-container>
-
-                    <!-- <button mat-icon-button (click)="openSettingsDialog()" class="d-sm-inline">
-                        <fa-icon icon="bars"></fa-icon>
-                    </button> -->
 
                     <button mat-icon-button routerLink="settings" class="d-sm-inline">
                         <fa-icon icon="cog"></fa-icon>
