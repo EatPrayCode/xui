@@ -21,6 +21,7 @@ export class UserFormComponent implements OnInit {
   fileObject!: FileUpload;
 
   @Input() option: string = "Admin";
+  @Input() data: any = {};
 
   constructor(private formBuilder: FormBuilder,
     private userService: UserService,
@@ -30,24 +31,24 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.initForm();
+    this.initForm(this.data);
   }
 
-  initForm() {
+  initForm(data) {
     this.userForm = this.formBuilder.group({
-      displayName: ['', Validators.required],
-      email: ['', Validators.required],
-      surname: ['', Validators.required],
-      name: ['', Validators.required],
-      adress: ['', Validators.required],
-      zipcode: ['', Validators.required],
-      city: ['', Validators.required]
+      displayName: [data.displayName, Validators.required],
+      email: [data.email, Validators.required],
+      surname: [data.surname, Validators.required],
+      name: [data.name, Validators.required],
+      adress: [data.adress, Validators.required],
+      zipcode: [data.zipcode, Validators.required],
+      city: [data.city, Validators.required]
     });
 
-    this.userService.getUser(this.id).then((data: any) => {
-      this.fileUrl = data.pictureUrl;
-      this.userForm.patchValue(data);
-    });
+    // this.userService.getUser(this.id).then((data: any) => {
+    //   this.fileUrl = data.pictureUrl;
+    //   this.userForm.patchValue(data);
+    // });
   }
 
   /// Obtenir pour un accès facile aux champs de formulaire
@@ -69,30 +70,27 @@ export class UserFormComponent implements OnInit {
     if (this.fileUrl && this.fileUrl !== '') {
       user.pictureUrl = this.fileUrl;
       user.file = this.fileObject;
-      if(user.file != undefined)
+      if (user.file != undefined) {
         this.filesUploadService.saveFileData(user.file);
+      }
     }
-
     this.userService.updateUser(this.id, user);
-
-    if(this.option == "Profil"){
+    if (this.option == "Profil") {
       this.router.navigate(['/profil']);
     }
-    else{
+    else {
       this.router.navigate(['/users']);
     }
   }
 
   onUploadFile(file: File) {
     this.fileObject = new FileUpload(file);
-
     this.fileIsUploading = true;
     this.filesUploadService.pushFileToStorage(this.fileObject).then((url: any) => {
       this.fileUrl = url;
       this.fileIsUploading = false;
       this.fileUploaded = true;
-    }
-    );
+    });
   }
 
   detectFiles(event: any) {
@@ -100,27 +98,27 @@ export class UserFormComponent implements OnInit {
   }
 
   /* Validation Erreur */
-  shouldShowSurnameError(){
+  shouldShowSurnameError() {
     const surname = this.userForm.controls.surname;
     return surname.touched && surname.hasError('required');
   }
 
-  shouldShowNameError(){
+  shouldShowNameError() {
     const name = this.userForm.controls.name;
     return name.touched && name.hasError('required');
   }
 
-  shouldShowAdresseError(){
+  shouldShowAdresseError() {
     const adress = this.userForm.controls.adress;
     return adress.touched && adress.hasError('required');
   }
 
-  shouldShowZipCodeError(){
+  shouldShowZipCodeError() {
     const zipCode = this.userForm.controls.zipcode;
     return zipCode.touched && zipCode.hasError('required');
   }
 
-  shouldShowCityError(){
+  shouldShowCityError() {
     const city = this.userForm.controls.city;
     return city.touched && city.hasError('required');
   }
