@@ -1,7 +1,8 @@
 
+
 <section class="inner-page">
-  <div class="container">
-    <table class="table table-striped">
+  <div class="container" >
+    <table *ngIf="contacts.length" class="table table-striped">
       <thead>
         <tr>
           <th class="col-1">Del</th>
@@ -31,6 +32,7 @@
         </tr>
       </tbody>
     </table>
+    <app-spinner *ngIf="!contacts.length" [loading]="true"></app-spinner>   
   </div>
 </section>
 

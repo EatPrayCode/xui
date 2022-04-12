@@ -101,6 +101,7 @@ import {
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FirebaseModule } from './auth/firebase.module';
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -133,6 +134,7 @@ export function httpLoaderFactory(http: HttpClient) {
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([SettingsEffects, GoogleAnalyticsEffects]),
     FontAwesomeModule,
+    FirebaseModule,
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({

@@ -26,6 +26,8 @@ export interface User {
 
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { UserService } from './user.service';
+import { signInAnonymously } from "firebase/auth";
+
 
 @Injectable({
   providedIn: 'root',
@@ -59,7 +61,18 @@ export class FirebaseAuthService {
 
 
   signInAnonymously() {
-    // return this.afAuth.signInAnonymously();
+    const auth = getAuth();
+    return signInAnonymously(auth);
+    //   .then(() => {
+    //     // Signed in..
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     // ...
+    //   });
+
+    // // return this.afAuth.signInAnonymously();
   }
 
   // getAppUserSettings(): Observable<appState> {

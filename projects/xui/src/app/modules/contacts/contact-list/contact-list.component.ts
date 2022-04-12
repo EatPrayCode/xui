@@ -15,7 +15,7 @@ import { ContactService } from '../../../services/Contact.service';
   styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent implements OnInit, OnDestroy {
-  contacts!: any[];
+  contacts: any[] = [];
   contactSubscription!: Subscription;
 
   constructor(

@@ -59,9 +59,9 @@ export class SigninComponent implements OnInit {
 
 
   signInAnonymously() {
-    // this.appService.signInAnonymously().then((result) => {
-    //   this.closeAuthDialog(result);
-    // });
+    this.appService.signInAnonymously().then((result) => {
+      this.closeAuthDialog(result);
+    });
   }
 
   signInWithGoogle() {
@@ -72,6 +72,7 @@ export class SigninComponent implements OnInit {
 
   closeAuthDialog(user: any) {
     this.ref.close(user);
+    debugger;
     this.appService.appSettingsSubject.next(user.user);
     console.log('\Closed auth dialog...');
   }

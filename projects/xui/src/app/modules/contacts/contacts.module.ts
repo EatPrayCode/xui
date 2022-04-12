@@ -8,6 +8,7 @@ import { ContactsRoutingModule } from './contacts-routing.module';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
     ContactsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    SharedModule
   ],
 })
 export class ContactsModule { }

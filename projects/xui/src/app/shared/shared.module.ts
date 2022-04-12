@@ -7,8 +7,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DemoMaterialModule } from './demo-material-module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SpeedDialFabComponent } from './speed-dial-fab/speed-dial-fab.component';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
+import { AppSpinnerDirective } from './directives/app-spinner';
+import { SpinnerComponent } from './directives/spinner/spinner.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
 
 @NgModule({
   imports: [
@@ -20,10 +22,14 @@ import { CardModule } from 'primeng/card';
 
     DemoMaterialModule,
     RouterModule,
-    CardModule,
-    ButtonModule
+
   ],
-  declarations: [SpeedDialFabComponent],
+  declarations: [
+    SpeedDialFabComponent,
+    SpinnerComponent,
+    AppSpinnerDirective,
+    NotFoundComponent
+  ],
   exports: [
     CommonModule,
     FormsModule,
@@ -31,9 +37,11 @@ import { CardModule } from 'primeng/card';
     FlexLayoutModule,
     TranslateModule,
     DemoMaterialModule,
-    CardModule,
-    ButtonModule,
-    SpeedDialFabComponent
+
+    SpeedDialFabComponent,
+    SpinnerComponent,
+    AppSpinnerDirective,
+    NotFoundComponent
   ]
 })
 export class SharedModule {

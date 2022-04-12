@@ -10,8 +10,8 @@ import { DemoMaterialModule } from '../../shared/demo-material-module';
 
 @NgModule({
   declarations: [
-    // SigninComponent,
-    // ChooseAppSettingsModalComponent
+    SigninComponent,
+    ChooseAppSettingsModalComponent
   ],
   imports: [
     // FormsModule,
