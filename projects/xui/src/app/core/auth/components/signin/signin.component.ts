@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'app-signin',
@@ -11,52 +12,74 @@ import { AuthService } from '../../../../services/auth.service';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  signinForm: FormGroup = new FormGroup({});
   errorMessage!: string;
+  showLogin: any = true;
+  showRegister: any = false;
 
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
-    private fb: FormBuilder,
     private ref: MatDialogRef<SigninComponent>,
-    public appService: AppService) { }
+    public appService: AppService,
+    public userService: UserService,) { }
 
   ngOnInit() {
-    this.initForm();
+    
   }
 
-  initForm() {
-    this.signinForm = this.formBuilder.group({
-      email: ['yogifromhills@gmail.com', [Validators.required, Validators.email]],
-      password: ['Ashu@7569', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]]
+  handleLogin(event) {
+    const { email, password, username } = event;
+    this.appService.signInPassword(email, password).then((result) => {
+      this.closeAuthDialog(result);
     });
   }
 
-  onSubmit() {
-    const formValue = this.signinForm.value;
-    const email = formValue['email'];
-    const password = formValue['password'];
-
-    this.authService.signInUser(email, password).then(
-      (res: any) => {
-        this.closeAuthDialog(res.user);
-      },
-      (error: string) => {
-        if (error == 'auth/invalid-email') {
-          this.errorMessage = 'L\'adresse email est erronée';
-        }
-        else if (error == 'auth/user-disabled') {
-          this.errorMessage = 'Le compte est désactivé';
-        }
-        else if (error == 'auth/user-not-found') {
-          this.errorMessage = 'Aucun utilisateur n\'a été retrouvé avec cette adresse email';
-        }
-        else if (error == 'auth/wrong-password') {
-          this.errorMessage = 'Le mot de passe est erroné';
-        }
-      }
-    );
+  handleRegister(event) {
+    const username = event.username;
+    this.checkUserNameValidity(username).then(res => {
+      this.createUserName(event);
+    },
+      err => {
+        console.log(err);
+      });
   }
 
+  checkUserNameValidity(username: string | null) {
+    return new Promise(
+      (resolve, reject) => {
+        this.userService.CheckUserNameValidity(username).then((querySnapshot) => {
+          reject({
+            status: 'NOT-AVAILABLE'
+          })
+        },
+          err => {
+            resolve({
+              status: 'AVAILABLE'
+            })
+          });
+      });
+  }
+
+  createUserName(event) {
+    const { email, password, username } = event;
+    this.userService.addUserName(username).then(res => {
+      this.registerWithPassword(email, password);
+    },
+      err => {
+        console.log(err,"error occured")
+      });
+  }
+
+  registerWithPassword(email, password) {
+    this.appService.registerWithPassword(email, password).then((result) => {
+      this.closeAuthDialog(result);
+    });
+  }
+
+  signInPassword(email, password, username) {
+    this.appService.signInPassword(email, password).then((result) => {
+      this.closeAuthDialog(result);
+    });
+  }
 
   signInAnonymously() {
     this.appService.signInAnonymously().then((result) => {

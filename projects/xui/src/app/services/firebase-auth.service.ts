@@ -14,7 +14,7 @@ import { appState, appStateFirebaseNull } from '../models/app.state';
 
 import { signOut } from "firebase/auth";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 
 
@@ -58,19 +58,37 @@ export class FirebaseAuthService {
     return signInWithPopup(auth, provider);
   }
 
+  signInPassword(email, password) {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+
+  }
+
   // // Auth logic to run auth providers
   // AuthLogin(provider: any) {
   //   return this.afAuth
   //     .signInWithPopup(provider);
   // }
 
-  signInWithPassword() {
-    const email: any = 'yogifromhills@gmail.com';
-    const password: any = 'Ashu@7569';
+  signInWithPassword(email, password) {
     const auth = getAuth();
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  registerWithPassword(email, password) {
+    const auth = getAuth();
+    return createUserWithEmailAndPassword(auth, email, password);
+
+  }
 
   signInAnonymously() {
     const auth = getAuth();

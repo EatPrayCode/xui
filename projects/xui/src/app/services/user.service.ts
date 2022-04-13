@@ -9,7 +9,7 @@ import { FileUpload } from '../Models/FileUpload.Model';
 import { formatDate } from '@angular/common';
 import { User } from '../Models/User.Model';
 import { doc, getDoc, setDoc } from "firebase/firestore"
-
+import { getDatabase, ref, set } from "firebase/database";
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +30,71 @@ export class UserService {
     this.usersSubject.next(this.users);
   }
 
+  CheckUserNameValidity(userName: string | null) {
+    return new Promise(
+      (resolve, reject) => {
+        const db = collection(this.firestore, 'usernames');
+        const deleteRef = doc(db, userName);
+        getDoc(deleteRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            resolve(snapshot.data());
+          }
+          else {
+            reject({});
+          }
+        });
+      });
+  }
+
+    /// Get Single User By Email /// OK
+    addUserName(username: string | null) {
+      return new Promise(
+        (resolve, reject) => {
+          setDoc(doc(this.firestore, "usernames", username), { name: username }).then((querySnapshot) => {
+            resolve({
+              status: 'ADDED'
+            });
+          },
+          err=>{
+            reject({
+              status: 'FAILED'
+            })
+          });
+        });
+    }
+
+
+  // test(username) {
+  //   const db = collection(this.firestore, 'usernames');
+  //   this.utilsService.getDocByKey(db, username).then((doc: any) => {
+  //     debugger;
+  //     updateDoc(doc.ref, this.user);
+  //   });
+  // }
+
+  /// Create User /// OK
+  createUserName(userName: any) {
+    return new Promise(
+      (resolve, reject) => {
+        const db = collection(this.firestore, 'usernames');
+        const deleteRef = doc(db, 'testUserName');
+        debugger;
+        
+        getDoc(deleteRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            resolve(snapshot.data());
+          }
+          else {
+            reject({});
+          }
+        });
+        
+      });
+  }
+
   /// Get All User /// OK
   getUsers() {
     this.users$ = collectionData(this.db) as Observable<User[]>;
-
     this.users$.subscribe((users: User[]) => {
       this.users = users;
 

@@ -4,6 +4,7 @@ import { addDoc, collection, collectionData, deleteDoc, Firestore, getDocs, quer
 import { Observable, Subject } from 'rxjs';
 import { Contact } from '../Models/Contact.Model';
 import { UtilsService } from './Utils.service';
+import { doc, setDoc } from "firebase/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,25 @@ export class ContactService {
       });
   }
 
+
+  /// Get Single User By Email /// OK
+  addUserName(username: string | null) {
+    return new Promise(
+      (resolve, reject) => {
+        setDoc(doc(this.firestore, "usernames", username), { name: username }).then((querySnapshot) => {
+
+          resolve({
+            status: 'ADDED'
+          });
+        },
+        err=>{
+          reject({
+            status: 'FAILED'
+          })
+        });
+      });
+  }
+
   /// Create Contact /// OK
   createContact() {
     const contact: any = {
@@ -70,6 +90,9 @@ export class ContactService {
       subject: 'string',
       message: 'string'
     };
+    // const db = collection(this.firestore, 'usernames');
+    // setDoc(doc(this.firestore, "usernames", "new-city-id"), {});
+
     addDoc(this.db, {
       key: this.utilsService.getKey(),
       name: contact.name || formatDate(new Date(), 'dd/MM/yyyy', 'en'),

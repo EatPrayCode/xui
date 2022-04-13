@@ -65,6 +65,16 @@ export class AppService {
     return this.firebaseAuth.signInWithGoogle();
   }
 
+  signInPassword(email, password) {
+    return this.firebaseAuth.signInWithPassword(email, password);
+  }
+
+  registerWithPassword(email, password) {
+    return this.firebaseAuth.registerWithPassword(email, password);
+  }
+  
+  
+
   getAppUserSettings() {
     // this.firebaseAuth.getAppUserSettings().pipe(tap(res => {
     //   // this.appSettingsSubject.next({ ...res, dataLoaded: true });

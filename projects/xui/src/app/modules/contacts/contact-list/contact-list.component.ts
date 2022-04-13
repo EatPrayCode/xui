@@ -36,6 +36,13 @@ export class ContactListComponent implements OnInit, OnDestroy {
     this.openSettingsDialog({});
   }
 
+  addUserName(){
+    const userName:any = new Date().toISOString() || 'test';
+    // this.contactService.addUserName(userName).then(res=>{
+    //   debugger;
+    // });
+  }
+
   addMockContact() {
     this.contactService.createContact();
   }
