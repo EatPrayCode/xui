@@ -17,6 +17,7 @@
 
 @import 'styles-reset.scss-theme';
 @import './app/app/app.component.scss-theme';
+@import './app/layouts/default-layout/default-layout.component.scss-theme.scss';
 // @import './app/shared/big-input/big-input/big-input.component.scss-theme';
 // @import './app/features/about/about/about.component.scss-theme';
 // @import './app/features/examples/notifications/components/notifications.component.scss-theme';
@@ -29,6 +30,7 @@
 @mixin custom-components-theme($theme) {
   @include app-styles-reset-theme($theme);
   @include app-app-component-theme($theme);
+  @include app-default-layout-component-theme($theme);
   // @include app-about-component-theme($theme);
   // @include app-big-input-component-theme($theme);
   // @include app-notifications-component-theme($theme);

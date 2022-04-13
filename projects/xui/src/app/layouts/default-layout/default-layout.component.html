@@ -46,7 +46,6 @@
 
                         <button class="" *ngIf="user?.uid" mat-icon-button [matMenuTriggerFor]="toolbarUserMenu">
                             <fa-icon icon="user-circle"></fa-icon>
-                            <!-- <app-spinner [loading]="'true'"></app-spinner>    -->
                         </button>
 
                         <mat-menu #toolbarUserMenu="matMenu">
@@ -128,16 +127,15 @@
             </div>
         </div>
     </mat-sidenav-container>
-</div>
 
-
-<nav class="mobile-bottom-nav" *ngIf="theme$ | async as theme">
-    <div *ngFor="let item of navigation"
-        class="mobile-bottom-nav__item {{theme=='black-theme' ? 'bottom-nav-dark' : 'bottom-nav-light'}}"
-        [routerLink]="[item.link]" routerLinkActive="active">
-        <div class="mobile-bottom-nav__item-content">
-            <i class="material-icons">{{item.icon}}</i>
-            {{item.label | translate}}
+    <nav class="mobile-bottom-nav" *ngIf="theme$ | async as theme">
+        <div *ngFor="let item of navigation"
+            class="mobile-bottom-nav__item"
+            [routerLink]="[item.link]" routerLinkActive="active">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="material-icons">{{item.icon}}</i>
+                {{item.label | translate}}
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>
