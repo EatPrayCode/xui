@@ -14,6 +14,11 @@ export class NetaListComponentV1 implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   features: any[] = features;
 
+  selected = false;
+  onSelectCard() {
+    this.selected = !this.selected;
+  }
+
   ngOnInit() {}
 
   openLink(link: string) {

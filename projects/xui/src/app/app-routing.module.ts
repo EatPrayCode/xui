@@ -2,20 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { BlankComponent } from './layouts/blank/blank.component';
+import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: BlankComponent,
+    component: DefaultLayoutComponent,
     children: [
       {
         path: '',
         redirectTo: 'about',
         pathMatch: 'full'
-      },
-      {
-        path: 'about',
-        component: AboutComponent
       },
       {
         path: 'feature-list',
@@ -53,6 +50,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/contacts/contacts.module').then((m) => m.ContactsModule)
       },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+    ]
+  },
+  {
+    path: '',
+    component: BlankComponent,
+    children: [
       {
         path: ':id',
         loadChildren: () =>

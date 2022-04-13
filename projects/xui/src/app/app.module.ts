@@ -20,6 +20,9 @@ import { provideRemoteConfig, getRemoteConfig } from '@angular/fire/remote-confi
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { AboutComponent } from './about/about.component';
+import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component';
+import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
+import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 
 @NgModule({
   imports: [
@@ -47,7 +50,10 @@ import { AboutComponent } from './about/about.component';
   declarations: [
     AppComponent,
     BlankComponent,
-    AboutComponent
+    AboutComponent,
+    NetaLayoutComponent,
+    LandingLayoutComponent,
+    DefaultLayoutComponent
   ],
   bootstrap: [AppComponent]
 })
