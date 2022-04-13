@@ -1,4 +1,4 @@
-@import '../../../../styles-variables';
+@import "./../../../../../../../styles-variables";
 
 .container {
   margin-top: 20px;
@@ -14,17 +14,9 @@ mat-card {
 
   mat-card-title {
     position: relative;
-
-    code {
-      position: absolute;
-      top: 11px;
-      right: 0;
-      float: right;
-      font-size: 10px;
-    }
   }
   mat-card-subtitle {
-    min-height: 60px;
+    // min-height: 60px;
   }
 
   @media (max-width: map-get($grid-breakpoints, sm)) {
@@ -48,12 +40,12 @@ mat-card {
   }
 }
 
-.main-image{
-  margin:10px auto;
+.main-image {
+  margin: 10px auto;
   width: 100%;
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');
+  background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
   background-size: cover;
 }

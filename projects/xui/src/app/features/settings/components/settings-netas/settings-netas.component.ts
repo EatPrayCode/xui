@@ -1,3 +1,4 @@
+import { ROUTE_ANIMATIONS_ELEMENTS } from './../../../../core/animations/route.animations';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -7,6 +8,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsNetasComponent implements OnInit {
+
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   constructor() { }
 
