@@ -1,4 +1,4 @@
-import { ROUTE_ANIMATIONS_ELEMENTS } from './../../../../core/animations/route.animations';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/animations/route.animations';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({

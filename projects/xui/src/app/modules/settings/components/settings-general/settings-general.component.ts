@@ -1,5 +1,5 @@
-import { UserService } from './../../../../services/user.service';
-import { userSettings } from './../../../../models/app.state';
+import { UserService } from '../../../../services/user.service';
+import { userSettings } from '../../../../models/app.state';
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';

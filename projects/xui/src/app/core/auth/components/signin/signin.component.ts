@@ -65,9 +65,9 @@ export class SigninComponent implements OnInit {
   }
 
   signInWithGoogle() {
-    // this.appService.signInWithGoogle().then((result: any) => {
-    //   this.closeAuthDialog(result);
-    // });
+    this.appService.signInWithGoogle().then((result: any) => {
+      this.closeAuthDialog(result);
+    });
   }
 
   closeAuthDialog(user: any) {

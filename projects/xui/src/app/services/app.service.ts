@@ -61,9 +61,9 @@ export class AppService {
     return this.firebaseAuth.signInAnonymously();
   }
 
-  // signInWithGoogle() {
-  //   return this.firebaseAuth.signInWithGoogle();
-  // }
+  signInWithGoogle() {
+    return this.firebaseAuth.signInWithGoogle();
+  }
 
   getAppUserSettings() {
     // this.firebaseAuth.getAppUserSettings().pipe(tap(res => {

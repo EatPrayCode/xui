@@ -13,6 +13,9 @@ import { Observable, of } from 'rxjs';
 import { appState, appStateFirebaseNull } from '../models/app.state';
 
 import { signOut } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 
 
 export interface User {
@@ -49,15 +52,24 @@ export class FirebaseAuthService {
     // );
   }
 
-  // signInWithGoogle() {
-  //   return this.AuthLogin(new auth.GoogleAuthProvider());
-  // }
+  signInWithGoogle() {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  }
 
   // // Auth logic to run auth providers
   // AuthLogin(provider: any) {
   //   return this.afAuth
   //     .signInWithPopup(provider);
   // }
+
+  signInWithPassword() {
+    const email: any = 'yogifromhills@gmail.com';
+    const password: any = 'Ashu@7569';
+    const auth = getAuth();
+    return signInWithEmailAndPassword(auth, email, password);
+  }
 
 
   signInAnonymously() {
