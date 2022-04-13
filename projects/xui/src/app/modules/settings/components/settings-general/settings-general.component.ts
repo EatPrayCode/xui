@@ -1,20 +1,17 @@
 import { UserService } from '../../../../services/user.service';
-import { userSettings } from '../../../../models/app.state';
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
-import { actionSettingsChangeLanguage, actionSettingsChangeTheme, actionSettingsChangeAutoNightMode, actionSettingsChangeStickyHeader, actionSettingsChangeAnimationsPage, actionSettingsChangeAnimationsElements, actionInitialiseSettings } from '../../../../core/settings/settings.actions';
-import { SettingsState, State } from '../../../../core/settings/settings.model';
+import { actionSettingsChangeLanguage, actionSettingsChangeTheme, actionSettingsChangeAutoNightMode, actionSettingsChangeStickyHeader, actionSettingsChangeAnimationsPage, actionSettingsChangeAnimationsElements } from '../../../../core/settings/settings.actions';
 import { selectSettings } from '../../../../core/settings/settings.selectors';
 import { AppService } from '../../../../services/app.service';
-import { FirebaseAuthService } from '../../../../services/firebase-auth.service';
 
 import { getAuth } from "firebase/auth";
+import { State } from '../../../../core/settings/settings.model';
 
 
 @Component({
@@ -45,8 +42,6 @@ export class SettingsGeneralComponent implements OnInit {
 
   constructor(
     private store: Store<State>,
-    private appService: AppService,
-    private router: Router,
     private userservice: UserService,
   ) { }
 
@@ -101,7 +96,7 @@ export class SettingsGeneralComponent implements OnInit {
     this.settings$.subscribe(res1 => {
       const auth = getAuth();
       const user = auth.currentUser; // null if no user
-      this.userservice.setUserSettingsTestUid(user.uid, res1)
+      this.userservice.setUserSettingsTestUid(user.uid, res1);
     });
   }
 }

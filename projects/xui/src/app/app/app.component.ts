@@ -14,7 +14,6 @@ import { ChooseAppSettingsModalComponent } from './../core/auth/components/choos
 import { SigninComponent } from './../core/auth/components/signin/signin.component';
 import { AppService } from '../services/app.service';
 import { appState } from '../models/app.state';
-import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updatePassword } from 'firebase/auth';
@@ -112,23 +111,23 @@ export class AppComponent implements OnInit {
   user: User;
 
   ngOnInit(): void {
-    this.initApp();
-    onAuthStateChanged(getAuth(), (user) => {
-      if (user) {
-        this.appService.appSettingsSubject.next(user);
-        if (user.uid) {
-          this.userService.getUserSettingsTestUid(user.uid).then((res: any) => {
-            if (res?.settings) {
-              this.store.dispatch(
-                actionInitialiseSettings({ payload: res.settings })
-              );
-            }
-          }).catch(err => {
+    // this.initApp();
+    // onAuthStateChanged(getAuth(), (user) => {
+    //   if (user) {
+    //     this.appService.appSettingsSubject.next(user);
+    //     if (user.uid) {
+    //       this.userService.getUserSettingsTestUid(user.uid).then((res: any) => {
+    //         if (res?.settings) {
+    //           this.store.dispatch(
+    //             actionInitialiseSettings({ payload: res.settings })
+    //           );
+    //         }
+    //       }).catch(err => {
 
-          });
-        }
-      }
-    });
+    //       });
+    //     }
+    //   }
+    // });
   }
 
   initApp() {

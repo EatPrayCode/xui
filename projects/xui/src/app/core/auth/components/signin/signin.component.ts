@@ -3,7 +3,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
@@ -17,7 +16,6 @@ export class SigninComponent implements OnInit {
   showRegister: any = false;
 
   constructor(private formBuilder: FormBuilder,
-    private authService: AuthService,
     private ref: MatDialogRef<SigninComponent>,
     public appService: AppService,
     public userService: UserService,) { }

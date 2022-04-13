@@ -3,7 +3,7 @@ import { createAction, props } from '@ngrx/store';
 import { Language } from './settings.model';
 
 export const actionInitialiseSettings = createAction(
-  '[Settings] Change Language',
+  '[Settings] Initialise Language',
   props<{ payload: any }>()
 );
 

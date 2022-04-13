@@ -67,7 +67,6 @@ export class UserService {
   // test(username) {
   //   const db = collection(this.firestore, 'usernames');
   //   this.utilsService.getDocByKey(db, username).then((doc: any) => {
-  //     debugger;
   //     updateDoc(doc.ref, this.user);
   //   });
   // }
@@ -77,9 +76,7 @@ export class UserService {
     return new Promise(
       (resolve, reject) => {
         const db = collection(this.firestore, 'usernames');
-        const deleteRef = doc(db, 'testUserName');
-        debugger;
-        
+        const deleteRef = doc(db, 'testUserName');       
         getDoc(deleteRef).then((snapshot) => {
           if (snapshot.exists()) {
             resolve(snapshot.data());
@@ -144,10 +141,6 @@ export class UserService {
     });
   }
 
-  getUserSettingsTestUid1(uid) {
-
-  }
-
   getUserSettingsTestUid(uid: string | null) {
     return new Promise(
       (resolve, reject) => {
@@ -157,7 +150,9 @@ export class UserService {
             resolve(snapshot.data());
           }
           else {
-            reject({});
+            reject({
+              status: 'SETTINGS_NOT_AVAILABLE'
+            });
           }
         });
       });

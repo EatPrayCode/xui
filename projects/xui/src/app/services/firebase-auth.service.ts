@@ -16,8 +16,6 @@ import { signOut } from "firebase/auth";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
-
-
 export interface User {
   uid: string;
   email: string;
@@ -37,20 +35,9 @@ import { signInAnonymously } from "firebase/auth";
 })
 export class FirebaseAuthService {
 
-  userData: any; // Save logged in user data
-
   constructor(
     public userService: UserService
-    // public afs: AngularFirestore, // Inject Firestore service
-    // public afAuth: AngularFireAuth, // Inject Firebase auth service
-    // public ngZone: NgZone // NgZone service to remove outside scope warning
-  ) {
-    //   onAuthStateChanged(getAuth(),
-    //   (user) => {
-    //
-    //   }
-    // );
-  }
+  ) { }
 
   signInWithGoogle() {
     const auth = getAuth();
@@ -70,14 +57,7 @@ export class FirebaseAuthService {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
-
   }
-
-  // // Auth logic to run auth providers
-  // AuthLogin(provider: any) {
-  //   return this.afAuth
-  //     .signInWithPopup(provider);
-  // }
 
   signInWithPassword(email, password) {
     const auth = getAuth();
@@ -93,46 +73,7 @@ export class FirebaseAuthService {
   signInAnonymously() {
     const auth = getAuth();
     return signInAnonymously(auth);
-    //   .then(() => {
-    //     // Signed in..
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     // ...
-    //   });
-
-    // // return this.afAuth.signInAnonymously();
   }
-
-  // getAppUserSettings(): Observable<appState> {
-  //   const auth$ = this.getUserFirebase();
-  //   return auth$.pipe(
-  //     // take(1),
-  //     // switchMap((user: appState) => {
-  //     //   if (user && user.uid) {
-  //     //     return this.getUserSettings(user);
-  //     //   }
-  //     //   else {
-  //     //     return this.getDefaultAppSettings();
-  //     //   }
-  //     // })
-  //   );
-  // }
-
-  // getUserSettings(user: any): Observable<appState> {
-  //   return this.afs.doc<any>(`users/${user.uid}`).get().pipe(
-  //     take(1),
-  //     switchMap((snapshot: DocumentSnapshot<any>) => {
-  //       const test = snapshot.data();
-  //       if (test && test.settings) {
-  //         return of({...user, userSettings: test.settings});
-  //       }
-  //       else {
-  //         return of({...user, userSettings: null});
-  //       }
-  //     }));
-  // }
 
   getUserFirebase(): any {
     // return this.userService.getUser();
@@ -150,23 +91,6 @@ export class FirebaseAuthService {
     });
   }
 
-  // setUserData(user: any, data) {
-  //   const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-  //     `users/${user.uid}`
-  //   );
-  //   const userData: User = {
-  //     uid: user.uid,
-  //     email: user.email,
-  //     displayName: user.displayName,
-  //     photoURL: user.photoURL,
-  //     emailVerified: user.emailVerified,
-  //     settings: data
-  //   };
-  //   return userRef.set(userData, {
-  //     merge: true
-  //   });
-  // }
-
   logout() {
     const auth = getAuth();
     signOut(auth).then(() => {
@@ -174,9 +98,5 @@ export class FirebaseAuthService {
     }).catch((error) => {
       // An error happened.
     });
-
-    // return this.afAuth.signOut().then(() => {
-    //   localStorage.removeItem('user');
-    // });
   }
 }
