@@ -89,9 +89,8 @@ export class AppComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     public appService: AppService,
-    private authService: AuthService,
-     private userService: UserService,
-     private store: Store<AppState>,
+    private userService: UserService,
+    private store: Store<AppState>,
   ) {
 
     // const firebaseConfig = {
@@ -138,10 +137,6 @@ export class AppComponent implements OnInit {
     this.stickyHeader$ = this.appService.stickyHeader$
     this.language$ = this.appService.language$;
     this.theme$ = this.appService.theme$;
-    // this.user$.subscribe(res => {
-    //   // console.log(res);
-    //   (res.dataLoaded && res.dataLoaded) ? this.loaderMode = 'determinate' : this.loaderMode = 'indeterminate';
-    // });
   }
 
   openSettingsDialog(): void {

@@ -119,7 +119,6 @@ export function httpLoaderFactory(http: HttpClient) {
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([SettingsEffects, GoogleAnalyticsEffects]),
     FontAwesomeModule,
-    FirebaseModule,
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
