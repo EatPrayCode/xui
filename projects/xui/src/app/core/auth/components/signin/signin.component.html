@@ -1,82 +1,54 @@
 
-<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
-
-  <mat-card class="box">
-    <mat-card-header>
-      <mat-card-title>Sign In</mat-card-title>
-    </mat-card-header>
-
-    <form class="example-form">
-      <mat-card-content>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password">
-        </mat-form-field>
-      </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block">Sign-in</button>
-      <button class="register-btn" color="accent" class="btn-block">Register</button>
-    </form>
-  </mat-card>
-
-<!-- 
-<app-login *ngIf="showLogin" (submitChange)="handleLogin($event)"></app-login>
-<a *ngIf="showLogin" class="btn btn-link" (click)="showLogin=false;showRegister=true;">Register</a>
-<app-register *ngIf="showRegister" (submitChange)="handleRegister($event)"></app-register>
-<a *ngIf="showRegister" class="btn btn-link" (click)="showLogin=true;showRegister=false;">Signin</a> -->
-
-
+<!-- Mixins-->
+<!-- Pen Title-->
+<div class="pen-title">
+  <h1>nconnect Login</h1><span>Pen <i class='fa fa-code'></i> by <a href='http://andytran.me'>Andy Tran</a></span>
 </div>
-
-
-<!-- <form [formGroup]="signinForm">
-    <div>
-        <div class="form-group">
-            <label for="username">UserName</label>
-            <input type="text" class="form-control" id="username" formControlName="username">
-        </div>
-    </div>
-
-</form>
-<button class="btn btn-primary" (click)="checkUserNameValidity()">checkUserNameValidity</button>
-
-<button class="btn btn-primary" (click)="onSubmit()">Login</button>
-
-<button (click)="signInWithGoogle()"><img
-        src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google"
-        width="20"><span>Google</span></button>
-<button (click)="signInAnonymously()"><img
-        src="https://cdn.freebiesupply.com/logos/large/2x/facebook-2-logo-svg-vector.svg" alt="facebook"
-        width="10"><span>Facebook</span></button>
-
-        <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-            <mat-card class="box">
-              <mat-card-header>
-                <mat-card-title>Register</mat-card-title>
-              </mat-card-header>
-              <form class="example-form">
-                <mat-card-content>
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Username">
-                  </mat-form-field>
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Email">
-                  </mat-form-field>
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Password">
-                  </mat-form-field>
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Choose a role...</mat-label>
-                    <mat-select>
-                      <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </mat-card-content>
-                <button mat-stroked-button color="accent" class="btn-block">Register</button>
-              </form>
-            </mat-card>
-          </div>
-           -->
+<div class="container">
+  <div class="card"></div>
+  <div class="card">
+    <h1 class="title">Login</h1>
+    <form>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Username</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <button><span>Go</span></button>
+      </div>
+      <div class="footer"><a href="#">Forgot your password?</a></div>
+    </form>
+  </div>
+  <div class="card alt">
+    <div class="toggle"></div>
+    <h1 class="title">Register
+      <div class="close"></div>
+    </h1>
+    <form>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Username</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="#{type}" id="#{label}" required="required"/>
+        <label for="#{label}">Repeat Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="button-container">
+        <button><span>Next</span></button>
+      </div>
+    </form>
+  </div>
+</div>
