@@ -113,4 +113,35 @@ export class NetasForYouComponent implements OnInit {
   handleMessageNeta($event: any) {
     this.router.navigate(['/connect/connect-new']);
   }
+
+  features: any[] = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+
+  selected = false;
+
+  value = '';
+  
+  onSelectCard() {
+    this.selected = !this.selected;
+  }
+
+  openLink(link: string) {
+    window.open(link, '_blank');
+  }
+
+  OnSearch() {
+    console.log('OnSearch', this.value);
+  }
+
+  OnSearchNext() {
+    console.log('OnSearchNext', this.value);
+  }
+
+  OnSearchPrevious() {
+    console.log('OnSearchPrevious', this.value);
+  }
+
+  OnClear() {
+    console.log('OnClear');
+    this.value = '';
+  }
 }

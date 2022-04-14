@@ -1,12 +1,22 @@
-@import "./../../../../../../../styles-variables";
+@import "./../../../../../styles-variables";
 
 .container {
-  margin-top: 20px;
+  margin-top: 10px;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin-top: 0.8rem;
+  text-transform: uppercase;
 }
 
 .main-heading {
   text-transform: uppercase;
-  // margin: 0 0 20px 0;
+  margin: 10px 0 10px 0;
 }
 
 mat-card {
@@ -14,9 +24,6 @@ mat-card {
 
   mat-card-title {
     position: relative;
-  }
-  mat-card-subtitle {
-    // min-height: 60px;
   }
 
   @media (max-width: map-get($grid-breakpoints, sm)) {
@@ -41,7 +48,7 @@ mat-card {
 }
 
 .main-image {
-  margin: 10px auto;
+  margin: 5px auto;
   width: 100%;
 }
 
@@ -76,4 +83,19 @@ mat-card.mat-elevation-z4 .selection {
 .example-header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
+}
+
+.card-padding {
+  padding: 0px 5px 0px 5px;
+}
+
+.card-list {
+  padding: 5px 5px 5px 5px;
+}
+
+.mat-card-actions,
+.mat-card-subtitle,
+.mat-card-content {
+  display: block;
+  margin-bottom: 0px;
 }

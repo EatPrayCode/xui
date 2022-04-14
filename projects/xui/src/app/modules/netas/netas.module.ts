@@ -9,7 +9,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { NetasForYouComponent } from './components/netas-for-you/netas-for-you.component';
 import { environment } from '../../../environments/environment';
 import { NetasService } from './netas.service';
-import { NetaListComponentV1 } from './components/netas-for-you/netas-list/feature-list/feature-list.component';
+import { NetaListComponentV1 } from './components/feature-list/feature-list.component';
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(

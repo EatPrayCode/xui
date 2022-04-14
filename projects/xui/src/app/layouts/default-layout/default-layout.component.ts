@@ -68,14 +68,14 @@ export class DefaultLayoutComponent implements OnInit {
     //   label: 'app.menu.about',
     //   icon: 'mail'
     // },
+  ];
+  navigationSideMenu = [
+    ...this.navigation,
     {
       link: 'settings',
       label: 'app.menu.settings',
       icon: 'mail'
     },
-  ];
-  navigationSideMenu = [
-    ...this.navigation,
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;

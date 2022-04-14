@@ -50,7 +50,6 @@
 
                         <mat-menu #toolbarUserMenu="matMenu">
                             <button mat-menu-item (click)="onLogoutClick()">
-
                                 <span *ngIf="!user?.isAnonymous"> User</span>
                                 <span *ngIf="user?.isAnonymous">Guest</span>
                                 <mat-icon>
