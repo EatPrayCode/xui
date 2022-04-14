@@ -9,6 +9,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class SettingsNetasComponent implements OnInit {
 
+  allNetas: any = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
+    {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
+    {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+
+  selected = false;
+  
+  onSelectCard() {
+    this.selected = !this.selected;
+  }
+
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   constructor() { }
