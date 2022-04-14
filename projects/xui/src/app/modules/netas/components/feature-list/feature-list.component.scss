@@ -26,7 +26,7 @@ mat-card {
   @media (max-width: map-get($grid-breakpoints, sm)) {
     mat-card-subtitle {
       min-height: auto;
-      margin-bottom: 0px;
+      margin-bottom: 5px;
     }
   }
 
