@@ -40,12 +40,6 @@ const routes: Routes = [
         path: 'about',
         component: AboutComponent
       },
-    ]
-  },
-  {
-    path: '',
-    component: BlankComponent,
-    children: [
       {
         path: ':id',
         loadChildren: () =>
@@ -53,6 +47,13 @@ const routes: Routes = [
       }
     ]
   },
+  // {
+  //   path: '',
+  //   component: BlankComponent,
+  //   children: [
+
+  //   ]
+  // },
   {
     path: '**',
     redirectTo: 'about'

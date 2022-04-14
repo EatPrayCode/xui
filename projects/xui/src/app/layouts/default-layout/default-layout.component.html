@@ -77,6 +77,7 @@
                 <mat-progress-bar [mode]="loaderMode" value="100"></mat-progress-bar>
 
             </div>
+            
             <div class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig?.data?.title">
                 <router-outlet #o="outlet">
                 </router-outlet>

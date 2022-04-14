@@ -58,11 +58,11 @@ export class DefaultLayoutComponent implements OnInit {
     //   label: 'app.menu.visualise',
     //   icon: 'cog'
     // },
-    // {
-    //   link: 'blog',
-    //   label: 'app.menu.blog',
-    //   icon: 'blog'
-    // },
+    {
+      link: '/sampleneta',
+      label: 'app.menu.blog',
+      icon: 'person'
+    },
     // {
     //   link: 'about',
     //   label: 'app.menu.about',

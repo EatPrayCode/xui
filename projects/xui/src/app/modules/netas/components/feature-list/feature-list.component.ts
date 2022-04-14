@@ -13,6 +13,7 @@ export class NetaListComponentV1 implements OnInit {
   features: any[] = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
   selected = false;
+
   onSelectCard() {
     this.selected = !this.selected;
   }
