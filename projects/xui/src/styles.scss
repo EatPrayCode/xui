@@ -1,25 +1,26 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '~@angular/material' as mat;
+@use "~@angular/material" as mat;
 
-@import 'styles-variables';
+@import "styles-variables";
 
-@import '~bootstrap/scss/bootstrap-reboot';
-@import '~bootstrap/scss/bootstrap-grid';
-@import 'styles-reset';
+@import "~bootstrap/scss/bootstrap-reboot";
+@import "~bootstrap/scss/bootstrap-grid";
+@import "styles-reset";
 
 @include mat.core();
 
-@import './themes/default-theme';
-@import './themes/light-theme';
-@import './themes/black-theme';
-@import './themes/nature-theme';
+@import "./themes/default-theme";
+@import "./themes/light-theme";
+@import "./themes/black-theme";
+@import "./themes/nature-theme";
 
-@import 'styles-reset.scss-theme';
-@import './app/app/app.component.scss-theme';
+@import "styles-reset.scss-theme";
+@import "./app/app/app.component.scss-theme";
 
-@import './app/layouts/default-layout/default-layout.component.scss-theme.scss';
-@import './app/modules//settings/components/settings-netas/settings-netas.component-theme.scss';
+@import "./app/layouts/default-layout/default-layout.component.scss-theme.scss";
+@import "./app/modules/settings/components/settings-netas/settings-netas.component-theme.scss";
+@import "./app/modules/netas/containers/netas/netas.component.scss-theme.scss";
 // @import './app/shared/big-input/big-input/big-input.component.scss-theme';
 // @import './app/features/about/about/about.component.scss-theme';
 // @import './app/features/examples/notifications/components/notifications.component.scss-theme';
@@ -33,7 +34,8 @@
   @include app-styles-reset-theme($theme);
   @include app-app-component-theme($theme);
   @include app-default-layout-component-theme($theme);
-  @include app-default-layout-component-theme($theme);
+  @include app-settings-netas-component-theme($theme);
+  @include app-netas-component-theme($theme);
   // @include app-big-input-component-theme($theme);
   // @include app-notifications-component-theme($theme);
   // @include app-todos-container-component-theme($theme);
@@ -63,11 +65,11 @@
   @include custom-components-theme($app-nature-theme);
 }
 
-
 @font-face {
-  font-family: 'Pacifico';
+  font-family: "Pacifico";
   font-style: normal;
   font-weight: 400;
-  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2) format('woff2');
+  src: local("Pacifico Regular"), local("Pacifico-Regular"),
+    url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2) format("woff2");
   font-display: swap;
 }

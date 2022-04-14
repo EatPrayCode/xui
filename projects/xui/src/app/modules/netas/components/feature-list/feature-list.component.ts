@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 
@@ -14,13 +15,22 @@ export class NetaListComponentV1 implements OnInit {
 
   selected = false;
 
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
+
   onSelectCard() {
     this.selected = !this.selected;
   }
 
   ngOnInit() { }
 
-  openLink(link: string) {
-    window.open(link, '_blank');
+  onViewNeta(event: any) {
+    // console.log(event.index);
+    let currentUrl: any = `/sampleneta`;
+    this.router.navigate([currentUrl]);
   }
+
+
 }

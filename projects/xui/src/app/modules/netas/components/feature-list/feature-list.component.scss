@@ -7,7 +7,7 @@
 h3 {
   margin-top: 0.8rem;
   text-transform: uppercase;
-  font-size: 1.0rem;
+  font-size: 1rem;
 }
 
 .main-heading {
@@ -93,5 +93,10 @@ mat-card.mat-elevation-z4 .selection {
 .mat-card-subtitle,
 .mat-card-content {
   display: block;
+  margin-bottom: 10px;
+}
+
+.mat-card > .mat-card-actions:last-child {
   margin-bottom: 0px;
+  padding-bottom: 0;
 }

@@ -22,6 +22,12 @@ export class SettingsContainerComponent {
       link: 'settings-netas',
       name: 'settings-netas',
       label: 'Netas'
+    },
+    {
+      id: 'settings-privacy',
+      link: 'settings-general',
+      name: 'settings-privacy',
+      label: 'Privacy'
     }
   ];
 

@@ -6,11 +6,11 @@
   </div>
   <div class="row align-items-end card-list">
     <div *ngFor="let feature of features" class="col-md-4 col-lg-4 card-padding" [ngClass]="routeAnimationsElements">
-      <mat-card (click)="onSelectCard()" [ngClass]="{'card-selected mat-elevation-z4': selected} ">
+      <mat-card [ngClass]="{'card-selected mat-elevation-z4': selected} ">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          <mat-card-title>Full Name</mat-card-title>
+          <mat-card-subtitle>Party</mat-card-subtitle>
           <span [matTooltip]="!selected ? 'Select note' : 'Selected'" class="selection">
             <mat-icon>check_circle</mat-icon>
           </span>
@@ -25,7 +25,7 @@
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-button mat-raised-button color="primary">Follow</button>
-          <button mat-button mat-raised-button color="accent">View</button>
+          <button mat-button mat-raised-button color="accent" (click)="onViewNeta($event)">View</button>
         </mat-card-actions>
         <!-- <mat-card-footer> Section anchored to the bottom of the card</mat-card-footer> -->
       </mat-card>

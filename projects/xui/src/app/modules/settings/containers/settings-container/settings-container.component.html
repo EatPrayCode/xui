@@ -4,7 +4,7 @@
       <h1>{{ 'app.settings.title' | translate }}</h1>
     </div>
   </div>
-  <mat-tab-group mat-stretch-tabs class="mat-elevation-z4" disablePagination=true (selectedTabChange)="onSequenceChangeEvent($event)">
+  <mat-tab-group mat-stretch-tabs class="mat-elevation-z4 tabs-container" disablePagination=true (selectedTabChange)="onSequenceChangeEvent($event)">
   
     <mat-tab *ngFor="let link of mainMenuItems" [label]="link" [routerLink]="link.link">
   

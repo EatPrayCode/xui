@@ -1,13 +1,23 @@
 .container {
-    margin-top: 20px;
-  }
-  
-  h1 {
-    // margin: 0 0 20px 0;
-    text-transform: uppercase;
-  }
-  
-  h2 {
-    margin: 0 0 10px 0;
-    text-transform: uppercase;
-  }
+  margin-top: 20px;
+}
+
+h1 {
+  // margin: 0 0 20px 0;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs-container {
+  border-radius: 35px;
+  overflow-x: hidden;
+}
