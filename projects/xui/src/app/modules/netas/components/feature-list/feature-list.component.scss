@@ -20,11 +20,13 @@ mat-card {
 
   mat-card-title {
     position: relative;
+    margin-bottom: 10px;
   }
 
   @media (max-width: map-get($grid-breakpoints, sm)) {
     mat-card-subtitle {
       min-height: auto;
+      margin-bottom: 5px;
     }
   }
 
@@ -44,7 +46,7 @@ mat-card {
 }
 
 .main-image {
-  margin: 5px auto;
+  margin: 0px 0px 0.5rem auto;
   width: 100%;
 }
 
@@ -100,3 +102,4 @@ mat-card.mat-elevation-z4 .selection {
   margin-bottom: 0px;
   padding-bottom: 0;
 }
+
