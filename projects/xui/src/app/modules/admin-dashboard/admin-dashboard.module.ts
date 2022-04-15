@@ -27,20 +27,17 @@ export function httpLoaderFactory(http: HttpClient) {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     AdminDashboardRoutingModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpLoaderFactory,
-        deps: [HttpClient]
-      },
-      isolate: true
-    }),
+    // TranslateModule.forChild({
+    //   loader: {
+    //     provide: TranslateLoader,
+    //     useFactory: httpLoaderFactory,
+    //     deps: [HttpClient]
+    //   },
+    //   isolate: true
+    // }),
     
     CommonModule,
-    FlexLayoutModule,
     DemoMaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
     SharedModule,
   ],
   declarations: [

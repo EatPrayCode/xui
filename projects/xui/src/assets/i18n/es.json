@@ -39,6 +39,10 @@
     "app.menu.examples": "Ejemplos",
     "app.menu.blog": "Blog",
     "app.menu.visualise": "Visualise",
+    "app.settings.general-settings": "General SettingsES",
+    "app.dashboard.menu.home": "Admin HomeES",
+    "app.dashboard.menu.other": "Admin OtherES",
+
     "app.menu.home": "Home",
     "app.menu.etracker": "Elections",
     "app.menu.admin-dashboard": "Admin Dashboard",

@@ -50,6 +50,10 @@
     "app.menu.login": "Connexion",
     "app.menu.logout": "Déconnexion",
     "app.menu.settings": "Paramètres",
+    "app.settings.general-settings": "General SettingsFR",
+    "app.dashboard.menu.home": "Admin HomeFR",
+    "app.dashboard.menu.other": "Admin OtherFR",
+
     "app.settings.animations.elements": "Les éléments de la page de navigation glissent vers le haut",
     "app.settings.animations.page": "Transition de la page entière lors de la navigation",
     "app.settings.animations.title": "Animations",

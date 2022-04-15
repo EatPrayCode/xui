@@ -9,7 +9,7 @@
     <mat-tab *ngFor="let link of mainMenuItems" [label]="link" [routerLink]="link.link">
   
       <ng-template mat-tab-label>
-        <span>{{link.label}}</span>
+        <span>{{link.label|translate}}</span>
       </ng-template>
   
     </mat-tab>

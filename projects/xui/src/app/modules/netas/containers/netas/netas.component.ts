@@ -11,8 +11,10 @@ import {
   RouterLinkActive,
   Routes
 } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
+import { State } from '../../../../core/settings/settings.model';
 
 @Component({
   selector: 'app-netas',
@@ -28,6 +30,7 @@ export class NetasComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private store: Store<State>,
     private changeDetector: ChangeDetectorRef
   ) {}
 
@@ -38,24 +41,24 @@ export class NetasComponent implements OnInit {
       id: 'netas-for-you',
       link: 'netas-for-you',
       name: 'For you',
-      label: 'You'
+      label: 'app.netas.menu.netas-by-area'
     },
     {
       id: 'netas-top',
       link: 'netas-top',
       name: 'Top',
-      label: 'Top'
+      label: 'app.netas.menu.netas-by-area'
     },
     {
       id: 'netas-by-state',
       link: 'netas-by-state',
       name: 'State',
-      label: 'State'
+      label: 'app.netas.menu.netas-by-area'
     },
     {
       link: 'netas-national',
       name: 'National',
-      label: 'National'
+      label: 'app.netas.menu.netas-by-area'
     }
   ];
   selectedType: any;

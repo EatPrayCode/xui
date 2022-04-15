@@ -11,7 +11,7 @@
         <mat-tab *ngFor="let link of mainMenuItems" [label]="link" [routerLink]="link.link">
 
             <ng-template mat-tab-label>
-                <span class="header-div">{{link.label}}</span>
+                <span class="header-div">{{link.label|translate}}</span>
             </ng-template>
 
         </mat-tab>
@@ -22,7 +22,8 @@
     <div>
         <mat-sidenav-container class="sidenav-container">
             <mat-sidenav #leftSidenav mode="side" opened>
-                <app-admin-dashboard-left-menu (selectNetaEvt)="handleSelectNeta($event)"></app-admin-dashboard-left-menu>
+                <app-admin-dashboard-left-menu (selectNetaEvt)="handleSelectNeta($event)">
+                </app-admin-dashboard-left-menu>
             </mat-sidenav>
             <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open': 'close'">
                 <div class="main_content">

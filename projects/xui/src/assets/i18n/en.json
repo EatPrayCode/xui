@@ -67,7 +67,12 @@
     "app.settings.general.language.sk": "Slovak",
     "app.settings.general.language.zh-cn": "Simple Chinese",
     "app.settings.general.placeholder": "Language",
-    "app.settings.general.title": "General",
+    "app.settings.general.title": "General1",
+    "app.settings.general-settings": "General Settings",
+    "app.dashboard.menu.home": "Admin Home",
+    "app.dashboard.menu.other": "Admin Other",
+
+    "app.settings.general.settings-title": "settings-title",
     "app.settings.themes.blue": "Blue",
     "app.settings.themes.dark": "Dark",
     "app.settings.themes.light": "Light",

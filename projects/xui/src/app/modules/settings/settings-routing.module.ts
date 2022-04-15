@@ -19,12 +19,13 @@ const routes: Routes = [
       {
         path: 'settings-general',
         component: SettingsGeneralComponent,
-        data: { title: 'app.netas.menu.netas-top' }
+        data: { title: 'app.settings.general.title' }
+        
       },
       {
         path: 'settings-netas',
         component: SettingsNetasComponent,
-        data: { title: 'app.netas.menu.netas-for-you' }
+        data: { title: 'app.settings.general.settings-title' }
       }
     ]
   }

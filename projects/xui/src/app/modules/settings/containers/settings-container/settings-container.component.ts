@@ -15,19 +15,19 @@ export class SettingsContainerComponent {
       id: 'settings-general',
       link: 'settings-general',
       name: 'settings-general',
-      label: 'General'
+      label: 'app.settings.general-settings'
     },
     {
       id: 'settings-netas',
       link: 'settings-netas',
       name: 'settings-netas',
-      label: 'Netas'
+      label: 'app.settings.netas-settings'
     },
     {
       id: 'settings-privacy',
       link: 'settings-general',
       name: 'settings-privacy',
-      label: 'Privacy'
+      label: 'app.settings.privacy'
     }
   ];
 

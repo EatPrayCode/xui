@@ -17,12 +17,12 @@ const routes: Routes = [
       {
         path: 'admin-other',
         component: AdminHomeComponent,
-        data: { title: 'app.connect.menu.connect-home' },
+        data: { title: 'app.dashboard.other' },
       },
       {
         path: 'admin-home',
         component: AdminOtherComponent,
-        data: { title: 'app.connect.menu.connect-home' },
+        data: { title: 'app.dashboard.other' },
       }
     ]
   }

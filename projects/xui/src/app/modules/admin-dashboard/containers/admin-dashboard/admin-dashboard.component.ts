@@ -5,6 +5,8 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/animations/route.animations';
 import { Observable } from 'rxjs';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { State } from '../../../../core/settings/settings.model';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -29,7 +31,7 @@ export class AdminDashboardComponent implements OnInit {
       id: 'admin-other',
       link: 'dashboard/admin-other',
       name: 'Other',
-      label: 'app.dashboard.other'
+      label: 'app.dashboard.menu.other'
     }
   ];
   selectedType: any;
@@ -43,12 +45,12 @@ export class AdminDashboardComponent implements OnInit {
   onSequenceChangeEvent(event: MatTabChangeEvent) {
     // console.log(event.index);
     let link: any = this.mainMenuItems[event.index].link;
-    let currentUrl: any = `/netas/${link}`;
+    let currentUrl: any = `/${link}`;
     this.router.navigate([currentUrl]);
   }
 
 
-  constructor(private _sidenavService: SidenavService, private router: Router) {
+  constructor(private store: Store<State>,private _sidenavService: SidenavService, private router: Router) {
     this._sidenavService.sideNavState$.subscribe((res) => {
       this.onSideNavChange = res;
       if (res == true) {
