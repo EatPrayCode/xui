@@ -11,8 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'about',
-        pathMatch: 'full'
+        component: AboutComponent
       },
       {
         path: 'settings',
@@ -24,7 +23,7 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () =>
-          import('./modules/home/setup.module').then((m) => m.SetupModule)
+          import('./modules/home/home.module').then((m) => m.SetupModule)
       },
       {
         path: 'netas',
@@ -37,8 +36,9 @@ const routes: Routes = [
           import('./modules/contacts/contacts.module').then((m) => m.ContactsModule)
       },
       {
-        path: 'about',
-        component: AboutComponent
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./modules/connect/connect.module').then((m) => m.ConnectModule)
       },
     ]
   },
@@ -55,7 +55,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'about'
+    redirectTo: ''
   }
 ];
 

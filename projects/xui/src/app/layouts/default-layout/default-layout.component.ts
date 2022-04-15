@@ -39,7 +39,7 @@ export class DefaultLayoutComponent implements OnInit {
   loaderMode: any = 'indeterminate';
   navigation: any = [
     {
-      link: 'about',
+      link: 'home',
       label: 'app.menu.home',
       icon: 'mail'
     },
@@ -48,11 +48,11 @@ export class DefaultLayoutComponent implements OnInit {
       label: 'app.menu.netas',
       icon: 'phone'
     },
-    // {
-    //   link: 'contacts',
-    //   label: 'app.menu.dashboard',
-    //   icon: 'person'
-    // },
+    {
+      link: 'dashboard',
+      label: 'app.menu.dashboard',
+      icon: 'person'
+    },
     // {
     //   link: 'visualize',
     //   label: 'app.menu.visualise',

@@ -3,49 +3,14 @@
     <div class="container">
       <h1>{{ 'app.title.long' | translate }}</h1>
       <div class="actions">
-        <a [ngClass]="routeAnimationsElements" mat-raised-button class="actions-main" color="primary" routerLink="../feature-list">
-          {{ 'app.menu.features' | translate }}
+        <a [ngClass]="routeAnimationsElements" mat-raised-button class="actions-main" color="primary" routerLink="/netas">
+          {{ 'app.menu.explore-netas' | translate }}
         </a>
-        <a mat-raised-button class="actions-main" color="accent" routerLink="../examples" [ngClass]="routeAnimationsElements">
-          {{ 'app.menu.examples' | translate }}
+        <a mat-raised-button class="actions-main" color="accent" routerLink="/home" [ngClass]="routeAnimationsElements">
+          {{ 'app.menu.start-as-citizen' | translate }}
         </a>
-        <a mat-raised-button class="actions-main" color="warn" routerLink="../settings" [ngClass]="routeAnimationsElements">
-          {{ 'app.about.change-theme' | translate }}
-        </a>
-        <br>
-        <span [ngClass]="routeAnimationsElements">{{ 'app.about.check-blogs' | translate }}</span>
-        <br>
-        <a mat-raised-button
-           [ngClass]="routeAnimationsElements"
-           rel="noopener noreferrer"
-           target="_blank"
-           href="https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1">
-           <!-- <fa-icon [icon]="['fab','medium-m']"></fa-icon> -->
-          Material Theming
-        </a>
-        <a mat-raised-button
-           [ngClass]="routeAnimationsElements"
-           rel="noopener noreferrer"
-           target="_blank"
-           href="https://medium.com/@tomastrajan/6-best-practices-pro-tips-for-angular-cli-better-developer-experience-7b328bc9db81">
-           <!-- <fa-icon [icon]="['fab','medium-m']"></fa-icon> -->
-          Angular Cli Tips
-        </a>
-        <a mat-raised-button
-           [ngClass]="routeAnimationsElements"
-           target="_blank"
-           rel="noopener noreferrer"
-           href="https://medium.com/@tomastrajan/object-assign-vs-object-spread-in-angular-ngrx-reducers-3d62ecb4a4b0">
-           <!-- <fa-icon [icon]="['fab','medium-m']"></fa-icon> -->
-          Ngrx Typescript Tips
-        </a>
-        <a mat-raised-button
-           [ngClass]="routeAnimationsElements"
-           target="_blank"
-           rel="noopener noreferrer"
-           href="https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554">
-           <!-- <fa-icon [icon]="['fab','medium-m']"></fa-icon> -->
-          App Loading Style
+        <a mat-raised-button class="actions-main" color="warn" routerLink="/contacts" [ngClass]="routeAnimationsElements">
+          {{ 'app.menu.start-as-neta' | translate }}
         </a>
       </div>
     </div>
