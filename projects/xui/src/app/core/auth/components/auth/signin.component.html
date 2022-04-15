@@ -1,0 +1,25 @@
+<div class="pen-title">
+  <h1>nconnect</h1>
+  <span>Tagline <i class='fa fa-code'></i>
+    by <a>Tagline</a>
+  </span>
+</div>
+<app-register *ngIf="showRegister"></app-register>
+
+<app-login *ngIf="showLogin"></app-login>
+<button *ngIf="showLogin" mat-button (click)="signInWithGoogle()"><span>Sign in with Google</span></button>
+
+
+<div *ngIf="showRegister" class="footer">
+  <a (click)="handlePasswordForgot()">Forgot your password?</a>
+  <br />
+  <a (click)="handleSigninClick()">Already have an account?</a>
+</div>
+
+<div *ngIf="showLogin" class="footer">
+  <a (click)="handlePasswordForgot()">Forgot your password?</a>
+  <br />
+  <a (click)="handleRegisterClick()">New User?</a>
+</div>
+
+<button (click)="signInAnonymously()"><span>Continue as Guest</span></button>

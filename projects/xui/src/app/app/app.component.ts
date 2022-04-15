@@ -11,7 +11,7 @@ import {
   routeAnimations
 } from './../core/core.module';
 import { ChooseAppSettingsModalComponent } from './../core/auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
-import { SigninComponent } from './../core/auth/components/signin/signin.component';
+import { SigninComponent } from '../core/auth/components/auth/signin.component';
 import { AppService } from '../services/app.service';
 import { appState } from '../models/app.state';
 import { UserService } from '../services/user.service';

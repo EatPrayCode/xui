@@ -1,4 +1,32 @@
-<h2>Login</h2>
+<div class="container">
+  <div class="card"></div>
+  <div class="card">
+    <h1 class="title">Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <input type="text" formControlName="email" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <label for="email">Email</label>
+        <div *ngIf="submitted && f.email.errors" class="bar">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+      </div>
+      <div class="input-container">
+        <input type="password" formControlName="password" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <label for="password">password</label>
+        <div *ngIf="submitted && f.password.errors" class="bar">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button><span>Go</span></button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- <h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="email">email</label>
@@ -22,4 +50,4 @@
             Login
         </button>
     </div>
-</form>
+</form> -->

@@ -9,7 +9,7 @@ import {
   routeAnimations
 } from './../../core/core.module';
 import { ChooseAppSettingsModalComponent } from './../../core/auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
-import { SigninComponent } from './../../core/auth/components/signin/signin.component';
+import { SigninComponent } from '../../core/auth/components/auth/signin.component';
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updatePassword } from 'firebase/auth';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -48,20 +48,20 @@ export class DefaultLayoutComponent implements OnInit {
       label: 'app.menu.netas',
       icon: 'phone'
     },
-    {
-      link: 'contacts',
-      label: 'app.menu.dashboard',
-      icon: 'person'
-    },
+    // {
+    //   link: 'contacts',
+    //   label: 'app.menu.dashboard',
+    //   icon: 'person'
+    // },
     // {
     //   link: 'visualize',
     //   label: 'app.menu.visualise',
     //   icon: 'cog'
     // },
     {
-      link: '/sampleneta',
-      label: 'app.menu.blog',
-      icon: 'person'
+      link: 'settings',
+      label: 'app.menu.settings',
+      icon: 'mail'
     },
     // {
     //   link: 'about',
@@ -71,11 +71,6 @@ export class DefaultLayoutComponent implements OnInit {
   ];
   navigationSideMenu = [
     ...this.navigation,
-    {
-      link: 'settings',
-      label: 'app.menu.settings',
-      icon: 'mail'
-    },
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;

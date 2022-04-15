@@ -61,9 +61,9 @@
 
                     </ng-container>
 
-                    <button mat-icon-button routerLink="settings" class="d-sm-inline">
+                    <!-- <button mat-icon-button routerLink="settings" class="d-sm-inline">
                         <fa-icon icon="cog"></fa-icon>
-                    </button>
+                    </button> -->
 
                     <span *ngIf="language$ | async as language">
                         <mat-select [ngModel]="language" (selectionChange)="onLanguageSelect($event)">

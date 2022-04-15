@@ -19,12 +19,8 @@ export class LoginComponent implements OnInit {
     @Output() submitChange: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-    ) {
-
-    }
+        private formBuilder: FormBuilder
+    ) { }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({

@@ -1,4 +1,4 @@
-import { AppService } from './../../../../services/app.service';
+import { AppService } from '../../../../services/app.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,18 +11,16 @@ import { UserService } from '../../../../services/user.service';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+
   errorMessage!: string;
   showLogin: any = true;
   showRegister: any = false;
 
-  constructor(private formBuilder: FormBuilder,
-    private ref: MatDialogRef<SigninComponent>,
+  constructor(private ref: MatDialogRef<SigninComponent>,
     public appService: AppService,
     public userService: UserService,) { }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() { }
 
   handleLogin(event) {
     const { email, password, username } = event;
@@ -63,7 +61,7 @@ export class SigninComponent implements OnInit {
       this.registerWithPassword(email, password);
     },
       err => {
-        console.log(err,"error occured")
+        console.log(err, "error occured")
       });
   }
 
@@ -71,6 +69,20 @@ export class SigninComponent implements OnInit {
     this.appService.registerWithPassword(email, password).then((result) => {
       this.closeAuthDialog(result);
     });
+  }
+
+  handlePasswordForgot() {
+
+  }
+
+  handleRegisterClick() {
+    this.showLogin = false;
+    this.showRegister = true;
+  }
+
+  handleSigninClick(){
+    this.showLogin = true;
+    this.showRegister = false;
   }
 
   signInPassword(email, password, username) {

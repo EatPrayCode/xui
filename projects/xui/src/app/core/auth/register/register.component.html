@@ -1,37 +1,89 @@
-<h2>Register</h2>
+<div class="container">
+  <div class="card"></div>
+  <div class="card">
+    <h1 class="title">Register</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <input type="text" formControlName="firstName" class="form-control"
+           />
+        <label for="firstName">First Name</label>
+        <div *ngIf="f.firstName.errors" class="bar">
+          <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <div class="input-container">
+        <input type="text" formControlName="lastName" class="form-control"
+           />
+        <label for="lastName">Last Name</label>
+        <div *ngIf="f.lastName.errors" class="bar">
+          <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+      </div>
+      </div>
+      <div class="input-container">
+        <input type="text" formControlName="username" class="form-control"
+           />
+        <label for="username">Username</label>
+        <div *ngIf="f.username.errors" class="bar">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+      </div>
+      </div>
+      <div class="input-container">
+        <input type="text" formControlName="email" class="form-control"
+           />
+        <label for="email">Email</label>
+        <div *ngIf="f.email.errors" class="bar">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+      </div>
+      </div>
+      <div class="input-container">
+        <input type="password" formControlName="password" class="form-control"
+           />
+        <label for="password">password</label>
+        <div *ngIf="f.password.errors" class="bar">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+      </div>
+      </div>
+      <div class="button-container">
+        <button><span>Go</span></button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- <h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+        <input type="text" formControlName="firstName" class="form-control"  />
+        <div *ngIf="f.firstName.errors" class="bar">
             <div *ngIf="f.firstName.errors.required">First Name is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="lastName">Last Name</label>
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+        <input type="text" formControlName="lastName" class="form-control"  />
+        <div *ngIf="f.lastName.errors" class="bar">
             <div *ngIf="f.lastName.errors.required">Last Name is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="lastName">Email</label>
-        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <input type="text" formControlName="email" class="form-control"  />
+        <div *ngIf="f.email.errors" class="bar">
             <div *ngIf="f.email.errors.required">Email is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <input type="text" formControlName="username" class="form-control"  />
+        <div *ngIf="f.username.errors" class="bar">
             <div *ngIf="f.username.errors.required">Username is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <input type="password" formControlName="password" class="form-control"  />
+        <div *ngIf="f.password.errors" class="bar">
             <div *ngIf="f.password.errors.required">Password is required</div>
             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
         </div>
@@ -42,4 +94,4 @@
             Register
         </button>
     </div>
-</form>
+</form> -->
