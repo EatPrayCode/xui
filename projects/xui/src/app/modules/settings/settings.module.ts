@@ -9,7 +9,15 @@ import { SettingsNetasComponent } from './components/settings-netas/settings-net
 import { SettingsContainerComponent } from './containers/settings-container/settings-container.component';
 
 @NgModule({
-  declarations: [SettingsContainerComponent, SettingsGeneralComponent, SettingsNetasComponent],
-  imports: [CommonModule, SharedModule, SettingsRoutingModule]
+  declarations: [
+    SettingsContainerComponent,
+    SettingsGeneralComponent,
+    SettingsNetasComponent
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    SettingsRoutingModule
+  ]
 })
-export class SettingsModule {}
+export class SettingsModule { }
