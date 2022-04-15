@@ -47,13 +47,6 @@ export class SettingsGeneralComponent implements OnInit {
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
-    // this.appService.appSettingsSubject.subscribe(res => {
-    //   if (res.dataLoaded) {
-    //     this.store.dispatch(
-    //       actionInitialiseSettings({ payload: res.userSettings })
-    //     );
-    //   }
-    // });
   }
 
   onLanguageSelect(change: MatSelectChange) {
