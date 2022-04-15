@@ -22,7 +22,7 @@
     <div>
         <mat-sidenav-container class="sidenav-container">
             <mat-sidenav #leftSidenav mode="side" opened>
-                <app-connect-left-menu (selectNetaEvt)="handleSelectNeta($event)"></app-connect-left-menu>
+                <app-admin-dashboard-left-menu (selectNetaEvt)="handleSelectNeta($event)"></app-admin-dashboard-left-menu>
             </mat-sidenav>
             <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open': 'close'">
                 <div class="main_content">

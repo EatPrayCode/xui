@@ -1,15 +1,16 @@
-import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
 import { SidenavService } from '../../../../core/services/sidenav.service';
-import { onSideNavChange, animateText } from '../../animations/animations';
+import { animateText, onSideNavChange } from '../../animations/animations';
 
 @Component({
-  selector: 'app-connect-left-menu',
-  templateUrl: './connect-left-menu.component.html',
-  styleUrls: ['./connect-left-menu.component.scss'],
+  selector: 'app-admin-dashboard-left-menu',
+  templateUrl: './admin-dashboard-left-menu.component.html',
+  styleUrls: ['./admin-dashboard-left-menu.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [onSideNavChange, animateText],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ConnectLeftMenuComponent  implements OnInit {
+export class AdminDashboardLeftMenuComponent implements OnInit {
+
   public sideNavState: boolean = true;
   public linkText: boolean = false;
   @Output() selectNetaEvt = new EventEmitter();
@@ -69,4 +70,5 @@ export class ConnectLeftMenuComponent  implements OnInit {
   selectNetaLeftMenu(neta: any) {
     this.selectNetaEvt.emit(neta);
   }
+
 }

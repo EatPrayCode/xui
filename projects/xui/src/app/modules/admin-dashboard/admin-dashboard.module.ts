@@ -1,3 +1,7 @@
+import { AdminOtherComponent } from './components/admin-other/admin-other.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AdminDashboardLeftMenuComponent } from './containers/admin-dashboard-left-menu/admin-dashboard-left-menu.component';
+import { AdminDashboardComponent } from './containers/admin-dashboard/admin-dashboard.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -5,10 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { SharedModule } from '../../shared/shared.module';
 import { environment } from '../../../environments/environment';
-import { ConnectRoutingModule } from './connect-routing.module';
-import { ConnectComponent } from './containers/connect/connect.component';
-import { ConnectLeftMenuComponent } from './containers/connect-left-menu/connect-left-menu.component';
-import { ConnectHomeComponent } from './components/connect-home/connect-home.component';
+import { AdminDashboardRoutingModule } from './admin-dashboard-routing.module';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +18,7 @@ import { DemoMaterialModule } from '../../shared/demo-material-module';
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
     http,
-    `${environment.i18nPrefix}/assets/i18n/dashboard/`,
+    `${environment.i18nPrefix}/assets/i18n/admin-dashboard/`,
     '.json'
   );
 }
@@ -25,7 +26,7 @@ export function httpLoaderFactory(http: HttpClient) {
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    ConnectRoutingModule,
+    AdminDashboardRoutingModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -43,12 +44,13 @@ export function httpLoaderFactory(http: HttpClient) {
     SharedModule,
   ],
   declarations: [
-    ConnectComponent,
-    ConnectLeftMenuComponent,
-    ConnectHomeComponent
+    AdminDashboardComponent,
+    AdminDashboardLeftMenuComponent,
+    AdminHomeComponent,
+    AdminOtherComponent
   ],
   providers: []
 })
-export class ConnectModule {
+export class AdminDashboardModule {
   constructor() {}
 }

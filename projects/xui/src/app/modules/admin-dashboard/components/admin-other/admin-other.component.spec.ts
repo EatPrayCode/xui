@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConnectLeftMenuComponent } from './connect-left-menu.component';
+import { AdminOtherComponent } from './admin-other.component';
 
-describe('ConnectLeftMenuComponent', () => {
-  let component: ConnectLeftMenuComponent;
-  let fixture: ComponentFixture<ConnectLeftMenuComponent>;
+describe('AdminOtherComponent', () => {
+  let component: AdminOtherComponent;
+  let fixture: ComponentFixture<AdminOtherComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConnectLeftMenuComponent ]
+      declarations: [ AdminOtherComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConnectLeftMenuComponent);
+    fixture = TestBed.createComponent(AdminOtherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

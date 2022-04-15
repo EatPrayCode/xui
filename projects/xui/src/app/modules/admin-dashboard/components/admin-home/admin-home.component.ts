@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-connect-home',
-  templateUrl: './connect-home.component.html',
-  styleUrls: ['./connect-home.component.scss'],
+  selector: 'app-admin-home',
+  templateUrl: './admin-home.component.html',
+  styleUrls: ['./admin-home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ConnectHomeComponent implements OnInit {
+export class AdminHomeComponent implements OnInit {
 
   constructor() { }
 

@@ -1,38 +1,35 @@
-import { onMainContentChange } from './../../animations/animations';
+import { onMainContentChange } from './../../../../core/animations/sidenav.animations';
 import { Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Observable, of } from 'rxjs';
-
-import {
-  routeAnimations, ROUTE_ANIMATIONS_ELEMENTS
-} from '../../../../core/core.module';
 import { SidenavService } from '../../../../core/services/sidenav.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/animations/route.animations';
+import { Observable } from 'rxjs';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-connect',
-  templateUrl: './connect.component.html',
-  styleUrls: ['./connect.component.scss'],
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [onMainContentChange],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ConnectComponent implements OnInit {
+export class AdminDashboardComponent implements OnInit {
+
   isAuthenticated$: Observable<boolean> | undefined;
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   mainMenuItems: any = [
     {
-      id: 'connect-home',
-      link: '/connect/connect-home',
+      id: 'admin-home',
+      link: 'admin-dashboard/admin-home',
       name: 'Home',
-      label: 'app.dashboard.connect-home'
+      label: 'app.admin-dashboard.menu.home'
     },
     {
-      id: 'connect-other',
-      link: '/connect/connect-home',
+      id: 'admin-other',
+      link: 'admin-dashboard/admin-other',
       name: 'Other',
-      label: 'app.dashboard.connect-other'
+      label: 'app.admin-dashboard.other'
     }
   ];
   selectedType: any;
@@ -67,7 +64,7 @@ export class ConnectComponent implements OnInit {
 
   handleSelectNeta(neta: any) {
     let netaId: any = neta.id || 'DEFAULT';
-    this.router.navigate([`/connect/connect-history/${netaId}`]);
+    this.router.navigate([`/admin-dashboard/admin-home/${netaId}`]);
   }
 
 }

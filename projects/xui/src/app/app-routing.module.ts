@@ -36,9 +36,9 @@ const routes: Routes = [
           import('./modules/contacts/contacts.module').then((m) => m.ContactsModule)
       },
       {
-        path: 'dashboard',
+        path: 'admin-dashboard',
         loadChildren: () =>
-          import('./modules/connect/connect.module').then((m) => m.ConnectModule)
+          import('./modules/admin-dashboard/admin-dashboard.module').then((m) => m.AdminDashboardModule)
       },
     ]
   },
