@@ -41,24 +41,24 @@ export class NetasComponent implements OnInit {
       id: 'netas-for-you',
       link: 'netas-for-you',
       name: 'For you',
-      label: 'app.netas.menu.netas-by-area'
+      label: 'app.netas.tab.netas-for-you'
     },
     {
       id: 'netas-top',
       link: 'netas-top',
       name: 'Top',
-      label: 'app.netas.menu.netas-by-area'
+      label: 'app.netas.tab.netas-top'
     },
     {
       id: 'netas-by-state',
       link: 'netas-by-state',
       name: 'State',
-      label: 'app.netas.menu.netas-by-area'
+      label: 'app.netas.tab.netas-by-state'
     },
     {
       link: 'netas-national',
       name: 'National',
-      label: 'app.netas.menu.netas-by-area'
+      label: 'app.netas.tab.netas-national'
     }
   ];
   selectedType: any;

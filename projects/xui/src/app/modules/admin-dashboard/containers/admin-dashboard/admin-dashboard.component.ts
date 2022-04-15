@@ -25,13 +25,13 @@ export class AdminDashboardComponent implements OnInit {
       id: 'admin-home',
       link: 'dashboard/admin-home',
       name: 'Home',
-      label: 'app.dashboard.menu.home'
+      label: 'app.dashboard.tab.home'
     },
     {
       id: 'admin-other',
       link: 'dashboard/admin-other',
       name: 'Other',
-      label: 'app.dashboard.menu.other'
+      label: 'app.dashboard.tab.other'
     }
   ];
   selectedType: any;

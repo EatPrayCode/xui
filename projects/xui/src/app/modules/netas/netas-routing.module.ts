@@ -16,22 +16,22 @@ const routes: Routes = [
       {
         path: 'netas-top',
         component: NetasForYouComponent,
-        data: { title: 'app.netas.menu.netas-top' }
+        data: { title: 'app.netas.tab.netas-top' }
       },
       {
         path: 'netas-for-you',
         component: NetasForYouComponent,
-        data: { title: 'app.netas.menu.netas-for-you' }
+        data: { title: 'app.netas.tab.netas-for-you' }
       },
       {
         path: 'netas-national',
         component: NetasForYouComponent,
-        data: { title: 'app.netas.menu.netas-national' }
+        data: { title: 'app.netas.tab.netas-national' }
       },
       {
         path: 'netas-by-state',
         component: NetasForYouComponent,
-        data: { title: 'app.netas.menu.netas-by-state' }
+        data: { title: 'app.netas.tab.netas-by-state' }
       }
     ]
   }
