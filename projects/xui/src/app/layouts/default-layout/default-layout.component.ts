@@ -49,8 +49,8 @@ export class DefaultLayoutComponent implements OnInit {
       icon: 'phone'
     },
     {
-      link: 'admin-dashboard',
-      label: 'app.menu.admin-dashboard',
+      link: 'dashboard',
+      label: 'app.menu.dashboard',
       icon: 'person'
     },
     // {

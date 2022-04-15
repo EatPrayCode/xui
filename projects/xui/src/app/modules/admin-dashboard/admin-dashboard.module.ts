@@ -18,7 +18,7 @@ import { DemoMaterialModule } from '../../shared/demo-material-module';
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
     http,
-    `${environment.i18nPrefix}/assets/i18n/admin-dashboard/`,
+    `${environment.i18nPrefix}/assets/i18n/dashboard/`,
     '.json'
   );
 }

@@ -21,15 +21,15 @@ export class AdminDashboardComponent implements OnInit {
   mainMenuItems: any = [
     {
       id: 'admin-home',
-      link: 'admin-dashboard/admin-home',
+      link: 'dashboard/admin-home',
       name: 'Home',
-      label: 'app.admin-dashboard.menu.home'
+      label: 'app.dashboard.menu.home'
     },
     {
       id: 'admin-other',
-      link: 'admin-dashboard/admin-other',
+      link: 'dashboard/admin-other',
       name: 'Other',
-      label: 'app.admin-dashboard.other'
+      label: 'app.dashboard.other'
     }
   ];
   selectedType: any;

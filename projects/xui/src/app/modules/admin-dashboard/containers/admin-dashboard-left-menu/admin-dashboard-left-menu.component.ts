@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
+import { animateText, onSideNavChange } from '../../../../core/animations/sidenav.animations';
 import { SidenavService } from '../../../../core/services/sidenav.service';
-import { animateText, onSideNavChange } from '../../animations/animations';
 
 @Component({
   selector: 'app-admin-dashboard-left-menu',
