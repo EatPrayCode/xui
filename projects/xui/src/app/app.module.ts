@@ -23,6 +23,7 @@ import { AboutComponent } from './about/about.component';
 import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component';
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
+import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.
     AboutComponent,
     NetaLayoutComponent,
     LandingLayoutComponent,
-    DefaultLayoutComponent
+    DefaultLayoutComponent,
+    CartIconComponent
   ],
   bootstrap: [AppComponent]
 })

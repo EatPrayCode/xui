@@ -1,0 +1,25 @@
+
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.basket {
+  display: flex; 
+  position: relative;
+  right: 20px;
+  text-decoration: none;
+  span.price {
+    align-self: center;
+    margin-left: 10px;
+  }
+  span.count {
+    position: absolute;
+    top: 0;
+    left: 18px;
+    color: #fff;
+    font-size: 8px;
+    font-weight: bold;
+  }
+}

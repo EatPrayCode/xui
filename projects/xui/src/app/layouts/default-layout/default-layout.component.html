@@ -24,12 +24,12 @@
                     <button mat-icon-button class="d-md-none" (click)="sidenav.open()">
                         <fa-icon icon="bars"></fa-icon>
                     </button>
-                    <span routerLink="" class="branding spacer d-inline d-sm-none"> <img [src]="logo"
-                            [alt]="logo" /></span>
-                    <span routerLink="" class="branding spacer d-none d-sm-inline d-md-none"><img [src]="logo"
-                            [alt]="logo" /> {{ 'app.title.short' | translate }}</span>
-                    <span routerLink="" class="branding spacer d-none d-md-inline"><img [src]="logo" [alt]="logo" /> {{
-                        'app.title.long' | translate }}</span>
+                    <span routerLink="" class="branding spacer d-sm-inline">
+                        <img [src]="logo" [alt]="logo" /> {{ 'app.title.short' | translate }}
+                    </span>
+                    <!-- <span routerLink="" class="branding spacer d-none d-md-inline">
+                        <img [src]="logo" [alt]="logo" /> {{'app.title.long' | translate }}
+                    </span> -->
                     <span class="d-none d-md-inline">
                         <button mat-button class="nav-button" *ngFor="let item of navigation" [routerLink]="[item.link]"
                             routerLinkActive="active">
@@ -38,6 +38,10 @@
                     </span>
 
                     <ng-container *ngIf="user$ | async as user">
+
+                        <!-- <span>
+                            <app-cart-icon></app-cart-icon>
+                        </span> -->
 
                         <button mat-button mat-stroked-button color="accent" *ngIf="!user?.uid"
                             (click)="openLoginDialog()">
@@ -59,6 +63,7 @@
                             </button>
                         </mat-menu>
 
+
                     </ng-container>
 
                     <span *ngIf="language$ | async as language">
@@ -68,12 +73,13 @@
                             </mat-option>
                         </mat-select>
                     </span>
+
                 </mat-toolbar>
 
                 <mat-progress-bar [mode]="loaderMode" value="100"></mat-progress-bar>
 
             </div>
-            
+
             <div class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig?.data?.title">
                 <router-outlet #o="outlet">
                 </router-outlet>
@@ -125,9 +131,8 @@
     </mat-sidenav-container>
 
     <nav class="mobile-bottom-nav" *ngIf="theme$ | async as theme">
-        <div *ngFor="let item of navigation"
-            class="mobile-bottom-nav__item"
-            [routerLink]="[item.link]" routerLinkActive="active">
+        <div *ngFor="let item of navigation" class="mobile-bottom-nav__item" [routerLink]="[item.link]"
+            routerLinkActive="active">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">{{item.icon}}</i>
                 {{item.label | translate}}
