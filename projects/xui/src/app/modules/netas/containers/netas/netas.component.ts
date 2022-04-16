@@ -38,12 +38,6 @@ export class NetasComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   mainMenuItems: any = [
     {
-      id: 'netas-for-you',
-      link: 'netas-for-you',
-      name: 'For you',
-      label: 'app.netas.tab.netas-for-you'
-    },
-    {
       id: 'netas-top',
       link: 'netas-top',
       name: 'Top',
