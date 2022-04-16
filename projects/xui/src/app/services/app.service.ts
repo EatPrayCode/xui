@@ -30,7 +30,6 @@ export class AppService {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
     this.testLocalStorage();
     this.initializeAnimations();
-    this.getAppUserSettings();
   }
 
   testLocalStorage() {
@@ -73,17 +72,6 @@ export class AppService {
     return this.firebaseAuth.registerWithPassword(email, password);
   }
   
-  
-
-  getAppUserSettings() {
-    // this.firebaseAuth.getAppUserSettings().pipe(tap(res => {
-    //   // this.appSettingsSubject.next({ ...res, dataLoaded: true });
-    //   // this.store.dispatch(
-    //   //   actionInitialiseSettings({ payload: res.userSettings })
-    //   // );
-    // })).subscribe();
-  }
-
   logout(): void {
     this.firebaseAuth.logout();
     this.appSettingsSubject.next(appStateFirebaseNull);

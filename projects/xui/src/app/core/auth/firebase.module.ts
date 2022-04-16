@@ -6,8 +6,8 @@ import { environment } from '../../../environments/environment';
 import { ChooseAppSettingsModalComponent } from './components/choose-app-settings-modal/choose-app-settings-modal.component';
 import { SigninComponent } from './components/auth/signin.component';
 import { DemoMaterialModule } from '../../shared/demo-material-module';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({

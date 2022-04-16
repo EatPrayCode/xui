@@ -59,7 +59,6 @@ export class AdminDashboardComponent implements OnInit {
         console.log('Closed');
       }
     });
-    // this.handleSelectNeta({});
   }
 
   ngOnInit(): void { }

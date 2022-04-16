@@ -19,7 +19,7 @@
           <fa-icon icon="language" color="accent"></fa-icon>
         </mat-icon>
         <mat-form-field>
-          <mat-select [placeholder]="'app.settings.general.placeholder' | translate" [ngModel]="settings.language"
+          <mat-select [placeholder]="'app.settings.general.placeholder' | translate" [value]="settings.language"
             (selectionChange)="onLanguageSelect($event)" name="language">
             <ng-container *ngFor="let l of languages">
               <!-- ngFor hack of missing ngLet of Angular -->
@@ -52,7 +52,7 @@
           <fa-icon icon="paint-brush" color="accent"></fa-icon>
         </mat-icon>
         <mat-form-field>
-          <mat-select [placeholder]="'app.settings.themes.placeholder' | translate" [ngModel]="settings.theme"
+          <mat-select [placeholder]="'app.settings.themes.placeholder' | translate" [value]="settings.theme"
             (selectionChange)="onThemeSelect($event)" name="themes">
             <mat-option *ngFor="let t of themes" [value]="t.value">
               {{ 'app.settings.themes.' + t.label | translate }}

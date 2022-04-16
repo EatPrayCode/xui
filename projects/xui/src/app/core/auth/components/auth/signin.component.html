@@ -6,7 +6,7 @@
 </div>
 <app-register *ngIf="showRegister"></app-register>
 
-<app-login *ngIf="showLogin"></app-login>
+<app-login *ngIf="showLogin" (submitChange)="handleLogin($event)"></app-login>
 <button *ngIf="showLogin" mat-button (click)="signInWithGoogle()"><span>Sign in with Google</span></button>
 
 

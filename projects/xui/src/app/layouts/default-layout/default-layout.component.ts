@@ -35,7 +35,16 @@ export class DefaultLayoutComponent implements OnInit {
   version = env.versions.app;
   year = new Date().getFullYear();
   logo = 'assets/logo.webp';
-  languages = ['en', 'fr', 'es'];
+  languagesTemp = [
+    { value: 'en', label: 'English' },
+    { value: 'telugu', label: 'Telugu' },
+    { value: 'hindi', label: 'Hindi' },
+    { value: 'kannada', label: 'Kannada' }
+  ];
+  languages = this.languagesTemp.map(ele => {
+    return ele.value;
+  });
+
   loaderMode: any = 'indeterminate';
   navigation: any = [
     {
@@ -113,15 +122,10 @@ export class DefaultLayoutComponent implements OnInit {
   }
 
   initApp() {
-    this.appService.initAppService();
     this.user$ = this.appService.appSettingsSubject;
     this.stickyHeader$ = this.appService.stickyHeader$
     this.language$ = this.appService.language$;
     this.theme$ = this.appService.theme$;
-    // this.user$.subscribe(res => {
-    //   // console.log(res);
-    //   (res.dataLoaded && res.dataLoaded) ? this.loaderMode = 'determinate' : this.loaderMode = 'indeterminate';
-    // });
   }
 
   openSettingsDialog(): void {

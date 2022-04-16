@@ -34,11 +34,10 @@ export class SettingsGeneralComponent implements OnInit {
 
   languages = [
     { value: 'en', label: 'English' },
-    { value: 'fr', label: 'Français' },
-    { value: 'es', label: 'Español' }
+    { value: 'telugu', label: 'Telugu' },
+    { value: 'hindi', label: 'Hindi' },
+    { value: 'kannada', label: 'Kannada' }
   ];
-
-
 
   constructor(
     private store: Store<State>,

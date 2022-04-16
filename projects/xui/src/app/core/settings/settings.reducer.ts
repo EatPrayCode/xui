@@ -36,7 +36,9 @@ const reducer = createReducer(
     actionSettingsChangeAnimationsPage,
     actionSettingsChangeAnimationsElements,
     actionSettingsChangeHour,
-    (state, action) => ({ ...state, ...action })
+    (state, action) => {
+      return ({ ...state, ...action })
+    }
   ),
   on(
     actionSettingsChangeAnimationsPageDisabled,
