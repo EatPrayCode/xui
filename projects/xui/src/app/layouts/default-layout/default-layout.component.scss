@@ -42,7 +42,7 @@ mat-sidenav-container {
     }
 
     .mat-stroked-button {
-      margin-right: 10px;
+      margin-right: 5px;
     }
 
     .spacer {
@@ -182,3 +182,6 @@ mat-sidenav {
   }
 }
 
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 5px;
+}
