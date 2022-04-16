@@ -6,3 +6,5 @@ https://stackoverflow.com/questions/47145113/angular-material-2-how-to-lock-mat-
 
 https://stackoverflow.com/questions/45794634/loading-google-analytics-after-page-load-by-appending-script-in-head-doesnt-alw
 https://codepen.io/denmch/pen/KpjYVM
+
+https://stackblitz.com/edit/e-commerce-ictch?file=app%2Fheader%2Fheader.component.html

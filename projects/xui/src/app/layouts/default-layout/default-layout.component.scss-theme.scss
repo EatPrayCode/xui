@@ -24,7 +24,7 @@
     height: 3.5rem;
     background-color: mat.get-color-from-palette($primary);
     color: mat.get-color-from-palette($accent, default-contrast);
-    
+
     &__item {
       flex-grow: 1;
       text-align: center;
@@ -38,4 +38,8 @@
       flex-direction: column;
     }
   }
+}
+
+.mat-select-value {
+  text-align: right;
 }
