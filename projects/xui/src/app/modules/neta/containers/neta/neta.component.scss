@@ -3,13 +3,7 @@
   padding: 0;
   perspective: 1px;
   height: 100%;
-  // overflow-y: scroll;
   overflow-x: hidden;
-  font-family: 'avenir next', avenir,
-               helvetica, 'helvetica neue',
-               arial, sans-serif;
-  color: black;
-  background: none;
 }
 
 h1 {
@@ -65,7 +59,7 @@ a:hover {
 
 .card {
   position: relative;
-  padding: 25vh 15px 25vh 2px;
+  // padding: 25vh 15px 25vh 2px;
   min-height: 100%;
   max-width: 100vw;
   transform-style: inherit;

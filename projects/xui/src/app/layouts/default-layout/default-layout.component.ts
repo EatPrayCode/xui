@@ -3,7 +3,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { Observable, of } from 'rxjs';
 
-import { initializeApp } from "firebase/app";
 import {
   AppState,
   routeAnimations
@@ -11,16 +10,12 @@ import {
 import { ChooseAppSettingsModalComponent } from './../../core/auth/components/choose-app-settings-modal/choose-app-settings-modal.component';
 import { SigninComponent } from '../../core/auth/components/auth/signin.component';
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updatePassword } from 'firebase/auth';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Store } from '@ngrx/store';
 import { environment as env } from './../../../environments/environment';
 import { AppService } from '../../services/app.service';
 import { UserService } from '../../services/user.service';
-import { User } from '../../Models/User.Model';
 import { actionInitialiseSettings } from '../../core/settings/settings.actions';
-
-
 
 @Component({
   selector: 'app-default-layout',
@@ -35,15 +30,15 @@ export class DefaultLayoutComponent implements OnInit {
   version = env.versions.app;
   year = new Date().getFullYear();
   logo = 'assets/logo.webp';
-  languagesTemp = [
+  languages = [
     { value: 'en', label: 'English' },
     { value: 'telugu', label: 'Telugu' },
     { value: 'hindi', label: 'Hindi' },
     { value: 'kannada', label: 'Kannada' }
   ];
-  languages = this.languagesTemp.map(ele => {
-    return ele.value;
-  });
+  // languages = this.languagesTemp.map(ele => {
+  //   return ele.value;
+  // });
 
   loaderMode: any = 'indeterminate';
   navigation: any = [
@@ -96,10 +91,6 @@ export class DefaultLayoutComponent implements OnInit {
     private userService: UserService,
     private store: Store<AppState>,
   ) { }
-
-  isAuth: boolean = false;
-  isAuthA: boolean = false;
-  user: User;
 
   ngOnInit(): void {
     this.initApp();

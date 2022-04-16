@@ -6,8 +6,8 @@
   $warn: map-get($theme, warn);
 
   .header-div {
-    color: mat.get-color-from-palette($primary);
-    font-weight: 500;
+    // color: mat.get-color-from-palette($primary);
+    // font-weight: 500;
   }
 
 }

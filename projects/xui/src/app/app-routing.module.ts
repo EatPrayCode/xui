@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
+import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DefaultLayoutComponent,
+    component: LandingLayoutComponent,
     children: [
       {
         path: '',
         component: AboutComponent
       },
+    ]
+  },
+  {
+    path: '',
+    component: DefaultLayoutComponent,
+    children: [
       {
         path: 'settings',
         loadChildren: () =>
@@ -44,7 +51,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: BlankComponent,
+    component: LandingLayoutComponent,
     children: [
       {
         path: ':id',
@@ -69,4 +76,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
