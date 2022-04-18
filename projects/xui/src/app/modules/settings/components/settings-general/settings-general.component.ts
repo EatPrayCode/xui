@@ -46,6 +46,8 @@ export class SettingsGeneralComponent implements OnInit {
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
+    // this.userservice.GetDataByUserName(this.currentRoute).then(res => {
+    // });
   }
 
   onLanguageSelect(change: MatSelectChange) {
@@ -88,7 +90,23 @@ export class SettingsGeneralComponent implements OnInit {
     this.settings$.subscribe(res1 => {
       const auth = getAuth();
       const user = auth.currentUser; // null if no user
+      const netaObj = {
+        username: 'testusername',
+        manifesto: {},
+        videos: [],
+        images: [],
+        tags: [],
+        news: [],
+        others: []
+      };
+      res1 = { ...res1, ...netaObj };
       this.userservice.setUserSettingsTestUid(user.uid, res1);
+      // this.userservice.setNetaDetails(user.uid, res1).then(res => {
+
+      // },
+      //   err => {
+
+      //   });
     });
   }
 }

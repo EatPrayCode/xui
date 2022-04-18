@@ -46,23 +46,37 @@ export class UserService {
       });
   }
 
-    /// Get Single User By Email /// OK
-    addUserName(username: string | null) {
-      return new Promise(
-        (resolve, reject) => {
-          setDoc(doc(this.firestore, "usernames", username), { name: username }).then((querySnapshot) => {
-            resolve({
-              status: 'ADDED'
-            });
-          },
-          err=>{
-            reject({
-              status: 'FAILED'
-            })
-          });
+  GetDataByUserName(userName: string | null) {
+    return new Promise(
+      (resolve, reject) => {
+        const db = collection(this.firestore, 'usernames');
+        const getRef = doc(db, userName);
+        getDoc(getRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            resolve(snapshot.data());
+          }
+          else {
+            reject({});
+          }
         });
-    }
+      });
+  }
 
+  /// Get Single User By Email /// OK
+  addUserName(username: string | null, user: any) {
+    return new Promise(
+      (resolve, reject) => {
+        setDoc(doc(this.firestore, "usernames", username), { name: username, netaId: user.uid }).then((querySnapshot) => {
+          resolve({
+            status: 'ADDED'
+          });
+        }, err => {
+          reject({
+            status: 'FAILED'
+          })
+        });
+      });
+  }
 
   // test(username) {
   //   const db = collection(this.firestore, 'usernames');
@@ -76,7 +90,7 @@ export class UserService {
     return new Promise(
       (resolve, reject) => {
         const db = collection(this.firestore, 'usernames');
-        const deleteRef = doc(db, 'testUserName');       
+        const deleteRef = doc(db, 'testUserName');
         getDoc(deleteRef).then((snapshot) => {
           if (snapshot.exists()) {
             resolve(snapshot.data());
@@ -85,7 +99,7 @@ export class UserService {
             reject({});
           }
         });
-        
+
       });
   }
 
@@ -94,7 +108,6 @@ export class UserService {
     this.users$ = collectionData(this.db) as Observable<User[]>;
     this.users$.subscribe((users: User[]) => {
       this.users = users;
-
       this.emitUsers();
     }, (error) => {
       console.log(error);
@@ -108,7 +121,6 @@ export class UserService {
     return new Promise(
       (resolve, reject) => {
         var qry = query(this.db, where("key", "==", key));
-
         getDocs(qry).then((querySnapshot) => {
           if (querySnapshot) {
             console.log("Document data:", querySnapshot);
@@ -136,7 +148,6 @@ export class UserService {
       } else {
         //doc.data() will be undefined in this case
         console.error("No such document!");
-
       }
     });
   }
@@ -161,6 +172,24 @@ export class UserService {
   setUserSettingsTestUid(uid, data) {
     const deleteRef = doc(this.db, uid);
     setDoc(deleteRef, { settings: data }, { merge: true });
+  }
+
+  /// Get Single User By Email /// OK
+  setNetaDetails(uid, data) {
+    return new Promise(
+      (resolve, reject) => {
+        const db = collection(this.firestore, 'netainfo');
+        const deleteRef = doc(db, uid);
+        setDoc(doc(deleteRef, data), { merge: true }).then((querySnapshot) => {
+          resolve({
+            status: 'SUCCESSFULLY_SET'
+          });
+        }, err => {
+          reject({
+            status: 'FAILED_TO_SET'
+          })
+        });
+      });
   }
 
   /// Get Single User By Email /// OK

@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
   handleRegister(event) {
     const username = event.username;
     this.checkUserNameValidity(username).then(res => {
-      this.createUserName(event);
+      this.RegisterNeta(event);
     },
       err => {
         console.log(err);
@@ -55,10 +55,18 @@ export class SigninComponent implements OnInit {
       });
   }
 
-  createUserName(event) {
+  // ).then((result) => {
+  //   this.handleCreateNetaId(result.user, username);
+  //   this.closeAuthDialog(result);
+  // });
+
+  RegisterNeta(event) {
     const { email, password, username } = event;
-    this.userService.addUserName(username).then(res => {
-      this.registerWithPassword(email, password);
+    this.registerWithPassword(email, password).then(res => {
+      const user = res.user;
+      this.userService.addUserName(username, user).then(res => {
+        
+      });
     },
       err => {
         console.log(err, "error occured")
@@ -66,13 +74,15 @@ export class SigninComponent implements OnInit {
   }
 
   registerWithPassword(email, password) {
-    this.appService.registerWithPassword(email, password).then((result) => {
-      this.closeAuthDialog(result);
-    });
+    return this.appService.registerWithPassword(email, password);
   }
 
   handlePasswordForgot() {
+  }
 
+  handleCreateNetaId($event, username) {
+    const { uid } = $event;
+    this.appService.signInPassword(uid, username);
   }
 
   handleRegisterClick() {
@@ -80,7 +90,7 @@ export class SigninComponent implements OnInit {
     this.showRegister = true;
   }
 
-  handleSigninClick(){
+  handleSigninClick() {
     this.showLogin = true;
     this.showRegister = false;
   }

@@ -67,7 +67,6 @@ export class FirebaseAuthService {
   registerWithPassword(email, password) {
     const auth = getAuth();
     return createUserWithEmailAndPassword(auth, email, password);
-
   }
 
   signInAnonymously() {

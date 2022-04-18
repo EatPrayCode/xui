@@ -28,6 +28,7 @@ export class AppComponent {
         if (user.uid) {
           this.userService.getUserSettingsTestUid(user.uid).then((res: any) => {
             if (res?.settings) {
+              console.log(res.settings);
               this.store.dispatch(
                 actionInitialiseSettings({ payload: res.settings })
               );

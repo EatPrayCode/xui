@@ -4,7 +4,7 @@
     by <a>Tagline</a>
   </span>
 </div>
-<app-register *ngIf="showRegister"></app-register>
+<app-register (submitChange)="handleRegister($event)" *ngIf="showRegister"></app-register>
 
 <app-login *ngIf="showLogin" (submitChange)="handleLogin($event)"></app-login>
 <button *ngIf="showLogin" mat-button (click)="signInWithGoogle()"><span>Sign in with Google</span></button>
