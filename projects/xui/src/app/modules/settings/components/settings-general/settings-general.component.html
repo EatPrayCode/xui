@@ -1,16 +1,4 @@
 <ng-container *ngIf="settings$ | async as settings">
-  <mat-tab-group class="mat-elevation-z4" disablePagination=true (selectedTabChange)="onSequenceChangeEvent($event)">
-
-    <mat-tab *ngFor="let link of mainMenuItems" [label]="link" [routerLink]="link.link">
-
-      <ng-template mat-tab-label>
-        <span>{{link.label}}</span>
-      </ng-template>
-
-    </mat-tab>
-
-  </mat-tab-group>
-
   <div class="row" rtl>
     <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
       <h2>{{ 'app.settings.general.title' | translate }}</h2>

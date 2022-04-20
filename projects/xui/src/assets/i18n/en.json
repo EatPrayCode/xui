@@ -43,6 +43,7 @@
     
     "app.dashboard.tab.home": "Admin Home",
     "app.dashboard.tab.other": "Admin Other",
+    "app.dashboard.tab.netainfo": "Admin Netainfo",
 
     "app.netas.tab.netas-by-state": "State",
     "app.netas.tab.netas-for-you": "For you",

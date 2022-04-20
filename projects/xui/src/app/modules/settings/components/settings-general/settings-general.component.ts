@@ -1,3 +1,4 @@
+import { take } from 'rxjs/operators';
 import { UserService } from '../../../../services/user.service';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
@@ -46,8 +47,6 @@ export class SettingsGeneralComponent implements OnInit {
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
-    // this.userservice.GetDataByUserName(this.currentRoute).then(res => {
-    // });
   }
 
   onLanguageSelect(change: MatSelectChange) {
@@ -87,26 +86,13 @@ export class SettingsGeneralComponent implements OnInit {
   }
 
   save() {
-    this.settings$.subscribe(res1 => {
+    this.settings$.pipe(take(1)).subscribe(res1 => {
       const auth = getAuth();
       const user = auth.currentUser; // null if no user
-      const netaObj = {
-        username: 'testusername',
-        manifesto: {},
-        videos: [],
-        images: [],
-        tags: [],
-        news: [],
-        others: []
-      };
-      res1 = { ...res1, ...netaObj };
-      this.userservice.setUserSettingsTestUid(user.uid, res1);
-      // this.userservice.setNetaDetails(user.uid, res1).then(res => {
-
-      // },
-      //   err => {
-
-      //});
+      this.userservice.setUserSettingsTestUid(user.uid, res1).then(res => {
+      },
+        err => {
+        });
     });
   }
 }

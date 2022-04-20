@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../../shared/demo-material-module';
+import { AdminNetainfoComponent } from './components/admin-netainfo/admin-netainfo.component';
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -44,7 +45,8 @@ export function httpLoaderFactory(http: HttpClient) {
     AdminDashboardComponent,
     AdminDashboardLeftMenuComponent,
     AdminHomeComponent,
-    AdminOtherComponent
+    AdminOtherComponent,
+    AdminNetainfoComponent
   ],
   providers: []
 })

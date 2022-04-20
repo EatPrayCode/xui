@@ -32,6 +32,12 @@ export class AdminDashboardComponent implements OnInit {
       link: 'dashboard/admin-other',
       name: 'Other',
       label: 'app.dashboard.tab.other'
+    },
+    {
+      id: 'admin-netainfo',
+      link: 'dashboard/admin-netainfo',
+      name: 'netainfo',
+      label: 'app.dashboard.tab.netainfo'
     }
   ];
   selectedType: any;

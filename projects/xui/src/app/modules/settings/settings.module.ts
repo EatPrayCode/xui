@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -19,7 +20,8 @@ import { AccountSettingsComponent } from './components/account-settings/account-
   imports: [
     CommonModule,
     SharedModule,
-    SettingsRoutingModule
+    SettingsRoutingModule,
+    FormsModule
   ]
 })
 export class SettingsModule { }

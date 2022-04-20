@@ -1,0 +1,32 @@
+<p>admin-netainfo works!</p>
+
+<ng-container *ngIf="unapprovedRecords$ | async as unapprovedRecords">
+    <!-- {{unapprovedRecords|json}} -->
+
+    <table *ngIf="unapprovedRecords.length" class="table table-striped">
+        <thead>
+          <tr>
+            <th class="col-2">username</th>
+            <th class="col-2">uid</th>
+            <th class="col-1">Approve</th>
+            <th class="col-1">Reject</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of unapprovedRecords; let i = index">
+            <td>{{ contact.username }}</td>
+            <td>{{ contact.uid }}</td>
+            <td>
+                <a class="btn btn-sm btn-outline-light link-danger" (click)="onApproveChange(contact)">
+                    Approve()
+                </a>
+              </td>
+              <td>
+                <a class="btn btn-sm btn-outline-light link-danger" (click)="onRejectChange(contact)">
+                    Reject()
+                </a>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+</ng-container>

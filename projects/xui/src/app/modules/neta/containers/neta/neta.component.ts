@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 import { UserService } from '../../../../services/user.service';
 
@@ -34,6 +35,7 @@ export class NetaComponent implements OnInit {
     { name: 'Other', link: '/other', label: 'app.menu.neta-other', id: 'other' }
   ];
   currentRoute: any = '';
+  data$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   handleClickTabItem(event: any) {
     let link: any = event.link || 'home';
@@ -48,8 +50,9 @@ export class NetaComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentRoute = this.router.routerState.snapshot.url;
-    this.userservice.GetDataByUserName(this.currentRoute).then(res => {
+    this.userservice.GetDataByUserName(this.currentRoute).then((res: any) => {
       console.log(res);
+      this.data$.next(res);
     },
       err => {
         this.router.navigate(['notfound']);

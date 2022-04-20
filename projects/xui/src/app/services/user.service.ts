@@ -10,6 +10,7 @@ import { formatDate } from '@angular/common';
 import { User } from '../Models/User.Model';
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import { getDatabase, ref, set } from "firebase/database";
+import { getAuth } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +50,7 @@ export class UserService {
   GetDataByUserName(userName: string | null) {
     return new Promise(
       (resolve, reject) => {
-        const db = collection(this.firestore, 'netainfo');
+        const db = collection(this.firestore, 'netainfoapproved');
         const getRef = doc(db, userName);
         getDoc(getRef).then((snapshot) => {
           if (snapshot.exists()) {
@@ -99,7 +100,6 @@ export class UserService {
             reject({});
           }
         });
-
       });
   }
 
@@ -155,8 +155,8 @@ export class UserService {
   getUserSettingsTestUid(uid: string | null) {
     return new Promise(
       (resolve, reject) => {
-        const deleteRef = doc(this.db, uid);
-        getDoc(deleteRef).then((snapshot) => {
+        const getUserSettingsRef = doc(this.db, uid);
+        getDoc(getUserSettingsRef).then((snapshot) => {
           if (snapshot.exists()) {
             resolve(snapshot.data());
           }
@@ -170,30 +170,10 @@ export class UserService {
   }
 
   setUserSettingsTestUid(uid, data) {
-    const deleteRef = doc(this.db, uid);
-    setDoc(deleteRef, { settings: data }, { merge: true });
-    this.setNetaDetails(uid, data).then(res=>{
-    },
-    err=>{
-    })
-  }
-
-  /// Get Single User By Email /// OK
-  setNetaDetails(uid, data) {
     return new Promise(
       (resolve, reject) => {
-        // const db = collection(this.firestore, 'netainfo');
-        // const deleteRef = doc(db, uid);
-        // setDoc(doc(deleteRef, data), { merge: true }).then((querySnapshot) => {
-        //   resolve({
-        //     status: 'SUCCESSFULLY_SET'
-        //   });
-        // }, err => {
-        //   reject({
-        //     status: 'FAILED_TO_SET'
-        //   })
-        // });
-        setDoc(doc(this.firestore, "netainfo", data.username), { ...data }).then((querySnapshot) => {
+        const setUserSettingsRef = doc(this.db, uid);
+        setDoc(setUserSettingsRef, { settings: data }, { merge: true }).then((querySnapshot) => {
           resolve({
             status: 'ADDED'
           });
@@ -203,6 +183,100 @@ export class UserService {
           })
         });
       });
+  }
+
+  requestNetaDetailsChange(uid, data) {
+    return new Promise(
+      (resolve, reject) => {
+        setDoc(doc(this.firestore, "netainfounapproved", uid), { ...data, uid: uid }).then((querySnapshot) => {
+          resolve({
+            status: 'ADDED'
+          });
+        }, err => {
+          reject({
+            status: 'FAILED'
+          })
+        });
+      });
+  }
+
+  approveNetaDetailsChange(data) {
+    return new Promise(
+      (resolve, reject) => {
+        const auth = getAuth();
+        const user = auth.currentUser; // null if
+        const userName = data.username;
+        const uid: any = data.uid;
+        setDoc(doc(this.firestore, "netainfoapproved", userName), { ...data, uid }).then((querySnapshot) => {
+          resolve({
+            status: 'ADDED'
+          });
+        }, err => {
+          reject({
+            status: 'FAILED'
+          })
+        });
+      });
+  }
+
+  setNetaDetailsUserSettingsObj(data) {
+    return new Promise(
+      (resolve, reject) => {
+        const auth = getAuth();
+        const user = auth.currentUser; // null if
+        const userName = data.username;
+        const uid: any = data.uid;
+        setDoc(doc(this.firestore, "users", uid), { ...data, userName }).then((querySnapshot) => {
+          resolve({
+            status: 'ADDED'
+          });
+        }, err => {
+          reject({
+            status: 'FAILED'
+          })
+        });
+      });
+  }
+
+  getNetaInfoSettings(uid) {
+    return new Promise(
+      (resolve, reject) => {
+        const db = collection(this.firestore, 'users');
+        const getNetaInfoRef = doc(db, uid);
+        getDoc(getNetaInfoRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            resolve(snapshot.data());
+          }
+          else {
+            reject({
+              status: 'SETTINGS_NOT_AVAILABLE'
+            });
+          }
+        });
+      });
+  }
+
+  // getNetaInfoUnApprovedRecords(uid: string | null) {
+  //   return new Promise(
+  //     (resolve, reject) => {
+  //       const getNetaDetailsRef = doc(this.firestore, "netainfononapproved", uid);
+  //       getDoc(getNetaDetailsRef).then((snapshot) => {
+  //         if (snapshot.exists()) {
+  //           resolve(snapshot.data());
+  //         }
+  //         else {
+  //           reject({
+  //             status: 'SETTINGS_NOT_AVAILABLE'
+  //           });
+  //         }
+  //       });
+  //     });
+  // }
+
+  getUnapprovedNetaInfoRecords() {
+    const db = collection(this.firestore, 'netainfounapproved');
+    const contacts$ = collectionData(db) as Observable<any[]>;
+    return contacts$;
   }
 
   /// Get Single User By Email /// OK

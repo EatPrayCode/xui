@@ -1,3 +1,4 @@
+import { AdminNetainfoComponent } from './components/admin-netainfo/admin-netainfo.component';
 import { AdminOtherComponent } from './components/admin-other/admin-other.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminDashboardComponent } from './containers/admin-dashboard/admin-dashboard.component';
@@ -23,6 +24,11 @@ const routes: Routes = [
         path: 'admin-home',
         component: AdminOtherComponent,
         data: { title: 'app.dashboard.other' },
+      },
+      {
+        path: 'admin-netainfo',
+        component: AdminNetainfoComponent,
+        data: { title: 'app.dashboard.netainfo' },
       }
     ]
   }
