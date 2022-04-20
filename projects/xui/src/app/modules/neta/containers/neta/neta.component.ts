@@ -44,13 +44,17 @@ export class NetaComponent implements OnInit {
   constructor(
     private router: Router,
     private userservice: UserService) {
-    this.currentRoute = this.router.routerState.snapshot.url;
   }
 
   ngOnInit(): void {
+    this.currentRoute = this.router.routerState.snapshot.url;
     this.userservice.GetDataByUserName(this.currentRoute).then(res => {
       console.log(res);
-    });
+    },
+      err => {
+        this.router.navigate(['notfound']);
+        console.log("Neta Not found");
+      });
   }
 
 }

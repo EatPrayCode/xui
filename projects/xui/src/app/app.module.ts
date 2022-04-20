@@ -24,6 +24,7 @@ import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.comp
     NetaLayoutComponent,
     LandingLayoutComponent,
     DefaultLayoutComponent,
-    CartIconComponent
+    CartIconComponent,
+    NotFoundComponent
   ],
   bootstrap: [AppComponent]
 })

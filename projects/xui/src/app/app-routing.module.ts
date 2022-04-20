@@ -4,6 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'notfound',
+    component: NotFoundComponent
+  },
+  {
     path: '',
     component: LandingLayoutComponent,
     children: [
@@ -60,10 +65,6 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: '**',
-    redirectTo: ''
-  }
 ];
 
 @NgModule({
