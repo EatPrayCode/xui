@@ -49,7 +49,7 @@ export class UserService {
   GetDataByUserName(userName: string | null) {
     return new Promise(
       (resolve, reject) => {
-        const db = collection(this.firestore, 'usernames');
+        const db = collection(this.firestore, 'netainfo');
         const getRef = doc(db, userName);
         getDoc(getRef).then((snapshot) => {
           if (snapshot.exists()) {
@@ -172,21 +172,34 @@ export class UserService {
   setUserSettingsTestUid(uid, data) {
     const deleteRef = doc(this.db, uid);
     setDoc(deleteRef, { settings: data }, { merge: true });
+    this.setNetaDetails(uid, data).then(res=>{
+    },
+    err=>{
+    })
   }
 
   /// Get Single User By Email /// OK
   setNetaDetails(uid, data) {
     return new Promise(
       (resolve, reject) => {
-        const db = collection(this.firestore, 'netainfo');
-        const deleteRef = doc(db, uid);
-        setDoc(doc(deleteRef, data), { merge: true }).then((querySnapshot) => {
+        // const db = collection(this.firestore, 'netainfo');
+        // const deleteRef = doc(db, uid);
+        // setDoc(doc(deleteRef, data), { merge: true }).then((querySnapshot) => {
+        //   resolve({
+        //     status: 'SUCCESSFULLY_SET'
+        //   });
+        // }, err => {
+        //   reject({
+        //     status: 'FAILED_TO_SET'
+        //   })
+        // });
+        setDoc(doc(this.firestore, "netainfo", data.username), { ...data }).then((querySnapshot) => {
           resolve({
-            status: 'SUCCESSFULLY_SET'
+            status: 'ADDED'
           });
         }, err => {
           reject({
-            status: 'FAILED_TO_SET'
+            status: 'FAILED'
           })
         });
       });

@@ -24,10 +24,10 @@ export class SettingsContainerComponent {
       label: 'app.settings.netas-settings'
     },
     {
-      id: 'settings-privacy',
-      link: 'settings-general',
-      name: 'settings-privacy',
-      label: 'app.settings.privacy'
+      id: 'settings-account',
+      link: 'settings-account',
+      name: 'settings-account',
+      label: 'app.settings.account'
     }
   ];
 

@@ -22,6 +22,7 @@
     "app.menu.logout": "Logout",
     "app.menu.settings": "Settings",
     "app.settings.privacy": "Privacy",
+    "app.settings.account": "Account",
     "app.settings.animations.elements": "Navigation page elements slide up",
     "app.settings.animations.page": "Navigation whole page transition",
     "app.settings.animations.title": "Animations",
@@ -36,6 +37,7 @@
     "app.settings.general-settings": "General",
     "app.settings.netas-settings": "Netas",
     "app.settings.neta-preferences": "Neta Preference",
+    "app.settings.account-settings": "General",
     
     "app.dashboard.tab.home": "Admin Home",
     "app.dashboard.tab.other": "Admin Other",

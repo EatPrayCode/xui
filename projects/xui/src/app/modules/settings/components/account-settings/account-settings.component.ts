@@ -15,12 +15,12 @@ import { State } from '../../../../core/settings/settings.model';
 
 
 @Component({
-  selector: 'app-settings-general',
-  templateUrl: './settings-general.component.html',
-  styleUrls: ['./settings-general.component.scss'],
+  selector: 'app-account-settings',
+  templateUrl: './account-settings.component.html',
+  styleUrls: ['./account-settings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsGeneralComponent implements OnInit {
+export class AccountSettingsComponent implements OnInit {
 
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   settings$: Observable<any> | undefined;
@@ -106,7 +106,7 @@ export class SettingsGeneralComponent implements OnInit {
       // },
       //   err => {
 
-      //});
+      //   });
     });
   }
 }
