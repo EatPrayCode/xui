@@ -33,6 +33,7 @@ export class AdminNetainfoComponent implements OnInit {
     err=>{
       
     });
+    
   }
 
   onRejectChange(record: any) {

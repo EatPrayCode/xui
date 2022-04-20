@@ -55,4 +55,4 @@
 </mat-menu> -->
 
 
-<app-feature-list></app-feature-list>
+<app-feature-list [features]="allNetas$ | async" (viewNeta)="handleGoToNeta($event)"></app-feature-list>

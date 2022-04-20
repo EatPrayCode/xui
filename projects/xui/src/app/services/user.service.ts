@@ -238,6 +238,30 @@ export class UserService {
       });
   }
 
+  setNetaPreferences(data) {
+    return new Promise(
+      (resolve, reject) => {
+        const auth = getAuth();
+        const user = auth.currentUser; // null if
+        const uid: any = user.uid;
+        setDoc(doc(this.firestore, "users", uid), { netapreferences: data }).then((querySnapshot) => {
+          resolve({
+            status: 'ADDED'
+          });
+        }, err => {
+          reject({
+            status: 'FAILED'
+          })
+        });
+      });
+  }
+
+  getAllNetas() {
+    const db = collection(this.firestore, 'netainfoapproved');
+    const contacts$ = collectionData(db) as Observable<any[]>;
+    return contacts$;
+  }
+
   getNetaInfoSettings(uid) {
     return new Promise(
       (resolve, reject) => {

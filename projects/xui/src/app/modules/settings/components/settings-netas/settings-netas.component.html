@@ -1,14 +1,14 @@
 <div class="container" rtl>
     <div class="contributors" [ngClass]="routeAnimationsElements">
         <h2>{{ 'app.about.contributors.title' | translate }}</h2>
-
         <div class="contributors-wrapper">
-
-            <a (click)="onSelectCard()" *ngFor="let feature of allNetas" class="contributor" rel="noopener noreferrer">
-                <img [ngClass]="{'card-selected': selected}" alt src="./../../../../../assets/sample.png">
-                <span>Tomas Trajan</span>
+            <a *ngFor="let feature of (allNetas$ | async)" (click)="onSelectCard(feature)" class="contributor">
+                <img [ngClass]="{'card-selected': selectedNetas[feature.username]}" alt
+                    src="./../../../../../assets/sample.png">
+                <span>{{feature.username}}</span>
+                {{selectedNetas[feature.username]}}
             </a>
-
         </div>
+        <button (click)="saveNetaPreferences()">Save</button>
     </div>
 </div>
