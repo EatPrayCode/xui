@@ -42,12 +42,15 @@ export class SettingsNetasComponent implements OnInit {
   }
 
   onSelectCard(card) {
-    this.selectedNetas[card.username] = true;
+    this.selectedNetas[card.username] = this.selectedNetas[card.username] ? !this.selectedNetas[card.username] : true;
   }
 
   saveNetaPreferences() {
-    const selectedNetas: any[] = Object.keys(this.selectedNetas);
-    this.userService.setNetaPreferences(selectedNetas).then(res => {
+    const selectedNetasKeys: any[] = Object.keys(this.selectedNetas);
+    const finalSelectedNetas = selectedNetasKeys.filter(key => {
+      return this.selectedNetas[key];
+    });
+    this.userService.setNetaPreferences(finalSelectedNetas).then(res => {
     },
       err => {
       });
