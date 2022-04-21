@@ -10,13 +10,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'netas-top',
+        redirectTo: 'netas-for-you',
         pathMatch: 'full'
       },
       {
-        path: 'netas-top',
+        path: 'netas-party',
         component: NetasForYouComponent,
-        data: { title: 'app.netas.tab.netas-top' }
+        data: { title: 'app.netas.tab.netas-party' }
       },
       {
         path: 'netas-for-you',
