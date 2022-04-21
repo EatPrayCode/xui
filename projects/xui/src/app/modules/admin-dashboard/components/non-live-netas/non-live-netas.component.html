@@ -1,5 +1,10 @@
 <p>non-live-netas works!</p>
 
 <ng-container *ngIf="nonLiveNetas$ | async as nonLiveNetas">
-    {{nonLiveNetas|json}}
+    {{nonLiveNetas}}
 </ng-container>
+
+<p>
+    Storage!
+    <img [src]="downloadUrl$ | async" width="64" height="64" />
+  </p>
