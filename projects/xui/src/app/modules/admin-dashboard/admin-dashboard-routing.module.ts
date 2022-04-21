@@ -1,3 +1,4 @@
+import { NonLiveNetasComponent } from './components/non-live-netas/non-live-netas.component';
 import { AdminNetainfoComponent } from './components/admin-netainfo/admin-netainfo.component';
 import { AdminOtherComponent } from './components/admin-other/admin-other.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
@@ -17,12 +18,12 @@ const routes: Routes = [
       },
       {
         path: 'admin-other',
-        component: AdminHomeComponent,
+        component: NonLiveNetasComponent,
         data: { title: 'app.dashboard.other' },
       },
       {
         path: 'admin-home',
-        component: AdminOtherComponent,
+        component: AdminHomeComponent,
         data: { title: 'app.dashboard.other' },
       },
       {

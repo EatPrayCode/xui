@@ -15,6 +15,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../../shared/demo-material-module';
 import { AdminNetainfoComponent } from './components/admin-netainfo/admin-netainfo.component';
+import { NonLiveNetasComponent } from './components/non-live-netas/non-live-netas.component';
+import { NgxAirtableModule } from 'ngx-airtable';
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -46,7 +48,8 @@ export function httpLoaderFactory(http: HttpClient) {
     AdminDashboardLeftMenuComponent,
     AdminHomeComponent,
     AdminOtherComponent,
-    AdminNetainfoComponent
+    AdminNetainfoComponent,
+    NonLiveNetasComponent
   ],
   providers: []
 })

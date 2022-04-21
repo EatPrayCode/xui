@@ -25,6 +25,7 @@ import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { NgxAirtableModule } from 'ngx-airtable';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
     CoreModule,
 
     // app
-    AppRoutingModule
+    AppRoutingModule,
+    NgxAirtableModule.forRoot({ apiKey: 'key3ITRiEPhABhtTC' })
   ],
   declarations: [
     AppComponent,
