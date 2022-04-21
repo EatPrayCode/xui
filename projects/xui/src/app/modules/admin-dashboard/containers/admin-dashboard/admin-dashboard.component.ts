@@ -42,6 +42,65 @@ export class AdminDashboardComponent implements OnInit {
   ];
   selectedType: any;
 
+  sidemenuItems: any[] = [
+    {
+      link: 'https://google.com/',
+      caption: 'unnapprovednetainfo',
+      info: "Google search - I'm feeling lucky.",
+      CSSClass: 'icon-google',
+      id: 'unnapprovednetainfo'
+    },
+    {
+      link: 'https://google.com/',
+      caption: 'approvednetainfo',
+      info: "Google search - I'm feeling lucky.",
+      CSSClass: 'icon-microsoft',
+      id: 'approvednetainfo'
+    },
+    {
+      link: 'https://google.com/',
+      caption: 'allnetainfo',
+      info: "Google search - I'm feeling lucky.",
+      CSSClass: 'icon-angular',
+      id: 'allnetainfo'
+    },
+    // {
+    //   link: 'https://google.com/',
+    //   caption: 'Narendra Modi',
+    //   info: "Google search - I'm feeling lucky.",
+    //   CSSClass: 'icon-google',
+    //   id: 'nmodi'
+    // },
+    // {
+    //   link: 'https://microsoft.com/',
+    //   caption: 'Shashi Tharoor',
+    //   info: "Be what's next.",
+    //   CSSClass: 'icon-microsoft',
+    //   id: 'shashi'
+    // },
+    // {
+    //   link: 'https://microsoft.com/',
+    //   caption: 'Amit Shah',
+    //   info: "Be what's next.",
+    //   CSSClass: 'icon-microsoft',
+    //   id: 'amits'
+    // },
+    // {
+    //   link: 'https://angular.io/',
+    //   caption: 'Rahul Gandhi',
+    //   info: 'One framework. Mobile & desktop.',
+    //   CSSClass: 'icon-angular',
+    //   id: 'rahulg'
+    // },
+    // {
+    //   link: 'https://facebook.com/',
+    //   caption: 'Sonia Gandhi',
+    //   info: 'Facebook helps you connect and share with the people in your life.',
+    //   CSSClass: 'icon-facebook',
+    //   id: 'soniag'
+    // },
+  ];
+
   handleClickMainMenuItem(item: any) {
     this.selectedType = item;
   }
@@ -56,7 +115,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
 
-  constructor(private store: Store<State>,private _sidenavService: SidenavService, private router: Router) {
+  constructor(private store: Store<State>, private _sidenavService: SidenavService, private router: Router) {
     this._sidenavService.sideNavState$.subscribe((res) => {
       this.onSideNavChange = res;
       if (res == true) {
