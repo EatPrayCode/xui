@@ -1,14 +1,20 @@
 
-<p-pickList [source]="nonLiveNetas$ | async" [target]="nonLiveNetas$ | async" sourceHeader="Available" targetHeader="Selected" [dragdrop]="true"
-[responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}" filterBy="name"
-sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name">
-<ng-template let-product pTemplate="item">
-    <div class="product-item">
-        <div class="image-container">
-            Image
-            <!-- <img src="assets/showcase/images/demo/product/{{product.image}}" [alt]="product.name" class="product-image" /> -->
-        </div>
-        <!-- <div class="product-list-detail">
+<app-custom-grid></app-custom-grid>
+
+<!-- 
+
+<p-pickList [source]="table1$ | async" [target]="table2$ | async" sourceHeader="Available"
+    targetHeader="Selected" [dragdrop]="true" [responsive]="true" [sourceStyle]="{'height':'30rem'}"
+    [targetStyle]="{'height':'30rem'}" filterBy="name" sourceFilterPlaceholder="Search by name"
+    targetFilterPlaceholder="Search by name">
+
+    <ng-template let-neta pTemplate="item">
+        <div class="product-item">
+            <div class="image-container">
+                {{neta.fields.netaname}}
+                <img [src]="neta.fields.image[0].url" [alt]="neta.fields.netaname" class="product-image" />
+            </div>
+            <div class="product-list-detail">
             <h5 class="mb-2">{{product.name}}</h5>
             <i class="pi pi-tag product-category-icon"></i>
             <span class="product-category">{{product.category}}</span>
@@ -16,10 +22,10 @@ sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name
         <div class="product-list-action">
             <h6 class="mb-2">${{product.price}}</h6>
             <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
-        </div> -->
-    </div>
-</ng-template>
-</p-pickList>
+        </div>
+        </div>
+    </ng-template>
+</p-pickList> -->
 
 
 <!-- <ng-container *ngIf="nonLiveNetas$ | async as nonLiveNetas">

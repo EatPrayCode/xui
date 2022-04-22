@@ -17,6 +17,7 @@ import { DemoMaterialModule } from '../../shared/demo-material-module';
 import { AdminNetainfoComponent } from './components/admin-netainfo/admin-netainfo.component';
 import { NonLiveNetasComponent } from './components/non-live-netas/non-live-netas.component';
 import { PickListModule } from 'primeng/picklist';
+import { CustomGridComponent } from './components/custom-grid/custom-grid.component';
 
 
 export function httpLoaderFactory(http: HttpClient) {
@@ -42,7 +43,9 @@ export function httpLoaderFactory(http: HttpClient) {
     CommonModule,
     DemoMaterialModule,
     SharedModule,
-    PickListModule
+    PickListModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AdminDashboardComponent,
@@ -50,7 +53,8 @@ export function httpLoaderFactory(http: HttpClient) {
     AdminHomeComponent,
     AdminOtherComponent,
     AdminNetainfoComponent,
-    NonLiveNetasComponent
+    NonLiveNetasComponent,
+    CustomGridComponent
   ],
   providers: []
 })

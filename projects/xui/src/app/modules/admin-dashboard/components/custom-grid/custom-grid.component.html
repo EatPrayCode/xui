@@ -1,0 +1,137 @@
+<div class="row">
+
+  <div class="col-6">
+
+    <form>
+      <h4></h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Airtable Table List</mat-label>
+        <mat-select (selectionChange)="handleAirtableTableListChange($event.value)" name="neta">
+          <mat-option *ngFor="let neta of airtableList" [value]="neta">
+            {{neta.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+    <button mat-button (click)="handleSyncToFirebase()" >Sync to Firebase</button>
+
+    <table mat-table [dataSource]="airBaseSource" class="mat-elevation-z8">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggleAirtable() : null"
+            [checked]="selectionAirtable.hasValue() && isAllSelectedAirtable()"
+            [indeterminate]="selectionAirtable.hasValue() && !isAllSelectedAirtable()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selectionAirtable.toggle(row) : null"
+            [checked]="selectionAirtable.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="netaname">
+        <th mat-header-cell *matHeaderCellDef> netaname </th>
+        <td mat-cell *matCellDef="let element"> {{element.netaname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="party">
+        <th mat-header-cell *matHeaderCellDef> party </th>
+        <td mat-cell *matCellDef="let element"> {{element.party}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> state </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> image </th>
+        <td mat-cell *matCellDef="let element"> <img [src]="element.image[0].url" /> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <mat-cell *matCellDef="let element">
+          <button mat-button>View</button>
+        </mat-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+  </div>
+
+  <div class="col-6">
+
+    <form>
+      <h4></h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Firebase Table List</mat-label>
+        <mat-select (selectionChange)="handleFirebaseTableListChange($event.value)" name="neta">
+          <mat-option *ngFor="let neta of firebaseTableList" [value]="neta">
+            {{neta.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+    <table mat-table [dataSource]="firebaseSource" class="mat-elevation-z8">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggleFirebase() : null"
+            [checked]="selectionFirebase.hasValue() && isAllSelectedFirebase()"
+            [indeterminate]="selectionFirebase.hasValue() && !isAllSelectedFirebase()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selectionFirebase.toggle(row) : null"
+            [checked]="selectionFirebase.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="netaname">
+        <th mat-header-cell *matHeaderCellDef> netaname </th>
+        <td mat-cell *matCellDef="let element"> {{element.netaname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="party">
+        <th mat-header-cell *matHeaderCellDef> party </th>
+        <td mat-cell *matCellDef="let element"> {{element.party}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> state </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> image </th>
+        <td mat-cell *matCellDef="let element"> <img [src]="element.image.url" /> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <mat-cell *matCellDef="let element">
+          <button mat-button>Edit</button>
+        </mat-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+  </div>
+
+</div>

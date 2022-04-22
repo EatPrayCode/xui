@@ -36,6 +36,9 @@ export class NonLiveNetasComponent implements OnInit {
   isImageLoading: boolean = false;
   sample: any = {};
 
+  table1$: any = of([]);
+  table2$: any = of([]);
+
   constructor(
     private _airtable: Airtable,
     private storage: Storage,
@@ -49,16 +52,24 @@ export class NonLiveNetasComponent implements OnInit {
     //   traceUntilFirst('storage'),
     //   startWith(TRANSPARENT_PNG),
     // );
-    const base: Base = this._airtable
-      .base('app0blxbqN1rHDD24');
-    this.nonLiveNetas$ = base.table({
-      tableId: 'tblL0z0AtzG8d5OWG'
-    }).select({ maxRecords: 10 })
-      .firstPage().pipe(tap(res => { }));
+
+    // .firstPage().pipe(tap(res => { }));
+
+
   }
 
-  ngOnInit(): void { 
-    this.airtableFirebaseSyncedNetas$ = this.userService.getAllNetasUploadedFromAirtable();
+  ngOnInit(): void {
+    const x: any = [
+      {
+        name: 'netasairtable',
+        baseId: 'app0blxbqN1rHDD24',
+        tableId: 'tbli25Rj23fMFdZ1v'
+      }
+    ];
+    // this.table1$ = this.createAirtableObservable(x[0]).pipe(tap(res => {
+    // }));
+    // this.table2$ = this.userService.getAllNetasUploadedFromAirtable().pipe(tap(res => {
+    // }));
   }
 
   // onFileSelected(event) {
@@ -161,44 +172,44 @@ export class NonLiveNetasComponent implements OnInit {
   //   });
   // }
 
-  uploadToFirebase(event) {
-    const imageurl = event.fields.image[0].url;
-    const netaname = event.fields.netaname;
-    const storage = getStorage();
-    const storageRef = ref(storage, `images/${netaname}.jpg`);
-    
-    this.getImageByUrl(imageurl).subscribe(res => {
-      uploadBytes(storageRef, res).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
-        getDownloadURL(storageRef).then((firebasefileurl) => {
-          // Insert url into an <img> tag to "download"
-          this.uploadObjToFirebase(firebasefileurl, event);
-        },
-          err => {
-          });
-      });
-    });
-  }
+  // uploadToFirebase(event) {
+  //   const imageurl = event.fields.image[0].url;
+  //   const netaname = event.fields.netaname;
+  //   const storage = getStorage();
+  //   const storageRef = ref(storage, `images/${netaname}.jpg`);
 
-  uploadObjToFirebase(firebasefileurl, obj) {
-    delete obj.fields.image[0]['thumbnails'];
-    const image = { ...obj.fields.image[0] };
-    delete obj.fields.image;
-    image.url = firebasefileurl;
-    const sampleObj = {
-      ...obj.fields,
-      image
-    };
-    console.log(sampleObj);
-    this.userService.saveNetaAirtableToFirebase(sampleObj).then(res => {
+  //   this.getImageByUrl(imageurl).subscribe(res => {
+  //     uploadBytes(storageRef, res).then((snapshot) => {
+  //       console.log('Uploaded a blob or file!');
+  //       getDownloadURL(storageRef).then((firebasefileurl) => {
+  //         // Insert url into an <img> tag to "download"
+  //         this.uploadObjToFirebase(firebasefileurl, event);
+  //       },
+  //         err => {
+  //         });
+  //     });
+  //   });
+  // }
 
-    },
-      err => {
-      });
-  }
+  // uploadObjToFirebase(firebasefileurl, obj) {
+  //   delete obj.fields.image[0]['thumbnails'];
+  //   const image = { ...obj.fields.image[0] };
+  //   delete obj.fields.image;
+  //   image.url = firebasefileurl;
+  //   const sampleObj = {
+  //     ...obj.fields,
+  //     image
+  //   };
+  //   console.log(sampleObj);
+  //   this.userService.saveNetaAirtableToFirebase(sampleObj).then(res => {
 
-  getImageByUrl(imageUrl: string): Observable<Blob> {
-    return this.httpClient.get(imageUrl, { responseType: 'blob' });
-  }
+  //   },
+  //     err => {
+  //     });
+  // }
+
+  // getImageByUrl(imageUrl: string): Observable<Blob> {
+  //   return this.httpClient.get(imageUrl, { responseType: 'blob' });
+  // }
 
 }

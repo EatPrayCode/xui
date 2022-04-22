@@ -257,7 +257,7 @@ export class UserService {
   }
 
   getAllNetas() {
-    const db = collection(this.firestore, 'netainfoapproved');
+    const db = collection(this.firestore, 'netas-sample');
     const contacts$ = collectionData(db) as Observable<any[]>;
     return contacts$;
   }
@@ -295,7 +295,7 @@ export class UserService {
   saveNetaAirtableToFirebase(obj: any) {
     return new Promise(
       (resolve, reject) => {
-        const db = collection(this.firestore, 'netas-airtable');
+        const db = collection(this.firestore, 'netas-sample');
         addDoc(db, {
           ...obj
         }).then((querySnapshot) => {
