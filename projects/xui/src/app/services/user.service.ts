@@ -268,6 +268,12 @@ export class UserService {
     return contacts$;
   }
 
+  getNetasNational() {
+    const db = collection(this.firestore, 'netas-national');
+    const contacts$ = collectionData(db) as Observable<any[]>;
+    return contacts$;
+  }
+
   getNetaInfoSettings(uid) {
     return new Promise(
       (resolve, reject) => {

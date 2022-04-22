@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, HostBinding } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, HostBinding, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-spinner',
@@ -14,6 +14,17 @@ export class SpinnerComponent implements OnInit, OnChanges {
 
   ngOnInit() { }
 
-  ngOnChanges(): void { }
+  ngOnChanges(changes: SimpleChanges) {
+    // for (const propName in changes) {
+    //   if (changes.hasOwnProperty(propName)) {
+    //     switch (propName) {
+    //       case 'myFirstInputParameter': {
+    //         this.doSomething(change.currentValue)
+    //       }
+    //     }
+    //   }
+    // }
+  }
+
 
 }

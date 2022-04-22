@@ -14,12 +14,12 @@ import { DataService } from '../../../../services/data.service';
 import { UserService } from 'projects/xui/src/app/services/user.service';
 
 @Component({
-  selector: 'app-netas-for-you',
-  templateUrl: './netas-for-you.component.html',
-  styleUrls: ['./netas-for-you.component.scss'],
+  selector: 'app-netas-by-national',
+  templateUrl: './netas-by-national.component.html',
+  styleUrls: ['./netas-by-national.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NetasForYouComponent implements OnInit {
+export class NetasByNationalComponent implements OnInit {
 
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   allNetas$: Observable<any> = of([]);
@@ -44,7 +44,7 @@ export class NetasForYouComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allNetas$ = this.userService.getAllNetas().pipe(tap(res => { }));
+    this.allNetas$ = this.userService.getAllNetasUploadedFromAirtable().pipe(tap(res => { }));
   }
 
   onSelectCard() {

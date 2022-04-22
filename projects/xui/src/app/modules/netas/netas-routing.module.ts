@@ -1,7 +1,10 @@
+import { NetasByNationalComponent } from './components/netas-by-national/netas-by-national.component';
 import { NetasForYouComponent } from './components/netas-for-you/netas-for-you.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NetasComponent } from './containers/netas/netas.component';
+import { NetasByStateComponent } from './components/netas-by-state/netas-by-state.component';
+import { NetasByPartyComponent } from './components/netas-by-party/netas-by-party.component';
 
 const routes: Routes = [
   {
@@ -25,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'netas-national',
-        component: NetasForYouComponent,
+        component: NetasByNationalComponent,
         data: { title: 'app.netas.tab.netas-national' }
       },
       {

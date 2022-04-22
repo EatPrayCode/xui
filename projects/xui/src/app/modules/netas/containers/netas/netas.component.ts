@@ -23,7 +23,7 @@ import { State } from '../../../../core/settings/settings.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NetasComponent implements OnInit {
-  isViewInitialized = false;
+  // isViewInitialized = false;
 
   navLinks = [];
 
@@ -44,23 +44,23 @@ export class NetasComponent implements OnInit {
       label: 'app.netas.tab.netas-for-you'
     },
 
-    {
-      id: 'netas-by-state',
-      link: 'netas-by-state',
-      name: 'State',
-      label: 'app.netas.tab.netas-by-state'
-    },
+    // {
+    //   id: 'netas-by-state',
+    //   link: 'netas-by-state',
+    //   name: 'State',
+    //   label: 'app.netas.tab.netas-by-state'
+    // },
     {
       link: 'netas-national',
       name: 'National',
       label: 'app.netas.tab.netas-national'
     },
-    {
-      id: 'netas-party',
-      link: 'netas-party',
-      name: 'Party',
-      label: 'app.netas.tab.netas-party'
-    },
+    // {
+    //   id: 'netas-party',
+    //   link: 'netas-party',
+    //   name: 'Party',
+    //   label: 'app.netas.tab.netas-party'
+    // },
   ];
   selectedType: any;
 
@@ -73,7 +73,7 @@ export class NetasComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.isViewInitialized = true;
+    // this.isViewInitialized = true;
     this.changeDetector.detectChanges();
   }
 
