@@ -1,5 +1,28 @@
 
-<ng-container *ngIf="nonLiveNetas$ | async as nonLiveNetas">
+<p-pickList [source]="nonLiveNetas$ | async" [target]="nonLiveNetas$ | async" sourceHeader="Available" targetHeader="Selected" [dragdrop]="true"
+[responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}" filterBy="name"
+sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name">
+<ng-template let-product pTemplate="item">
+    <div class="product-item">
+        <div class="image-container">
+            Image
+            <!-- <img src="assets/showcase/images/demo/product/{{product.image}}" [alt]="product.name" class="product-image" /> -->
+        </div>
+        <!-- <div class="product-list-detail">
+            <h5 class="mb-2">{{product.name}}</h5>
+            <i class="pi pi-tag product-category-icon"></i>
+            <span class="product-category">{{product.category}}</span>
+        </div>
+        <div class="product-list-action">
+            <h6 class="mb-2">${{product.price}}</h6>
+            <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+        </div> -->
+    </div>
+</ng-template>
+</p-pickList>
+
+
+<!-- <ng-container *ngIf="nonLiveNetas$ | async as nonLiveNetas">
     <div *ngFor="let neta of nonLiveNetas">
         {{neta.fields.netaname|json}}
         <button (click)="uploadToFirebase(neta)">uploadToFirebase</button>
@@ -9,9 +32,9 @@
 <ng-container *ngIf="airtableFirebaseSyncedNetas$ | async as netas">
     <div *ngFor="let neta of netas">
         {{neta.netaname|json}}
-        <!-- <button (click)="uploadToFirebase(neta)">uploadToFirebase</button> -->
+        <button (click)="uploadToFirebase(neta)">uploadToFirebase</button>
     </div>
-</ng-container>
+</ng-container> -->
 
 
 <!-- {{imageToShow}} -->

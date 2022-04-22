@@ -16,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../../shared/demo-material-module';
 import { AdminNetainfoComponent } from './components/admin-netainfo/admin-netainfo.component';
 import { NonLiveNetasComponent } from './components/non-live-netas/non-live-netas.component';
-import { NgxAirtableModule } from 'ngx-airtable';
+import { PickListModule } from 'primeng/picklist';
+
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -41,6 +42,7 @@ export function httpLoaderFactory(http: HttpClient) {
     CommonModule,
     DemoMaterialModule,
     SharedModule,
+    PickListModule
   ],
   declarations: [
     AdminDashboardComponent,
@@ -53,5 +55,5 @@ export function httpLoaderFactory(http: HttpClient) {
   providers: []
 })
 export class AdminDashboardModule {
-  constructor() {}
+  constructor() { }
 }
