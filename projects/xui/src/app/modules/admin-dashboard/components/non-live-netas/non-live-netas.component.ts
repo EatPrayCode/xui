@@ -20,11 +20,12 @@ const TRANSPARENT_PNG
   selector: 'app-non-live-netas',
   templateUrl: './non-live-netas.component.html',
   styleUrls: ['./non-live-netas.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NonLiveNetasComponent implements OnInit {
 
   nonLiveNetas$: any = of([]);
+  airtableFirebaseSyncedNetas$: any = of([]);
   public readonly downloadUrl$: Observable<string>;
   imageToShow$: BehaviorSubject<any> = new BehaviorSubject({});
   fb;
@@ -53,33 +54,11 @@ export class NonLiveNetasComponent implements OnInit {
     this.nonLiveNetas$ = base.table({
       tableId: 'tblL0z0AtzG8d5OWG'
     }).select({ maxRecords: 10 })
-      .firstPage().pipe(tap(res => {
-        console.log(res);
-        const asdf = `images/mountains.jpg`;
-        this.uploadAirtableToFirebase(asdf, res[1]);
-      })).subscribe();
+      .firstPage().pipe(tap(res => { }));
   }
 
-  ngOnInit(): void { }
-
-  uploadAirtableToFirebase(path, obj) {
-    this.getImage(this.urlTest).pipe(
-      tap(res => {
-        const storage = getStorage();
-        const storageRef = ref(storage, 'images/testblob.jpg');
-        uploadBytes(storageRef, res).then((snapshot) => {
-          console.log('Uploaded a blob or file!');
-          getDownloadURL(storageRef).then((firebasefileurl) => {
-            // Insert url into an <img> tag to "download"
-            this.makeFirebaseObj(firebasefileurl, obj);
-          },
-            err => {
-            });
-        });
-        this.imageToShow$.next(res);
-      })
-    )
-      .subscribe();
+  ngOnInit(): void { 
+    this.airtableFirebaseSyncedNetas$ = this.userService.getAllNetasUploadedFromAirtable();
   }
 
   onFileSelected(event) {
@@ -98,17 +77,18 @@ export class NonLiveNetasComponent implements OnInit {
 
   makeFirebaseObj(firebasefileurl, obj) {
     delete obj.fields.image[0]['thumbnails'];
-    obj.fields.image[0].url = firebasefileurl;
+    const image = { ...obj.fields.image[0] };
+    delete obj.fields.image;
+    image.url = firebasefileurl;
     const sampleObj = {
-      ...obj.fields
+      ...obj.fields,
+      image
     };
     console.log(sampleObj);
-    
     this.userService.saveNetaAirtableToFirebase(sampleObj).then(res => {
-      debugger;
+
     },
       err => {
-        debugger;
       });
 
     // const fileRef = this.storage.ref(filePath);
@@ -144,7 +124,6 @@ export class NonLiveNetasComponent implements OnInit {
         // Insert url into an <img> tag to "download"
 
         this.urlTest = url;
-        debugger;
         // this.downloadIMAGE(url);
       })
       .catch((error) => {
@@ -169,12 +148,8 @@ export class NonLiveNetasComponent implements OnInit {
   }
 
   getImage(imageUrl: string): Observable<Blob> {
-    return this.httpClient.get(imageUrl, { responseType: 'blob' }).pipe(tap(res => {
-      console.log(res);
-    }));
+    return this.httpClient.get(imageUrl, { responseType: 'blob' });
   }
-
-  thumbnail: any;
 
   getData() {
     return this.httpClient.get('/assets/config.json');
@@ -184,12 +159,10 @@ export class NonLiveNetasComponent implements OnInit {
     this.getImage(yourImageUrl).subscribe((data: any) => {
       this.isImageLoading = false;
       this.imageToShow = data;
-      debugger;
       let objectURL = 'data:image/jpeg;base64,' + data;
       // let objectURL = URL.createObjectURL(data);
       const image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       this.imageToShow$.next(image);
-      this.thumbnail = image;
     }, error => {
       this.isImageLoading = false;
       console.log(error);
@@ -197,8 +170,26 @@ export class NonLiveNetasComponent implements OnInit {
   }
 
   uploadToFirebase(event) {
-    const uploadObj: any = {
-      ...event.fields
-    };
+    const imageurl = event.fields.image[0].url;
+    const netaname = event.fields.netaname;
+    const storage = getStorage();
+    const storageRef = ref(storage, `images/${netaname}.jpg`);
+    
+    this.uploadAirtableToFirebase(imageurl).subscribe(res => {
+      uploadBytes(storageRef, res).then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+        getDownloadURL(storageRef).then((firebasefileurl) => {
+          // Insert url into an <img> tag to "download"
+          this.makeFirebaseObj(firebasefileurl, event);
+        },
+          err => {
+          });
+      });
+    });
   }
+
+  uploadAirtableToFirebase(path) {
+    return this.getImage(path).pipe();
+  }
+
 }

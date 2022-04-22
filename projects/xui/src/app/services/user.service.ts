@@ -262,6 +262,12 @@ export class UserService {
     return contacts$;
   }
 
+  getAllNetasUploadedFromAirtable() {
+    const db = collection(this.firestore, 'netas-airtable');
+    const contacts$ = collectionData(db) as Observable<any[]>;
+    return contacts$;
+  }
+
   getNetaInfoSettings(uid) {
     return new Promise(
       (resolve, reject) => {

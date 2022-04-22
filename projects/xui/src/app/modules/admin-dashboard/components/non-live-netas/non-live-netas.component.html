@@ -1,4 +1,19 @@
-{{sample|json}}
+
+<ng-container *ngIf="nonLiveNetas$ | async as nonLiveNetas">
+    <div *ngFor="let neta of nonLiveNetas">
+        {{neta.fields.netaname|json}}
+        <button (click)="uploadToFirebase(neta)">uploadToFirebase</button>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="airtableFirebaseSyncedNetas$ | async as netas">
+    <div *ngFor="let neta of netas">
+        {{neta.netaname|json}}
+        <!-- <button (click)="uploadToFirebase(neta)">uploadToFirebase</button> -->
+    </div>
+</ng-container>
+
+
 <!-- {{imageToShow}} -->
 
 <!-- <div *ngIf="imageToShow$ | async as imageToShow1">
@@ -14,12 +29,7 @@
     <img [src]="urlTest" />
 </div>
 
-<ng-container *ngIf="nonLiveNetas$ | async as nonLiveNetas">
-    <div *ngFor="let neta of nonLiveNetas">
-        {{neta.fields.netaname|json}}
-        <button (click)="uploadToFirebase(neta)">uploadToFirebase</button>
-    </div>
-</ng-container>
+
 
 <p>
     Storage!
