@@ -2,8 +2,8 @@
     <h2>{{ 'app.about.contributors.title' | translate }}</h2>
     <div class="contributors-wrapper">
         <a *ngFor="let feature of (allNetas$ | async)" (click)="onSelectCard(feature)" class="contributor">
-            <img [ngClass]="{'card-selected': selectedNetas[feature.username]}" alt
-                src="./../../../../../assets/sample.png">
+            <img
+            [ngClass]="selectedNetas[feature.username] ? 'card-selected' : 'image-card'" alt src="./../../../../../assets/sample.png">
             <span>{{feature.username}}</span>
             <!-- {{selectedNetas[feature.username]}} -->
         </a>

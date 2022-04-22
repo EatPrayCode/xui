@@ -23,12 +23,12 @@ const routes: Routes = [
       },
       {
         path: 'admin-home',
-        component: AdminHomeComponent,
+        component: NonLiveNetasComponent,
         data: { title: 'app.dashboard.other' },
       },
       {
         path: 'admin-netainfo',
-        component: AdminNetainfoComponent,
+        component: NonLiveNetasComponent,
         data: { title: 'app.dashboard.netainfo' },
       }
     ]

@@ -52,7 +52,6 @@ export class SettingsNetasComponent implements OnInit {
     });
     this.userService.setNetaPreferences(finalSelectedNetas).then(res => {
     },
-      err => {
-      });
+      err => { });
   }
 }

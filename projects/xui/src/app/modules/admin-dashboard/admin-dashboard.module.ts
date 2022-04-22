@@ -38,7 +38,6 @@ export function httpLoaderFactory(http: HttpClient) {
     //   },
     //   isolate: true
     // }),
-    
     CommonModule,
     DemoMaterialModule,
     SharedModule,

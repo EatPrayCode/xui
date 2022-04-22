@@ -1,10 +1,29 @@
-<p>non-live-netas works!</p>
+{{sample|json}}
+<!-- {{imageToShow}} -->
+
+<!-- <div *ngIf="imageToShow$ | async as imageToShow1">
+    <img [src]="imageToShow1" alt="Place image title" />
+    <img id="myimage" [src]="'data:image/jpeg;base64,' + imageToShow1" />
+
+</div> -->
+
+
+<!-- <p>non-live-netas works!</p>
+{{urlTest}}
+<div id="myimg">Image
+    <img [src]="urlTest" />
+</div>
 
 <ng-container *ngIf="nonLiveNetas$ | async as nonLiveNetas">
-    {{nonLiveNetas}}
+    <div *ngFor="let neta of nonLiveNetas">
+        {{neta.fields.netaname|json}}
+        <button (click)="uploadToFirebase(neta)">uploadToFirebase</button>
+    </div>
 </ng-container>
 
 <p>
     Storage!
     <img [src]="downloadUrl$ | async" width="64" height="64" />
-  </p>
+</p>
+
+<input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" /> -->

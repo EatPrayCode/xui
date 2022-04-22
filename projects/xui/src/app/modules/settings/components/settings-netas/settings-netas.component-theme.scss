@@ -10,6 +10,9 @@
     border: 5px solid mat.get-color-from-palette($accent);
   }
 
+  .image-card {
+    border: 5px solid mat.get-color-from-palette($primary);
+  }
 }
 
 .contributors {

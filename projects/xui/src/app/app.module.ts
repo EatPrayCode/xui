@@ -30,9 +30,9 @@ import { NgxAirtableModule } from 'ngx-airtable';
 @NgModule({
   imports: [
     // angular
-    BrowserAnimationsModule,
     BrowserModule,
-
+    BrowserAnimationsModule,
+    
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),

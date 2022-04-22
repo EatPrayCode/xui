@@ -280,6 +280,24 @@ export class UserService {
       });
   }
 
+  saveNetaAirtableToFirebase(obj: any) {
+    return new Promise(
+      (resolve, reject) => {
+        const db = collection(this.firestore, 'netas-airtable');
+        addDoc(db, {
+          ...obj
+        }).then((querySnapshot) => {
+          resolve({
+            status: 'ADDED'
+          });
+        }, err => {
+          reject({
+            status: 'FAILED'
+          })
+        });
+      });
+  }
+
   // getNetaInfoUnApprovedRecords(uid: string | null) {
   //   return new Promise(
   //     (resolve, reject) => {
