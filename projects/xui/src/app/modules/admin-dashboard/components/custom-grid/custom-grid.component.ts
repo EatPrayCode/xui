@@ -51,11 +51,11 @@ export class CustomGridComponent implements OnInit {
 
   firebaseTableList: any = [
     {
-      tableId: 'netas-national',
+      tableId: 'netas-sample',
       viewValue: 'Netas National'
     },
     {
-      tableId: 'netas-history',
+      tableId: 'netas-sample',
       viewValue: 'Netas History'
     }
   ];
@@ -107,7 +107,7 @@ export class CustomGridComponent implements OnInit {
   }
 
   createFirebaseObservable(payload): Observable<any> {
-    return this.userService.getAllNetasUploadedFromAirtable();
+    return this.userService.getAllNetas();
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
@@ -139,7 +139,6 @@ export class CustomGridComponent implements OnInit {
   handleSyncToFirebase() {
     const selectedNetas: any = this.selectionAirtable.selected;
     console.log(selectedNetas);
-    debugger;
     const obs$ = [];
     selectedNetas.forEach(element => {
       this.uploadToFirebase(element);
