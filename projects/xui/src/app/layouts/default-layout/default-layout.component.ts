@@ -27,7 +27,7 @@ import { actionInitialiseSettings } from '../../core/settings/settings.actions';
 export class DefaultLayoutComponent implements OnInit {
   isProd = env.production;
   envName = env.envName;
-  version = env.versions.app;
+  version = 'env.versions.app';
   year = new Date().getFullYear();
   logo = 'assets/logo.webp';
   languages = [

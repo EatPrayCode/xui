@@ -97,7 +97,7 @@ const handler = (data, context) => {
 
 const testFn = fn => async (req, res) => {
   if (req.method === "GET") {
-    const usersRef = db.collection('users');
+    const usersRef = db.collection('netainfoapproved');
     const allUsers = usersRef.get()
       .then(snapshot => {
         let arrayR = snapshot.docs.map(doc => {
@@ -115,7 +115,7 @@ const testFn = fn => async (req, res) => {
     // connect to the DB
     // const db = await connectToDatabase();
     // Use our collection
-    const collection = await db.collection("users");
+    const collection = await db.collection("netainfoapproved");
     //insert the user into the database.
     const users = await collection.insertOne(newuser);
     // Respond with a JSON string of all users in the collection

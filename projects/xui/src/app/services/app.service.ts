@@ -8,7 +8,7 @@ import browser from 'browser-detect';
 import { BehaviorSubject, Observable, of } from "rxjs";
 import { FirebaseAuthService } from "./firebase-auth.service";
 import { appState, appStateFirebaseNull } from "../models/app.state";
-
+import { environment as env } from './../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +18,7 @@ export class AppService {
   language$: Observable<string> | undefined;
   theme$: Observable<string> | undefined;
   appSettingsSubject: BehaviorSubject<any> = new BehaviorSubject<appState>(appStateFirebaseNull);
-  configUrl = 'http://localhost:3000/api/';
+  configUrl = env.apiUrl;
 
   constructor(
     private store: Store<AppState>,
@@ -52,12 +52,15 @@ export class AppService {
   }
 
   getConfig() {
-    // var res: any;
-    // if (res.uid) {
-    //   this.loadUserSettingsFromFirebase(res).subscribe(res => {
-
-    //   });
-    // }
+    this.appSettingsSubject.pipe().subscribe(res => {
+      if (res.uid) {
+        this.loadUserSettingsFromFirebase(res).subscribe(res => {
+          console.log(res);
+          alert('Data fetched from');
+          console.log('Data from admin api');
+        });
+      }
+    });
   }
 
   loadUserSettingsFromFirebase(payload: any): Observable<any> {

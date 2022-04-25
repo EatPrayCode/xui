@@ -23,7 +23,7 @@ import { environment as env } from './../../../environments/environment';
 export class LandingLayoutComponent implements OnInit {
   isProd = env.production;
   envName = env.envName;
-  version = env.versions.app;
+  version = 'env.versions.app';
   year = new Date().getFullYear();
   logo = 'assets/logo.webp';
   languages = [
