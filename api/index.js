@@ -4,7 +4,7 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://mrshop-overthemoon-default-rtdb.firebaseio.com"
+  databaseURL: "https://next-project-x-firebase-default-rtdb.firebaseio.com"
 });
 
 const db = admin.firestore();
@@ -90,8 +90,8 @@ const allowCors = fn => async (req, res) => {
 }
 
 const handler = (data, context) => {
-  const d = new Date()
-  res.end(d.toString())
+  const d = new Date();
+  res.end(d.toString());
 }
 
 const testFn = fn => async (req, res) => {

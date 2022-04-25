@@ -14,20 +14,19 @@ export const environment = {
     bootstrap: packageJson.dependencies.bootstrap,
     rxjs: packageJson.dependencies.rxjs,
     ngxtranslate: packageJson.dependencies['@ngx-translate/core'],
-    fontAwesome:
-      packageJson.dependencies['@fortawesome/fontawesome-free-webfonts'],
+    fontAwesome: packageJson.dependencies['@fortawesome/fontawesome-free-webfonts'],
     angularCli: packageJson.devDependencies['@angular/cli'],
     typescript: packageJson.devDependencies['typescript'],
     cypress: packageJson.devDependencies['cypress'],
     eslint: packageJson.devDependencies['eslint']
   },
   firebase: {
-    apiKey: 'AIzaSyBftNmBTAU9tOJIJY82wftmLWmftwxqRJs',
-    authDomain: 'projectx-dev-92d22.firebaseapp.com',
-    projectId: 'projectx-dev-92d22',
-    storageBucket: 'projectx-dev-92d22.appspot.com',
-    messagingSenderId: '156981973074',
-    appId: '1:156981973074:web:8198c99eb27345b294cf8b',
-    measurementId: 'G-7VTSSVMG4D'
+    apiKey: "AIzaSyCtF3dyYH2_V_zsin15e3STpzcCiXKcZNU",
+    authDomain: "next-project-x-firebase.firebaseapp.com",
+    projectId: "next-project-x-firebase",
+    storageBucket: "next-project-x-firebase.appspot.com",
+    messagingSenderId: "843693632832",
+    appId: "1:843693632832:web:4cfee3907d3efc1dc1dea5",
+    measurementId: "G-VWYC52JV9T"
   }
 };

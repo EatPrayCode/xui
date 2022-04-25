@@ -5,7 +5,7 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://mrshop-overthemoon-default-rtdb.firebaseio.com"
+  databaseURL: "https://next-project-x-firebase-default-rtdb.firebaseio.com"
 });
 
 const db = admin.firestore();

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { select, Store } from "@ngrx/store";
 import { LocalStorageService, AppState, selectSettingsStickyHeader, selectSettingsLanguage, selectEffectiveTheme } from "../core/core.module";
@@ -18,17 +18,16 @@ export class AppService {
   language$: Observable<string> | undefined;
   theme$: Observable<string> | undefined;
   appSettingsSubject: BehaviorSubject<any> = new BehaviorSubject<appState>(appStateFirebaseNull);
+  configUrl = 'http://localhost:3000/api/';
 
   constructor(
     private store: Store<AppState>,
     private storageService: LocalStorageService,
     private firebaseAuth: FirebaseAuthService,
-    // private http: HttpClient
+    private http: HttpClient
   ) {
-    // this.getConfig().subscribe(res=>{
-    //   debugger;
-    // });
-   }
+    this.getConfig();
+  }
 
   initAppService() {
     this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
@@ -52,14 +51,21 @@ export class AppService {
     }
   }
 
-  configUrl = 'localhost:3000';
+  getConfig() {
+    this.appSettingsSubject.pipe().subscribe(res => {
+      if (res.uid) {
+        this.loadUserSettingsFromFirebase(res).subscribe(res => {
+          debugger;
+        });
+      }
+    });
+  }
 
-  // getConfig() {
-  //   return this.http.get<any>(this.configUrl).pipe(tap(res => {
-  //     debugger;
-  //   }));
-  // }
-
+  loadUserSettingsFromFirebase(payload: any): Observable<any> {
+    const { uid } = payload;
+    const url = `${this.configUrl}?uid=${uid}`;
+    return this.http.get<any>(url);
+  }
 
   private static isIEorEdgeOrSafari() {
     return ['ie', 'edge', 'safari'].includes(browser().name || '');
