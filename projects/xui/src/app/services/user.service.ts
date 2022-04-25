@@ -261,7 +261,7 @@ export class UserService {
   }
 
   getAllNetas() {
-    const db = collection(this.firestore, 'netas-sample');
+    const db = collection(this.firestore, 'netainfoapproved');
     const contacts$ = collectionData(db) as Observable<any[]>;
     return contacts$;
   }
@@ -273,7 +273,7 @@ export class UserService {
   }
 
   getNetasNational() {
-    const db = collection(this.firestore, 'netas-national');
+    const db = collection(this.firestore, 'netainfoapproved');
     const contacts$ = collectionData(db) as Observable<any[]>;
     return contacts$;
   }
@@ -296,13 +296,29 @@ export class UserService {
       });
   }
 
-  saveNetaAirtableToFirebase(obj: any) {
+  // saveNetaAirtableToFirebase(obj: any) {
+  //   return new Promise(
+  //     (resolve, reject) => {
+  //       const db = collection(this.firestore, 'netainfoapproved');
+  //       addDoc(db, {
+  //         ...obj
+  //       }).then((querySnapshot) => {
+  //         resolve({
+  //           status: 'ADDED'
+  //         });
+  //       }, err => {
+  //         reject({
+  //           status: 'FAILED'
+  //         })
+  //       });
+  //     });
+  // }
+
+  saveNetaAirtableToFirebase(data) {
     return new Promise(
       (resolve, reject) => {
-        const db = collection(this.firestore, 'netas-sample');
-        addDoc(db, {
-          ...obj
-        }).then((querySnapshot) => {
+        const userName = data.airId;
+        setDoc(doc(this.firestore, "netainfoapproved", userName), { ...data }).then((querySnapshot) => {
           resolve({
             status: 'ADDED'
           });

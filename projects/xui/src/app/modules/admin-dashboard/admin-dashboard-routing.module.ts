@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'admin-netainfo',
-        component: NonLiveNetasComponent,
+        component: AdminNetainfoComponent,
         data: { title: 'app.dashboard.netainfo' },
       }
     ]

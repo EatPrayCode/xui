@@ -21,12 +21,13 @@ export const environment = {
     eslint: packageJson.devDependencies['eslint']
   },
   firebase: {
-    apiKey: "AIzaSyCtF3dyYH2_V_zsin15e3STpzcCiXKcZNU",
-    authDomain: "next-project-x-firebase.firebaseapp.com",
-    projectId: "next-project-x-firebase",
-    storageBucket: "next-project-x-firebase.appspot.com",
-    messagingSenderId: "843693632832",
-    appId: "1:843693632832:web:4cfee3907d3efc1dc1dea5",
-    measurementId: "G-VWYC52JV9T"
+    apiKey: "AIzaSyAdKv1ORc84HMOvLjWr6rq4RTcEOjqPh78",
+    authDomain: "devx-348322.firebaseapp.com",
+    databaseURL: "https://devx-348322-default-rtdb.firebaseio.com",
+    projectId: "devx-348322",
+    storageBucket: "devx-348322.appspot.com",
+    messagingSenderId: "975225617838",
+    appId: "1:975225617838:web:2dc594516b09590f859c3f",
+    measurementId: "G-WPSSRW0X0K"
   }
 };

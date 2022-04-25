@@ -52,13 +52,12 @@ export class AppService {
   }
 
   getConfig() {
-    this.appSettingsSubject.pipe().subscribe(res => {
-      if (res.uid) {
-        this.loadUserSettingsFromFirebase(res).subscribe(res => {
-          debugger;
-        });
-      }
-    });
+    // var res: any;
+    // if (res.uid) {
+    //   this.loadUserSettingsFromFirebase(res).subscribe(res => {
+
+    //   });
+    // }
   }
 
   loadUserSettingsFromFirebase(payload: any): Observable<any> {

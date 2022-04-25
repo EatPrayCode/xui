@@ -14,8 +14,9 @@ const tg = new Telegram(BOT_TOKEN);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://next-project-x-firebase-default-rtdb.firebaseio.com"
+  databaseURL: "https://devx-348322-default-rtdb.firebaseio.com/"
 });
+
 
 const db = admin.firestore();
 
