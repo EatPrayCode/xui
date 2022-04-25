@@ -52,3 +52,5 @@ Thumbs.db
 
 # debug
 debug.log
+
+.vercel

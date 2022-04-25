@@ -160,7 +160,7 @@ export function httpLoaderFactory(http: HttpClient) {
 
     // 3rd party
     TranslateModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ]
 })
 export class CoreModule {

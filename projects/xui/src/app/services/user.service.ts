@@ -22,7 +22,11 @@ export class UserService {
   users$!: Observable<User[]>;
   usersSubject = new Subject<any[]>();
 
-  constructor(private utilsService: UtilsService, private fileUploadService: FileUploadService, private firestore: Firestore) {
+  constructor(
+    private utilsService: UtilsService,
+    private fileUploadService: FileUploadService,
+    private firestore: Firestore
+  ) {
     this.db = collection(this.firestore, 'users');
     // this.getUsers();
   }

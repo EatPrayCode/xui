@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { select, Store } from "@ngrx/store";
@@ -21,8 +22,13 @@ export class AppService {
   constructor(
     private store: Store<AppState>,
     private storageService: LocalStorageService,
-    private firebaseAuth: FirebaseAuthService
-  ) { }
+    private firebaseAuth: FirebaseAuthService,
+    // private http: HttpClient
+  ) {
+    // this.getConfig().subscribe(res=>{
+    //   debugger;
+    // });
+   }
 
   initAppService() {
     this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
@@ -45,6 +51,15 @@ export class AppService {
       );
     }
   }
+
+  configUrl = 'localhost:3000';
+
+  // getConfig() {
+  //   return this.http.get<any>(this.configUrl).pipe(tap(res => {
+  //     debugger;
+  //   }));
+  // }
+
 
   private static isIEorEdgeOrSafari() {
     return ['ie', 'edge', 'safari'].includes(browser().name || '');
@@ -71,7 +86,7 @@ export class AppService {
   registerWithPassword(email, password) {
     return this.firebaseAuth.registerWithPassword(email, password);
   }
-  
+
   logout(): void {
     this.firebaseAuth.logout();
     this.appSettingsSubject.next(appStateFirebaseNull);

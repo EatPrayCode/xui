@@ -26,6 +26,7 @@ import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.
 import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NgxAirtableModule } from 'ngx-airtable';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { NgxAirtableModule } from 'ngx-airtable';
 
     // core
     CoreModule,
+    HttpClientModule,
 
     // app
     AppRoutingModule,

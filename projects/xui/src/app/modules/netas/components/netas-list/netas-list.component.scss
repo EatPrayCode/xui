@@ -88,3 +88,9 @@ mat-card.mat-elevation-z4 .selection {
   padding-bottom: 0;
 }
 
+
+.main-image {
+  object-fit: cover;
+  min-height: 200px;
+  max-height: 200px;
+}
