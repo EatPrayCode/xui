@@ -10,7 +10,7 @@
             <a *ngFor="let feature of (allNetas$ | async)" (click)="onSelectCard(feature)" class="contributor">
                 <img [ngClass]="selectedNetas[feature.netaid] ? 'card-selected' : 'image-card'" alt
                     src="./../../../../../assets/sample.png">
-                <span>{{feature.username}}</span>
+                <span>{{feature.netaid}}</span>
             </a>
         </div>
     </div>
