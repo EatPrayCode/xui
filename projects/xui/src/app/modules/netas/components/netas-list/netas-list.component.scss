@@ -80,7 +80,7 @@ mat-card.mat-elevation-z4 .selection {
 .mat-card-subtitle,
 .mat-card-content {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .mat-card > .mat-card-actions:last-child {
@@ -88,9 +88,12 @@ mat-card.mat-elevation-z4 .selection {
   padding-bottom: 0;
 }
 
-
 .main-image {
   object-fit: cover;
   min-height: 150px;
   max-height: 150px;
+}
+
+.mat-card-title {
+  font-size: 15px;
 }

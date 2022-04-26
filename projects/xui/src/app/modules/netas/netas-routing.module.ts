@@ -3,8 +3,6 @@ import { NetasForYouComponent } from './components/netas-for-you/netas-for-you.c
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NetasComponent } from './containers/netas/netas.component';
-import { NetasByStateComponent } from './components/netas-by-state/netas-by-state.component';
-import { NetasByPartyComponent } from './components/netas-by-party/netas-by-party.component';
 
 const routes: Routes = [
   {

@@ -52,11 +52,6 @@ export class DefaultLayoutComponent implements OnInit {
       label: 'app.menu.netas',
       icon: 'phone'
     },
-    {
-      link: 'dashboard',
-      label: 'app.menu.dashboard',
-      icon: 'person'
-    },
     // {
     //   link: 'visualize',
     //   label: 'app.menu.visualise',
@@ -75,6 +70,11 @@ export class DefaultLayoutComponent implements OnInit {
   ];
   navigationSideMenu = [
     ...this.navigation,
+    {
+      link: 'dashboard',
+      label: 'app.menu.dashboard',
+      icon: 'person'
+    },
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;

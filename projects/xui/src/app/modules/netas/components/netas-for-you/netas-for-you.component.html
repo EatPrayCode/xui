@@ -6,7 +6,11 @@
     </div>
 
 </div>
-<app-netas-list [netasList]="allNetas$ | async" (viewNeta)="handleGoToNeta($event)"></app-netas-list>
+
+<div class="" style="height: 60vh">
+    <app-spinner [loading]="loading"></app-spinner>
+    <app-netas-list [netasList]="allNetas$ | async" (viewNeta)="handleGoToNeta($event)"></app-netas-list>
+</div>
 
 <!-- <div class="search-box mat-elevation-z4">
     <button mat-button mat-icon-button (click)="OnSearch()" matTooltip="Search">

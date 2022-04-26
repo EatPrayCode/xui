@@ -26,7 +26,7 @@ export class NetasByNationalComponent implements OnInit {
   features: any[] = [];
   selected = false;
   value = '';
-
+  loading: any = false;
 
   constructor(
     private fb: FormBuilder,
@@ -35,8 +35,7 @@ export class NetasByNationalComponent implements OnInit {
     public userService: UserService,
   ) { }
 
-  handleViewNetaDetails($event: any) {
-  }
+  handleViewNetaDetails($event: any) { }
 
   handleGoToNeta(event) {
     const netaName: any = event.netaname;
@@ -44,7 +43,10 @@ export class NetasByNationalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allNetas$ = this.userService.getAllNetasUploadedFromAirtable().pipe(tap(res => { }));
+    this.loading = true;
+    this.allNetas$ = this.userService.getNetasNational().pipe(tap(res => {
+      this.loading = false;
+    }));
   }
 
   onSelectCard() {
