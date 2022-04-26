@@ -1,12 +1,18 @@
-<div class="contributors" [ngClass]="routeAnimationsElements">
-    <h2>{{ 'app.about.contributors.title' | translate }}</h2>
-    <div class="contributors-wrapper">
-        <a *ngFor="let feature of (allNetas$ | async)" (click)="onSelectCard(feature)" class="contributor">
-            <img
-            [ngClass]="selectedNetas[feature.username] ? 'card-selected' : 'image-card'" alt src="./../../../../../assets/sample.png">
-            <span>{{feature.username}}</span>
-            <!-- {{selectedNetas[feature.username]}} -->
-        </a>
+<ng-container>
+    <div class="row" rtl>
+        <div class="col-md-6 group">
+            <h2>{{ 'app.settings.neta-preferences' | translate }}</h2>
+        </div>
     </div>
-    <button (click)="saveNetaPreferences()">Save</button>
-</div>
+    <div class="row contributors" rtl [ngClass]="routeAnimationsElements">
+        <app-spinner [loading]="loading" [message]="'Loading Netas preferences..'"></app-spinner>
+        <div class="contributors-wrapper">
+            <a *ngFor="let feature of (allNetas$ | async)" (click)="onSelectCard(feature)" class="contributor">
+                <img [ngClass]="selectedNetas[feature.netaid] ? 'card-selected' : 'image-card'" alt
+                    src="./../../../../../assets/sample.png">
+                <span>{{feature.username}}</span>
+            </a>
+        </div>
+    </div>
+    <button *ngIf="!loading" (click)="saveNetaPreferences()">Save</button>
+</ng-container>

@@ -22,6 +22,7 @@
 @import "./app/layouts/landing-layout/landing-layout.component.scss-theme.scss";
 @import "./app/modules/settings/components/settings-netas/settings-netas.component-theme.scss";
 @import "./app/modules/netas/containers/netas/netas.component.scss-theme.scss";
+@import "./app/shared/directives/spinner/spinner.component.scss-theme.scss";
 // @import './app/shared/big-input/big-input/big-input.component.scss-theme';
 // @import './app/features/about/about/about.component.scss-theme';
 // @import './app/features/examples/notifications/components/notifications.component.scss-theme';
@@ -37,6 +38,7 @@
   @include app-default-layout-component-theme($theme);
   @include app-settings-netas-component-theme($theme);
   @include app-netas-component-theme($theme);
+  @include app-spinner-component-theme($theme);
   // @include app-big-input-component-theme($theme);
   // @include app-notifications-component-theme($theme);
   // @include app-todos-container-component-theme($theme);

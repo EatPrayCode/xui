@@ -31,7 +31,6 @@ export class AccountSettingsComponent implements OnInit {
 
   getNetaDetails(user) {
     this.userservice.getNetaInfoSettings(user.uid).then(res => {
-      console.log(res);
       this.netaInfoAvailable = true;
     }, err => {
       this.netaInfoAvailable = false;

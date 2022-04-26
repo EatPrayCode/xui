@@ -119,9 +119,7 @@ export class AdminDashboardComponent implements OnInit {
     this._sidenavService.sideNavState$.subscribe((res) => {
       this.onSideNavChange = res;
       if (res == true) {
-        console.log('Opened');
       } else if (res == false) {
-        console.log('Closed');
       }
     });
   }

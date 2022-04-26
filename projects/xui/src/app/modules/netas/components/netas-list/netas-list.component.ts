@@ -10,7 +10,7 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 export class NetasListComponent implements OnInit, OnChanges {
 
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  @Input() netasList: any[] = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+  @Input() netasList: any[] = [];
   @Output() viewNeta: EventEmitter<any> = new EventEmitter<any>();
 
   selected = false;
@@ -29,7 +29,6 @@ export class NetasListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const netasList: any = changes.netasList.currentValue || [];
-    console.log(netasList);
   }
 
 }

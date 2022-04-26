@@ -1,6 +1,6 @@
 @use "~@angular/material" as mat;
 
-@mixin app-netas-component-theme($theme) {
+@mixin app-spinner-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
@@ -9,4 +9,7 @@
     // color: mat.get-color-from-palette($primary);
     // font-weight: 500;
   }
+
+  
+
 }

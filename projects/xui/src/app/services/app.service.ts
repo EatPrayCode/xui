@@ -58,7 +58,7 @@ export class AppService {
     ).subscribe((res: any) => {
       if (res.uid) {
         this.loadUserSettingsFromFirebase(res).subscribe(res => {
-          console.log(res);
+
         });
       }
     });

@@ -7,8 +7,8 @@
 
 </div>
 
-<div class="" style="height: 60vh">
-    <app-spinner [loading]="loading"></app-spinner>
+<div class="" style="height: 55vh">
+    <app-spinner [loading]="loading" [message]="'Loading your Netas..'"></app-spinner>
     <app-netas-list [netasList]="allNetas$ | async" (viewNeta)="handleGoToNeta($event)"></app-netas-list>
 </div>
 

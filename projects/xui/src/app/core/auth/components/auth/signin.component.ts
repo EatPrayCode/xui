@@ -116,6 +116,6 @@ export class SigninComponent implements OnInit {
   closeAuthDialog(user: any) {
     this.appService.appSettingsSubject.next(user.user);
     this.ref.close(user);
-    console.log('\Closed auth dialog...');
+    // console.log('\Closed auth dialog...');
   }
 }
