@@ -30,7 +30,7 @@ export class SettingsNetasComponent implements OnInit {
     if (user) {
       const uid: any = user.uid;
       this.userService.getNetaInfoSettings(uid).then((res: any) => {
-        const arr = res.netapreferences;
+        const arr = res.netapreferences || [];
         arr.forEach(element => {
           this.selectedNetas[element] = true;
         });
