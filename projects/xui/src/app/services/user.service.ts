@@ -10,6 +10,7 @@ import { formatDate } from '@angular/common';
 import { User } from '../Models/User.Model';
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import { getAuth } from 'firebase/auth';
+import { netaAirTable } from '../models/constant';
 
 @Injectable({
   providedIn: 'root'
@@ -311,7 +312,7 @@ export class UserService {
   //     });
   // }
 
-  saveNetaAirtableToFirebase(data) {
+  saveNetaAirtableToFirebase(data: netaAirTable) {
     return new Promise(
       (resolve, reject) => {
         const userName = data.netaid;

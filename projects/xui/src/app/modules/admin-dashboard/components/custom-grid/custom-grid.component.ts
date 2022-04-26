@@ -8,17 +8,7 @@ import { Airtable, Base } from 'ngx-airtable';
 import { tap, map } from 'rxjs/operators';
 import { getDownloadURL, Storage, uploadBytes } from '@angular/fire/storage';
 import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
-
-export interface netaAirTable {
-  date: string;
-  longdescription: string;
-  shortdescription: string;
-  state: string;
-  party: string;
-  netaname: string;
-  image: any;
-  airId: string;
-}
+import { netaAirTable } from 'projects/xui/src/app/models/constant';
 
 const ELEMENT_DATA: netaAirTable[] = [];
 
@@ -139,18 +129,16 @@ export class CustomGridComponent implements OnInit {
   handleSyncToFirebase() {
     const selectedNetas: any = this.selectionAirtable.selected;
     console.log(selectedNetas);
-    const obs$ = [];
-    selectedNetas.forEach(element => {
+    selectedNetas.forEach((element: netaAirTable) => {
       this.uploadToFirebase(element);
     });
   }
 
-  uploadToFirebase(event) {
+  uploadToFirebase(event: netaAirTable) {
     const imageurl = event.image[0].url;
     const netaname = event.netaname;
     const storage = getStorage();
     const storageRef = ref(storage, `images/${netaname}.jpg`);
-
     this.getImageByUrl(imageurl).subscribe(res => {
       uploadBytes(storageRef, res).then((snapshot) => {
         console.log('Uploaded a blob or file!');
@@ -164,12 +152,12 @@ export class CustomGridComponent implements OnInit {
     });
   }
 
-  uploadObjToFirebase(firebasefileurl, obj) {
+  uploadObjToFirebase(firebasefileurl, obj: netaAirTable) {
     delete obj.image[0]['thumbnails'];
     const image = { ...obj.image[0] };
     delete obj.image;
     image.url = firebasefileurl;
-    const sampleObj = {
+    const sampleObj: netaAirTable = {
       ...obj,
       image
     };
