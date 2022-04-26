@@ -38,7 +38,7 @@ export class NetasByNationalComponent implements OnInit {
   handleViewNetaDetails($event: any) { }
 
   handleGoToNeta(event) {
-    const netaName: any = event.netaname;
+    const netaName: any = event.netaid;
     this.router.navigate([`${netaName}`]);
   }
 
