@@ -39,8 +39,7 @@ export class NetasForYouComponent implements OnInit {
   }
 
   handleGoToNeta(event) {
-    debugger;
-    const netaName: any = event.airId;
+    const netaName: any = event.netaid;
     this.router.navigate([`${netaName}`]);
   }
 

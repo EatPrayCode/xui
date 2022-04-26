@@ -9,7 +9,6 @@ import { FileUpload } from '../Models/FileUpload.Model';
 import { formatDate } from '@angular/common';
 import { User } from '../Models/User.Model';
 import { doc, getDoc, setDoc } from "firebase/firestore"
-import { getDatabase, ref, set } from "firebase/database";
 import { getAuth } from 'firebase/auth';
 
 @Injectable({
@@ -54,7 +53,7 @@ export class UserService {
   GetDataByUserName(userName: string | null) {
     return new Promise(
       (resolve, reject) => {
-        const db = collection(this.firestore, 'netainfoapproved');
+        const db = collection(this.firestore, 'netasapproved');
         const getRef = doc(db, userName);
         getDoc(getRef).then((snapshot) => {
           if (snapshot.exists()) {
@@ -192,7 +191,7 @@ export class UserService {
   requestNetaDetailsChange(uid, data) {
     return new Promise(
       (resolve, reject) => {
-        setDoc(doc(this.firestore, "netainfounapproved", uid), { ...data, uid: uid }).then((querySnapshot) => {
+        setDoc(doc(this.firestore, "netasunapproved", uid), { ...data, uid: uid }).then((querySnapshot) => {
           resolve({
             status: 'ADDED'
           });
@@ -207,11 +206,9 @@ export class UserService {
   approveNetaDetailsChange(data) {
     return new Promise(
       (resolve, reject) => {
-        const auth = getAuth();
-        const user = auth.currentUser; // null if
         const userName = data.username;
         const uid: any = data.uid;
-        setDoc(doc(this.firestore, "netainfoapproved", userName), { ...data, uid }).then((querySnapshot) => {
+        setDoc(doc(this.firestore, "netasapproved", userName), { ...data, uid, netaid: userName }).then((querySnapshot) => {
           resolve({
             status: 'ADDED'
           });
@@ -261,7 +258,7 @@ export class UserService {
   }
 
   getAllNetas() {
-    const db = collection(this.firestore, 'netainfoapproved');
+    const db = collection(this.firestore, 'netasapproved');
     const contacts$ = collectionData(db) as Observable<any[]>;
     return contacts$;
   }
@@ -273,7 +270,7 @@ export class UserService {
   }
 
   getNetasNational() {
-    const db = collection(this.firestore, 'netainfoapproved');
+    const db = collection(this.firestore, 'netasapproved');
     const contacts$ = collectionData(db) as Observable<any[]>;
     return contacts$;
   }
@@ -317,8 +314,8 @@ export class UserService {
   saveNetaAirtableToFirebase(data) {
     return new Promise(
       (resolve, reject) => {
-        const userName = data.airId;
-        setDoc(doc(this.firestore, "netainfoapproved", userName), { ...data }).then((querySnapshot) => {
+        const userName = data.netaid;
+        setDoc(doc(this.firestore, "netasapproved", userName), { ...data }).then((querySnapshot) => {
           resolve({
             status: 'ADDED'
           });
@@ -348,7 +345,7 @@ export class UserService {
   // }
 
   getUnapprovedNetaInfoRecords() {
-    const db = collection(this.firestore, 'netainfounapproved');
+    const db = collection(this.firestore, 'netasunapproved');
     const contacts$ = collectionData(db) as Observable<any[]>;
     return contacts$;
   }

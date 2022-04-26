@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { tap, take } from 'rxjs/operators';
+import { tap, take, delay } from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { select, Store } from "@ngrx/store";
 import { LocalStorageService, AppState, selectSettingsStickyHeader, selectSettingsLanguage, selectEffectiveTheme } from "../core/core.module";
@@ -52,12 +52,13 @@ export class AppService {
   }
 
   getConfig() {
-    this.appSettingsSubject.pipe().subscribe(res => {
+    this.appSettingsSubject.pipe(
+      tap(),
+      take(2)
+    ).subscribe((res: any) => {
       if (res.uid) {
         this.loadUserSettingsFromFirebase(res).subscribe(res => {
           console.log(res);
-          alert('Data fetched from');
-          console.log('Data from admin api');
         });
       }
     });

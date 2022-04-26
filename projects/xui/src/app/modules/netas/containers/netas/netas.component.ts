@@ -32,7 +32,7 @@ export class NetasComponent implements OnInit {
     private router: Router,
     private store: Store<State>,
     private changeDetector: ChangeDetectorRef
-  ) {}
+  ) { }
 
   isAuthenticated$: Observable<boolean> | undefined;
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
@@ -63,27 +63,6 @@ export class NetasComponent implements OnInit {
     // },
   ];
   selectedType: any;
-
-  handleClickMainMenuItem(item: any) {
-    this.selectedType = item;
-  }
-
-  ngOnInit() {
-    this.isAuthenticated$ = of(true);
-  }
-
-  ngAfterViewInit() {
-    // this.isViewInitialized = true;
-    this.changeDetector.detectChanges();
-  }
-
-  onSequenceChangeEvent(event: MatTabChangeEvent) {
-    // console.log(event.index);
-    let link: any = this.mainMenuItems[event.index].link;
-    let currentUrl: any = `/netas/${link}`;
-    this.router.navigate([currentUrl]);
-  }
-
   HELPERS: any[] = [
     {
       id: '0',
@@ -124,6 +103,26 @@ export class NetasComponent implements OnInit {
     title: `Tab ${i + 1}`,
     content: `Tab ${i + 1} Content`
   }));
+
+  handleClickMainMenuItem(item: any) {
+    this.selectedType = item;
+  }
+
+  ngOnInit() {
+    this.isAuthenticated$ = of(true);
+  }
+
+  ngAfterViewInit() {
+    // this.isViewInitialized = true;
+    this.changeDetector.detectChanges();
+  }
+
+  onSequenceChangeEvent(event: MatTabChangeEvent) {
+    // console.log(event.index);
+    let link: any = this.mainMenuItems[event.index].link;
+    let currentUrl: any = `/netas/${link}`;
+    this.router.navigate([currentUrl]);
+  }
 
   OnSearch() {
     console.log('OnSearch', this.value);

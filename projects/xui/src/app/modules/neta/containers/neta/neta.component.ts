@@ -45,7 +45,8 @@ export class NetaComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userservice: UserService) {
+    private userservice: UserService
+  ) {
   }
 
   ngOnInit(): void {
@@ -55,7 +56,7 @@ export class NetaComponent implements OnInit {
       this.data$.next(res);
     },
       err => {
-        this.router.navigate(['notfound']);
+        // this.router.navigate(['notfound']);
         console.log("Neta Not found");
       });
   }

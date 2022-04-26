@@ -12,6 +12,7 @@ export const environment = {
   test: false,
   i18nPrefix: '',
   apiUrl: 'https://xui-wine.vercel.app/api/',
+  // apiUrl: 'localhost:3000/api/',
   firebase: {
     apiKey: "AIzaSyAdKv1ORc84HMOvLjWr6rq4RTcEOjqPh78",
     authDomain: "devx-348322.firebaseapp.com",
