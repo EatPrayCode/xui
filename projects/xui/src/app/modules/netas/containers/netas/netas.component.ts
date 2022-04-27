@@ -44,12 +44,12 @@ export class NetasComponent implements OnInit {
       label: 'app.netas.tab.netas-for-you'
     },
 
-    // {
-    //   id: 'netas-by-state',
-    //   link: 'netas-by-state',
-    //   name: 'State',
-    //   label: 'app.netas.tab.netas-by-state'
-    // },
+    {
+      id: 'netas-by-state',
+      link: 'netas-by-state',
+      name: 'State',
+      label: 'app.netas.tab.netas-by-state'
+    },
     {
       link: 'netas-national',
       name: 'National',
