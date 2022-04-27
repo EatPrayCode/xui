@@ -1,7 +1,7 @@
 <div class="">
     
     <nav mat-tab-nav-bar class="d-none d-sm-flex">
-        <a mat-tab-link *ngFor="let e of examples" [routerLink]="e.link" routerLinkActive #rla="routerLinkActive"
+        <a mat-tab-link *ngFor="let e of examples" (click)="handleClickSubTab(e)" routerLinkActive #rla="routerLinkActive"
             [active]="rla.isActive" [disabled]="e.auth && !(isAuthenticated$ | async)">
             {{e.link}}
         </a>
