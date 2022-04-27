@@ -28,10 +28,6 @@ export class NetasListComponent implements OnInit, OnChanges {
     this.viewNeta.next(event);
   }
 
-  handleClickSubTab(e) {
-
-  }
-
   ngOnChanges(changes: SimpleChanges) {
     const netasList: any = changes.netasList.currentValue || [];
   }

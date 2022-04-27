@@ -47,6 +47,13 @@ export class NetasForYouComponent implements OnInit {
     public userService: UserService,
   ) { }
 
+  ngOnInit() {
+    this.loading = true;
+    this.allNetas$ = this.userService.getAllNetas().pipe(tap(res => {
+      this.loading = false;
+    }));
+  }
+
   handleViewNetaDetails($event: any) { }
 
   handleGoToNeta(event) {
@@ -54,11 +61,8 @@ export class NetasForYouComponent implements OnInit {
     this.router.navigate([`${netaName}`]);
   }
 
-  ngOnInit() {
-    this.loading = true;
-    this.allNetas$ = this.userService.getAllNetas().pipe(tap(res => {
-      this.loading = false;
-    }));
+  handleClickSubTab(e) {
+
   }
 
   onSelectCard() {
