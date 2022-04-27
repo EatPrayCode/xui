@@ -4,12 +4,30 @@
             <h3 rtl class="main-heading">For you</h3>
         </div>
     </div>
-
 </div>
 
-<div class="" style="height: 55vh">
+<div class="">
+    
+    <nav mat-tab-nav-bar class="d-none d-sm-flex">
+        <a mat-tab-link *ngFor="let e of examples" [routerLink]="e.link" routerLinkActive #rla="routerLinkActive"
+            [active]="rla.isActive" [disabled]="e.auth && !(isAuthenticated$ | async)">
+            {{e.link}}
+        </a>
+    </nav>
+
+    <nav class="nav-responsive d-sm-none d-flex justify-content-center">
+        <mat-select [value]="'todos'">
+            <mat-option *ngFor="let e of examples" [value]="e" (click)="handleClickSubTab(e)"
+                [disabled]="e.auth && !(isAuthenticated$ | async)">
+                {{e.link}}
+            </mat-option>
+        </mat-select>
+    </nav>
+
     <app-spinner [loading]="loading" [message]="'Loading your Netas..'"></app-spinner>
+
     <app-netas-list [netasList]="allNetas$ | async" (viewNeta)="handleGoToNeta($event)"></app-netas-list>
+
 </div>
 
 <!-- <div class="search-box mat-elevation-z4">

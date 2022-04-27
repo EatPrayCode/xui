@@ -25,6 +25,8 @@ export class SettingsGeneralComponent implements OnInit {
 
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   settings$: Observable<any> | undefined;
+  usernameaccount: any = '';
+  netaInfoAvailable: boolean = false;
 
   themes = [
     { value: 'DEFAULT-THEME', label: 'blue' },
@@ -47,6 +49,11 @@ export class SettingsGeneralComponent implements OnInit {
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user && user.uid) {
+      this.getNetaDetails(user);
+    }
   }
 
   onLanguageSelect(change: MatSelectChange) {
@@ -85,7 +92,7 @@ export class SettingsGeneralComponent implements OnInit {
     );
   }
 
-  save() {
+  savesettings() {
     this.settings$.pipe(take(1)).subscribe(res1 => {
       const auth = getAuth();
       const user = auth.currentUser; // null if no user
@@ -94,5 +101,18 @@ export class SettingsGeneralComponent implements OnInit {
         err => {
         });
     });
+    const auth = getAuth();
+    const user = auth.currentUser; // null if
+    const res1 = { username: this.usernameaccount, manifesto: {}, videos: {}, news: {}, basicinfo: {}, location: {} };
+    this.userservice.requestNetaDetailsChange(user.uid, res1).then(res => { }, err => { });
   }
+
+  getNetaDetails(user) {
+    this.userservice.getNetaInfoSettings(user.uid).then(res => {
+      this.netaInfoAvailable = true;
+    }, err => {
+      this.netaInfoAvailable = false;
+    });
+  }
+
 }

@@ -3,8 +3,6 @@ import { SettingsGeneralComponent } from './components/settings-general/settings
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SettingsContainerComponent } from './containers/settings-container/settings-container.component';
-import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
-
 
 const routes: Routes = [
   {
@@ -21,12 +19,6 @@ const routes: Routes = [
         path: 'settings-general',
         component: SettingsGeneralComponent,
         data: { title: 'app.settings.general.title' }
-        
-      },
-      {
-        path: 'settings-account',
-        component: AccountSettingsComponent,
-        data: { title: 'app.settings.account' }
         
       },
       {

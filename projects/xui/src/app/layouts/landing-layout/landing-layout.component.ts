@@ -48,11 +48,11 @@ export class LandingLayoutComponent implements OnInit {
       label: 'app.menu.netas',
       icon: 'phone'
     },
-    {
-      link: 'dashboard',
-      label: 'app.menu.dashboard',
-      icon: 'person'
-    },
+    // {
+    //   link: 'dashboard',
+    //   label: 'app.menu.dashboard',
+    //   icon: 'person'
+    // },
     // {
     //   link: 'visualize',
     //   label: 'app.menu.visualise',
@@ -71,6 +71,11 @@ export class LandingLayoutComponent implements OnInit {
   ];
   navigationSideMenu = [
     ...this.navigation,
+    {
+      link: 'dashboard',
+      label: 'app.menu.dashboard',
+      icon: 'person'
+    },
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;

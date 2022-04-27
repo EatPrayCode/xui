@@ -28,6 +28,18 @@ export class NetasForYouComponent implements OnInit {
   value = '';
   loading: any = false;
 
+  isAuthenticated$: Observable<boolean> | undefined;
+
+  examples: any = [
+    { link: 'Andhra Pradesh', label: 'anms.examples.menu.todos' },
+    { link: 'Karnataka', label: 'anms.examples.menu.stocks' },
+    { link: 'West Bengal', label: 'anms.examples.menu.theming' },
+    { link: 'Kerala', label: 'anms.examples.menu.crud' },
+    { link: 'Madhya Pradesh', label: 'anms.examples.menu.crud' },
+    { link: 'Uttar Pradesh', label: 'anms.examples.menu.crud' },
+    { link: 'Goa', label: 'anms.examples.menu.auth', auth: true }
+  ];
+
   constructor(
     private fb: FormBuilder,
     private router: Router,

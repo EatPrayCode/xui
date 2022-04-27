@@ -57,6 +57,11 @@ export class DefaultLayoutComponent implements OnInit {
     //   label: 'app.menu.visualise',
     //   icon: 'cog'
     // },
+    // {
+    //   link: 'dashboard',
+    //   label: 'app.menu.dashboard',
+    //   icon: 'person'
+    // },
     {
       link: 'settings',
       label: 'app.menu.settings',

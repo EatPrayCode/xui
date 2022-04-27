@@ -10,13 +10,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class SettingsContainerComponent {
 
+  selectedTab: any = 0;
   mainMenuItems: any = [
-    {
-      id: 'settings-general',
-      link: 'settings-general',
-      name: 'settings-general',
-      label: 'app.settings.general-settings'
-    },
     {
       id: 'settings-netas',
       link: 'settings-netas',
@@ -24,11 +19,11 @@ export class SettingsContainerComponent {
       label: 'app.settings.netas-settings'
     },
     {
-      id: 'settings-account',
-      link: 'settings-account',
-      name: 'settings-account',
-      label: 'app.settings.account'
-    }
+      id: 'settings-general',
+      link: 'settings-general',
+      name: 'settings-general',
+      label: 'app.settings.general-settings'
+    },
   ];
 
   constructor(
@@ -41,5 +36,9 @@ export class SettingsContainerComponent {
     let currentUrl: any = `/settings/${link}`;
     this.router.navigate([currentUrl]);
   }
- 
+
+  selectTab(event) {
+    this.selectedTab = event;
+  }
+
 }

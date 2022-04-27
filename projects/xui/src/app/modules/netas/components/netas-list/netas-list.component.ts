@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 
@@ -13,7 +14,7 @@ export class NetasListComponent implements OnInit, OnChanges {
   @Input() netasList: any[] = [];
   @Output() viewNeta: EventEmitter<any> = new EventEmitter<any>();
 
-  selected = false;
+  selected: any = false;
 
   constructor() { }
 
@@ -25,6 +26,10 @@ export class NetasListComponent implements OnInit, OnChanges {
 
   onViewNeta(event: any) {
     this.viewNeta.next(event);
+  }
+
+  handleClickSubTab(e) {
+
   }
 
   ngOnChanges(changes: SimpleChanges) {

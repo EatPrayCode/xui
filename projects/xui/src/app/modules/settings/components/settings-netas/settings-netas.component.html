@@ -14,5 +14,12 @@
             </a>
         </div>
     </div>
-    <button *ngIf="!loading" (click)="saveNetaPreferences()">Save</button>
+
+    <div class="row">
+        <a mat-raised-button *ngIf="!loading" class="actions-main" color="accent" (click)="saveNetaPreferences()"
+            [ngClass]="routeAnimationsElements">
+            Save Settings
+        </a>
+    </div>
+
 </ng-container>

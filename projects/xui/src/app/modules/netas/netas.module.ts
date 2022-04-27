@@ -5,7 +5,6 @@ import { NetasComponent } from './containers/netas/netas.component';
 import { SharedModule } from '../../shared/shared.module';
 import { NetasForYouComponent } from './components/netas-for-you/netas-for-you.component';
 import { NetasService } from './netas.service';
-import { NetasByNationalComponent } from './components/netas-by-national/netas-by-national.component';
 import { NetasListComponent } from './components/netas-list/netas-list.component';
 
 @NgModule({
@@ -14,7 +13,7 @@ import { NetasListComponent } from './components/netas-list/netas-list.component
     SharedModule,
     NetasRoutingModule
   ],
-  declarations: [NetasComponent, NetasForYouComponent, NetasByNationalComponent, NetasListComponent],
+  declarations: [NetasComponent, NetasForYouComponent, NetasListComponent],
   providers: [NetasService]
 })
 export class NetasModule {

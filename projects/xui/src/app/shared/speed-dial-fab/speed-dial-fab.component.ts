@@ -9,17 +9,19 @@ import { speedDialFabAnimations } from './speed-dial-fab.animations';
 })
 export class SpeedDialFabComponent implements OnInit {
   @Input()
-  public options: any;
+  public options: any = {
+    buttons: [{}, {}]
+  };
 
   public buttons: any = [];
 
   public fabTogglerState = 'inactive';
 
-  constructor() {}
+  constructor() { }
 
   public ngOnInit() {
     const maxButtons = 6;
-    if (this.options.buttons.length > maxButtons) {
+    if (this.options && this.options.buttons && this.options.buttons.length > maxButtons) {
       this.options.buttons.splice(5, this.options.buttons.length - maxButtons);
     }
   }
