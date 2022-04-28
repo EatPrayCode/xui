@@ -1,6 +1,6 @@
 import { AppService } from '../../../../services/app.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../services/user.service';
@@ -8,7 +8,8 @@ import { UserService } from '../../../../services/user.service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  styleUrls: ['./signin.component.scss'],
+  encapsulation: ViewEncapsulation.None 
 })
 export class SigninComponent implements OnInit {
 
@@ -16,7 +17,7 @@ export class SigninComponent implements OnInit {
   showLogin: any = true;
   showRegister: any = false;
 
-  currentPage: any = 0;
+  currentPage: any = 1;
 
   constructor(private ref: MatDialogRef<SigninComponent>,
     public appService: AppService,

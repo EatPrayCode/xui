@@ -25,8 +25,14 @@
                         <fa-icon icon="bars"></fa-icon>
                     </button>
                     <span routerLink="" class="branding spacer d-sm-inline">
-                        <img [src]="logo" [alt]="logo" /> {{ 'app.title.short' | translate }}
+                        <img [src]="logo" [alt]="logo" />
+
+                        <span class="d-none d-md-inline d-xl-none d-xxl-none">
+                            {{ 'app.title.short' | translate }}
+                        </span>
+
                     </span>
+
                     <!-- <span routerLink="" class="branding spacer d-none d-md-inline">
                         <img [src]="logo" [alt]="logo" /> {{'app.title.long' | translate }}
                     </span> -->
@@ -130,7 +136,7 @@
         </div>
     </mat-sidenav-container>
 
-    <nav class="mobile-bottom-nav" *ngIf="theme$ | async as theme">
+    <nav class="mobile-bottom-nav d-inline-flex d-md-none" *ngIf="theme$ | async as theme">
         <div *ngFor="let item of navigation" class="mobile-bottom-nav__item" [routerLink]="[item.link]"
             routerLinkActive="active">
             <div class="mobile-bottom-nav__item-content">

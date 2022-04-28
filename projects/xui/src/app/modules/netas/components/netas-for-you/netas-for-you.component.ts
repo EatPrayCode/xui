@@ -39,6 +39,7 @@ export class NetasForYouComponent implements OnInit {
     { link: 'Uttar Pradesh', label: 'anms.examples.menu.crud' },
     { link: 'Goa', label: 'anms.examples.menu.auth', auth: true }
   ];
+  selectedValue = this.examples[0];
 
   constructor(
     private fb: FormBuilder,

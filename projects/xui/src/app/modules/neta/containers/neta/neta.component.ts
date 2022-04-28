@@ -36,6 +36,7 @@ export class NetaComponent implements OnInit {
   ];
   currentRoute: any = '';
   data$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  loading: any = false;
 
   handleClickTabItem(event: any) {
     let link: any = event.link || 'home';
@@ -51,12 +52,15 @@ export class NetaComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentRoute = this.router.routerState.snapshot.url;
+    this.loading = true;
     this.userservice.GetDataByUserName(this.currentRoute).then((res: any) => {
       console.log(res);
+      this.loading = false;
       this.data$.next(res);
     },
       err => {
         // this.router.navigate(['notfound']);
+        this.loading = false;
         console.log("Neta Not found");
       });
   }

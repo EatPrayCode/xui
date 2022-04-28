@@ -51,10 +51,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'notfound',
-    component: NotFoundComponent
-  },
-  {
     path: '',
     component: BlankComponent,
     children: [

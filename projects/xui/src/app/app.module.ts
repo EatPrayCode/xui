@@ -20,7 +20,6 @@ import { provideRemoteConfig, getRemoteConfig } from '@angular/fire/remote-confi
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { AboutComponent } from './about/about.component';
-import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component';
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.component';
@@ -57,7 +56,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     BlankComponent,
     AboutComponent,
-    NetaLayoutComponent,
     LandingLayoutComponent,
     DefaultLayoutComponent,
     CartIconComponent,
@@ -67,7 +65,7 @@ import { HttpClientModule } from '@angular/common/http';
     {
       provide: APP_INITIALIZER, 
       useValue: () =>  new Promise(resolve =>
-        setTimeout(resolve, 5000)
+        setTimeout(resolve, 1000)
       ),
       multi: true
     }

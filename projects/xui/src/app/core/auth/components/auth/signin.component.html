@@ -1,86 +1,62 @@
-<section class="bg-primary text-center py-2">
-  <img src="https://img.icons8.com/plasticine/100/000000/whole-fish.png" />
-  <h1 class="text-light">nconnect.com</h1>
-</section>
-
 <section *ngIf="currentPage == 1">
+
   <div class="container">
-
-    <div class="user signinBx">
-      <div class="formBx">
-        <form action="">
-          <h2>Login</h2>
-          <input type="text" name="" placeholder="Username" />
-          <input type="email" name="" placeholder="Email Address" />
-          <input type="password" name="" placeholder="Create Password" />
-          <input type="password" name="" placeholder="Confirm Password" />
-          <input type="submit" name="" value="Sign Up" />
-          <br />
-          <input type="submit" name="" value="Sign Up" />
-          <input type="submit" name="" value="Sign Up" />
-          <p class="signup">
-            Already have an account ?
-            <a href="#" onclick="toggleForm();">Sign in.</a>
-          </p>
-        </form>
-      </div>
-      <div class="imgBx"><img
-          src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg"
-          alt="" /></div>
-    </div>
-  </div>
-</section>
-
-<section *ngIf="currentPage == 2">
-  <div class="container">
-
     <div class="user signinBx">
       <div class="imgBx"><img
           src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg"
-          alt="" /></div>
+          alt="" />
+      </div>
       <div class="formBx">
         <form action="">
-          <h2>Sign In</h2>
+          <img src="https://img.icons8.com/plasticine/100/000000/whole-fish.png" />
+          <h1 class="text-light">nconnect.com</h1>
+          <h3>Sign In</h3>
           <input type="text" name="" placeholder="Username" />
           <input type="password" name="" placeholder="Password" />
           <input type="submit" name="" value="Login" />
           <br />
-          <input type="submit" name="" value="Sign Up" />
-          <input type="submit" name="" value="Sign Up" />
+          <input type="submit" (click)="goTo('Guest')" name="" value="Guest" />
           <p class="signup">
-            Don't have an account ?
-            <a href="#" onclick="toggleForm();">Sign Up.</a>
+            No account ?
+            <a (click)="goTo('Register')">SignUp.</a>
           </p>
         </form>
       </div>
-    </div>
-    <div class="user signupBx">
-      <div class="formBx">
-        <form action="">
-          <h2>Create an account</h2>
-          <input type="text" name="" placeholder="Username" />
-          <input type="email" name="" placeholder="Email Address" />
-          <input type="password" name="" placeholder="Create Password" />
-          <input type="password" name="" placeholder="Confirm Password" />
-          <input type="submit" name="" value="Sign Up" />
-          <p class="signup">
-            Already have an account ?
-            <a href="#" onclick="toggleForm();">Sign in.</a>
-          </p>
-        </form>
-      </div>
-      <div class="imgBx"><img
-          src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg"
-          alt="" /></div>
     </div>
   </div>
+
 </section>
 
-<button mat-stroked-button color="primary" (click)="goTo('Guest')" class="example">Continue as Guest</button>
 
-<button mat-stroked-button color="primary" (click)="goTo('Signin')" class="example">Signin</button>
+<section *ngIf="currentPage == 2">
 
-<button mat-stroked-button color="primary" (click)="goTo('Register')" class="example">Register</button>
+  <div class="container">
+    <div class="user signinBx">
+      <div class="imgBx"><img
+          src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg"
+          alt="" />
+      </div>
+      <div class="formBx">
+        <form action="">
+          <img src="https://img.icons8.com/plasticine/100/000000/whole-fish.png" />
+          <h1 class="text-light">nconnect.com</h1>
+          <h3>Sign Up</h3>
+          <input type="email" name="" placeholder="Email Address" />
+          <input type="password" name="" placeholder="Create Password" />
+          <input type="submit" name="" value="Sign Up" />
+          <br />
+          <input type="submit" (click)="goTo('Guest')" name="" value="Guest" />
+          <p class="signup">
+            Have an account ?
+            <a (click)="goTo('Signin')">SignIn.</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
+
 
 <!-- <div class="pen-title">
   <h1>nconnect</h1>

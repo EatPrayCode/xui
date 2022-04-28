@@ -10,7 +10,14 @@
 .example-selected-value {
   margin: 15px 0;
 }
+
 :host .mat-button-toggle-group {
   border-radius: 20px !important;
 }
 
+.light-button {
+  height: 50px;
+  width: 150px;
+  font-size: 110%;
+  border: 2px solid blue !important;
+}
