@@ -16,11 +16,25 @@ export class SigninComponent implements OnInit {
   showLogin: any = true;
   showRegister: any = false;
 
+  currentPage: any = 0;
+
   constructor(private ref: MatDialogRef<SigninComponent>,
     public appService: AppService,
     public userService: UserService,) { }
 
   ngOnInit() { }
+
+  goTo(event) {
+    if (event == 'Guest') {
+      this.signInAnonymously();
+    }
+    else if (event == 'Signin') {
+      this.currentPage = 1;
+    }
+    else if (event == 'Register') {
+      this.currentPage = 2;
+    }
+  }
 
   handleLogin(event) {
     const { email, password, username } = event;
@@ -65,7 +79,7 @@ export class SigninComponent implements OnInit {
     this.registerWithPassword(email, password).then(res => {
       const user = res.user;
       this.userService.addUserName(username, user).then(res => {
-        
+
       });
     },
       err => {

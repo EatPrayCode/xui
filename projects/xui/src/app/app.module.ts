@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 
 import { CoreModule } from './core/core.module';
 
@@ -63,6 +63,15 @@ import { HttpClientModule } from '@angular/common/http';
     CartIconComponent,
     NotFoundComponent
   ],
+  providers: [
+    {
+      provide: APP_INITIALIZER, 
+      useValue: () =>  new Promise(resolve =>
+        setTimeout(resolve, 5000)
+      ),
+      multi: true
+    }
+ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

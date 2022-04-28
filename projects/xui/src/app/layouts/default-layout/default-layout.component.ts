@@ -29,7 +29,7 @@ export class DefaultLayoutComponent implements OnInit {
   envName = env.envName;
   version = 'env.versions.app';
   year = new Date().getFullYear();
-  logo = 'assets/logo.webp';
+  logo = 'assets/whole-fish.png';
   languages = [
     { value: 'en', label: 'English' },
     { value: 'telugu', label: 'Telugu' },
