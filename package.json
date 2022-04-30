@@ -79,7 +79,10 @@
     "firebase-admin": "^9.2.0",
     "firebase-functions": "^3.13.2",
     "telegraf": "^4.3.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "@ng-web-apis/common": "2.0.0",
+    "@angular/youtube-player": "13.2.2",
+    "youtube-search-without-api-key": "1.0.7"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.6",

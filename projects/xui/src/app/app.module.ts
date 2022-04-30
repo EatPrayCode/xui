@@ -1,3 +1,4 @@
+import { MiniPlayerComponent } from './layouts/app/mini-player/mini-player.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
@@ -26,6 +27,18 @@ import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.comp
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NgxAirtableModule } from 'ngx-airtable';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './layouts/app/header/header.component';
+import { SidebarComponent } from './layouts/app/sidebar/sidebar.component';
+import { AccountSidebarComponent } from './layouts/app/account-sidebar/account-sidebar.component';
+import { BrandIconComponent, NotFoundPageModule, SearchBoxMobileModule, SearchBoxModule, VideoPlayerComponent, VideoThumbnailLoaderModule, VideoThumbnailModule } from './layouts/lib/components';
+import { MiniSidebarComponent } from './layouts/app/mini-sidebar/mini-sidebar.component';
+import { BrowseVideosComponent } from './layouts/app/browse-videos/browse-videos.component';
+import { HomeComponent } from './layouts/app/home/home.component';
+import { APP_CONFIG, YOUTUBE_API_KEY, YOUTUBE_SERVICE } from './layouts/lib/tokens';
+import { YoutubeServiceV2 } from './layouts/lib/services';
+import { MatMenuModule } from '@angular/material/menu';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NxWelcomeComponent } from './layouts/app/nx-welcome.component';
 
 @NgModule({
   imports: [
@@ -47,6 +60,13 @@ import { HttpClientModule } from '@angular/common/http';
     // core
     CoreModule,
     HttpClientModule,
+    VideoThumbnailModule,
+    NotFoundPageModule,
+    SearchBoxMobileModule,
+    MatMenuModule,
+    AppRoutingModule,
+    VideoThumbnailLoaderModule,
+    SearchBoxMobileModule,
 
     // app
     AppRoutingModule,
@@ -59,7 +79,17 @@ import { HttpClientModule } from '@angular/common/http';
     LandingLayoutComponent,
     DefaultLayoutComponent,
     CartIconComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HeaderComponent,
+    SidebarComponent,
+    AccountSidebarComponent,
+    BrandIconComponent,
+    MiniSidebarComponent,
+    BrowseVideosComponent,
+    VideoPlayerComponent,
+    HomeComponent,
+    MiniPlayerComponent,
+    NxWelcomeComponent
   ],
   providers: [
     {
@@ -68,7 +98,16 @@ import { HttpClientModule } from '@angular/common/http';
         setTimeout(resolve, 1000)
       ),
       multi: true
-    }
+    },
+    {
+      provide: YOUTUBE_API_KEY,
+      useValue: environment.youtubeApiKey,
+    },
+    {
+      provide: YOUTUBE_SERVICE,
+      useClass: YoutubeServiceV2,
+    },
+    { provide: APP_CONFIG, useValue: environment },
  ],
   bootstrap: [AppComponent]
 })

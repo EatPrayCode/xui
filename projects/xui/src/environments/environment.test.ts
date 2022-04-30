@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   test: true,
   i18nPrefix: '',
+  youtubeApiKey: 'AIzaSyCXeDGTeWD9-gVZY6VWoRPLW0LOT0yn_Es',
   apiUrl: 'localhost:3000/api/',
   firebase: {
     apiKey: "AIzaSyAdKv1ORc84HMOvLjWr6rq4RTcEOjqPh78",
@@ -17,6 +18,7 @@ export const environment = {
     appId: "1:975225617838:web:2dc594516b09590f859c3f",
     measurementId: "G-WPSSRW0X0K"
   },
+  backendUrl: 'https://youtube-webapp-341311.uc.r.appspot.com',
   youtube: {
     API_KEY: 'AIzaSyB9cgwdwPyk6RcTNr86pZ1t-NqxL-EzNe4',
     CLIENT_ID: '1069808725321-ddmbteo8n53rga47jnv0dlliv66comsi.apps.googleusercontent.com',

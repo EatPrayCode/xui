@@ -1,0 +1,64 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.thumbnail {
+  width: 100%;
+  cursor: pointer;
+  &--vertical {
+    display: flex;
+    flex-direction: row;
+    .thumbnail-details {
+      margin-left: 12px;
+    }
+  }
+
+  &--horizontal {
+    display: flex;
+    flex-direction: column;
+    .thumbnail-details {
+      margin-top: 12px;
+    }
+    .thumbnail__image {
+      flex: unset;
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+  &__image {
+    flex: 0 0 45%;
+    &::before {
+      display: block;
+      content: '';
+      width: 100%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.thumbnail-details {
+  display: flex;
+}
+
+.thumbnail-details-content {
+  &__title {
+    display: block;
+    max-height: 4rem;
+    overflow: hidden;
+    color: var(--yt-spec-text-primary);
+    margin: 0 6px 4px 0;
+  }
+
+  &__channelTitle {
+    color: var(--yt-endpoint-color);
+  }
+
+  &__footer {
+    color: var(--yt-endpoint-color);
+  }
+}
