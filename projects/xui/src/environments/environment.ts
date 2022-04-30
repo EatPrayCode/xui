@@ -22,5 +22,10 @@ export const environment = {
     messagingSenderId: "975225617838",
     appId: "1:975225617838:web:2dc594516b09590f859c3f",
     measurementId: "G-WPSSRW0X0K"
+  },
+  youtube: {
+    API_KEY: 'AIzaSyB9cgwdwPyk6RcTNr86pZ1t-NqxL-EzNe4',
+    CLIENT_ID: '1069808725321-ddmbteo8n53rga47jnv0dlliv66comsi.apps.googleusercontent.com',
+    TOTAL_API_RESULTS: '20'
   }
 };

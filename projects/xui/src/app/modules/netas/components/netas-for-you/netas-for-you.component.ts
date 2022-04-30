@@ -11,7 +11,7 @@ import { Observable, of } from 'rxjs';
 import { startWith, tap } from 'rxjs/operators';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 import { DataService } from '../../../../services/data.service';
-import { UserService } from 'projects/xui/src/app/services/user.service';
+import { UserService } from '~/app/services/user.service';
 
 @Component({
   selector: 'app-netas-for-you',

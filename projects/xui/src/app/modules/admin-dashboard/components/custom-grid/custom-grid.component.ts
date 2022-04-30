@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { UserService } from 'projects/xui/src/app/services/user.service';
 import { of, Observable, forkJoin } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
@@ -8,7 +7,8 @@ import { Airtable, Base } from 'ngx-airtable';
 import { tap, map } from 'rxjs/operators';
 import { getDownloadURL, Storage, uploadBytes } from '@angular/fire/storage';
 import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
-import { netaAirTable } from 'projects/xui/src/app/models/constant';
+import { netaAirTable } from '~/app/models/constant';
+import { UserService } from '~/app/services/user.service';
 
 const ELEMENT_DATA: netaAirTable[] = [];
 

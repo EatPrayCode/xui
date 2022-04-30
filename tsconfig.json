@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./projects/",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -14,10 +14,17 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
-      "@core/*": ["app/modules/core/*"],
-      "@shared/*": ["app/modules/shared/*"],
-      "@models/*": ["app/modules/core/*"],
-      "@services/*": ["app/services/*"],
+      "~/*": ["xui/src/*"],
+      "@core/*": ["xui/src/app/echoes-core/*"],
+      "@utils/*": ["xui/src/app/echoes-shared/utils/*"],
+      "@shared/*": ["xui/src/app/echoes-shared/*"],
+      "@animations/*": ["xui/src/app/echoes-shared/animations/*"],
+      "@api/*": ["xui/src/app/echoes-core/api/*"],
+      "@resolvers/*": ["xui/src/app/echoes-core/resolvers/*"],
+      "@store/*": ["xui/src/app/echoes-core/store/*"],
+      "@mocks/*": ["xui/tests/mocks/*"],
+      "@env/*": ["xui/src/environments/*"],
+      "@services/*": ["xui/src/app/services/*"],
       "@features/*": ["src/app/modules/features/*"]
     }
   }

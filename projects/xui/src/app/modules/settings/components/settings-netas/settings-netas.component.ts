@@ -1,10 +1,10 @@
 import { getAuth } from 'firebase/auth';
 import { AppService } from './../../../../services/app.service';
 import { tap } from 'rxjs/operators';
-import { UserService } from 'projects/xui/src/app/services/user.service';
 import { Observable, of } from 'rxjs';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/animations/route.animations';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { UserService } from '~/app/services/user.service';
 
 @Component({
   selector: 'app-settings-netas',
