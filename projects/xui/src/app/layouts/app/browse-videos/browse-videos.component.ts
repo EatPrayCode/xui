@@ -1,9 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { IYoutubeService, IYoutubeSearchResult, YOUTUBE_SERVICE } from '@youtube/common-ui';
 import { Subject, Observable, EMPTY } from 'rxjs';
 import { withLatestFrom, take, tap, switchMap, takeUntil, catchError } from 'rxjs/operators';
-import { IYoutubeSearchResult, IYoutubeService } from '../../lib/models';
-import { YOUTUBE_SERVICE } from '../../lib/tokens';
 import { AccountStoreService } from '../core/services/account-store/account-store.service';
 import { VideoStoreService } from '../core/services/video-store/video-store.service';
 

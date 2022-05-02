@@ -45,7 +45,7 @@ import { NxWelcomeComponent } from './layouts/app/nx-welcome.component';
     // angular
     BrowserModule,
     BrowserAnimationsModule,
-    
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
@@ -66,7 +66,8 @@ import { NxWelcomeComponent } from './layouts/app/nx-welcome.component';
     MatMenuModule,
     AppRoutingModule,
     VideoThumbnailLoaderModule,
-    SearchBoxMobileModule,
+    ReactiveFormsModule,
+    SearchBoxModule,
 
     // app
     AppRoutingModule,
@@ -93,8 +94,8 @@ import { NxWelcomeComponent } from './layouts/app/nx-welcome.component';
   ],
   providers: [
     {
-      provide: APP_INITIALIZER, 
-      useValue: () =>  new Promise(resolve =>
+      provide: APP_INITIALIZER,
+      useValue: () => new Promise(resolve =>
         setTimeout(resolve, 1000)
       ),
       multi: true
@@ -108,7 +109,7 @@ import { NxWelcomeComponent } from './layouts/app/nx-welcome.component';
       useClass: YoutubeServiceV2,
     },
     { provide: APP_CONFIG, useValue: environment },
- ],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

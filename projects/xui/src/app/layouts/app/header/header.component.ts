@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CountryCodeDTO } from '@youtube/common-ui';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { SettingsStore } from '../core/services/settings-store/settings-store.service';
@@ -65,9 +66,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((theme: AppTheme | null) => {
         console.log(theme);
         if (theme === AppTheme.DARK) {
-          this.themeService.setTheme(AppTheme.LIGHT);
-        } else {
           this.themeService.setTheme(AppTheme.DARK);
+        } else {
+          this.themeService.setTheme(AppTheme.LIGHT);
         }
       });
   }
@@ -85,7 +86,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private getCountryCode(): void {
-    this.http.get<any>('http://ip-api.com/json/?fields=countryCode').subscribe((res: any) => {
+    this.http.get<CountryCodeDTO>('http://ip-api.com/json/?fields=countryCode').subscribe((res: CountryCodeDTO) => {
       this.countryCode = res.countryCode;
       this.cdr.detectChanges();
     });

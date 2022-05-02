@@ -37,7 +37,7 @@ export class SearchBoxMobileComponent implements OnInit, OnDestroy, ControlValue
 
   @Input() placeholder = 'Search';
   @Input() debounceTime = 200;
-  @Input() searchControl: FormControl = new FormControl();
+  @Input() searchControl: FormControl = new FormControl({});
   public searchOptions: IYoutubeSearchResult[] = [];
   public isMobileSearchActive?: boolean;
 

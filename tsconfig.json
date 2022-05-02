@@ -5,14 +5,14 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2020",
+    "declarationMap": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2018", "dom"],
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
     "paths": {
       "~/*": ["xui/src/*"],
       "@core/*": ["xui/src/app/echoes-core/*"],
@@ -25,7 +25,8 @@
       "@mocks/*": ["xui/tests/mocks/*"],
       "@env/*": ["xui/src/environments/*"],
       "@services/*": ["xui/src/app/services/*"],
-      "@features/*": ["src/app/modules/features/*"]
+      "@features/*": ["src/app/modules/features/*"],
+      "@youtube/common-ui": ["xui/src/app/layouts/index.ts"]
     }
   }
 }

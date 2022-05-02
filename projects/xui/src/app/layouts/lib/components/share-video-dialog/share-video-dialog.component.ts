@@ -14,8 +14,8 @@ import { takeUntil } from 'rxjs/operators';
 export class ShareVideoDialogComponent implements OnInit, OnDestroy {
   public currenVideoTime?: any;
   public videoUrl?: string;
-  public videoUrlControl = new FormControl();
-  public startTimeControl = new FormControl();
+  public videoUrlControl = new FormControl({});
+  public startTimeControl = new FormControl({});
 
   private readonly onDestroy$ = new Subject<void>();
 
