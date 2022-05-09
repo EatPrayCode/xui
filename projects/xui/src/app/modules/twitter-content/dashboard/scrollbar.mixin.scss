@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@mixin scrollbar-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $bg-color: mat.get-color-from-palette($background, background);
+
+  @media only screen and (min-device-width: 600px) {
+    *::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    *::-webkit-scrollbar {
+      width: 8px;
+      background-color: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: rgba(
+        128,
+        128,
+        128,
+        64
+      ); /*rgba(mat.get-color-from-palette($accent),0.3);*/
+      border-radius: 4px;
+    }
+  }
+}

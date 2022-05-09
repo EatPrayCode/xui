@@ -25,7 +25,7 @@ import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.
 import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NgxAirtableModule } from 'ngx-airtable';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { YoutubeLayoutComponent } from './layouts/youtube-layout/youtube-layout.component';
 import { YOUTUBE_API_KEY, YOUTUBE_SERVICE, YoutubeServiceV2, APP_CONFIG } from './modules/youtube-content/components';
@@ -53,6 +53,8 @@ import { YOUTUBE_API_KEY, YOUTUBE_SERVICE, YoutubeServiceV2, APP_CONFIG } from '
 
     AppRoutingModule,    
     ReactiveFormsModule,
+
+    HttpClientJsonpModule,
   
     // app
     AppRoutingModule,

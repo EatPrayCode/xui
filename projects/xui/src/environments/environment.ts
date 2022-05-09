@@ -29,5 +29,15 @@ export const environment = {
     API_KEY: 'AIzaSyB9cgwdwPyk6RcTNr86pZ1t-NqxL-EzNe4',
     CLIENT_ID: '1069808725321-ddmbteo8n53rga47jnv0dlliv66comsi.apps.googleusercontent.com',
     TOTAL_API_RESULTS: '20'
-  }
+  },
+  subredditLimit: 25,
+  clientId: "eoxObX4pSVwcFEPOOBRSGQ",
+  authorizationType: "authorization_code",
+  refreshType: "refresh_token",
+  tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
+  secret: 'P1MyF9oZAqm-Bk_DAQ-lt0TILLW21A',
+  redirectUrl: "http://localhost:4201/twitter-content/authenticate", //replace
+  scope:
+    "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"
+
 };

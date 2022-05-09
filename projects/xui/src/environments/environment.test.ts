@@ -2,12 +2,12 @@ const packageJson = require('../../../../package.json');
 
 export const environment = {
   appName: 'XUI',
-  envName: 'TEST',
-  production: false,
+  envName: 'PROD',
+  production: true,
   test: true,
   i18nPrefix: '',
   youtubeApiKey: 'AIzaSyCXeDGTeWD9-gVZY6VWoRPLW0LOT0yn_Es',
-  apiUrl: 'localhost:3000/api/',
+  apiUrl: 'https://xui-wine.vercel.app/api/',
   firebase: {
     apiKey: "AIzaSyAdKv1ORc84HMOvLjWr6rq4RTcEOjqPh78",
     authDomain: "devx-348322.firebaseapp.com",
@@ -23,5 +23,14 @@ export const environment = {
     API_KEY: 'AIzaSyB9cgwdwPyk6RcTNr86pZ1t-NqxL-EzNe4',
     CLIENT_ID: '1069808725321-ddmbteo8n53rga47jnv0dlliv66comsi.apps.googleusercontent.com',
     TOTAL_API_RESULTS: '20'
-  }
+  },
+  subredditLimit: 25,
+  clientId: "bnNPwXE9nKJanjYmh4sIHg",
+  authorizationType: "authorization_code",
+  refreshType: "refresh_token",
+  tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
+  secret: 'dUf7tRSpTTv1G_mumLopvBzAVjTvJg',
+  redirectUrl: "https://reddit-sharp.vercel.app/twitter-content/authenticate", //replace
+  scope:
+    "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"
 };

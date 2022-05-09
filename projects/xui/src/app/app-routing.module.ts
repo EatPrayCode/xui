@@ -14,6 +14,7 @@ const routes: Routes = [
         path: '',
         component: AboutComponent
       },
+
     ]
   },
   {
@@ -47,6 +48,14 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/home/home.module').then((m) => m.SetupModule)
       },
+      {
+        path: 'twitter-content',
+        loadChildren: () =>
+          import('./modules/twitter-content/app.module').then(
+            (m) => m.AppModule
+          )
+      },
+
     ]
   },
   {

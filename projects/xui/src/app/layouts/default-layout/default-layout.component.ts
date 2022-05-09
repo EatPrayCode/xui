@@ -72,19 +72,19 @@ export class DefaultLayoutComponent implements OnInit {
       label: 'app.menu.youtube-content',
       icon: 'phone'
     },
-    // {
-    //   link: 'about',
-    //   label: 'app.menu.about',
-    //   icon: 'mail'
-    // },
+    {
+      link: 'twitter-content',
+      label: 'app.menu.about',
+      icon: 'mail'
+    },
   ];
   navigationSideMenu = [
     ...this.navigation,
-    {
-      link: 'dashboard',
-      label: 'app.menu.dashboard',
-      icon: 'person'
-    },
+    // {
+    //   link: 'dashboard',
+    //   label: 'app.menu.dashboard',
+    //   icon: 'person'
+    // },
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;
