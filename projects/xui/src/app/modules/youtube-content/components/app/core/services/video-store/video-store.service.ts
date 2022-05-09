@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
-import { MiniVideoPayload } from '~/app/layouts/lib/models';
+import { MiniVideoPayload } from '../../../../lib/models';
+
 import { selectIsMiniPlayerMode, selectMiniPlayerVideo, selectVideoSearchQuery } from '../../../reducers';
 import { VideoActions } from '../../actions';
 

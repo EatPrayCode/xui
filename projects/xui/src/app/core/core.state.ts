@@ -14,9 +14,9 @@ import { settingsReducer } from './settings/settings.reducer';
 import { SettingsState } from './settings/settings.model';
 import { persistStateReducer } from './meta-reducers/persist-state-with-local-storage.reducer';
 import { Action,  createSelector } from '@ngrx/store';
-import * as fromVideo from './../layouts/app/core/reducers/video.reducer';
-import * as fromAccount from './../layouts/app/core/reducers/account.reducer';
-import * as fromSettings from './../layouts/app/core/reducers/settings.reducer';
+import * as fromVideo from '../modules/youtube-content/components/app/core/reducers/video.reducer';
+import * as fromAccount from '../modules/youtube-content/components/app/core/reducers/account.reducer';
+import * as fromSettings from '../modules/youtube-content/components/app/core/reducers/settings.reducer';
 import { InjectionToken } from '@angular/core';
 
 

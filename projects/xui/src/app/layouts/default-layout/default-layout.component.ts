@@ -67,6 +67,11 @@ export class DefaultLayoutComponent implements OnInit {
       label: 'app.menu.settings',
       icon: 'mail'
     },
+    {
+      link: 'youtube-content',
+      label: 'app.menu.youtube-content',
+      icon: 'phone'
+    },
     // {
     //   link: 'about',
     //   label: 'app.menu.about',

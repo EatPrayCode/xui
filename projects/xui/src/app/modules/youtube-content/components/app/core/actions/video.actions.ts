@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { MiniVideoPayload } from '~/app/layouts/lib/models';
+import { MiniVideoPayload } from '../../../lib/models';
 
 export const setVideoSearchQuery = createAction('[HEADER] Set Video Search Query', props<{ payload: string }>());
 export const setIsMiniPlayerMode = createAction(

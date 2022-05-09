@@ -26,7 +26,8 @@
       "@env/*": ["xui/src/environments/*"],
       "@services/*": ["xui/src/app/services/*"],
       "@features/*": ["src/app/modules/features/*"],
-      "@youtube/common-ui": ["xui/src/app/layouts/index.ts"]
+      "@youtube/common-ui": ["xui/src/app/layouts/index.ts"],
+      "@models/*": ["xui/src/models/*"],
     }
   }
 }

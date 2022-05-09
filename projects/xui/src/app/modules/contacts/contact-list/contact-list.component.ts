@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from '../../../core/core.state';
-import { Contact } from '../../../Models/Contact.Model';
 import { AppService } from '../../../services/app.service';
 import { ContactService } from '../../../services/Contact.service';
+import { Contact } from '~/app/models/Contact.Model';
 
 @Component({
   selector: 'app-contact-list',

@@ -1,4 +1,3 @@
-import { MiniPlayerComponent } from './layouts/app/mini-player/mini-player.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
@@ -20,25 +19,16 @@ import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig, getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
-import { AboutComponent } from './about/about.component';
+import { AboutComponent } from './modules/about/about.component';
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NgxAirtableModule } from 'ngx-airtable';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './layouts/app/header/header.component';
-import { SidebarComponent } from './layouts/app/sidebar/sidebar.component';
-import { AccountSidebarComponent } from './layouts/app/account-sidebar/account-sidebar.component';
-import { BrandIconComponent, NotFoundPageModule, SearchBoxMobileModule, SearchBoxModule, VideoPlayerComponent, VideoThumbnailLoaderModule, VideoThumbnailModule } from './layouts/lib/components';
-import { MiniSidebarComponent } from './layouts/app/mini-sidebar/mini-sidebar.component';
-import { BrowseVideosComponent } from './layouts/app/browse-videos/browse-videos.component';
-import { HomeComponent } from './layouts/app/home/home.component';
-import { APP_CONFIG, YOUTUBE_API_KEY, YOUTUBE_SERVICE } from './layouts/lib/tokens';
-import { YoutubeServiceV2 } from './layouts/lib/services';
-import { MatMenuModule } from '@angular/material/menu';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NxWelcomeComponent } from './layouts/app/nx-welcome.component';
+import { YoutubeLayoutComponent } from './layouts/youtube-layout/youtube-layout.component';
+import { YOUTUBE_API_KEY, YOUTUBE_SERVICE, YoutubeServiceV2, APP_CONFIG } from './modules/youtube-content/components';
 
 @NgModule({
   imports: [
@@ -60,15 +50,10 @@ import { NxWelcomeComponent } from './layouts/app/nx-welcome.component';
     // core
     CoreModule,
     HttpClientModule,
-    VideoThumbnailModule,
-    NotFoundPageModule,
-    SearchBoxMobileModule,
-    MatMenuModule,
-    AppRoutingModule,
-    VideoThumbnailLoaderModule,
-    ReactiveFormsModule,
-    SearchBoxModule,
 
+    AppRoutingModule,    
+    ReactiveFormsModule,
+  
     // app
     AppRoutingModule,
     NgxAirtableModule.forRoot({ apiKey: 'key3ITRiEPhABhtTC' })
@@ -81,16 +66,8 @@ import { NxWelcomeComponent } from './layouts/app/nx-welcome.component';
     DefaultLayoutComponent,
     CartIconComponent,
     NotFoundComponent,
-    HeaderComponent,
-    SidebarComponent,
-    AccountSidebarComponent,
-    BrandIconComponent,
-    MiniSidebarComponent,
-    BrowseVideosComponent,
-    VideoPlayerComponent,
-    HomeComponent,
-    MiniPlayerComponent,
-    NxWelcomeComponent
+    
+    YoutubeLayoutComponent
   ],
   providers: [
     {

@@ -5,12 +5,12 @@ import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/fo
 import { switchMap } from 'rxjs/operators';
 import { UtilsService } from './Utils.service';
 import { FileUploadService } from './UploadFile.service';
-import { FileUpload } from '../Models/FileUpload.Model';
 import { formatDate } from '@angular/common';
-import { User } from '../Models/User.Model';
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import { getAuth } from 'firebase/auth';
 import { netaAirTable } from '../models/constant';
+import { User } from '../models/User.Model';
+import { FileUpload } from '../models/FileUpload.Model';
 
 @Injectable({
   providedIn: 'root'

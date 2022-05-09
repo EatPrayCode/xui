@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CountryCodeDTO } from '@youtube/common-ui';
+import { CountryCodeDTO } from '~/app/modules/youtube-content/components';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { SettingsStore } from '../core/services/settings-store/settings-store.service';

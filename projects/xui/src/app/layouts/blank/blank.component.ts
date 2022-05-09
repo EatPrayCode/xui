@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blank.component.scss']
 })
 export class BlankComponent implements OnInit {
-  public isMiniPlayerMode$?: Observable<boolean>;
+  
   constructor() {}
 
   ngOnInit(): void {}

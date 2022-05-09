@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { WebApiService } from '~/app/layouts/lib/services';
+import { WebApiService } from '../../../../lib/services';
 import { SettingsStore } from '../settings-store/settings-store.service';
 import { AppTheme } from './theme.constants';
 

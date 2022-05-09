@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { VideoPlayerComponent } from '../../lib/components';
 import { MiniVideoPayload } from '../../lib/models';
+
 @Component({
   selector: 'yt-mini-player',
   templateUrl: './mini-player.component.html',
