@@ -175,18 +175,16 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   openPost(post: Post) {
     let dialogRef = this.dialog.open(PostModalComponent, {
-      maxWidth: "100vh",
       hasBackdrop: true,
       disableClose: false,
       height: '100vh',
+      maxWidth: '100vh',
+      width: '100vh',
       position: {
         right: '0px',
         bottom: '0px'
       },
-      //width: Math.round(Math.min(window.innerWidth*0.8,window.innerHeight*1)/window.innerWidth*100).toString() + "%",
-      //height:  "90%",
       autoFocus: false,
-      panelClass: "post-modal",
       data: { post: post }
     });
   }
