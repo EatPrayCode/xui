@@ -59,11 +59,6 @@ export class YoutubeLayoutComponent implements OnInit {
     //   icon: 'person'
     // },
     {
-      link: 'settings',
-      label: 'app.menu.settings',
-      icon: 'mail'
-    },
-    {
       link: 'youtube-content',
       label: 'app.menu.youtube-content',
       icon: 'phone'
@@ -71,6 +66,11 @@ export class YoutubeLayoutComponent implements OnInit {
     {
       link: 'reddit-content',
       label: 'app.menu.reddit-content',
+      icon: 'mail'
+    },
+    {
+      link: 'settings',
+      label: 'app.menu.settings',
       icon: 'mail'
     },
   ];

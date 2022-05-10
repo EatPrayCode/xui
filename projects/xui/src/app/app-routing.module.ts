@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: RedditLayoutComponent,
+    component: DefaultLayoutComponent,
     children: [
       {
         path: 'reddit-content',

@@ -8,6 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from '../../shared/shared.module';
 import { environment } from '../../../environments/environment';
 import { NetaService } from './neta.service';
+import { NxWelcomeComponent } from './containers/nx-welcome.component';
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -31,7 +32,10 @@ export function httpLoaderFactory(http: HttpClient) {
       isolate: true
     })
   ],
-  declarations: [NetaComponent],
+  declarations: [
+    NetaComponent,
+    NxWelcomeComponent
+  ],
   providers: [NetaService]
 })
 export class NetaModule {

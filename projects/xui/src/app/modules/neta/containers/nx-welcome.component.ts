@@ -3,7 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 /* eslint-disable */
 
 @Component({
-  selector: 'youtube-webapp-nx-welcome',
+  selector: 'app-neta-welcome',
   template: `
     <!--
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *
