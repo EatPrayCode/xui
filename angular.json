@@ -29,11 +29,8 @@
               "projects/xui/src/assets"
             ],
             "styles": [
-              "projects/xui/src/styles-app-loading.scss",
-              "projects/xui/src/styles.scss",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "projects/xui/src/styles/styles-app-loading.scss",
+              "projects/xui/src/styles.scss"
             ],
             "scripts": []
           },
