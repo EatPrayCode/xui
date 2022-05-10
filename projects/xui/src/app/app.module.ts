@@ -29,6 +29,7 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { YoutubeLayoutComponent } from './layouts/youtube-layout/youtube-layout.component';
 import { YOUTUBE_API_KEY, YOUTUBE_SERVICE, YoutubeServiceV2, APP_CONFIG } from './modules/youtube-content/components';
+import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.component';
 
 @NgModule({
   imports: [
@@ -51,11 +52,11 @@ import { YOUTUBE_API_KEY, YOUTUBE_SERVICE, YoutubeServiceV2, APP_CONFIG } from '
     CoreModule,
     HttpClientModule,
 
-    AppRoutingModule,    
+    AppRoutingModule,
     ReactiveFormsModule,
 
     HttpClientJsonpModule,
-  
+
     // app
     AppRoutingModule,
     NgxAirtableModule.forRoot({ apiKey: 'key3ITRiEPhABhtTC' })
@@ -68,8 +69,9 @@ import { YOUTUBE_API_KEY, YOUTUBE_SERVICE, YoutubeServiceV2, APP_CONFIG } from '
     DefaultLayoutComponent,
     CartIconComponent,
     NotFoundComponent,
-    
-    YoutubeLayoutComponent
+
+    YoutubeLayoutComponent,
+    RedditLayoutComponent
   ],
   providers: [
     {

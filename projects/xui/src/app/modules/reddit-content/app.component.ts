@@ -81,7 +81,7 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   navOptions = [
     {
       text: "Dashboard",
-      url: "/twitter-content/reddit-dashboard",
+      url: "/reddit-content/reddit-dashboard",
       check: () => {
         return true;
       }
@@ -99,14 +99,14 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
     },
     {
       text: "Log In",
-      url: `/twitter-content/login`,
+      url: `/reddit-content/login`,
       check: () => {
         return !this.oauth.getLoggedIn();
       }
     },
     {
       text: "Log Out",
-      url: "/twitter-content/logout",
+      url: "/reddit-content/logout",
       check: () => {
         return this.oauth.getLoggedIn();
       }
@@ -242,7 +242,7 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
 
   addPost(): void {
     if (!this.oauth.getLoggedIn()) {
-      this.router.navigate(["/twitter-content/login"]);
+      this.router.navigate(["/reddit-content/login"]);
       return;
     }
     if (this.route.children.length <= 0) {

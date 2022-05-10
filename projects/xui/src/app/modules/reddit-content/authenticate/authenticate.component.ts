@@ -43,7 +43,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
                 this.oauth.setToken(data.access_token, data.expires_in);
                 if (data.refresh_token)
                   this.oauth.setRefreshToken(data.refresh_token);
-                window.location.href = "/twitter-content/reddit-dashboard";
+                window.location.href = "/reddit-content/reddit-dashboard";
               }
             });
         });

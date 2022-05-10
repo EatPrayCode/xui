@@ -36,7 +36,7 @@ export const environment = {
   refreshType: "refresh_token",
   tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
   secret: 'P1MyF9oZAqm-Bk_DAQ-lt0TILLW21A',
-  redirectUrl: "http://localhost:4201/twitter-content/authenticate", //replace
+  redirectUrl: "http://localhost:4201/reddit-content/authenticate", //replace
   scope:
     "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"
 

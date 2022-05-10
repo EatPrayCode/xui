@@ -56,7 +56,7 @@ const routes: Routes = [
   },
   // { path: "", redirectTo: "/home", pathMatch: "full" },
   //copy reddit's exact syntax for users who copypaste
-  { path: "**", redirectTo: "/twitter-content/reddit-dashboard" }
+  { path: "**", redirectTo: "/reddit-content/reddit-dashboard" }
 ];
 
 @NgModule({

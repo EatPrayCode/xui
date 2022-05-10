@@ -18,13 +18,12 @@ import { UserService } from '../../services/user.service';
 import { actionInitialiseSettings } from '../../core/settings/settings.actions';
 
 @Component({
-  selector: 'app-default-layout',
-  templateUrl: './default-layout.component.html',
-  styleUrls: ['./default-layout.component.scss'],
-  animations: [routeAnimations],
+  selector: 'app-reddit-layout',
+  templateUrl: './reddit-layout.component.html',
+  styleUrls: ['./reddit-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DefaultLayoutComponent implements OnInit {
+export class RedditLayoutComponent implements OnInit {
   isProd = env.production;
   envName = env.envName;
   version = 'env.versions.app';
@@ -36,9 +35,6 @@ export class DefaultLayoutComponent implements OnInit {
     { value: 'hindi', label: 'Hindi' },
     { value: 'kannada', label: 'Kannada' }
   ];
-  // languages = this.languagesTemp.map(ele => {
-  //   return ele.value;
-  // });
 
   loaderMode: any = 'indeterminate';
   navigation: any = [

@@ -1,3 +1,4 @@
+import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -18,12 +19,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: BlankComponent,
+    component: RedditLayoutComponent,
     children: [
       {
-        path: 'twitter-content',
+        path: 'reddit-content',
         loadChildren: () =>
-          import('./modules/twitter-content/app.module').then(
+          import('./modules/reddit-content/app.module').then(
             (m) => m.AppModule
           )
       },
