@@ -74,7 +74,7 @@ export class DefaultLayoutComponent implements OnInit {
     },
     {
       link: 'reddit-content',
-      label: 'app.menu.about',
+      label: 'app.menu.reddit-content',
       icon: 'mail'
     },
   ];
