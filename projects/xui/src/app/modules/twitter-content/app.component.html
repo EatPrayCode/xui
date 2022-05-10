@@ -86,7 +86,7 @@
           <a
             mat-list-item
             *ngIf="nav.url"
-            [routerLink]="['/', nav.url]"
+            [routerLink]="nav.url"
             (click)="clickNav(nav)"
             >{{ nav.text }}</a
           >
