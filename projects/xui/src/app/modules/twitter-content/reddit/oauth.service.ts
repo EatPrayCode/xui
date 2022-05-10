@@ -37,7 +37,7 @@ export class OauthService {
     }`;
   }
 
-  logOut(redirect: string | null = "/"): void {
+  logOut(redirect: string | null = "/twitter-content/reddit-dashboard"): void {
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("tokenExpiration");
