@@ -14,17 +14,12 @@ import { settingsReducer } from './settings/settings.reducer';
 import { SettingsState } from './settings/settings.model';
 import { persistStateReducer } from './meta-reducers/persist-state-with-local-storage.reducer';
 import { Action,  createSelector } from '@ngrx/store';
-import * as fromVideo from '../modules/youtube-content/components/app/core/reducers/video.reducer';
-import * as fromAccount from '../modules/youtube-content/components/app/core/reducers/account.reducer';
-import * as fromSettings from '../modules/youtube-content/components/app/core/reducers/settings.reducer';
 import { InjectionToken } from '@angular/core';
 
 
 export const reducers: ActionReducerMap<AppState> = {
   settings: settingsReducer,
-  router: routerReducer,
-  [fromVideo.featureKey]: fromVideo.reducer,
-  [fromAccount.featureKey]: fromAccount.reducer
+  router: routerReducer
 };
 
 
@@ -59,22 +54,4 @@ export const selectRouterState = createFeatureSelector<
 export interface AppState {
   settings: SettingsState;
   router: RouterReducerState<RouterStateUrl>;
-  [fromVideo.featureKey]: fromVideo.VideoState;
-  [fromAccount.featureKey]: fromAccount.AccountState;
 }
-
-
-// Video state selectors
-export const selectVideoState = createFeatureSelector<fromVideo.VideoState>(fromVideo.featureKey);
-export const selectVideoSearchQuery = createSelector(selectVideoState, fromVideo.selectSearchQuery);
-export const selectIsMiniPlayerMode = createSelector(selectVideoState, fromVideo.selectVideoIsMiniPlayerMode);
-export const selectMiniPlayerVideo = createSelector(selectVideoState, fromVideo.selectVideoMiniPlayerVideo);
-
-// Account state selectors
-export const selectAccountState = createFeatureSelector<fromAccount.AccountState>(fromAccount.featureKey);
-export const selectLikedVideos = createSelector(selectAccountState, fromAccount.selectLikedVideos);
-export const selectDislikedVideos = createSelector(selectAccountState, fromAccount.selectDislikedVideos);
-export const selectedWatchedVideos = createSelector(selectAccountState, fromAccount.selectedWatchedVideos);
-export const selectIsWatchHistoryEnabled = createSelector(selectAccountState, fromAccount.selectIsWatchHistoryEnabled);
-
-// Settings state selectors

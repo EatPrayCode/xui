@@ -28,7 +28,6 @@ import { NgxAirtableModule } from 'ngx-airtable';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { YoutubeLayoutComponent } from './layouts/youtube-layout/youtube-layout.component';
-import { YOUTUBE_API_KEY, YOUTUBE_SERVICE, YoutubeServiceV2, APP_CONFIG } from './modules/youtube-content/components';
 import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.component';
 
 @NgModule({
@@ -80,16 +79,7 @@ import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.com
         setTimeout(resolve, 1000)
       ),
       multi: true
-    },
-    {
-      provide: YOUTUBE_API_KEY,
-      useValue: environment.youtubeApiKey,
-    },
-    {
-      provide: YOUTUBE_SERVICE,
-      useClass: YoutubeServiceV2,
-    },
-    { provide: APP_CONFIG, useValue: environment },
+    }
   ],
   bootstrap: [AppComponent]
 })
