@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FileUpload } from '~/app/models/FileUpload.Model';
 import { User } from '~/app/models/User.Model';
-import { FileUploadService } from '../../../services/UploadFile.service';
+import { FileUploadService } from '../../../services/uploadFile.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({

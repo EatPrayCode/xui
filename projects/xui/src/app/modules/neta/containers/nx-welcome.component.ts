@@ -439,7 +439,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
               </svg>
               <span>You&apos;re up and running</span>
             </h2>
-            <a href="#commands"> What&apos;s next? </a>
+            <a> What&apos;s next? </a>
           </div>
           <div class="logo-container">
             <svg fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

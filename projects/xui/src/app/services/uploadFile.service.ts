@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebaseStorage from '@angular/fire/storage';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from '@angular/fire/storage';
 import { addDoc, collection, deleteDoc, Firestore, getDocs, query, where } from '@angular/fire/firestore';
-import { UtilsService } from './Utils.service';
+import { UtilsService } from './utils.service';
 import { FileUpload } from '../models/FileUpload.Model';
 
 @Injectable({

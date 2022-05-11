@@ -22,12 +22,11 @@ import { environment } from '../environments/environment';
 import { AboutComponent } from './modules/about/about.component';
 import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
-import { CartIconComponent } from './layouts/components/cart-icon/cart-icon.component';
+import { CartIconComponent } from './shared/cart-icon/cart-icon.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NgxAirtableModule } from 'ngx-airtable';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { YoutubeLayoutComponent } from './layouts/youtube-layout/youtube-layout.component';
 import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.component';
 
 @NgModule({
@@ -67,10 +66,8 @@ import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.com
     LandingLayoutComponent,
     DefaultLayoutComponent,
     CartIconComponent,
-    NotFoundComponent,
-
-    YoutubeLayoutComponent,
-    RedditLayoutComponent
+    RedditLayoutComponent,
+    NotFoundComponent
   ],
   providers: [
     {

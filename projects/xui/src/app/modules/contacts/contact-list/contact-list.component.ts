@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from '../../../core/core.state';
 import { AppService } from '../../../services/app.service';
-import { ContactService } from '../../../services/Contact.service';
+import { ContactService } from '../../../services/contact.service';
 import { Contact } from '~/app/models/Contact.Model';
 
 @Component({

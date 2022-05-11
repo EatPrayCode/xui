@@ -3,8 +3,8 @@ import { Observable, Subject, timer } from 'rxjs';
 import { Firestore, collectionData, collection, addDoc, where, query, getDocs, deleteDoc, updateDoc } from '@angular/fire/firestore';
 import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
-import { UtilsService } from './Utils.service';
-import { FileUploadService } from './UploadFile.service';
+import { UtilsService } from './utils.service';
+import { FileUploadService } from './uploadFile.service';
 import { formatDate } from '@angular/common';
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import { getAuth } from 'firebase/auth';

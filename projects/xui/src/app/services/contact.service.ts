@@ -2,7 +2,7 @@ import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { addDoc, collection, collectionData, deleteDoc, Firestore, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { Observable, Subject } from 'rxjs';
-import { UtilsService } from './Utils.service';
+import { UtilsService } from './utils.service';
 import { doc, setDoc } from "firebase/firestore";
 import { Contact } from '../models/Contact.Model';
 
