@@ -45,7 +45,7 @@ export class DefaultLayoutComponent implements OnInit {
     {
       link: 'home',
       label: 'app.menu.home',
-      icon: 'mail'
+      icon: 'home'
     },
     {
       link: 'netas',
@@ -65,17 +65,17 @@ export class DefaultLayoutComponent implements OnInit {
     {
       link: 'youtube-content',
       label: 'app.menu.youtube-content',
-      icon: 'phone'
+      icon: 'theaters'
     },
     {
       link: 'reddit-content',
       label: 'app.menu.reddit-content',
-      icon: 'mail'
+      icon: 'trip_origin'
     },
     {
       link: 'settings',
       label: 'app.menu.settings',
-      icon: 'mail'
+      icon: 'settings'
     },
   ];
   navigationSideMenu = [
