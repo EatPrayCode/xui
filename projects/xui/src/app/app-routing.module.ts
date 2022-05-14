@@ -59,7 +59,7 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () =>
-          import('./modules/home/home.module').then((m) => m.SetupModule)
+          import('./modules/rss-reader/app.module').then((m) => m.AppModule)
       },
 
     ]
@@ -93,7 +93,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
       // preloadingStrategy: PreloadAllModules,
-      relativeLinkResolution: 'legacy'
+      relativeLinkResolution: 'legacy',
+      useHash: true
     })
   ],
   exports: [RouterModule]

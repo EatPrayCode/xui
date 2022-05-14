@@ -39,7 +39,6 @@ export const environment = {
   redirectUrl: "http://localhost:4201/reddit-content/authenticate", //replace
   scope:
     "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"
-
 };
 
 
