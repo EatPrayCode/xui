@@ -28,6 +28,7 @@ import { NgxAirtableModule } from 'ngx-airtable';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.component';
+import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component';
 
 @NgModule({
   imports: [
@@ -67,7 +68,8 @@ import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.com
     DefaultLayoutComponent,
     CartIconComponent,
     RedditLayoutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NetaLayoutComponent
   ],
   providers: [
     {

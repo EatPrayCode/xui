@@ -18,13 +18,13 @@ import { UserService } from '../../services/user.service';
 import { actionInitialiseSettings } from '../../core/settings/settings.actions';
 
 @Component({
-  selector: 'app-default-layout',
-  templateUrl: './default-layout.component.html',
-  styleUrls: ['./default-layout.component.scss'],
+  selector: 'app-neta-layout',
+  templateUrl: './neta-layout.component.html',
+  styleUrls: ['./neta-layout.component.scss'],
   animations: [routeAnimations],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DefaultLayoutComponent implements OnInit {
+export class NetaLayoutComponent implements OnInit {
   isProd = env.production;
   envName = env.envName;
   version = 'env.versions.app';
@@ -57,21 +57,21 @@ export class DefaultLayoutComponent implements OnInit {
     //   label: 'app.menu.visualise',
     //   icon: 'cog'
     // },
-    {
-      link: 'dashboard',
-      label: 'app.menu.dashboard',
-      icon: 'person'
-    },
+    // {
+    //   link: 'dashboard',
+    //   label: 'app.menu.dashboard',
+    //   icon: 'person'
+    // },
     {
       link: 'youtube-content',
       label: 'app.menu.youtube-content',
       icon: 'theaters'
     },
-    // {
-    //   link: 'reddit-content',
-    //   label: 'app.menu.reddit-content',
-    //   icon: 'trip_origin'
-    // },
+    {
+      link: 'reddit-content',
+      label: 'app.menu.reddit-content',
+      icon: 'trip_origin'
+    },
     {
       link: 'settings',
       label: 'app.menu.settings',

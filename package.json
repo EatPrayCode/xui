@@ -80,9 +80,12 @@
     "firebase-functions": "^3.13.2",
     "telegraf": "^4.3.0",
     "uuid": "^8.3.2",
-    "@ng-web-apis/common": "2.0.0",
-    "@angular/youtube-player": "13.2.2",
-    "youtube-search-without-api-key": "1.0.7"
+
+    "@angular/service-worker": "~12.2.6",
+    "@types/lodash-es": "^4.17.4",
+    "lodash-es": "^4.17.21",
+    "ngx-indexed-db": "6.1.2"
+    
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.6",
