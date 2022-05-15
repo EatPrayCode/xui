@@ -112,7 +112,12 @@ const dbConfig: DBConfig = {
     NgxAirtableModule.forRoot({ apiKey: 'key3ITRiEPhABhtTC' }),
 
     NgxIndexedDBModule.forRoot(dbConfig),
-    ServiceWorkerModule.register('/stupid-rss-reader/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   declarations: [
     AppComponent,

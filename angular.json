@@ -26,13 +26,16 @@
             "aot": true,
             "assets": [
               "projects/xui/src/favicon.ico",
-              "projects/xui/src/assets"
+              "projects/xui/src/assets",
+              "projects/xui/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/xui/src/styles/styles-app-loading.scss",
               "projects/xui/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "projects/xui/ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -124,7 +127,8 @@
             "karmaConfig": "projects/xui/karma.conf.js",
             "assets": [
               "projects/xui/src/favicon.ico",
-              "projects/xui/src/assets"
+              "projects/xui/src/assets",
+              "projects/xui/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/xui/src/styles-app-loading.scss",
