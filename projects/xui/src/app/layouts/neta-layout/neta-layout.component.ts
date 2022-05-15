@@ -57,11 +57,11 @@ export class NetaLayoutComponent implements OnInit {
     //   label: 'app.menu.visualise',
     //   icon: 'cog'
     // },
-    // {
-    //   link: 'dashboard',
-    //   label: 'app.menu.dashboard',
-    //   icon: 'person'
-    // },
+    {
+      link: 'dashboard',
+      label: 'app.menu.dashboard',
+      icon: 'person'
+    },
     {
       link: 'youtube-content',
       label: 'app.menu.youtube-content',

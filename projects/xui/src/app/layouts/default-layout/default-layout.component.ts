@@ -67,11 +67,11 @@ export class DefaultLayoutComponent implements OnInit {
       label: 'app.menu.youtube-content',
       icon: 'theaters'
     },
-    // {
-    //   link: 'reddit-content',
-    //   label: 'app.menu.reddit-content',
-    //   icon: 'trip_origin'
-    // },
+    {
+      link: 'reddit-content',
+      label: 'app.menu.reddit-content',
+      icon: 'trip_origin'
+    },
     {
       link: 'settings',
       label: 'app.menu.settings',
