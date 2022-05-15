@@ -1,9 +1,11 @@
 <ng-container>
+
     <div class="row" rtl>
         <div class="col-md-6 group">
             <h2>{{ 'app.settings.neta-preferences' | translate }}</h2>
         </div>
     </div>
+
     <div class="row contributors" rtl [ngClass]="routeAnimationsElements">
         <app-spinner [loading]="loading" [message]="'Loading Netas preferences..'"></app-spinner>
         <div class="contributors-wrapper">
@@ -13,13 +15,12 @@
                 <span>{{feature.netaid}}</span>
             </a>
         </div>
-    </div>
 
-    <div class="row">
         <a mat-raised-button *ngIf="!loading" class="actions-main" color="accent" (click)="saveNetaPreferences()"
             [ngClass]="routeAnimationsElements">
             Save Settings
         </a>
+
     </div>
 
 </ng-container>
