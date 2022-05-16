@@ -18,10 +18,11 @@
 // };
 // module.exports = sayHi;
 
-const handler = (data, context) => {
-  const d = new Date();
-  res.end(d.toString());
-}
+
+const afterLoad = require('after-load');
+const Parser = require('rss-parser');
+var request = require("request");
+
 
 const testFn = fn => async (req, res) => {
   const name = req.query.name || 'there';
@@ -59,14 +60,19 @@ const testFn = fn => async (req, res) => {
   // }
   console.log("Hello");
 
-  async function fetchMovies() {
-    const response = await fetch('https://www.google.com/');
-    // waits until the request completes...
-    console.log(response);
-  }
-  fetchMovies();
+  request({ uri: "https://www.google.com" },
+    function (error, response, body) {
+      res.status(200).json({
+        data: body
+      });
+    });
 
-  res.end(`Hi ! ${name}!`);
+  // res.end(`Hi ! ${name}!`);
+}
+
+const handler = (data, context) => {
+  const d = new Date();
+  res.end(d.toString());
 }
 
 module.exports = testFn(handler);

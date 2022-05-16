@@ -16,7 +16,6 @@ import { HttpHeaders } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     "Access-Control-Allow-Origin": "*",
-    mode: 'no-cors'
   })
 };
 
@@ -42,8 +41,8 @@ export class AppService {
   }
 
   testFn() {
-    this.http.get('localhost:3000/api/sample', httpOptions).subscribe((html: any) => {
-      
+    this.http.get('http://localhost:3000/api/sample', httpOptions).subscribe((html: any) => {
+      debugger;
     });
   }
 

@@ -86,8 +86,8 @@
     "lodash-es": "^4.17.21",
     "ngx-indexed-db": "6.1.2",
     "micro-cors": "*",
-    "after-load": "*"
-    
+    "after-load": "*",
+    "node-fetch": "*"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.6",
