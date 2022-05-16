@@ -9,6 +9,17 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 import { FirebaseAuthService } from "./firebase-auth.service";
 import { appState, appStateFirebaseNull } from "../models/app.state";
 import { environment as env } from './../../environments/environment';
+
+
+import { HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    "Access-Control-Allow-Origin": "*",
+    mode: 'no-cors'
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,6 +38,13 @@ export class AppService {
     private http: HttpClient
   ) {
     this.getConfig();
+    this.testFn();
+  }
+
+  testFn() {
+    this.http.get('https://xui-wine.vercel.app/api/sample', httpOptions).subscribe((html: any) => {
+      debugger;
+    });
   }
 
   initAppService() {
