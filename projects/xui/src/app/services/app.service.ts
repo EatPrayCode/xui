@@ -43,7 +43,7 @@ export class AppService {
 
   testFn() {
     this.http.get('https://xui-wine.vercel.app/api/sample', httpOptions).subscribe((html: any) => {
-      // debugger;
+      
     });
 
   }
