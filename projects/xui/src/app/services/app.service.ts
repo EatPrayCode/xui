@@ -37,12 +37,12 @@ export class AppService {
     private http: HttpClient
   ) {
     this.getConfig();
-    this.testFn();
+    // this.testFn();
   }
 
   testFn() {
     this.http.get('http://localhost:3000/api/sample', httpOptions).subscribe((html: any) => {
-      debugger;
+      
     });
   }
 

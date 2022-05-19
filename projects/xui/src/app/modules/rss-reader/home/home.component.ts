@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import {NgxIndexedDBService} from 'ngx-indexed-db';
-import {combineLatest, Subject} from 'rxjs';
-import {isValidHttpUrl} from '../helpers';
-import {FeedError, FeedItem, FeedLoading} from '../models';
-import {DELAY100, TABLES} from '../constants';
-import {CoreService} from '../core.service';
-import {debounceTime, switchMap, takeUntil} from 'rxjs/operators';
-import {importFeedsFromVersion3} from '../backward-compatibility';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { combineLatest, Subject } from 'rxjs';
+import { isValidHttpUrl } from '../helpers';
+import { FeedError, FeedItem, FeedLoading } from '../models';
+import { DELAY100, TABLES } from '../constants';
+import { CoreService } from '../core.service';
+import { debounceTime, switchMap, takeUntil } from 'rxjs/operators';
+import { importFeedsFromVersion3 } from '../backward-compatibility';
 import { cloneDeep } from 'lodash-es';
 
 
@@ -19,19 +19,19 @@ import { cloneDeep } from 'lodash-es';
 export class HomeComponent implements OnInit, OnDestroy {
 
     feeds: FeedItem[] = [];
-    addFeedMode: boolean = false;
+    addFeedMode: boolean = true;
     godMode: boolean = false;
     rawFeedURLs: string = '';
     feedLoading: FeedLoading = {};
     feedError: FeedError = {};
-    loading: boolean = false;
+    loading: boolean = true;
     private ngUnsubscribe$ = new Subject<void>();
     private load$ = new Subject<void>();
 
     identify = (index: number, feed: FeedItem) => feed.id;
 
     constructor(private dbService: NgxIndexedDBService,
-                private coreService: CoreService) {
+        private coreService: CoreService) {
     }
 
     get shareIsSuported(): boolean {
@@ -39,14 +39,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     addFeeds(rawFeedStrings: string): void {
-        this.addFeedMode = false;
+        this.addFeedMode = true;
         this.rawFeedURLs = '';
         const newFeeds$ = rawFeedStrings
             .split('\n')
             .map(s => s.trim())
             .filter(s => s)
             .filter(s => isValidHttpUrl(s))
-            .map(url => this.dbService.add(TABLES.FEEDS, {url}));
+            .map(url => this.dbService.add(TABLES.FEEDS, { url }));
 
         combineLatest(newFeeds$)
             .subscribe(() => this.load$.next());
@@ -86,7 +86,6 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.load$.next();
             });
 
-
         this.load$
             .pipe(
                 takeUntil(this.ngUnsubscribe$),
@@ -95,9 +94,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             )
             .subscribe(feeds => {
                 this.feeds = cloneDeep(feeds);
-                
             });
-
 
         this.load$.next();
 
@@ -106,8 +103,6 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.addFeeds(importFeedsFromVersion3());
         } catch (error) {
         }
-
-
     }
 
     unregister(): void {
