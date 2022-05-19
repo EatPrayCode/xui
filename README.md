@@ -16,3 +16,5 @@ var base = new Airtable({apiKey: 'key3ITRiEPhABhtTC'}).base('app0blxbqN1rHDD24')
 https://stackblitz.com/edit/angular-material-table-img-in-cells?file=app%2Ftable-basic-example.css
 https://bigcodenerd.org/split-cloud-functions-firebase/
 https://www.reddit.com/prefs/apps
+
+https://codepen.io/agbales/pen/YwBKyV

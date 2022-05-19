@@ -1,0 +1,26 @@
+.container {
+  margin-top: 0.8rem;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs-container {
+  border-radius: 10px;
+  overflow-x: hidden;
+}
+
+h3 {
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+}

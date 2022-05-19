@@ -39,7 +39,7 @@ export class RedditLayoutComponent implements OnInit {
   loaderMode: any = 'indeterminate';
   navigation: any = [
     {
-      link: 'home',
+      link: 'news',
       label: 'app.menu.home',
       icon: 'mail'
     },
