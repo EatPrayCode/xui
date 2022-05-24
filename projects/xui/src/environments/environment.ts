@@ -25,6 +25,7 @@ export const environment = {
     appId: "1:975225617838:web:2dc594516b09590f859c3f",
     measurementId: "G-WPSSRW0X0K"
   },
+  pocketConsumerKey: '102119-c42207c093d9875d124f349',
   backendUrl: 'https://youtube-webapp-341311.uc.r.appspot.com',
   youtube: {
     API_KEY: 'AIzaSyB9cgwdwPyk6RcTNr86pZ1t-NqxL-EzNe4',

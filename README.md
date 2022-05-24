@@ -18,3 +18,20 @@ https://bigcodenerd.org/split-cloud-functions-firebase/
 https://www.reddit.com/prefs/apps
 
 https://codepen.io/agbales/pen/YwBKyV
+
+https://codepen.io/daddasoft/pen/abWgpae
+
+https://codepen.io/MAHESHBYL/pen/oNwbvqv
+
+https://codepen.io/daddasoft/pen/Pomrmyw
+
+https://codepen.io/yessglory17/pen/RwRJLQW
+
+https://codepen.io/iremlopsum/pen/OVMxzp
+
+https://codepen.io/drehimself/pen/VvYLmV
+
+
+
+LOGO:
+https://codepen.io/codeddot/pen/vYNadeP
