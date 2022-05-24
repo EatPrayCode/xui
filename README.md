@@ -30,8 +30,14 @@ https://codepen.io/yessglory17/pen/RwRJLQW
 https://codepen.io/iremlopsum/pen/OVMxzp
 
 https://codepen.io/drehimself/pen/VvYLmV
-
+https://codepen.io/didof/pen/YzYpOWL
 
 
 LOGO:
 https://codepen.io/codeddot/pen/vYNadeP
+
+Humming bird
+https://codepen.io/psyloute/pen/jOaraNY
+
+Eye
+https://codepen.io/evaschicker/pen/yLPpRLe
