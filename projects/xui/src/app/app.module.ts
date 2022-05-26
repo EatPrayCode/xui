@@ -33,6 +33,7 @@ import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component
 import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TABLES } from './modules/rss-reader/constants';
+import { SharedModule } from './shared/shared.module';
 
 export function migrationFactory() {
   return {
@@ -101,6 +102,7 @@ const dbConfig: DBConfig = {
     // core
     CoreModule,
     HttpClientModule,
+    SharedModule,
 
     AppRoutingModule,
     ReactiveFormsModule,

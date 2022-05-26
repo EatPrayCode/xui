@@ -5,11 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './modules/about/about.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component';
+import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DefaultLayoutComponent,
+    component: LandingLayoutComponent,
     children: [
       {
         path: '',

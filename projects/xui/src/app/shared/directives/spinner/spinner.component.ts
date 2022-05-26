@@ -10,6 +10,8 @@ export class SpinnerComponent implements OnInit, OnChanges {
   @Input() loading: boolean = true;
   @Input() message: any = 'Please wait...';
 
+  color: string;
+
   constructor() { }
 
   ngOnInit() { }

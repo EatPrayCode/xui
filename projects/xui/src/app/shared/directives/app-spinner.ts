@@ -1,35 +1,38 @@
-import { ComponentFactory, ComponentFactoryResolver, ComponentRef, Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  ComponentFactory,
+  ComponentFactoryResolver,
+  ComponentRef,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 import { SpinnerComponent } from './spinner/spinner.component';
 
 @Directive({
-  selector: '[appSpinner]'
+  selector: '[appHighlight]'
 })
-export class AppSpinnerDirective {
+export class AppSpinnerDirective  {
 
-  loadingFactory: ComponentFactory<SpinnerComponent>;
-  loadingComponent!: ComponentRef<SpinnerComponent>;
-  
-  @Input()
-  set message(message: string) {
-    this.message = message;
+  constructor(private el: ElementRef) { }
+
+  @Input() defaultColor: string;
+
+  @Input('appHighlight') highlightColor: string;
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.highlight(this.highlightColor || this.defaultColor || 'red');
   }
 
-  @Input()
-  set appSpinner(loading: boolean) {
-    this.vcRef.clear();
-
-    if (loading) {
-      // create and embed an instance of the loading component
-      this.loadingComponent = this.vcRef.createComponent(this.loadingFactory);
-    }
-    else {
-      // embed the contents of the host template
-      this.vcRef.createEmbeddedView(this.templateRef);
-    }
+  @HostListener('mouseleave') onMouseLeave() {
+    this.highlight(null);
   }
 
-  constructor(private templateRef: TemplateRef<any>, private vcRef: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {
-    // Create resolver for loading component
-    this.loadingFactory = this.componentFactoryResolver.resolveComponentFactory(SpinnerComponent);
+  private highlight(color: string) {
+    console.log('height---' + this.el.nativeElement.offsetHeight);
+    this.el.nativeElement.style.backgroundColor = color;
   }
 }
