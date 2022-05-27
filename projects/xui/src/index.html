@@ -27,8 +27,8 @@
   <meta name="og:site_name" content="projectX">
   <meta name="og:type" content="website">
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
   <!-- async non-critical CSS -->
   <link rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');"
@@ -44,197 +44,98 @@
   <style type="text/css">
     html,
     body {
-      height: 100vh;
+      height: 100%;
     }
 
-    .motherlode {
+    body {
+      /* background-image: url("./assets/skulls.png"); */
+    }
+
+    .loader-container {
+      display: flex;
+      height: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
       width: 100%;
-      margin-top: 0px;
-      color: #181818;
-      font-size: 2.2rem;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      position: relative;
+      margin: 100px auto;
+    }
+
+    .loader-label {
+      position: absolute;
+      transform: translateX(-50%) translateY(-140%);
+      left: 50%;
+      opacity: 0.5;
+      font-size: 3rem;
+      font-family: "Open Sans Condensed";
       text-align: center;
     }
 
-    #yellow-profile {
-      -webkit-animation: yellow 10s infinite alternate ease-in-out;
-      aniamtion: yellow 10s infinite alternate ease-in-out;
-      opacity: 0.8;
+    .double-bounce1,
+    .double-bounce2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: rgb(185, 3, 3);
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+      animation: sk-bounce 2.0s infinite ease-in-out;
     }
 
-    #red-profile {
-      -webkit-animation: red 10s infinite alternate ease-in-out;
-      aniamtion: red 10s infinite alternate ease-in-out;
-      opacity: 0.8;
+    .double-bounce2 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
     }
 
-    #green-profile {
-      -webkit-animation: green 10s infinite alternate ease-in-out;
-      aniamtion: green 10s infinite alternate ease-in-out;
-      opacity: 0.8;
-    }
+    @-webkit-keyframes sk-bounce {
 
-    @-webkit-keyframes green {
-      0% {
-        fill: #03C9A9;
-        transform: translate(-900px, 0px);
-      }
-
-      22% {
-        fill: #1BBC9B;
-        transform: translate(0px, 0px);
-      }
-
-      72% {
-        fill: #03C9A9;
-        transform: translate(0px, 0px);
-      }
-
+      0%,
       100% {
-        fill: #1BBC9B;
-        transform: translate(-1000px, 0px);
+        -webkit-transform: scale(0.0)
+      }
+
+      50% {
+        -webkit-transform: scale(1.0)
       }
     }
 
-    @keyframes green {
-      0% {
-        fill: #03C9A9;
-        transform: translate(-900px, 0px);
-      }
+    @keyframes sk-bounce {
 
-      22% {
-        fill: #1BBC9B;
-        transform: translate(0px, 0px);
-      }
-
-      72% {
-        fill: #03C9A9;
-        transform: translate(0px, 0px);
-      }
-
+      0%,
       100% {
-        fill: #1BBC9B;
-        transform: translate(-1000px, 0px);
-      }
-    }
-
-    @-webkit-keyframes red {
-      0% {
-        fill: #F22613;
-        transform: translate(-900px, 0px);
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
       }
 
-      35% {
-        fill: #CF000F;
-        transform: translate(0px, 0px);
-      }
-
-      65% {
-        fill: #F22613;
-        transform: translate(0px, 0px);
-      }
-
-      100% {
-        fill: #CF000F;
-        transform: translate(-1000px, 0px);
-      }
-    }
-
-    @keyframes red {
-      0% {
-        fill: #F22613;
-        transform: translate(-900px, 0px);
-      }
-
-      35% {
-        fill: #CF000F;
-        transform: translate(0px, 0px);
-      }
-
-      65% {
-        fill: #F22613;
-        transform: translate(0px, 0px);
-      }
-
-      100% {
-        fill: #CF000F;
-        transform: translate(-1000px, 0px);
-      }
-    }
-
-    @-webkit-keyframes yellow {
-      0% {
-        fill: #F4D03F;
-        transform: translate(-1000px, 0px);
-      }
-
-      45% {
-        fill: #F7CA18;
-        transform: translate(0px, 0px);
-      }
-
-      55% {
-        fill: #F4D03F;
-        transform: translate(0px, 0px);
-      }
-
-      100% {
-        fill: #F7CA18;
-        transform: translate(-1000px, 0px);
-      }
-    }
-
-    @keyframes yellow {
-      0% {
-        fill: #F4D03F;
-        transform: translate(-1000px, 0px);
-      }
-
-      45% {
-        fill: #F7CA18;
-        transform: translate(0px, 0px);
-      }
-
-      55% {
-        fill: #F4D03F;
-        transform: translate(0px, 0px);
-      }
-
-      100% {
-        fill: #F7CA18;
-        transform: translate(-1000px, 0px);
+      50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
       }
     }
   </style>
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
 </head>
 
 <body>
   <app-root>
-
-    <div class="">
-      <svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-        y="0px" width="100%" height="450px" viewBox="0 0 500 500" enable-background="new 0 0 500 500"
-        xml:space="preserve">
-        <path id="green-profile" fill="#41A390" d="M191.75,383.875c0,0,0-11.125,0.5-24.125c0,0,0-23.75,16.25-27.75c0,0,43.5-4.75,43-20.5
-                  c0,0,1.25-17.25,1.173-20.359c0,0,6.539-6.009,4.204-9.554L253.5,278.5c0,0,7-3.5,2.75-7.75c0,0-1.803-5.28-1.303-6.53
-                   c0,0,5.381-4.868,7.303-6.47c0,0,9.75-7.75,2.5-15.5c0,0-13.195-10.812-15.604-26.601c0,0-0.063-24.732-9.813-47.982
-                  c0,0-18.001-53.002-114.543-26.401c0,0-69.341,23.362-41.457,118.066c0,0,4.667,12.001,22.715,35.894
-                  c13.631,18.044,9.996,56.696,6.618,88.648H191.75z" />
-        <path id="red-profile" fill="#E23B08"
-          d="M268,384.001c0,0-3.5-25.751,23.75-29.001c0,0,16-0.75,34-6.25c0,0,17.416-5.145,11-23.75
-                  c0,0-5-7.25,0.5-16.5c0,0,7.75-8,4.25-11.25l-3.512-3.36c0,0,8.762-2.39,4.512-7.64c0,0-2.708-8.67,1.75-12.25
-                  c0,0,9.075-6.396,11-8c0,0,7.661-5.489-1-18c0,0-13.155-8.432-19.25-28c0,0-0.5-35.5-13.5-56c0,0-38-72-142-30.5
-                  c0,0-67.943,31.555-40.031,126.352c0,0,11.198,20.148,28.531,41.481c14.274,17.568,9.175,50.685,5.793,82.668H268z" />
-        <path id="yellow-profile" fill="#F6CC0F" d="M332.667,384.001c0,0,4.667-24,28-24c0,0,24,1.334,32-10c0,0,11.334-6.001,4.667-25.334
-                  c0,0-0.668-16.334,3.666-14.334c0,0,4.334-4-3.333-9l4.554-3c0,0,2.447-1.333-3.887-11c0,0-3.666-9.667,6-12
-                  c0,0,11-6.001,13-7.667c0,0,9-4.666,0-17.666c0,0-17.334-13.667-23.667-34c0,0-8.333-49.999-21.666-68.333
-                  c0,0-28.666-62.667-137.667-16c0,0-68.334,24.833-39.333,123.334c0,0,7.998,15.999,24.384,44.851
-                  c11.616,20.452,14.796,50.916,11.282,84.149H332.667z" />
-      </svg>
-      <div class="motherlode">nconnect</div>
+    <div class="app-loading">
+      <section class="loader-container">
+        <aside class="loader-label">LOADING</aside>
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </section>
     </div>
-
   </app-root>
   <script>
 

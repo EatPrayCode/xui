@@ -1,28 +1,28 @@
 .noMargin {
-    margin: 0px;
-  }
-  
-  .one {
-    background-color: red;
-    height: 100px;
-    width:120px;
-  }
-  
-  .two {
-    background-color: yellow;
-    height: 100px;
-    width:120px;
-  }
-  
-  .three {
-    background-color: green;
-    height: 100px;
-    width:120px;
-  }
-  
-  .four {
-    background-color: blue;
-    height: 100px;
-    width:120px;
-  }
-  
+  margin: 0px;
+  font-size: 0.8rem;
+}
+
+.one {
+  background-color: red;
+  max-height: 100px;
+  max-width: 120px;
+}
+
+.two {
+  background-color: yellow;
+  max-height: 400px;
+  max-width: 420px;
+}
+
+.three {
+  background-color: green;
+  max-height: 300px;
+  max-width: 320px;
+}
+
+.four {
+  background-color: blue;
+  max-height: 700px;
+  max-width: 720px;
+}
