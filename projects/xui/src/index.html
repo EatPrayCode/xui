@@ -47,65 +47,81 @@
       height: 100%;
     }
 
-    .load-container {
-      width: 100vw;
-      height: 100vh;
+    /*use flexbox to centered element*/
+    div.loader-wrapper {
+      width: 100%;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
-    .loader-spinner {
-      width: 150px;
-      height: 150px;
+    h1.brand {
+      font-size: 40px;
     }
 
-    svg {
+    h1.brand span:nth-child(1) {
+      background-color: transparent;
+      color: #0074b4;
+    }
+
+    h1.brand span:nth-child(2) {
+      background-color: #0074b4;
+      color: #f3f2ef;
+      padding: 0px 6px;
+      margin-left: -6px;
+      border-radius: 2px;
+    }
+
+    div.loading-bar {
       width: 100%;
-      fill: none;
+      height: 4px;
+      background-color: #d6cec2;
+      border-radius: 10px;
+      margin-top: 25px;
+      overflow: hidden;
+      position: relative;
     }
 
-    .load {
-      transform-origin: 50% 50%;
-      stroke-dasharray: 0.7 0.3;
-      stroke-linecap: round;
-      stroke-width: 3px;
-      stroke: #005c84;
+    div.loading-bar::after {
+      content: '';
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      background-color: #0074b4;
+      transform: translateX(-20px);
+      animation: loop 2s ease infinite;
     }
 
-    .load.one {
-      animation: load 1.5s infinite ease-in;
-      animation-direction: reverse;
-    }
+    @keyframes loop {
 
-    .load.two {
-      fill: #005c84;
-    }
-
-    .load.three {
-      animation: load 1.5s infinite;
-    }
-
-    @keyframes load {
+      0%,
       100% {
-        transform: rotate(360deg);
+        transform: translateX(-28px);
+      }
+
+      50% {
+        transform: translateX(78px)
       }
     }
   </style>
 </head>
 
 <body>
+ 
   <app-root>
-    <div class="load-container">
-      <div class="loader-spinner">
-        <svg viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <circle class="load one" cx="60" cy="60" r="20" pathLength="1" />
-          <circle class="load two" cx="60" cy="60" r="10" />
-          <circle class="load three" cx="60" cy="60" r="30" pathLength="1" />
-        </svg>
-      </div>
+
+    <div class="loader-wrapper">
+      <h1 class="brand">
+        <span>neta</span>
+        <span>connect</span>
+        <div class="loading-bar"></div>
+      </h1>
     </div>
+
   </app-root>
+  
   <script>
 
     (function (i, s, o, g, r, a, m) {

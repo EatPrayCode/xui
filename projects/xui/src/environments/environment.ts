@@ -12,7 +12,7 @@ export const environment = {
   test: false,
   i18nPrefix: '',
   youtubeApiKey: 'AIzaSyCXeDGTeWD9-gVZY6VWoRPLW0LOT0yn_Es',
-  loadDelay: 0,
+  loadDelay: 1000,
   apiUrl: 'https://xui-wine.vercel.app/api/',
   // apiUrl: 'localhost:3000/api/',
   firebase: {

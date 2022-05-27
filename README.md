@@ -41,3 +41,9 @@ https://codepen.io/psyloute/pen/jOaraNY
 
 Eye
 https://codepen.io/evaschicker/pen/yLPpRLe
+
+neta
+https://codepen.io/JavaScriptJunkie/pen/jvRGZy
+
+Main Loader
+https://codepen.io/legr4n7/pen/BaJJoxb

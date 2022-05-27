@@ -83,7 +83,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
       .container {
         margin-left: auto;
         margin-right: auto;
-        max-width: 768px;
+        /* max-width: 768px; */
         padding-bottom: 3rem;
         padding-left: 1rem;
         padding-right: 1rem;
@@ -700,10 +700,10 @@ nx affected:e2e</pre>
       </div>
     </div>
   `,
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class NxWelcomeComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

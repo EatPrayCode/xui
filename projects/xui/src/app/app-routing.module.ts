@@ -10,7 +10,7 @@ import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.
 const routes: Routes = [
   {
     path: '',
-    component: LandingLayoutComponent,
+    component: DefaultLayoutComponent,
     children: [
       {
         path: '',
