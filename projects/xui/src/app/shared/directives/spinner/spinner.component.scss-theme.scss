@@ -4,102 +4,48 @@
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
     $warn: map-get($theme, warn);
+}
 
-    .spinner-container {
-        position: relative;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        // background-color: rgb(225 243 221 / 80%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-        border: 10px green;
-    }
+.loader-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 
-    .spinner-icon-container {
-        display: flex;
-        justify-content: center;
-    }
+.loader-spinner {
+    width: 150px;
+    height: 150px;
+}
 
-    .spinner-icon {
-        display: block;
-    }
+svg {
+    width: 90%;
+    fill: none;
+}
 
-    .spinner-message {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: block;
-        // color: rgb(0, 0, 0);
-        font-size: 14px;
-        font-weight: bold;
-    }
+.load {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 0.7 0.3;
+    stroke-linecap: round;
+    stroke-width: 3px;
+    stroke: $primary;
 
-    .loader {
-        font-size: 10px;
-        // margin: 50px auto;
-        text-indent: -9999em;
-        width: 11em;
-        height: 11em;
-        border-radius: 50%;
-        // background: #ffffff;
-        // background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-        // background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-        // background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-        // background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-        // background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-        position: relative;
-        -webkit-animation: load3 1.4s infinite linear;
-        animation: load3 1.4s infinite linear;
-        -webkit-transform: translateZ(0);
-        -ms-transform: translateZ(0);
-        transform: translateZ(0);
+    &.one {
+        animation: load 1.5s infinite ease-in;
+        animation-direction: reverse;
     }
-    .loader:before {
-        width: 50%;
-        height: 50%;
-        // background: #ffffff;
-        border-radius: 100% 0 0 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: "";
+    &.two {
+        fill: $primary;
     }
-    .loader:after {
-        background: mat.get-color-from-palette($primary);
-        width: 75%;
-        height: 75%;
-        border-radius: 50%;
-        content: "";
-        margin: auto;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+    &.three {
+        animation: load 1.5s infinite;
     }
-    @-webkit-keyframes load3 {
-        0% {
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-        100% {
-            -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-        }
-    }
-    @keyframes load3 {
-        0% {
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-        100% {
-            -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-        }
+}
+
+@keyframes load {
+    100% {
+        transform: rotate(360deg);
     }
 }

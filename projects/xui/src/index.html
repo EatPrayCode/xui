@@ -47,79 +47,48 @@
       height: 100%;
     }
 
-    body {
-      /* background-image: url("./assets/skulls.png"); */
-    }
-
-    .loader-container {
+    .load-container {
+      width: 100vw;
+      height: 100vh;
       display: flex;
-      height: 100%;
-      flex-direction: row;
-      align-items: center;
       justify-content: center;
-      position: absolute;
+      align-items: center;
+    }
+
+    .loader-spinner {
+      width: 150px;
+      height: 150px;
+    }
+
+    svg {
       width: 100%;
+      fill: none;
     }
 
-    .spinner {
-      width: 40px;
-      height: 40px;
-      position: relative;
-      margin: 100px auto;
+    .load {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 0.7 0.3;
+      stroke-linecap: round;
+      stroke-width: 3px;
+      stroke: #005c84;
     }
 
-    .loader-label {
-      position: absolute;
-      transform: translateX(-50%) translateY(-140%);
-      left: 50%;
-      opacity: 0.5;
-      font-size: 3rem;
-      font-family: "Open Sans Condensed";
-      text-align: center;
+    .load.one {
+      animation: load 1.5s infinite ease-in;
+      animation-direction: reverse;
     }
 
-    .double-bounce1,
-    .double-bounce2 {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background-color: rgb(185, 3, 3);
-      opacity: 0.6;
-      position: absolute;
-      top: 0;
-      left: 0;
-      -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-      animation: sk-bounce 2.0s infinite ease-in-out;
+    .load.two {
+      fill: #005c84;
     }
 
-    .double-bounce2 {
-      -webkit-animation-delay: -1.0s;
-      animation-delay: -1.0s;
+    .load.three {
+      animation: load 1.5s infinite;
     }
 
-    @-webkit-keyframes sk-bounce {
-
-      0%,
+    @keyframes load {
       100% {
-        -webkit-transform: scale(0.0)
-      }
-
-      50% {
-        -webkit-transform: scale(1.0)
-      }
-    }
-
-    @keyframes sk-bounce {
-
-      0%,
-      100% {
-        transform: scale(0.0);
-        -webkit-transform: scale(0.0);
-      }
-
-      50% {
-        transform: scale(1.0);
-        -webkit-transform: scale(1.0);
+        transform: rotate(360deg);
       }
     }
   </style>
@@ -127,14 +96,14 @@
 
 <body>
   <app-root>
-    <div class="app-loading">
-      <section class="loader-container">
-        <aside class="loader-label">LOADING</aside>
-        <div class="spinner">
-          <div class="double-bounce1"></div>
-          <div class="double-bounce2"></div>
-        </div>
-      </section>
+    <div class="load-container">
+      <div class="loader-spinner">
+        <svg viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <circle class="load one" cx="60" cy="60" r="20" pathLength="1" />
+          <circle class="load two" cx="60" cy="60" r="10" />
+          <circle class="load three" cx="60" cy="60" r="30" pathLength="1" />
+        </svg>
+      </div>
     </div>
   </app-root>
   <script>

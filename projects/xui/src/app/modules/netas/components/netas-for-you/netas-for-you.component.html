@@ -18,7 +18,32 @@
 
 </div>
 
-<app-spinner [message]="'Loading your Netas..'"></app-spinner>
+
+<app-spinner [loading]="loading" [message]="'Loading your Netas..'"></app-spinner>
+
+<app-netas-list [netasList]="allNetas$ | async" (viewNeta)="handleGoToNeta($event)"></app-netas-list>
+
+
+
+<!-- <div class="">
+    <div class="row noMargin">
+      <div class="col one">
+        <app-spinner></app-spinner>
+      </div>
+      <div class="col two">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+    <div class="row noMargin">
+      <div class="col three">
+        <app-spinner></app-spinner>
+      </div>
+      <div class="col four">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+  </div> -->
+
 
 <!-- <app-netas-list [netasList]="allNetas$ | async" (viewNeta)="handleGoToNeta($event)"></app-netas-list> -->
 
