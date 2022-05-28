@@ -27,7 +27,7 @@ export class SettingsNetasComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.allNetas$ = this.userService.getAllNetas().pipe(tap(res => {
-      this.loading = false;
+      // this.loading = false;
     }));
     const auth = getAuth();
     const user = auth.currentUser; // null if
