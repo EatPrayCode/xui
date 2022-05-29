@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NetasListComponent } from './netas-list.component';
+import { NewsExtensiveComponent } from './news-extensive.component';
 
-describe('NetasListComponent', () => {
-  let component: NetasListComponent;
-  let fixture: ComponentFixture<NetasListComponent>;
+describe('NewsExtensiveComponent', () => {
+  let component: NewsExtensiveComponent;
+  let fixture: ComponentFixture<NewsExtensiveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NetasListComponent ]
+      declarations: [ NewsExtensiveComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NetasListComponent);
+    fixture = TestBed.createComponent(NewsExtensiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

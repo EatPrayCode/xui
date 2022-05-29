@@ -14,12 +14,12 @@ import { DataService } from '../../../../services/data.service';
 import { UserService } from '~/app/services/user.service';
 
 @Component({
-  selector: 'app-netas-for-you',
-  templateUrl: './netas-for-you.component.html',
-  styleUrls: ['./netas-for-you.component.scss'],
+  selector: 'app-news-extensive',
+  templateUrl: './news-extensive.component.html',
+  styleUrls: ['./news-extensive.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NetasForYouComponent implements OnInit {
+export class NewsExtensiveComponent implements OnInit {
 
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   allNetas$: Observable<any> = of([]);

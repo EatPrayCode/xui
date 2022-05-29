@@ -17,12 +17,14 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 import { State } from '../../../../core/settings/settings.model';
 
 @Component({
-  selector: 'app-netas',
-  templateUrl: './netas.component.html',
-  styleUrls: ['./netas.component.scss'],
+  selector: 'app-news-container',
+  templateUrl: './news-container.component.html',
+  styleUrls: ['./news-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NetasComponent implements OnInit {
+export class NewsContainerComponent implements OnInit {
+
+
   // isViewInitialized = false;
 
   navLinks = [];
@@ -45,10 +47,10 @@ export class NetasComponent implements OnInit {
     },
 
     {
-      id: 'news-national',
-      link: 'news-national',
+      id: 'news-extensive',
+      link: 'news-extensive',
       name: 'All News',
-      label: 'app.netas.tab.news-national'
+      label: 'app.netas.tab.news-extensive'
     },
     // {
     //   id: 'netas-party',

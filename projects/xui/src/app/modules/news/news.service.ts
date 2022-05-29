@@ -10,7 +10,7 @@ const INITIAL_DATA: User[] = [
 ];
 
 @Injectable()
-export class NetasService {
+export class NewsService {
   users$: Observable<User[]>;
 
   private model: Model<User[]>;

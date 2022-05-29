@@ -23,19 +23,6 @@ const routes: Routes = [
     component: DefaultLayoutComponent,
     children: [
       {
-        path: 'reddit-content',
-        loadChildren: () =>
-          import('./modules/reddit-content/app.module').then(
-            (m) => m.AppModule
-          )
-      },
-    ]
-  },
-  {
-    path: '',
-    component: DefaultLayoutComponent,
-    children: [
-      {
         path: 'settings',
         loadChildren: () =>
           import('./modules/settings/settings.module').then(
@@ -50,7 +37,12 @@ const routes: Routes = [
       {
         path: 'news',
         loadChildren: () =>
-          import('./modules/news-app/netas.module').then((m) => m.NetasModule)
+          import('./modules/news/news.module').then((m) => m.NewsModule)
+      },
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('./modules/home/home.module').then((m) => m.HomeModule)
       },
       {
         path: 'contacts',
@@ -63,22 +55,23 @@ const routes: Routes = [
           import('./modules/admin-dashboard/admin-dashboard.module').then((m) => m.AdminDashboardModule)
       },
       {
-        path: 'news',
+        path: 'reddit-content',
         loadChildren: () =>
-          import('./modules/rss-reader/app.module').then((m) => m.AppModule)
+          import('./modules/reddit-content/app.module').then(
+            (m) => m.AppModule
+          )
       },
-
-    ]
-  },
-  {
-    path: '',
-    component: DefaultLayoutComponent,
-    children: [
       {
         path: 'youtube-content',
         loadChildren: () =>
           import('./modules/youtube-content/youtube-content.module').then((m) => m.YoutubeContentModule)
       },
+      {
+        path: 'rss-reader',
+        loadChildren: () =>
+          import('./modules/rss-reader/app.module').then((m) => m.AppModule)
+      },
+
     ]
   },
   {

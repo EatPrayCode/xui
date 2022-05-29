@@ -8,9 +8,11 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../core/core.module';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutComponent implements OnInit {
-  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   
-  constructor() {}
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
-  ngOnInit() {}
+  constructor() { }
+
+  ngOnInit() { }
+
 }

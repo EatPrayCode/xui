@@ -15,4 +15,4 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   declarations: [HomeComponent]
 })
-export class SetupModule { }
+export class HomeModule { }

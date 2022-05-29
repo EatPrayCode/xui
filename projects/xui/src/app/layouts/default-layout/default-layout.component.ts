@@ -43,8 +43,13 @@ export class DefaultLayoutComponent implements OnInit {
   loaderMode: any = 'indeterminate';
   navigation: any = [
     {
-      link: 'news',
+      link: 'home',
       label: 'app.menu.home',
+      icon: 'home'
+    },
+    {
+      link: 'news',
+      label: 'app.menu.news',
       icon: 'home'
     },
     {

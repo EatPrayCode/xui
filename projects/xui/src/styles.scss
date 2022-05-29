@@ -24,6 +24,8 @@
 @import "./app/modules/settings/components/settings-netas/settings-netas.component-theme.scss";
 @import "./app/modules/netas/containers/netas/netas.component.scss-theme.scss";
 @import "./app/shared/directives/spinner/spinner.component.scss-theme.scss";
+@import "./app/modules/news-app/containers/news-container/news-container.component.scss-theme.scss";
+
 // @import './app/features/examples/examples/examples.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
@@ -32,6 +34,8 @@
   @include app-default-layout-component-theme($theme);
   @include app-reddit-layout-component-theme($theme);
   @include app-neta-layout-component-theme($theme);
+
+  @include app-news-container-component-theme($theme);
 
   @include app-settings-netas-component-theme($theme);
   @include app-netas-component-theme($theme);
