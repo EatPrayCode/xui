@@ -1,11 +1,10 @@
-import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './modules/about/about.component';
-import { BlankComponent } from './layouts/blank/blank.component';
 import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component';
-import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.component';
+import { NetaDateLoadGuard } from './services/neta-data-load-guard.guard';
 
 const routes: Routes = [
   {
@@ -75,11 +74,16 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'not-found',
+    component: NotFoundComponent
+  },
+  {
     path: '',
     component: NetaLayoutComponent,
     children: [
       {
         path: ':id',
+        canActivate: [ NetaDateLoadGuard ],
         loadChildren: () =>
           import('./modules/neta/neta.module').then((m) => m.NetaModule)
       }

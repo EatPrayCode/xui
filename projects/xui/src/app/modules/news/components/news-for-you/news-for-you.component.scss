@@ -452,7 +452,7 @@ header {
 
 .news-extensive-container .cards {
     padding: 0rem;
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 
@@ -462,7 +462,7 @@ header {
     height: 40vh;
     width: 100%;
     overflow: hidden;
-    margin: 5vh 0;
+    // margin: 5vh 0;
     transition: 0.5s;
 }
 
@@ -495,7 +495,7 @@ header {
 }
 
 .news-extensive-container .cards .card .content {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
 }
 
 .news-extensive-container .cards .card .content p {
