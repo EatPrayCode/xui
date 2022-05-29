@@ -13,16 +13,16 @@ export class SettingsContainerComponent {
   selectedTab: any = 0;
   mainMenuItems: any = [
     {
-      id: 'settings-netas',
-      link: 'settings-netas',
-      name: 'settings-netas',
-      label: 'app.settings.netas-settings'
-    },
-    {
       id: 'settings-general',
       link: 'settings-general',
       name: 'settings-general',
       label: 'app.settings.general-settings'
+    },
+    {
+      id: 'settings-netas',
+      link: 'settings-netas',
+      name: 'settings-netas',
+      label: 'app.settings.netas-settings'
     },
   ];
 

@@ -14,8 +14,7 @@ import {MAX_POSTS_COUNT, TABLES} from '../constants';
 export class FeedComponent implements OnInit {
 
     // posts: Observable<any> = of([]);
-    displayActions: any = true;
-    posts: Subject<any> = new Subject();
+    posts$: Observable<any> = of([]);
     viewCount: number = 10;
     about: SiteFeedAbout = new SiteFeedAbout();
     private feedId: number;
@@ -62,7 +61,7 @@ export class FeedComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params
+        this.posts$ = this.route.params
             .pipe(
                 map(params => params.id),
                 tap(id => this.feedId = +id),
@@ -73,11 +72,10 @@ export class FeedComponent implements OnInit {
                 }),
                 switchMap(feed => this.dbService.getAllByIndex(TABLES.POSTS, 'feedId', IDBKeyRange.only(this.feedId))),
                 tap((posts) => {
-                    this.posts.next(posts);
+                    // this.posts.next(posts);
                     console.log(posts)
                 })
-            )
-            .subscribe();
+            );
     }
 
     deleteFeed(): void {

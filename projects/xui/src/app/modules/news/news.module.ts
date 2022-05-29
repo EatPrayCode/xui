@@ -8,6 +8,9 @@ import { NewsContainerComponent } from './containers/news-container/news-contain
 import { NewsForYouComponent } from './components/news-for-you/news-for-you.component';
 import { NewsExtensiveComponent } from './components/news-extensive/news-extensive.component';
 import { FeedComponent } from './components/feed/feed.component';
+import { PostComponent } from './components/post/post.component';
+import { SanitizeHtmlPipe } from './components/pipes/sanitize-html.pipe';
+import { CountPipe } from './components/pipes/count.pipe';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -19,13 +22,16 @@ import { FeedComponent } from './components/feed/feed.component';
     SharedModule
   ],
   declarations: [
-    NewsContainerComponent, 
-    NewsForYouComponent, 
+    NewsContainerComponent,
+    NewsForYouComponent,
     NewsExtensiveComponent,
-    FeedComponent
+    FeedComponent,
+    PostComponent,
+    CountPipe,
+    SanitizeHtmlPipe
   ],
   providers: [NewsService]
 })
 export class NewsModule {
-  constructor() {}
+  constructor() { }
 }
