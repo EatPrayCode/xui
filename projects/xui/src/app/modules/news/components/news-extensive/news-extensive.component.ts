@@ -28,6 +28,26 @@ import { FeedItem, FeedLoading, FeedError } from '~/app/modules/rss-reader/model
 })
 export class NewsExtensiveComponent implements OnInit, OnDestroy {
 
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+  allNetas$: Observable<any> = of([]);
+  features: any[] = [];
+  selected = false;
+  value = '';
+
+  isAuthenticated$: Observable<boolean> | undefined;
+
+  examples: any = [
+    { link: 'Andhra Pradesh', label: 'anms.examples.menu.todos' },
+    { link: 'Karnataka', label: 'anms.examples.menu.stocks' },
+    { link: 'West Bengal', label: 'anms.examples.menu.theming' },
+    { link: 'Kerala', label: 'anms.examples.menu.crud' },
+    { link: 'Madhya Pradesh', label: 'anms.examples.menu.crud' },
+    { link: 'Uttar Pradesh', label: 'anms.examples.menu.crud' },
+    { link: 'Goa', label: 'anms.examples.menu.auth', auth: true }
+  ];
+  selectedValue = this.examples[0];
+
+
   feeds: FeedItem[] = [];
   addFeedMode: boolean = true;
   godMode: boolean = false;
@@ -46,6 +66,10 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
 
   get shareIsSuported(): boolean {
     return !!navigator.share;
+  }
+
+  handleClickSubTab(e) {
+
   }
 
   addFeeds(rawFeedStrings: string): void {
@@ -157,7 +181,10 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
     'http://rssfeeds.usatoday.com/UsatodaycomNation-TopStories',
     'http://rss.cnn.com/rss/cnn_topstories.rss',
     'https://www.latimes.com/local/rss2.0.xml',
-    'https://cdn.feedcontrol.net/8/1114-wioSIX3uu8MEj.xml'
+    'https://cdn.feedcontrol.net/8/1114-wioSIX3uu8MEj.xml',
+    'https://www.indiatoday.in/rss/1206578',
+    'https://indianexpress.com/feed/',
+    'https://www.business-standard.com/rss/latest.rss'
   ];
 
   toggleView() {
