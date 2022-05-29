@@ -16,7 +16,10 @@ const handler = (data, context) => {
 
 const testFn = fn => async (req, res) => {
   if (req.method === "GET") {
-    res.json([]);
+    const entry = {}
+    const collection = await db.collection("site-refresh");
+    const entries = await collection.insertOne(entry);
+    res.status(200).json([]);
   }
   else if (req.method === "POST") {
     const entry = {}
