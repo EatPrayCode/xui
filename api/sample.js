@@ -15,17 +15,22 @@ const handler = (data, context) => {
 }
 
 const testFn = fn => async (req, res) => {
+  const newEntry = {
+    syncdate: new Date()
+  };
+  const mainEntryUrl = 'MAY29';
   if (req.method === "GET") {
-    const entry = {}
-    const collection = await db.collection("site-refresh");
-    const entries = await collection.insertOne(entry);
-    res.status(200).json([]);
+    const collectionRef = await db.collection("site-refresh")
+      .doc(mainEntryUrl)
+      .collection('syncs').add(newEntry)
+      .then(querySnapshot => {
+        res.status(200).json([]);
+      })
+      .catch(err => {
+        res.status(500).json({ err });
+      });
   }
   else if (req.method === "POST") {
-    const entry = {}
-    const collection = await db.collection("site-refresh");
-    const entries = await collection.insertOne(entry);
-    res.status(200).json([]);
   }
   else if (req.method === "OPTIONS") {
     res.status(200).json([]);
@@ -36,3 +41,4 @@ const testFn = fn => async (req, res) => {
 }
 
 module.exports = testFn(handler);
+
