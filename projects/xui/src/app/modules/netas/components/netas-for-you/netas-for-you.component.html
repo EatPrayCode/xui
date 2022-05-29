@@ -1,13 +1,13 @@
 <div class="">
     
-    <nav mat-tab-nav-bar class="d-none d-sm-flex py-2">
+    <nav mat-tab-nav-bar class="d-none d-sm-flex py-1">
         <a mat-tab-link *ngFor="let e of examples" (click)="handleClickSubTab(e)" routerLinkActive #rla="routerLinkActive"
             [active]="rla.isActive" [disabled]="e.auth && !(isAuthenticated$ | async)">
             {{e.link}}
         </a>
     </nav>
 
-    <nav class="nav-responsive d-sm-none d-flex justify-content-center py-2">
+    <nav class="nav-responsive d-sm-none d-flex justify-content-center py-1">
         <mat-select [(value)]="selectedValue">
             <mat-option *ngFor="let e of examples" [value]="e" (click)="handleClickSubTab(e)"
                 [disabled]="e.auth && !(isAuthenticated$ | async)">

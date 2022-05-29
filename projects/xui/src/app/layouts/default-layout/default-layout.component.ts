@@ -45,27 +45,12 @@ export class DefaultLayoutComponent implements OnInit {
     {
       link: 'home',
       label: 'app.menu.home',
-      icon: 'home'
+      icon: 'person'
     },
     {
       link: 'news',
       label: 'app.menu.news',
       icon: 'home'
-    },
-    {
-      link: 'netas',
-      label: 'app.menu.netas',
-      icon: 'phone'
-    },
-    // {
-    //   link: 'visualize',
-    //   label: 'app.menu.visualise',
-    //   icon: 'cog'
-    // },
-    {
-      link: 'youtube-content',
-      label: 'app.menu.youtube-content',
-      icon: 'theaters'
     },
     {
       link: 'reddit-content',
@@ -84,6 +69,21 @@ export class DefaultLayoutComponent implements OnInit {
       link: 'dashboard',
       label: 'app.menu.dashboard',
       icon: 'person'
+    },
+    {
+      link: 'netas',
+      label: 'app.menu.netas',
+      icon: 'phone'
+    },
+    // {
+    //   link: 'visualize',
+    //   label: 'app.menu.visualise',
+    //   icon: 'cog'
+    // },
+    {
+      link: 'youtube-content',
+      label: 'app.menu.youtube-content',
+      icon: 'theaters'
     },
   ];
 

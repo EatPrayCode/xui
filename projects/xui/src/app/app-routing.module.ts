@@ -83,7 +83,7 @@ const routes: Routes = [
     children: [
       {
         path: ':id',
-        canActivate: [ NetaDateLoadGuard ],
+        // canActivate: [ NetaDateLoadGuard ],
         loadChildren: () =>
           import('./modules/neta/neta.module').then((m) => m.NetaModule)
       }
