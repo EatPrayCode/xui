@@ -12,3 +12,60 @@
         </mat-grid-tile>
     </mat-grid-list>
 </div>
+
+
+<div class="container p-1 mb-2" style="background-color:rgba(255,248,220,0.5)">
+    <div class="feeds-header">
+        <h2 class="mr-auto">Feeds</h2>
+        <button class="a-button button-share mr-1" (click)="share()" *ngIf="shareIsSuported">
+            <img src="assets/share.svg" alt="Share feeds">
+        </button>
+        <button class="a-button green" (click)="refreshFeeds()">
+            Refresh all feeds <span class="spinner" *ngIf="loading"></span>
+        </button>
+
+        <div>
+            <div class="mt-1">
+                <button class="a-button lh-20" (click)="addFeedMode=true">+ add</button>
+            </div>
+            <div>
+                <form class="pure-form pure-form-stacked">
+                    <fieldset>
+                        <label for="new-feeds">Enter new feed URLs</label>
+                        <textarea class="pure-input-1" [(ngModel)]="rawFeedURLs" name="rawFeedURLs" id=new-feeds
+                            [placeholder]="['https://example.com/feed1\nhttps://example.com/feed2']"></textarea>
+
+                        <button type="button" (click)="addFeeds(rawFeedURLs)" class="a-button lh-20">Add to the
+                            feeds</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="feed-line" *ngFor="let feed of feeds; trackBy:identify" [ngClass]="{loading: feedLoading[feed.id]}">
+        <div class="mr-1">
+            <strong class="fit-text">{{feed.about?.title || 'noname'}}</strong><br>
+            <small class="fit-text">{{feed.url}}</small>
+            <div *ngIf="feedError[feed.id]" style="color: #82280c" class="fit-text">
+                <small>💢 {{feedError[feed.id]}}</small>
+            </div>
+        </div>
+        <div class="ml-auto" style="text-align: right;">
+            <button class="a-button button-counter" [disabled]="feedLoading[feed.id]"
+                [routerLink]="['/news/news-feed/', feed.id]">
+                <span class="spinner" *ngIf="feedLoading[feed.id]"></span>
+                <span *ngIf="!feedLoading[feed.id]">
+                    <span class="new-info" *ngIf="feed.newCount">
+                        +{{ feed.newCount }}
+                    </span>
+                    <span *ngIf="!feed.newCount">
+                        {{feed.count || '-'}}
+                    </span>
+                </span>
+
+            </button>
+        </div>
+    </div>
+
+</div>

@@ -7,6 +7,7 @@ import { NewsService } from './news.service';
 import { NewsContainerComponent } from './containers/news-container/news-container.component';
 import { NewsForYouComponent } from './components/news-for-you/news-for-you.component';
 import { NewsExtensiveComponent } from './components/news-extensive/news-extensive.component';
+import { FeedComponent } from './components/feed/feed.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -17,7 +18,12 @@ import { NewsExtensiveComponent } from './components/news-extensive/news-extensi
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [NewsContainerComponent, NewsForYouComponent, NewsExtensiveComponent],
+  declarations: [
+    NewsContainerComponent, 
+    NewsForYouComponent, 
+    NewsExtensiveComponent,
+    FeedComponent
+  ],
   providers: [NewsService]
 })
 export class NewsModule {

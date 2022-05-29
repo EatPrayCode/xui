@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -7,11 +7,18 @@ import {
   FormGroupDirective
 } from '@angular/forms';
 import { map } from 'highcharts';
-import { Observable, of } from 'rxjs';
-import { startWith, tap } from 'rxjs/operators';
+import { combineLatest, Observable, of, Subject } from 'rxjs';
+import { debounceTime, startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 import { DataService } from '../../../../services/data.service';
 import { UserService } from '~/app/services/user.service';
+import { cloneDeep } from 'lodash-es';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { importFeedsFromVersion3 } from '~/app/modules/rss-reader/backward-compatibility';
+import { TABLES, DELAY100 } from '~/app/modules/rss-reader/constants';
+import { CoreService } from '~/app/modules/rss-reader/core.service';
+import { isValidHttpUrl } from '~/app/modules/rss-reader/helpers';
+import { FeedItem, FeedLoading, FeedError } from '~/app/modules/rss-reader/models';
 
 @Component({
   selector: 'app-news-extensive',
@@ -19,79 +26,114 @@ import { UserService } from '~/app/services/user.service';
   styleUrls: ['./news-extensive.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NewsExtensiveComponent implements OnInit {
+export class NewsExtensiveComponent implements OnInit, OnDestroy {
 
-  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  allNetas$: Observable<any> = of([]);
-  features: any[] = [];
-  selected = false;
-  value = '';
-  loading: any = false;
+  feeds: FeedItem[] = [];
+  addFeedMode: boolean = true;
+  godMode: boolean = false;
+  rawFeedURLs: string = '';
+  feedLoading: FeedLoading = {};
+  feedError: FeedError = {};
+  loading: boolean = true;
+  private ngUnsubscribe$ = new Subject<void>();
+  private load$ = new Subject<void>();
 
-  isAuthenticated$: Observable<boolean> | undefined;
+  identify = (index: number, feed: FeedItem) => feed.id;
 
-  examples: any = [
-    { link: 'Andhra Pradesh', label: 'anms.examples.menu.todos' },
-    { link: 'Karnataka', label: 'anms.examples.menu.stocks' },
-    { link: 'West Bengal', label: 'anms.examples.menu.theming' },
-    { link: 'Kerala', label: 'anms.examples.menu.crud' },
-    { link: 'Madhya Pradesh', label: 'anms.examples.menu.crud' },
-    { link: 'Uttar Pradesh', label: 'anms.examples.menu.crud' },
-    { link: 'Goa', label: 'anms.examples.menu.auth', auth: true }
-  ];
-  selectedValue = this.examples[0];
-
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    public dataService: DataService,
-    public userService: UserService,
-  ) {
-    this.setCardView();
+  constructor(private dbService: NgxIndexedDBService,
+    private coreService: CoreService) {
   }
 
-  ngOnInit() {
+  get shareIsSuported(): boolean {
+    return !!navigator.share;
+  }
+
+  addFeeds(rawFeedStrings: string): void {
+    this.addFeedMode = true;
+    this.rawFeedURLs = '';
+    const newFeeds$ = rawFeedStrings
+      .split('\n')
+      .map(s => s.trim())
+      .filter(s => s)
+      .filter(s => isValidHttpUrl(s))
+      .map(url => this.dbService.add(TABLES.FEEDS, { url }));
+
+    combineLatest(newFeeds$)
+      .subscribe(() => this.load$.next());
+  }
+
+  refreshFeeds(): void {
     this.loading = true;
-    this.allNetas$ = this.userService.getAllNetas().pipe(tap(res => {
-      this.loading = false;
-    }));
+    this.feedError = {};
+    this.coreService.refreshFeeds(this.feeds)
+      .subscribe(() => {
+        this.loading = false;
+        this.load$.next();
+      });
   }
 
-  handleViewNetaDetails($event: any) { }
-
-  handleGoToNeta(event) {
-    const netaName: any = event.netaid;
-    this.router.navigate([`${netaName}`]);
+  share(): void {
+    navigator.share?.({
+      title: 'Stupid RSS',
+      text: this.feeds.map(f => f.url).join(' \n'),
+      url: location.href,
+    }); // share the URL of MDN
   }
 
-  handleClickSubTab(e) {
+  ngOnInit(): void {
 
+    this.setCardView();
+
+    this.coreService.feedLoading$
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe(feedLoading => {
+        this.feedLoading = feedLoading;
+        this.load$.next();
+      });
+
+    this.coreService.feedError$
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe(feedError => {
+        this.feedError = feedError;
+        this.load$.next();
+      });
+
+    this.load$
+      .pipe(
+        takeUntil(this.ngUnsubscribe$),
+        debounceTime(DELAY100),
+        switchMap(() => this.dbService.getAll(TABLES.FEEDS))
+      )
+      .subscribe(feeds => {
+        this.feeds = cloneDeep(feeds);
+      });
+
+    this.load$.next();
+
+    // import from the old version
+    try {
+      this.addFeeds(importFeedsFromVersion3());
+    } catch (error) {
+    }
   }
 
-  onSelectCard() {
-    this.selected = !this.selected;
+  unregister(): void {
+    const result = confirm('Unregister the Service Worker?');
+    if (result === true) {
+      navigator.serviceWorker?.getRegistrations().then((registrations) => {
+        for (const registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
   }
 
-  openLink(link: string) {
-    window.open(link, '_blank');
+  ngOnDestroy(): void {
+    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.complete();
   }
 
-  OnSearch() {
-    console.log('OnSearch', this.value);
-  }
 
-  OnSearchNext() {
-    console.log('OnSearchNext', this.value);
-  }
-
-  OnSearchPrevious() {
-    console.log('OnSearchPrevious', this.value);
-  }
-
-  OnClear() {
-    console.log('OnClear');
-    this.value = '';
-  }
 
   isListView = false;
 
@@ -109,6 +151,14 @@ export class NewsExtensiveComponent implements OnInit {
   listViewHeight = '100px';
 
   items: any = ['1', '2', '3', '4', '5', '6'];
+  itemsNames: any = [
+    'https://www.yahoo.com/news/rss',
+    'https://lifehacker.com/rss',
+    'http://rssfeeds.usatoday.com/UsatodaycomNation-TopStories',
+    'http://rss.cnn.com/rss/cnn_topstories.rss',
+    'https://www.latimes.com/local/rss2.0.xml',
+    'https://cdn.feedcontrol.net/8/1114-wioSIX3uu8MEj.xml'
+  ];
 
   toggleView() {
     this.isListView = !this.isListView;

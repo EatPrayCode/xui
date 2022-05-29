@@ -1,3 +1,4 @@
+import { FeedComponent } from './components/feed/feed.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NewsContainerComponent } from './containers/news-container/news-container.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'news-extensive',
         component: NewsExtensiveComponent
+      },
+      {
+        path: 'news-feed/:id',
+        component: FeedComponent
       },
       {
         path: 'news-for-you',
