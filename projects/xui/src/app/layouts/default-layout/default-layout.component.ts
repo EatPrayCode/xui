@@ -63,11 +63,6 @@ export class DefaultLayoutComponent implements OnInit {
     //   icon: 'cog'
     // },
     {
-      link: 'dashboard',
-      label: 'app.menu.dashboard',
-      icon: 'person'
-    },
-    {
       link: 'youtube-content',
       label: 'app.menu.youtube-content',
       icon: 'theaters'
@@ -85,11 +80,11 @@ export class DefaultLayoutComponent implements OnInit {
   ];
   navigationSideMenu = [
     ...this.navigation,
-    // {
-    //   link: 'dashboard',
-    //   label: 'app.menu.dashboard',
-    //   icon: 'person'
-    // },
+    {
+      link: 'dashboard',
+      label: 'app.menu.dashboard',
+      icon: 'person'
+    },
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;

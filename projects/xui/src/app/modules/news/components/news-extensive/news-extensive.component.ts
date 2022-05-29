@@ -37,16 +37,15 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   isAuthenticated$: Observable<boolean> | undefined;
 
   examples: any = [
-    { link: 'Andhra Pradesh', label: 'anms.examples.menu.todos' },
-    { link: 'Karnataka', label: 'anms.examples.menu.stocks' },
-    { link: 'West Bengal', label: 'anms.examples.menu.theming' },
-    { link: 'Kerala', label: 'anms.examples.menu.crud' },
-    { link: 'Madhya Pradesh', label: 'anms.examples.menu.crud' },
-    { link: 'Uttar Pradesh', label: 'anms.examples.menu.crud' },
-    { link: 'Goa', label: 'anms.examples.menu.auth', auth: true }
+    { link: 'NDTV', label: 'anms.examples.menu.todos' },
+    { link: 'CNN', label: 'anms.examples.menu.stocks' },
+    { link: 'BBC', label: 'anms.examples.menu.theming' },
+    { link: 'REPUBLIC', label: 'anms.examples.menu.crud' },
+    { link: 'AAJTAK', label: 'anms.examples.menu.crud' },
+    { link: 'TIMES NOW', label: 'anms.examples.menu.crud' },
+    { link: 'News X', label: 'anms.examples.menu.auth', auth: true }
   ];
   selectedValue = this.examples[0];
-
 
   feeds: FeedItem[] = [];
   addFeedMode: boolean = true;
@@ -55,8 +54,8 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   feedLoading: FeedLoading = {};
   feedError: FeedError = {};
   loading: boolean = true;
-  private ngUnsubscribe$ = new Subject<void>();
-  private load$ = new Subject<void>();
+  public ngUnsubscribe$ = new Subject<void>();
+  public feeds$ = new Subject<void>();
 
   identify = (index: number, feed: FeedItem) => feed.id;
 
@@ -83,7 +82,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
       .map(url => this.dbService.add(TABLES.FEEDS, { url }));
 
     combineLatest(newFeeds$)
-      .subscribe(() => this.load$.next());
+      .subscribe(() => this.feeds$.next());
   }
 
   refreshFeeds(): void {
@@ -92,7 +91,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
     this.coreService.refreshFeeds(this.feeds)
       .subscribe(() => {
         this.loading = false;
-        this.load$.next();
+        this.feeds$.next();
       });
   }
 
@@ -112,17 +111,17 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.ngUnsubscribe$))
       .subscribe(feedLoading => {
         this.feedLoading = feedLoading;
-        this.load$.next();
+        this.feeds$.next();
       });
 
     this.coreService.feedError$
       .pipe(takeUntil(this.ngUnsubscribe$))
       .subscribe(feedError => {
         this.feedError = feedError;
-        this.load$.next();
+        this.feeds$.next();
       });
 
-    this.load$
+    this.feeds$
       .pipe(
         takeUntil(this.ngUnsubscribe$),
         debounceTime(DELAY100),
@@ -132,7 +131,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
         this.feeds = cloneDeep(feeds);
       });
 
-    this.load$.next();
+    this.feeds$.next();
 
     // import from the old version
     try {
@@ -174,7 +173,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   // View specific props
   listViewHeight = '100px';
 
-  items: any = ['1', '2', '3', '4', '5', '6'];
+  items: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
   itemsNames: any = [
     'https://www.yahoo.com/news/rss',
     'https://lifehacker.com/rss',

@@ -1,9 +1,10 @@
-import { NotFoundComponent } from './shared/not-found/not-found.component';
-import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { AboutComponent } from './modules/about/about.component';
-import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component';
+
 import { NetaDateLoadGuard } from './services/neta-data-load-guard.guard';
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
       {
         path: '',
         component: AboutComponent
-      },
+      }
     ]
   },
   {
@@ -69,8 +70,7 @@ const routes: Routes = [
         path: 'rss-reader',
         loadChildren: () =>
           import('./modules/rss-reader/app.module').then((m) => m.AppModule)
-      },
-
+      }
     ]
   },
   {
@@ -79,7 +79,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: NetaLayoutComponent,
+    component: DefaultLayoutComponent,
     children: [
       {
         path: ':id',
