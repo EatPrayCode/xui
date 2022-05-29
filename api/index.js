@@ -7,7 +7,6 @@ admin.initializeApp({
   databaseURL: "https://devx-348322-default-rtdb.firebaseio.com/"
 });
 
-
 const db = admin.firestore();
 
 // export default async (data, context) => {
