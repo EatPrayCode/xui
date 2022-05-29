@@ -10,7 +10,7 @@
     <mat-tab *ngFor="let link of mainMenuItems" [label]="link" [routerLink]="link.link">
 
       <ng-template mat-tab-label>
-        <span class="header-div">{{link.label|translate}}</span>
+        <span class="header-div">{{link.name}}</span>
       </ng-template>
 
     </mat-tab>

@@ -40,20 +40,15 @@ export class NetasComponent implements OnInit {
     {
       id: 'news-for-you',
       link: 'news-for-you',
-      name: 'you',
+      name: 'You',
       label: 'app.netas.tab.netas-for-you'
     },
 
     {
-      id: 'news-by-state',
-      link: 'news-by-state',
-      name: 'State',
-      label: 'app.netas.tab.netas-by-state'
-    },
-    {
+      id: 'news-national',
       link: 'news-national',
-      name: 'National',
-      label: 'app.netas.tab.netas-national'
+      name: 'All News',
+      label: 'app.netas.tab.news-national'
     },
     // {
     //   id: 'netas-party',

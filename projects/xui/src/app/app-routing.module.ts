@@ -63,7 +63,7 @@ const routes: Routes = [
           import('./modules/admin-dashboard/admin-dashboard.module').then((m) => m.AdminDashboardModule)
       },
       {
-        path: 'home',
+        path: 'news',
         loadChildren: () =>
           import('./modules/rss-reader/app.module').then((m) => m.AppModule)
       },

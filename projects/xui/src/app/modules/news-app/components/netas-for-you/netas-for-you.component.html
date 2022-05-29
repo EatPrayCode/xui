@@ -1,1 +1,14 @@
-News
+<div class="basic-container">
+    <mat-toolbar>
+        <button mat-icon-button (click)="toggleView();">
+            <mat-icon>{{ ( isListView ) ? 'view_module' : 'view_list' }}</mat-icon>
+        </button>
+    </mat-toolbar>
+    <mat-grid-list cols="{{numCols}}" rowHeight="{{rowHeight}}" [gutterSize]="gutterSize">
+        <mat-grid-tile *ngFor="let item of items">
+            <mat-card fxFlexFill fxLayoutAlign="center center" class="item-bg">
+                {{item}}
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

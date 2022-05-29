@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { NetasRoutingModule } from './netas-routing.module';
@@ -11,7 +12,10 @@ import { NetasListComponent } from './components/netas-list/netas-list.component
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     SharedModule,
-    NetasRoutingModule
+    NetasRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [NetasComponent, NetasForYouComponent, NetasListComponent],
   providers: [NetasService]

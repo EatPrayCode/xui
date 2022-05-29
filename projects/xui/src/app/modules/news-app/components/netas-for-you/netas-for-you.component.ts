@@ -46,7 +46,9 @@ export class NetasForYouComponent implements OnInit {
     private router: Router,
     public dataService: DataService,
     public userService: UserService,
-  ) { }
+  ) {
+    this.setCardView();
+  }
 
   ngOnInit() {
     this.loading = true;
@@ -89,5 +91,44 @@ export class NetasForYouComponent implements OnInit {
   OnClear() {
     console.log('OnClear');
     this.value = '';
+  }
+
+  isListView = false;
+
+  // Template props 
+  numCols = 0;
+  rowHeight = '1:1';
+  gutterSize = '0';
+
+  // Defaults props
+  defaultCols = 3;
+  defaultRowHeight = '1:1';
+  defaultGutterSize = '10';
+
+  // View specific props
+  listViewHeight = '100px';
+
+  items: any = ['1', '2', '3', '4', '5', '6'];
+
+  toggleView() {
+    this.isListView = !this.isListView;
+
+    if (this.isListView) {
+      this.setListView();
+    } else {
+      this.setCardView();
+    }
+  }
+
+  setCardView() {
+    this.numCols = this.defaultCols;
+    this.rowHeight = this.defaultRowHeight;
+    this.gutterSize = this.defaultGutterSize;
+  }
+
+  setListView() {
+    this.numCols = 1;
+    this.rowHeight = this.listViewHeight;
+    this.gutterSize = '5';
   }
 }

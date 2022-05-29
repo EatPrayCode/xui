@@ -14,25 +14,10 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'news-party',
-        component: NetasForYouComponent,
-        data: { title: 'app.netas.tab.netas-party' }
-      },
-      {
-        path: 'news-for-you',
-        component: NetasForYouComponent,
-        data: { title: 'app.netas.tab.netas-for-you' }
-      },
-      {
         path: 'news-national',
         component: NetasForYouComponent,
-        data: { title: 'app.netas.tab.netas-national' }
+        data: { title: 'app.netas.tab.news-national' }
       },
-      {
-        path: 'news-by-state',
-        component: NetasForYouComponent,
-        data: { title: 'app.netas.tab.netas-by-state' }
-      }
     ]
   }
 ];
