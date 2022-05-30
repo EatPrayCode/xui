@@ -34,9 +34,9 @@
         </button>
     </mat-toolbar>
     <mat-grid-list cols="{{numCols}}" rowHeight="{{rowHeight}}" [gutterSize]="gutterSize">
-        <mat-grid-tile *ngFor="let item of itemsList">
+        <mat-grid-tile *ngFor="let item of itemsList" class="item-bg" [ngStyle]="{'background-image': 'url(' + item.publicationImage[0].url + ')'}" >
             <mat-card fxFlexFill fxLayoutAlign="center center" class="item-bg">
-                {{item}}
+                {{item.publicationName}}
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>

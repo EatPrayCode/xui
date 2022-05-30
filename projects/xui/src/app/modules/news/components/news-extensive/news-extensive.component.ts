@@ -7,7 +7,7 @@ import {
   FormGroupDirective
 } from '@angular/forms';
 import { map } from 'highcharts';
-import { combineLatest, Observable, of, Subject } from 'rxjs';
+import { combineLatest, Observable, of, Subject, BehaviorSubject } from 'rxjs';
 import { debounceTime, startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 import { DataService } from '../../../../services/data.service';
@@ -55,7 +55,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   feedError: FeedError = {};
   loading: boolean = true;
   public ngUnsubscribe$ = new Subject<void>();
-  public feeds$: any = of([]);
+  public feeds$: BehaviorSubject<any> = new BehaviorSubject(null);
 
   identify = (index: number, feed: FeedItem) => feed.id;
 
@@ -75,27 +75,28 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
         return ele.fields;
       });
       console.log(data);
+      this.feeds$.next(data);
     });
   }
 
   getDefaultFeeds() {
-    this.feeds$ = this.coreService.getDefaultFeeds({}).pipe(
-      takeUntil(this.ngUnsubscribe$),
-      debounceTime(DELAY100),
-      tap(res => {
-        console.log(res);
-        this.feeds = res;
-      })
-    );
+    // this.feeds$ = this.coreService.getDefaultFeeds({}).pipe(
+    //   takeUntil(this.ngUnsubscribe$),
+    //   debounceTime(DELAY100),
+    //   tap(res => {
+    //     console.log(res);
+    //     this.feeds = res;
+    //   })
+    // );
   }
 
   addNewsPublication() {
-    const rawFeedStrings = 'https://www.thehindu.com/news/national/?service=rss';
-    // this.addFeeds(rawFeedStrings);
-    // this.dbService.add(TABLES.FEEDS, { rawFeedStrings })
-    this.coreService.addFeed({}).subscribe(res => {
-      this.getDefaultFeeds();
-    });
+    // const rawFeedStrings = 'https://www.thehindu.com/news/national/?service=rss';
+    // // this.addFeeds(rawFeedStrings);
+    // // this.dbService.add(TABLES.FEEDS, { rawFeedStrings })
+    // this.coreService.addFeed({}).subscribe(res => {
+    //   this.getDefaultFeeds();
+    // });
   }
 
   get shareIsSuported(): boolean {
@@ -107,19 +108,19 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   }
 
   addFeeds(rawFeedStrings: string): void {
-    this.addFeedMode = true;
-    this.rawFeedURLs = '';
-    const newFeeds$ = rawFeedStrings
-      .split('\n')
-      .map(s => s.trim())
-      .filter(s => s)
-      .filter(s => isValidHttpUrl(s))
-      .map(url => this.dbService.add(TABLES.FEEDS, { url }));
+    // this.addFeedMode = true;
+    // this.rawFeedURLs = '';
+    // const newFeeds$ = rawFeedStrings
+    //   .split('\n')
+    //   .map(s => s.trim())
+    //   .filter(s => s)
+    //   .filter(s => isValidHttpUrl(s))
+    //   .map(url => this.dbService.add(TABLES.FEEDS, { url }));
 
-    combineLatest(newFeeds$)
-      .subscribe(() => {
-        this.feeds$.next()
-      });
+    // combineLatest(newFeeds$)
+    //   .subscribe(() => {
+    //     this.feeds$.next()
+    //   });
   }
 
   refreshFeeds(): void {
