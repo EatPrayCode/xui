@@ -34,12 +34,12 @@ export const environment = {
     TOTAL_API_RESULTS: '20'
   },
   subredditLimit: 25,
-  clientId: "eoxObX4pSVwcFEPOOBRSGQ",
+  clientId: "9KSVxsy7UtV_lCtgBFcE1w",
   authorizationType: "authorization_code",
   refreshType: "refresh_token",
   tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
-  secret: 'P1MyF9oZAqm-Bk_DAQ-lt0TILLW21A',
-  redirectUrl: "http://localhost:4201/reddit-content/authenticate", //replace
+  secret: 'jZg9zBuXwH8P6qiwcopBl1d9Av8kgA',
+  redirectUrl: "http://localhost:4200/home/authenticate", //replace
   scope:
     "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"
 };

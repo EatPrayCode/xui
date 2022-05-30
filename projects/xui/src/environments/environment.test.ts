@@ -26,11 +26,11 @@ export const environment = {
     TOTAL_API_RESULTS: '20'
   },
   subredditLimit: 25,
-  clientId: "bnNPwXE9nKJanjYmh4sIHg",
+  clientId: "9KSVxsy7UtV_lCtgBFcE1w",
   authorizationType: "authorization_code",
   refreshType: "refresh_token",
   tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
-  secret: 'dUf7tRSpTTv1G_mumLopvBzAVjTvJg',
+  secret: 'jZg9zBuXwH8P6qiwcopBl1d9Av8kgA',
   redirectUrl: "https://xui-wine.vercel.app/reddit-content/authenticate", //replace
   scope:
     "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"

@@ -57,9 +57,7 @@ const routes: Routes = [
       {
         path: 'reddit-content',
         loadChildren: () =>
-          import('./modules/reddit-content/app.module').then(
-            (m) => m.AppModule
-          )
+          import('./modules/home/home.module').then((m) => m.HomeModule)
       },
       {
         path: 'youtube-content',
@@ -97,7 +95,7 @@ const routes: Routes = [
       scrollPositionRestoration: 'enabled',
       // preloadingStrategy: PreloadAllModules,
       relativeLinkResolution: 'legacy',
-      useHash: true
+      // useHash: true
     })
   ],
   exports: [RouterModule]
