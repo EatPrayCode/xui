@@ -12,6 +12,7 @@ import { environment as env } from './../../environments/environment';
 
 
 import { HttpHeaders } from '@angular/common/http';
+import { UserService } from './user.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -34,16 +35,14 @@ export class AppService {
     private store: Store<AppState>,
     private storageService: LocalStorageService,
     private firebaseAuth: FirebaseAuthService,
+    private userService: UserService,
     private http: HttpClient
   ) {
     this.getConfig();
-    // this.testFn();
   }
 
   testFn() {
-    this.http.get('http://localhost:3000/api/sample', httpOptions).subscribe((html: any) => {
-      
-    });
+    this.http.get('http://localhost:3000/api/sample', httpOptions).subscribe((html: any) => { });
   }
 
   initAppService() {

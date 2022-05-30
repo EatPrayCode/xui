@@ -13,16 +13,6 @@ const handler = (data, context) => {
   const d = new Date();
   res.end(d.toString());
 }
-
-const airtableConfig = [
-  {
-    baseName: 'Gujrat Netas',
-    apiKey: 'key3ITRiEPhABhtTC',
-    baseId: 'app0blxbqN1rHDD24',
-    tableId: 'tbli25Rj23fMFdZ1v'
-  }
-];
-const mainEntryUrl = 'MAY30';
 const recordsList = [];
 
 const testFn = fn => async (req, res) => {
@@ -79,13 +69,11 @@ function testName(payload) {
 async function uploadToFirebase(req, res, recordsList) {
   const entry = {
     status: 200,
-    syncDate : new Date().toISOString(),
+    syncDate: new Date().toISOString(),
     data: recordsList
   };
-  const key = testName({});
-  const collectionRef = await db.collection("site-refresh")
-    .doc(key)
-    .collection('newsfeedsyncs').add(entry)
+  const collectionRef = await db.collection("siterefresh")
+    .doc('newsfeed').set(entry)
     .then(querySnapshot => {
       res.status(200).json([]);
     })

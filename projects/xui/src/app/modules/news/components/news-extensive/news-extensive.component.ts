@@ -59,16 +59,26 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
 
   identify = (index: number, feed: FeedItem) => feed.id;
 
-  constructor(private dbService: NgxIndexedDBService,
-    private coreService: CoreService) {
+  constructor(
+    private dbService: NgxIndexedDBService,
+    private userService: UserService,
+    private coreService: CoreService,
+  ) {
   }
 
   ngOnInit(): void {
-    this.getDefaultFeeds();
+    // this.getDefaultFeeds();
     this.setCardView();
+    this.userService.getLiveNews().subscribe(res => {
+      let data: any = res[0].data || [];
+      data = data.map(ele => {
+        return ele.fields;
+      });
+      console.log(data);
+    });
   }
 
-  getDefaultFeeds(){
+  getDefaultFeeds() {
     this.feeds$ = this.coreService.getDefaultFeeds({}).pipe(
       takeUntil(this.ngUnsubscribe$),
       debounceTime(DELAY100),

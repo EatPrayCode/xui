@@ -28,7 +28,12 @@ export class UserService {
     private firestore: Firestore
   ) {
     this.db = collection(this.firestore, 'users');
-    // this.getUsers();
+  }
+
+  getLiveNews() {
+    const db = collection(this.firestore, 'siterefresh');
+    const news$ = collectionData(db) as Observable<any[]>;
+    return news$;
   }
 
   emitUsers() {
