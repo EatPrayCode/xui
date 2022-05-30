@@ -22,7 +22,7 @@
 <div class="basic-container" *ngIf="feeds$ | async as itemsList">
 
     <div class="content" *ngIf="feeds$ | async as itemsList">
-        <div fxLayout="row wrap" fxLayoutGap="5px grid">
+        <div fxLayout="row wrap" fxLayoutGap="10px grid">
             <div [fxFlex]="'20%'" fxFlex.xs="100%" fxFlex.sm="33%"
                 *ngFor="let item of itemsList">
                 <mat-card class="mat-elevation-z4" class="item-bg" [ngStyle]="{'background-image': 'url(' + item.publicationImage[0].url + ')'}">
