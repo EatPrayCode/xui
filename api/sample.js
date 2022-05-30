@@ -22,9 +22,6 @@ const airtableConfig = [
     tableId: 'tbli25Rj23fMFdZ1v'
   }
 ];
-var Airtable = require('airtable');
-var base = new Airtable({ apiKey: 'key3ITRiEPhABhtTC' }).base('appWvCVRmhAlOUo5T');
-
 const mainEntryUrl = 'MAY30';
 const recordsList = [];
 
@@ -48,21 +45,18 @@ module.exports = testFn(handler);
 
 
 async function getFromAirtable(req, res) {
-  base('Designers').select({
-    // Selecting the first 3 records in All designers:
+  var Airtable = require('airtable');
+  var base = new Airtable({ apiKey: 'key3ITRiEPhABhtTC' }).base('appWvCVRmhAlOUo5T');
+
+  base('NEWSFEED').select({
     maxRecords: 100,
-    view: "All designers"
+    view: "NEWSFEEDVIEW"
   }).eachPage(function page(records, fetchNextPage) {
-    // This function (`page`) will get called for each page of records.
 
     records.forEach(function (record) {
-      // console.log('Retrieved', record.get('Name'));
       recordsList.push(record);
     });
 
-    // To fetch the next page of records, call `fetchNextPage`.
-    // If there are more records, `page` will get called again.
-    // If there are no more records, `done` will get called.
     fetchNextPage();
 
   }, function done(err) {
@@ -72,16 +66,28 @@ async function getFromAirtable(req, res) {
   });
 }
 
+function testName(payload) {
+  var currentDate = new Date()
+  var day = currentDate.getDate()
+  var month = currentDate.getMonth() + 1
+  var year = currentDate.getFullYear()
+
+  const nameDate = day + "_" + month + "_" + year;
+  return nameDate;
+}
+
 async function uploadToFirebase(req, res, recordsList) {
   const entry = {
     status: 200,
+    syncDate : new Date().toISOString(),
     data: recordsList
   };
+  const key = testName({});
   const collectionRef = await db.collection("site-refresh")
-    .doc(mainEntryUrl)
-    .collection('mysyncs').add(entry)
+    .doc(key)
+    .collection('newsfeedsyncs').add(entry)
     .then(querySnapshot => {
-      res.status(200).json(recordsList);
+      res.status(200).json([]);
     })
     .catch(err => {
       res.status(500).json({ err });
