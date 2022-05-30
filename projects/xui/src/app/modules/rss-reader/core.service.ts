@@ -20,12 +20,12 @@ export class CoreService {
 
     setFeedLoading(id: number, isLoadind: boolean) {
         const feedLoading = this.feedLoading$.getValue();
-        this.feedLoading$.next({...feedLoading, [id]: isLoadind});
+        this.feedLoading$.next({ ...feedLoading, [id]: isLoadind });
     }
 
     setFeedError(id: number, isLoadind: string) {
         const feedError = this.feedError$.getValue();
-        this.feedError$.next({...feedError, [id]: isLoadind});
+        this.feedError$.next({ ...feedError, [id]: isLoadind });
     }
 
     updateFeed(url: string, id: number, about: SiteFeedAbout): void {
@@ -46,6 +46,17 @@ export class CoreService {
             .subscribe(feedItem => this.dbService.update(TABLES.FEEDS, feedItem));
     }
 
+    getDefaultFeeds(payload): Observable<any> {
+        const getAll$: any = this.dbService.getAll(TABLES.FEEDS);
+        return getAll$;
+    }
+
+    addFeed(payload): Observable<any> {
+        const url = 'https://www.thehindu.com/news/national/?service=rss';
+        const addFeed$: any = this.dbService.add(TABLES.FEEDS, { url });
+        return addFeed$;
+    }
+
     getNewPostsAndUpdateStore(url: string, id: number): Observable<SiteFeed> {
 
         this.setFeedLoading(id, true);
@@ -53,6 +64,7 @@ export class CoreService {
         return this.http.get<SiteFeed>(encodeURI(`${RSS2JSON}${url}`))
             .pipe(
                 tap(siteFeed => {
+                    console.log(siteFeed);
                     this.addPosts(siteFeed.items.reverse(), id, url, siteFeed.feed);
                     this.setFeedLoading(id, false);
                 }),

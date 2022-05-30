@@ -1,8 +1,8 @@
 <div class="">
-    
+
     <nav mat-tab-nav-bar class="d-none d-sm-flex">
-        <a mat-tab-link *ngFor="let e of examples" (click)="handleClickSubTab(e)" routerLinkActive #rla="routerLinkActive"
-            [active]="rla.isActive" [disabled]="e.auth && !(isAuthenticated$ | async)">
+        <a mat-tab-link *ngFor="let e of examples" (click)="handleClickSubTab(e)" routerLinkActive
+            #rla="routerLinkActive" [active]="rla.isActive" [disabled]="e.auth && !(isAuthenticated$ | async)">
             {{e.link}}
             <!-- {{e.about?.title || 'noname'}} {{e.newCount}} -->
         </a>
@@ -20,27 +20,27 @@
 </div>
 
 
-<!-- <span *ngIf="feeds$ | async as language">
-    <div *ngFor="let l of languages" [value]="l">
-        {{ l | json }}
-    </div>
+<!-- <span *ngIf="feeds$ | async as items">
+    {{items|json}}
 </span> -->
 
-<div class="basic-container">
+<div class="basic-container" *ngIf="feeds$ | async as itemsList">
     <mat-toolbar>
         <button mat-icon-button (click)="toggleView();">
             <mat-icon>{{ ( isListView ) ? 'view_module' : 'view_list' }}</mat-icon>
         </button>
+        <button mat-icon-button (click)="addNewsPublication();">
+            <mat-icon>add</mat-icon>
+        </button>
     </mat-toolbar>
     <mat-grid-list cols="{{numCols}}" rowHeight="{{rowHeight}}" [gutterSize]="gutterSize">
-        <mat-grid-tile *ngFor="let item of items">
+        <mat-grid-tile *ngFor="let item of itemsList">
             <mat-card fxFlexFill fxLayoutAlign="center center" class="item-bg">
                 {{item}}
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
-
 
 <div class="container p-1 mb-2" style="background-color:rgba(255,248,220,0.5)">
     <div class="feeds-header">

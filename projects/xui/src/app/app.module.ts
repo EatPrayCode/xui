@@ -81,7 +81,6 @@ const dbConfig: DBConfig = {
   migrationFactory    
 };
 
-
 @NgModule({
   imports: [
     // angular

@@ -56,3 +56,17 @@ const handler = (data, context) => {
 }
 
 module.exports = testFn(handler);
+
+
+
+function postSample() {
+  const collectionRef = await db.collection("site-refresh")
+    .doc(mainEntryUrl)
+    .collection('syncs').add(newEntry)
+    .then(querySnapshot => {
+      res.status(200).json([]);
+    })
+    .catch(err => {
+      res.status(500).json({ err });
+    });
+}

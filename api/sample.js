@@ -14,23 +14,27 @@ const handler = (data, context) => {
   res.end(d.toString());
 }
 
+const airtableConfig = [
+  {
+    baseName: 'Gujrat Netas',
+    apiKey: 'key3ITRiEPhABhtTC',
+    baseId: 'app0blxbqN1rHDD24',
+    tableId: 'tbli25Rj23fMFdZ1v'
+  }
+];
+var Airtable = require('airtable');
+var base = new Airtable({ apiKey: 'key3ITRiEPhABhtTC' }).base('appWvCVRmhAlOUo5T');
+
+const mainEntryUrl = 'MAY30';
+const recordsList = [];
+
 const testFn = fn => async (req, res) => {
-  const newEntry = {
-    syncdate: new Date()
-  };
-  const mainEntryUrl = 'MAY29';
+
   if (req.method === "GET") {
-    const collectionRef = await db.collection("site-refresh")
-      .doc(mainEntryUrl)
-      .collection('syncs').add(newEntry)
-      .then(querySnapshot => {
-        res.status(200).json([]);
-      })
-      .catch(err => {
-        res.status(500).json({ err });
-      });
+    getFromAirtable(req, res);
   }
   else if (req.method === "POST") {
+
   }
   else if (req.method === "OPTIONS") {
     res.status(200).json([]);
@@ -42,3 +46,44 @@ const testFn = fn => async (req, res) => {
 
 module.exports = testFn(handler);
 
+
+async function getFromAirtable(req, res) {
+  base('Designers').select({
+    // Selecting the first 3 records in All designers:
+    maxRecords: 100,
+    view: "All designers"
+  }).eachPage(function page(records, fetchNextPage) {
+    // This function (`page`) will get called for each page of records.
+
+    records.forEach(function (record) {
+      // console.log('Retrieved', record.get('Name'));
+      recordsList.push(record);
+    });
+
+    // To fetch the next page of records, call `fetchNextPage`.
+    // If there are more records, `page` will get called again.
+    // If there are no more records, `done` will get called.
+    fetchNextPage();
+
+  }, function done(err) {
+    const parsedRecordsList = JSON.parse(JSON.stringify(recordsList));
+    uploadToFirebase(req, res, parsedRecordsList);
+    if (err) { console.error(err); return; }
+  });
+}
+
+async function uploadToFirebase(req, res, recordsList) {
+  const entry = {
+    status: 200,
+    data: recordsList
+  };
+  const collectionRef = await db.collection("site-refresh")
+    .doc(mainEntryUrl)
+    .collection('mysyncs').add(entry)
+    .then(querySnapshot => {
+      res.status(200).json(recordsList);
+    })
+    .catch(err => {
+      res.status(500).json({ err });
+    });
+}

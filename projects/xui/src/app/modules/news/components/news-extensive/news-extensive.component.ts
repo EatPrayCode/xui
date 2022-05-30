@@ -55,12 +55,37 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   feedError: FeedError = {};
   loading: boolean = true;
   public ngUnsubscribe$ = new Subject<void>();
-  public feeds$ = new Subject<void>();
+  public feeds$: any = of([]);
 
   identify = (index: number, feed: FeedItem) => feed.id;
 
   constructor(private dbService: NgxIndexedDBService,
     private coreService: CoreService) {
+  }
+
+  ngOnInit(): void {
+    this.getDefaultFeeds();
+    this.setCardView();
+  }
+
+  getDefaultFeeds(){
+    this.feeds$ = this.coreService.getDefaultFeeds({}).pipe(
+      takeUntil(this.ngUnsubscribe$),
+      debounceTime(DELAY100),
+      tap(res => {
+        console.log(res);
+        this.feeds = res;
+      })
+    );
+  }
+
+  addNewsPublication() {
+    const rawFeedStrings = 'https://www.thehindu.com/news/national/?service=rss';
+    // this.addFeeds(rawFeedStrings);
+    // this.dbService.add(TABLES.FEEDS, { rawFeedStrings })
+    this.coreService.addFeed({}).subscribe(res => {
+      this.getDefaultFeeds();
+    });
   }
 
   get shareIsSuported(): boolean {
@@ -82,7 +107,9 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
       .map(url => this.dbService.add(TABLES.FEEDS, { url }));
 
     combineLatest(newFeeds$)
-      .subscribe(() => this.feeds$.next());
+      .subscribe(() => {
+        this.feeds$.next()
+      });
   }
 
   refreshFeeds(): void {
@@ -91,7 +118,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
     this.coreService.refreshFeeds(this.feeds)
       .subscribe(() => {
         this.loading = false;
-        this.feeds$.next();
+        this.getDefaultFeeds();
       });
   }
 
@@ -103,52 +130,16 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
     }); // share the URL of MDN
   }
 
-  ngOnInit(): void {
-
-    this.setCardView();
-
-    this.coreService.feedLoading$
-      .pipe(takeUntil(this.ngUnsubscribe$))
-      .subscribe(feedLoading => {
-        this.feedLoading = feedLoading;
-        this.feeds$.next();
-      });
-
-    this.coreService.feedError$
-      .pipe(takeUntil(this.ngUnsubscribe$))
-      .subscribe(feedError => {
-        this.feedError = feedError;
-        this.feeds$.next();
-      });
-
-    this.feeds$
-      .pipe(
-        takeUntil(this.ngUnsubscribe$),
-        debounceTime(DELAY100),
-        switchMap(() => this.dbService.getAll(TABLES.FEEDS))
-      )
-      .subscribe(feeds => {
-        this.feeds = cloneDeep(feeds);
-      });
-
-    this.feeds$.next();
-
-    // import from the old version
-    try {
-      this.addFeeds(importFeedsFromVersion3());
-    } catch (error) {
-    }
-  }
 
   unregister(): void {
-    const result = confirm('Unregister the Service Worker?');
-    if (result === true) {
-      navigator.serviceWorker?.getRegistrations().then((registrations) => {
-        for (const registration of registrations) {
-          registration.unregister();
-        }
-      });
-    }
+    // const result = confirm('Unregister the Service Worker?');
+    // if (result === true) {
+    //   navigator.serviceWorker?.getRegistrations().then((registrations) => {
+    //     for (const registration of registrations) {
+    //       registration.unregister();
+    //     }
+    //   });
+    // }
   }
 
   ngOnDestroy(): void {
@@ -188,7 +179,6 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
 
   toggleView() {
     this.isListView = !this.isListView;
-
     if (this.isListView) {
       this.setListView();
     } else {
