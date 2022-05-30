@@ -16,6 +16,7 @@ import { SpinnerComponent } from './directives/spinner/spinner.component';
     FlexLayoutModule,
     DemoMaterialModule,
     RouterModule,
+    FlexLayoutModule,
   ],
   declarations: [
     SpeedDialFabComponent,
@@ -29,6 +30,7 @@ import { SpinnerComponent } from './directives/spinner/spinner.component';
     SpeedDialFabComponent,
     SpinnerComponent,
     AppSpinnerDirective,
+    FlexLayoutModule,
   ]
 })
 export class SharedModule {

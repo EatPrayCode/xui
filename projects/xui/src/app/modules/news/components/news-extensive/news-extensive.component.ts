@@ -66,14 +66,19 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   ) {
   }
 
+  title = 'Card View Demo';
+
+  gridColumns = 3;
+
+  toggleGridColumns() {
+    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
+  }
+
   ngOnInit(): void {
     // this.getDefaultFeeds();
     this.setCardView();
     this.userService.getLiveNews().subscribe(res => {
       let data: any = res[0].data || [];
-      data = data.map(ele => {
-        return ele.fields;
-      });
       console.log(data);
       this.feeds$.next(data);
     });

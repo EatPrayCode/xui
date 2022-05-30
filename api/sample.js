@@ -50,8 +50,11 @@ async function getFromAirtable(req, res) {
     fetchNextPage();
 
   }, function done(err) {
-    const parsedRecordsList = JSON.parse(JSON.stringify(recordsList));
-    uploadToFirebase(req, res, parsedRecordsList);
+
+    const minimalRecords = recordsList.map(ele => {
+      return ele.fields;
+    });
+    uploadToFirebase(req, res, minimalRecords);
     if (err) { console.error(err); return; }
   });
 }
@@ -66,11 +69,11 @@ function testName(payload) {
   return nameDate;
 }
 
-async function uploadToFirebase(req, res, recordsList) {
+async function uploadToFirebase(req, res, data) {
   const entry = {
     status: 200,
     syncDate: new Date().toISOString(),
-    data: recordsList
+    data: data
   };
   const collectionRef = await db.collection("siterefresh")
     .doc('newsfeed').set(entry)
