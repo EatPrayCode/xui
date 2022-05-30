@@ -21,11 +21,20 @@
 
 <div class="basic-container" *ngIf="feeds$ | async as itemsList">
 
+    <mat-toolbar class="toolbar">
+        <button mat-icon-button (click)="toggleView();">
+            <mat-icon>{{ ( isListView ) ? 'view_module' : 'view_list' }}</mat-icon>
+        </button>
+        <button mat-icon-button (click)="addNewsPublication();">
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-toolbar>
+
     <div class="content" *ngIf="feeds$ | async as itemsList">
         <div fxLayout="row wrap" fxLayoutGap="10px grid">
-            <div [fxFlex]="'20%'" fxFlex.xs="100%" fxFlex.sm="33%"
-                *ngFor="let item of itemsList">
-                <mat-card class="mat-elevation-z4" class="item-bg" [ngStyle]="{'background-image': 'url(' + item.publicationImage[0].url + ')'}">
+            <div [fxFlex]="'20%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let item of itemsList">
+                <mat-card class="mat-elevation-z4" class="item-bg"
+                    [ngStyle]="{'background-image': 'url(' + item.publicationImage[0].url + ')'}">
                     <mat-card-header>
                         <mat-card-title>{{item.publicationName}}</mat-card-title>
                     </mat-card-header>
