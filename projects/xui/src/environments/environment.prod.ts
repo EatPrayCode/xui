@@ -31,7 +31,7 @@ export const environment = {
   refreshType: "refresh_token",
   tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
   secret: 'T6fFa2OQqB2rBtE-XuwdFCmnljI0gA',
-  redirectUrl: "https://xui-wine.vercel.app/reddit-content/authenticate", //replace
+  redirectUrl: "https://xui-wine.vercel.app/home/authenticate", //replace
   scope:
     "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"
 };
