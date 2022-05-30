@@ -14,7 +14,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
   ngUnsubscribe = new Subject<void>();
   error: string | null = null;
 
-  constructor(private route: ActivatedRoute, private oauth: OauthService) {}
+  constructor(private route: ActivatedRoute, private oauth: OauthService) { }
 
   ngOnInit(): void {
     this.route.queryParams
@@ -38,7 +38,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
                 this.oauth.setToken(data.access_token, data.expires_in);
                 if (data.refresh_token)
                   this.oauth.setRefreshToken(data.refresh_token);
-                window.location.href = "/home/";
+                window.location.href = "/reddit-client/reddit-landing/";
               }
             });
         });

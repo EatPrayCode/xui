@@ -21,11 +21,11 @@ import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { filter, takeUntil } from "rxjs/operators";
 import { OauthService } from "~/app/services/oauth.service";
 import { environment } from "~/environments/environment";
-import { DarkModeService } from "./../others/dark-mode.service";
-import { MobileService } from "./../others/mobile.service";
-import { MeService } from "./../reddit/me.service";
-import { FilterModes, SortModes, SortService } from "./../reddit/sort.service";
-import { Subreddit } from "./../reddit/subreddit";
+import { DarkModeService } from "../others/dark-mode.service";
+import { MobileService } from "../others/mobile.service";
+import { MeService } from "../reddit/me.service";
+import { FilterModes, SortModes, SortService } from "../reddit/sort.service";
+import { Subreddit } from "../reddit/subreddit";
 
 /** @title Responsive sidenav */
 @Component({

@@ -1,0 +1,35 @@
+<div class="container" style="padding-left:0px;padding-right:0px;">
+    <div class="row" rtl>
+        <div class="col-sm-12" style="margin-left:10px;">
+            <h3>Reddit</h3>
+        </div>
+    </div>
+
+    <mat-tab-group mat-stretch-tabs class="mat-elevation-z4 tabs-container" disablePagination=true
+        (selectedTabChange)="onSequenceChangeEvent($event)">
+
+        <mat-tab *ngFor="let link of mainMenuItems" [label]="link" [routerLink]="link.link">
+
+            <ng-template mat-tab-label>
+                <span class="header-div">{{link.id}}</span>
+            </ng-template>
+
+        </mat-tab>
+
+    </mat-tab-group>
+
+    <div>
+        <mat-sidenav-container class="sidenav-container">
+            <mat-sidenav #leftSidenav mode="side" opened>
+                <app-reddit-client-left-menu [sidemenuItems]="sidemenuItems" (selectNetaEvt)="handleSelectNeta($event)">
+                </app-reddit-client-left-menu>
+            </mat-sidenav>
+            <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open': 'close'">
+                <div class="main_content">
+                    <router-outlet></router-outlet>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+
+</div>

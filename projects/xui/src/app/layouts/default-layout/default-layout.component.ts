@@ -52,11 +52,11 @@ export class DefaultLayoutComponent implements OnInit {
       label: 'app.menu.news',
       icon: 'home'
     },
-    // {
-    //   link: 'reddit-content',
-    //   label: 'app.menu.reddit-content',
-    //   icon: 'trip_origin'
-    // },
+    {
+      link: 'reddit-client',
+      label: 'app.menu.reddit-content',
+      icon: 'trip_origin'
+    },
     {
       link: 'settings',
       label: 'app.menu.settings',

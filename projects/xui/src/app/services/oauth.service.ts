@@ -37,7 +37,7 @@ export class OauthService {
     }`;
   }
 
-  logOut(redirect: string | null = "/home/logout"): void {
+  logOut(redirect: string | null = "/reddit-client/logout"): void {
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("tokenExpiration");

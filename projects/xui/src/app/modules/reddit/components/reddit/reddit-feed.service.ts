@@ -3,7 +3,7 @@ import { Injectable, NgZone } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { map, mergeMap } from "rxjs/operators";
 import { OauthService } from "~/app/services/oauth.service";
-import { Post } from "../reddit/post";
+import { Post } from "./post";
 import { PostInfoService } from "./post-info.service";
 import { FilterModes, SortModes } from "./sort.service";
 

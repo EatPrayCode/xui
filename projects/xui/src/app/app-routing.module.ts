@@ -55,9 +55,14 @@ const routes: Routes = [
           import('./modules/admin-dashboard/admin-dashboard.module').then((m) => m.AdminDashboardModule)
       },
       {
-        path: 'reddit-content',
+        path: 'reddit-client',
         loadChildren: () =>
-          import('./modules/home/home.module').then((m) => m.HomeModule)
+          import('./modules/reddit/reddit-client.module').then((m) => m.RedditClientModule)
+      },
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('./modules/reddit/reddit-client.module').then((m) => m.RedditClientModule)
       },
       {
         path: 'youtube-content',

@@ -39,7 +39,7 @@ export const environment = {
   refreshType: "refresh_token",
   tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
   secret: 'jZg9zBuXwH8P6qiwcopBl1d9Av8kgA',
-  redirectUrl: "http://localhost:4200/home/authenticate", //replace
+  redirectUrl: "http://localhost:4200/reddit-client/authenticate", //replace
   scope:
     "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"
 };
