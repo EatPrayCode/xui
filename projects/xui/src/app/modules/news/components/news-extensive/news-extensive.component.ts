@@ -54,8 +54,10 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   feedLoading: FeedLoading = {};
   feedError: FeedError = {};
   loading: boolean = true;
+  refreshLoader: boolean = false;
   public ngUnsubscribe$ = new Subject<void>();
   public feeds$: BehaviorSubject<any> = new BehaviorSubject(null);
+  public test$: BehaviorSubject<any> = new BehaviorSubject(null);
   title = 'Card View Demo';
 
   gridColumns = 3;
@@ -67,7 +69,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private coreService: CoreService,
     private router: Router
-  ) {  }
+  ) { }
 
   ngOnInit(): void {
     this.getDefaultFeeds();
@@ -79,7 +81,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
       this.loading = false;
     });
   }
-  
+
 
   onViewNeta(neta) {
     const id = neta.id;
@@ -134,8 +136,13 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   }
 
   refreshFeeds(): void {
-    this.feeds$.pipe(take(1)).subscribe(res=>{
-      this.coreService.refreshFeeds(res).subscribe(res=>{  });
+    this.refreshLoader = true;
+    this.feeds$.pipe(take(1)).subscribe(res => {
+      this.coreService.refreshFeeds(res).subscribe(res => {
+        setTimeout(() => {
+          this.refreshLoader = false;
+        }, 100);
+      });
     });
   }
 
