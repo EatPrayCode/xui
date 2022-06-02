@@ -280,9 +280,6 @@ export class RedditLandingComponent implements OnDestroy, OnInit, AfterViewInit 
     }
   }
 
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some((h) =>
-    h.test(window.location.host)
-  );
 }
 
 interface Link {

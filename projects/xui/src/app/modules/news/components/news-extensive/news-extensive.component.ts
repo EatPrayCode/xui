@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { map } from 'highcharts';
 import { combineLatest, Observable, of, Subject, BehaviorSubject } from 'rxjs';
-import { debounceTime, startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { debounceTime, startWith, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
 import { DataService } from '../../../../services/data.service';
 import { UserService } from '~/app/services/user.service';
@@ -56,6 +56,9 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   loading: boolean = true;
   public ngUnsubscribe$ = new Subject<void>();
   public feeds$: BehaviorSubject<any> = new BehaviorSubject(null);
+  title = 'Card View Demo';
+
+  gridColumns = 3;
 
   identify = (index: number, feed: FeedItem) => feed.id;
 
@@ -63,36 +66,38 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
     private dbService: NgxIndexedDBService,
     private userService: UserService,
     private coreService: CoreService,
-  ) {
-  }
-
-  title = 'Card View Demo';
-
-  gridColumns = 3;
-
-  toggleGridColumns() {
-    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
-  }
+    private router: Router
+  ) {  }
 
   ngOnInit(): void {
-    // this.getDefaultFeeds();
+    this.getDefaultFeeds();
     this.setCardView();
+    this.loading = true;
     this.userService.getLiveNews().subscribe(res => {
       let data: any = res[0].data || [];
-      console.log(data);
       this.feeds$.next(data);
+      this.loading = false;
     });
+  }
+  
+
+  onViewNeta(neta) {
+    const id = neta.id;
+    this.router.navigate([`news/news-feed/${id}`]);
   }
 
   getDefaultFeeds() {
-    // this.feeds$ = this.coreService.getDefaultFeeds({}).pipe(
-    //   takeUntil(this.ngUnsubscribe$),
-    //   debounceTime(DELAY100),
-    //   tap(res => {
-    //     console.log(res);
-    //     this.feeds = res;
-    //   })
-    // );
+    this.coreService.getDefaultFeeds({}).pipe(
+      takeUntil(this.ngUnsubscribe$),
+      debounceTime(DELAY100),
+      tap(res => {
+        this.feeds$.next(res);
+      })
+    );
+  }
+
+  toggleGridColumns() {
+    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
   }
 
   addNewsPublication() {
@@ -129,13 +134,9 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   }
 
   refreshFeeds(): void {
-    this.loading = true;
-    this.feedError = {};
-    this.coreService.refreshFeeds(this.feeds)
-      .subscribe(() => {
-        this.loading = false;
-        this.getDefaultFeeds();
-      });
+    this.feeds$.pipe(take(1)).subscribe(res=>{
+      this.coreService.refreshFeeds(res).subscribe(res=>{  });
+    });
   }
 
   share(): void {
@@ -162,9 +163,6 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe$.next();
     this.ngUnsubscribe$.complete();
   }
-
-
-
   isListView = false;
 
   // Template props 

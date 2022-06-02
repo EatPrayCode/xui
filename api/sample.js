@@ -10,8 +10,8 @@ admin.initializeApp({
 const db = admin.firestore();
 
 const handler = (data, context) => {
-  const d = new Date();
-  res.end(d.toString());
+  const dDate = new Date();
+  res.end(dDate.toString());
 }
 const recordsList = [];
 
@@ -54,7 +54,8 @@ async function getFromAirtable(req, res) {
     const minimalRecords = recordsList.map(ele => {
       return ele.fields;
     });
-    uploadToFirebase(req, res, minimalRecords);
+    // console.log(minimalRecords);
+    // uploadToFirebase(req, res, minimalRecords);
     if (err) { console.error(err); return; }
   });
 }
@@ -75,6 +76,7 @@ async function uploadToFirebase(req, res, data) {
     syncDate: new Date().toISOString(),
     data: data
   };
+  console.log(data);
   const collectionRef = await db.collection("siterefresh")
     .doc('newsfeed').set(entry)
     .then(querySnapshot => {

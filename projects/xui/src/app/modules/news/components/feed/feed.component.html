@@ -1,6 +1,41 @@
-<ng-container *ngIf="posts$ | async as language">
-    <h1>Feed</h1>
-    <div class="post-wrapper" *ngFor="let post of language">
-        <app-post [post]=post></app-post>
+<div class="basic-container">
+
+  <mat-toolbar class="toolbar">
+    <button mat-icon-button (click)="backClicked()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </mat-toolbar>
+
+
+  <div class="content" *ngIf="posts$ | async as itemsList">
+    <div fxLayout="row wrap" fxLayoutGap="5px grid">
+      <div [fxFlex]="'20%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let neta of itemsList">
+        <mat-card class="item-bg">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title style="font-size: 12px;">
+              <a target="_blank" [href]="neta.link" [innerHTML]="neta.title | sanitizeHtml"></a>
+            </mat-card-title>
+
+            <mat-card-subtitle>{{neta.party}}</mat-card-subtitle>
+            <mat-card-subtitle>{{neta.state}}</mat-card-subtitle>
+          </mat-card-header>
+          <!-- <img mat-card-image class="main-image" [src]="neta?.image?.url" alt="Photo of a Shiba Inu"> -->
+          <mat-card-content style="font-size: 14px;">
+            <div [innerHTML]="neta.content | sanitizeHtml"></div>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <a mat-button mat-stroked-button color="accent" target="_blank" [href]="neta.link">View</a>
+          </mat-card-actions>
+          <div *ngIf="neta?.categories?.length">
+            <mat-card-footer style="font-size: 10px;">
+              <em *ngFor="let cat of neta.categories; let last = last">{{cat}}<span *ngIf="!last">, </span></em>
+              <span>{{neta.pubDate}}</span>
+            </mat-card-footer>
+          </div>
+        </mat-card>
+      </div>
     </div>
-</ng-container>
+  </div>
+
+</div>

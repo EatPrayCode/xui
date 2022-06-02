@@ -112,9 +112,7 @@ export class RedditClientComponent implements OnInit {
   constructor(private store: Store<State>, private _sidenavService: SidenavService, private router: Router) {
     this._sidenavService.sideNavState$.subscribe((res) => {
       this.onSideNavChange = res;
-      if (res == true) {
-      } else if (res == false) {
-      }
+      if (res == true) { } else if (res == false) { }
     });
   }
 

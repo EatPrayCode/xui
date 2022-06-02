@@ -66,7 +66,9 @@ export class FeedComponent implements OnInit {
         this.route.params
             .pipe(
                 map(params => params.id),
-                tap(id => this.feedId = +id),
+                tap(id => {
+                    this.feedId = +id;
+                }),
                 switchMap(id => this.dbService.getByID(TABLES.FEEDS, +id)),
                 tap((feed: FeedItem) => {
                     this.feed = feed;

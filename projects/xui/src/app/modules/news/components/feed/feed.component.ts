@@ -1,14 +1,16 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import {debounceTime, map, switchMap, tap, toArray} from 'rxjs/operators';
-import {NgxIndexedDBService} from 'ngx-indexed-db';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FeedItem, Post, SiteFeedAbout} from '../models';
+import { debounceTime, map, switchMap, tap, toArray } from 'rxjs/operators';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FeedItem, Post, SiteFeedAbout } from '../models';
 import { concat, Observable, of, Subject } from 'rxjs';
-import {MAX_POSTS_COUNT, TABLES} from '../constants';
+import { MAX_POSTS_COUNT, TABLES } from '../constants';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-feed',
     templateUrl: './feed.component.html',
+    styleUrls: ['./feed.component.scss'],
     // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeedComponent implements OnInit {
@@ -23,14 +25,19 @@ export class FeedComponent implements OnInit {
     identify = (index: number, post: Post) => post.id;
 
     constructor(private dbService: NgxIndexedDBService,
-                private router: Router,
-                private route: ActivatedRoute) {
+        private router: Router,
+        private route: ActivatedRoute,
+        private _location: Location
+    ) {
     }
 
-    showMore():void {
+    backClicked() {
+        this._location.back();
+    }
+
+    showMore(): void {
         this.viewCount += 10;
     }
-
 
     markAsRead() {
         this.markAsReadFeed(this.feed);
@@ -38,7 +45,7 @@ export class FeedComponent implements OnInit {
     }
 
     markAsReadFeed(feed: FeedItem): void {
-        this.dbService.update(TABLES.FEEDS, {...feed, newCount: 0}).subscribe();
+        this.dbService.update(TABLES.FEEDS, { ...feed, newCount: 0 }).subscribe();
     }
 
     markAsReadPosts(): void {
@@ -73,9 +80,13 @@ export class FeedComponent implements OnInit {
                 switchMap(feed => this.dbService.getAllByIndex(TABLES.POSTS, 'feedId', IDBKeyRange.only(this.feedId))),
                 tap((posts) => {
                     // this.posts.next(posts);
-                    console.log(posts)
+                    console.log(posts);
                 })
             );
+    }
+
+    readMore(news) {
+
     }
 
     deleteFeed(): void {
