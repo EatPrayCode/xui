@@ -40,7 +40,7 @@ async function getNewsSources(req, res, data) {
   // To query sources
   // All options are optional
   newsapi.v2.topHeadlines({
-    category: 'technology',
+    sources: 'google-news-in',
     language: 'en',
     country: 'in'
   }).then(response => {
