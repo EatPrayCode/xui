@@ -10,6 +10,7 @@ import { FeedComponent } from './components/feed/feed.component';
 import { PostComponent } from './components/post/post.component';
 import { SanitizeHtmlPipe } from './components/pipes/sanitize-html.pipe';
 import { CountPipe } from './components/pipes/count.pipe';
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -26,7 +27,8 @@ import { CountPipe } from './components/pipes/count.pipe';
     FeedComponent,
     PostComponent,
     CountPipe,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    NewsFeedComponent
   ],
   providers: [NewsService]
 })

@@ -1,0 +1,50 @@
+<app-spinner [loading]="loading" [message]="'Loading your news..'"></app-spinner>
+
+<div class="basic-container" *ngIf="feeds$ | async as itemsList">
+
+    <mat-toolbar class="toolbar">
+        <button mat-icon-button (click)="toggleView();">
+            <mat-icon>{{ ( isListView ) ? 'view_module' : 'view_list' }}</mat-icon>
+        </button>
+        <button mat-icon-button (click)="addNewsPublication();">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="!refreshLoader" color="primary" (click)="refreshFeeds();">
+            <mat-icon>refresh</mat-icon>
+        </button>
+        <button mat-icon-button disabled *ngIf="refreshLoader" color="primary">
+            <mat-icon>
+                <mat-spinner color="primary" diameter="20">
+                </mat-spinner>
+            </mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <div class="content" *ngIf="feeds$ | async as itemsList">
+        <div fxLayout="row wrap" fxLayoutGap="5px grid">
+            <div [fxFlex]="'20%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let neta of itemsList">
+                <mat-card class="item-bg">
+                    <mat-card-header>
+                        <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + neta?.urlToImage + ')'}"
+                            class="example-header-image"></div>
+                        <!-- <mat-card-title>{{neta.title}}</mat-card-title> -->
+
+                        <mat-card-subtitle>{{neta.source.name}}</mat-card-subtitle>
+                        <mat-card-subtitle>{{neta.publishedAt}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <!-- <img mat-card-image class="main-image" [src]="neta?.image?.url" alt="Photo of a Shiba Inu"> -->
+                    <mat-card-content>
+                        <p style="font-size: 14px;">
+                            {{neta?.content}}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <a mat-button mat-stroked-button color="accent" target="_blank" [href]="neta.url">View</a>
+                    </mat-card-actions>
+                    <mat-card-footer style="font-size: 14px;"> {{neta.author}}</mat-card-footer>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+</div>

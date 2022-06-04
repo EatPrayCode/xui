@@ -1,3 +1,4 @@
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,7 +12,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'news-for-you',
+        redirectTo: 'news-live',
         pathMatch: 'full'
       },
       {
@@ -19,9 +20,13 @@ const routes: Routes = [
         component: NewsExtensiveComponent
       },
       {
-        path: 'news-feed/:id',
-        component: FeedComponent
+        path: 'news-live',
+        component: NewsFeedComponent
       },
+      // {
+      //   path: 'news-feed/:id',
+      //   component: FeedComponent
+      // },
       {
         path: 'news-for-you',
         component: NewsExtensiveComponent

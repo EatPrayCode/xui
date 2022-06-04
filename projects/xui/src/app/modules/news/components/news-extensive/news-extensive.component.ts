@@ -76,7 +76,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
     this.setCardView();
     this.loading = true;
     this.userService.getLiveNews().subscribe(res => {
-      let data: any = res[0].data || [];
+      let data: any = res[1].data || [];
       this.feeds$.next(data);
       this.loading = false;
     });

@@ -40,8 +40,8 @@ export class NewsContainerComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   mainMenuItems: any = [
     {
-      id: 'news-for-you',
-      link: 'news-for-you',
+      id: 'news-live',
+      link: 'news-live',
       name: 'You',
       label: 'app.netas.tab.netas-for-you'
     },
