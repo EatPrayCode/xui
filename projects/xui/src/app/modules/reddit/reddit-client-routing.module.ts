@@ -7,7 +7,7 @@ import { RedditLoggedOutGuard } from '~/app/services/reddit-logged-out-guard.gua
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RedditLoggedInGuard } from '~/app/services/reddit-logged-in-guard.guard';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RedditDashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -16,12 +16,17 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'reddit-landing',
+        redirectTo: 'reddit-discover',
         pathMatch: 'full'
       },
       {
         path: 'reddit-landing',
         component: RedditLandingComponent,
+        data: { title: 'app.dashboard.other' },
+      },
+      {
+        path: 'reddit-discover',
+        component: RedditDashboardComponent,
         data: { title: 'app.dashboard.other' },
       },
       {

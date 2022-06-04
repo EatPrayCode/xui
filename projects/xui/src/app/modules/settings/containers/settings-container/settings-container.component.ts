@@ -13,19 +13,19 @@ export class SettingsContainerComponent {
   selectedTab: any = 0;
   mainMenuItems: any = [
     {
-      id: 'settings-general',
+      id: 'General',
       link: 'settings-general',
-      name: 'settings-general',
+      name: 'General',
       label: 'app.settings.general-settings'
     },
     {
-      id: 'settings-netas',
+      id: 'Netas',
       link: 'settings-netas',
-      name: 'settings-netas',
+      name: 'Netas',
       label: 'app.settings.netas-settings'
     },
     {
-      id: 'content',
+      id: 'Content',
       link: 'settings-content',
       name: 'Content',
       label: 'app.settings.netas-settings'

@@ -22,15 +22,15 @@ export class RedditClientComponent implements OnInit {
 
   mainMenuItems: any = [
     {
-      id: 'Landing',
-      link: 'reddit-client/reddit-landing',
-      name: 'Home',
+      id: 'Feed',
+      link: '/reddit-client/reddit-landing',
+      name: 'Feed',
       label: 'app.dashboard.tab.home'
     },
     {
-      id: 'Settings',
-      link: 'reddit-client/reddit-landing',
-      name: 'Home',
+      id: 'Discover',
+      link: '/reddit-client/reddit-discover',
+      name: 'Discover',
       label: 'app.dashboard.tab.home'
     },
   ];

@@ -12,10 +12,11 @@ import { DemoMaterialModule } from '../../shared/demo-material-module';
 import { PickListModule } from 'primeng/picklist';
 import { RedditClientRoutingModule } from './reddit-client-routing.module';
 import { RedditLandingComponent } from './components/reddit-landing/reddit-landing.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RedditDashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
+import { RedditDiscoverComponent } from './components/reddit-discover/reddit-discover.component';
 
 
 export function httpLoaderFactory(http: HttpClient) {
@@ -41,10 +42,11 @@ export function httpLoaderFactory(http: HttpClient) {
     RedditClientLeftMenuComponent,
     RedditClientComponent,
     RedditLandingComponent,
-    DashboardComponent,
+    RedditDashboardComponent,
     LoginComponent,
     LogoutComponent,
-    AuthenticateComponent
+    AuthenticateComponent,
+    RedditDiscoverComponent
   ],
   providers: []
 })

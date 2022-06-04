@@ -1,4 +1,4 @@
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { Observable, of } from 'rxjs';
@@ -149,19 +149,22 @@ export class DefaultLayoutComponent implements OnInit {
   }
 
   openLoginDialog(): void {
-    let dialogRef = this.dialog.open(SigninComponent, {
-      hasBackdrop: true,
+    const config: MatDialogConfig = {
       disableClose: false,
+      hasBackdrop: true,
+      backdropClass: '',
       height: '100vh',
       minWidth: '90%',
       position: {
         right: '0px',
         bottom: '0px'
       },
+      panelClass: 'makeItMiddle',
       data: {
         obj: {}
       }
-    });
+    };
+    let dialogRef = this.dialog.open(SigninComponent, config);
     dialogRef.afterClosed().subscribe((result) => {
       // console.log(result, 'The dialog was closed');
     });

@@ -26,7 +26,7 @@ const scrollDelay: number = 100;
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"]
 })
-export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
+export class RedditDashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   private _subreddit: string | null = null;
   private _posts: Post[] = [];
   private _postSet: Set<string> = new Set<string>();

@@ -32,6 +32,8 @@ export const environment = {
   tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
   secret: 'T6fFa2OQqB2rBtE-XuwdFCmnljI0gA',
   redirectUrl: "https://xui-wine.vercel.app/reddit-client/authenticate", //replace
-  scope:
-    "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"
+  scope: "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread",
+  newsapi: {
+    API_KEY: '1b6ebad4ea2e433dbe0f4ce3521ff563'
+  }
 };

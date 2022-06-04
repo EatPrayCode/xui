@@ -13,7 +13,7 @@ export const environment = {
   i18nPrefix: '',
   youtubeApiKey: 'AIzaSyCXeDGTeWD9-gVZY6VWoRPLW0LOT0yn_Es',
   loadDelay: 1000,
-  'callBackAPI' : 'cma62936641cb63e',
+  'callBackAPI': 'cma62936641cb63e',
   apiUrl: 'https://xui-wine.vercel.app/api/',
   // apiUrl: 'localhost:3000/api/',
   firebase: {
@@ -40,8 +40,11 @@ export const environment = {
   tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
   secret: 'jZg9zBuXwH8P6qiwcopBl1d9Av8kgA',
   redirectUrl: "http://localhost:3000/reddit-client/authenticate", //replace
-  scope:
-    "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread"
+  scope: "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread",
+
+  newsapi: {
+    API_KEY: '1b6ebad4ea2e433dbe0f4ce3521ff563'
+  }
 };
 
 
