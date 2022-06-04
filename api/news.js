@@ -41,8 +41,7 @@ async function getNewsSources(req, res, data) {
   // All options are optional
   newsapi.v2.topHeadlines({
     sources: 'google-news-in',
-    language: 'en',
-    country: 'in'
+    language: 'en'
   }).then(response => {
     uploadNewsAPIDataToFirebase(req, res, response);
   }).catch(err => {
@@ -56,6 +55,7 @@ async function uploadNewsAPIDataToFirebase(req, res, data) {
     syncDate: new Date().toISOString(),
     data: data
   };
+  console.log(data);
   const collectionRef = await db.collection("siterefresh")
     .doc('newsapi').set(entry)
     .then(querySnapshot => {
