@@ -55,7 +55,7 @@ async function uploadNewsAPIDataToFirebase(req, res, data) {
     syncDate: new Date().toISOString(),
     data: data
   };
-  console.log(data);
+  // console.log(data);
   const collectionRef = await db.collection("siterefresh")
     .doc('newsapi').set(entry)
     .then(querySnapshot => {

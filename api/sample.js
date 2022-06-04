@@ -74,7 +74,7 @@ async function uploadToFirebase(req, res, data) {
     syncDate: new Date().toISOString(),
     data: data
   };
-  console.log(data);
+  // console.log(data);
   const collectionRef = await db.collection("siterefresh")
     .doc('newsfeed').set(entry)
     .then(querySnapshot => {
