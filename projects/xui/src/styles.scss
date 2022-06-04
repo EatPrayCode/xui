@@ -22,6 +22,7 @@
 @import "./app/layouts/reddit-layout/reddit-layout.component.scss-theme.scss";
 @import "./app/layouts/neta-layout/neta-layout.component.scss-theme.scss";
 @import "./app/modules/settings/components/settings-netas/settings-netas.component-theme.scss";
+@import "./app/modules/settings/components/settings-content/settings-content.component-theme.scss";
 @import "./app/modules/netas/containers/netas/netas.component.scss-theme.scss";
 @import "./app/shared/directives/spinner/spinner.component.scss-theme.scss";
 @import "./app/modules/news/containers/news-container/news-container.component.scss-theme.scss";
@@ -38,6 +39,8 @@
   @include app-news-container-component-theme($theme);
 
   @include app-settings-netas-component-theme($theme);
+  @include app-settings-content-component-theme($theme);
+  
   @include app-netas-component-theme($theme);
   @include app-spinner-component-theme($theme);
   // @include app-examples-component-theme($theme);

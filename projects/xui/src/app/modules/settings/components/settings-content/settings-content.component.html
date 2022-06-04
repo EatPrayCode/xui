@@ -1,20 +1,38 @@
 <ng-container *ngIf="leftSideNav$ | async as sideNavItems">
 
-  <div class="row" rtl *ngFor="let item of sideNavItems">
+  <div class="row" rtl>
 
-    <div class="col-md-6 group">
-      <h2>{{item}}</h2>
-    </div>
+    <mat-drawer-container class="example-container">
 
-    <div class="col-md-6 group">
-      {{obj[item].length | json}}
-    </div>
+      <mat-drawer mode="side" class="example-sidenav" opened>
+
+        <div *ngFor="let item of sideNavItems" (click)="selectSideNavItem(item)">
+
+          <h2>{{item}}</h2>
+
+        </div>
+
+      </mat-drawer>
+
+      <mat-drawer-content class="example-sidenav-content">
+
+        <div class="row contributors" rtl [ngClass]="routeAnimationsElements">
+          <div class="contributors-wrapper">
+            <a *ngFor="let feature of (allNetas$ | async)" (click)="onSelectCard(feature)" class="contributor">
+              <img [ngClass]="selectedNetas[feature.netaid] ? 'card-selected' : 'image-card'" alt
+                src="./../../../../../assets/sample.png">
+              <span>{{feature.netaid}}</span>
+            </a>
+          </div>
+
+        </div>
+
+      </mat-drawer-content>
+
+    </mat-drawer-container>
 
   </div>
 
-  <a mat-raised-button class="actions-main" color="accent" (click)="savesettings()">
-    Save Settings
-  </a>
-
-
 </ng-container>
+
+<app-spinner [loading]="loading" [message]="'Loading content preferences..'"></app-spinner>
