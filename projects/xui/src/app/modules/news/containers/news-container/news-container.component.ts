@@ -39,12 +39,12 @@ export class NewsContainerComponent implements OnInit {
   isAuthenticated$: Observable<boolean> | undefined;
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   mainMenuItems: any = [
-    // {
-    //   id: 'news-for-you',
-    //   link: 'news-for-you',
-    //   name: 'You',
-    //   label: 'app.netas.tab.netas-for-you'
-    // },
+    {
+      id: 'news-for-you',
+      link: 'news-for-you',
+      name: 'You',
+      label: 'app.netas.tab.netas-for-you'
+    },
 
     {
       id: 'news-extensive',

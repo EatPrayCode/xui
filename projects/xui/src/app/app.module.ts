@@ -34,6 +34,7 @@ import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TABLES } from './modules/rss-reader/constants';
 import { SharedModule } from './shared/shared.module';
+import { SettingsLayoutComponent } from './layouts/settings-layout/settings-layout.component';
 
 export function migrationFactory() {
   return {
@@ -129,7 +130,8 @@ const dbConfig: DBConfig = {
     CartIconComponent,
     RedditLayoutComponent,
     NotFoundComponent,
-    NetaLayoutComponent
+    NetaLayoutComponent,
+    SettingsLayoutComponent
   ],
   providers: [
     {

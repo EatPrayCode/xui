@@ -6,6 +6,8 @@ import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.
 import { AboutComponent } from './modules/about/about.component';
 
 import { NetaDateLoadGuard } from './services/neta-data-load-guard.guard';
+import { BlankComponent } from './layouts/blank/blank.component';
+import { SettingsLayoutComponent } from './layouts/settings-layout/settings-layout.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,13 @@ const routes: Routes = [
             (m) => m.SettingsModule
           )
       },
+    ]
+  },
+  {
+    path: '',
+    component: DefaultLayoutComponent,
+    children: [
+
       {
         path: 'netas',
         loadChildren: () =>

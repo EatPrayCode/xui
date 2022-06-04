@@ -3,6 +3,7 @@ import { SettingsGeneralComponent } from './components/settings-general/settings
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SettingsContainerComponent } from './containers/settings-container/settings-container.component';
+import { SettingsContentComponent } from './components/settings-content/settings-content.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,13 @@ const routes: Routes = [
         path: 'settings-netas',
         component: SettingsNetasComponent,
         data: { title: 'app.settings.general.settings-title' }
-      }
+      },
+      {
+        path: 'settings-content',
+        component: SettingsContentComponent,
+        data: { title: 'app.settings.general.title' }
+        
+      },
     ]
   }
 ];

@@ -24,6 +24,12 @@ export class SettingsContainerComponent {
       name: 'settings-netas',
       label: 'app.settings.netas-settings'
     },
+    {
+      id: 'content',
+      link: 'settings-content',
+      name: 'Content',
+      label: 'app.settings.netas-settings'
+    },
   ];
 
   constructor(
