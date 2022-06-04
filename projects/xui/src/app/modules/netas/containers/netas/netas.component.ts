@@ -23,9 +23,6 @@ import { State } from '../../../../core/settings/settings.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NetasComponent implements OnInit {
-  // isViewInitialized = false;
-
-  navLinks = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -34,8 +31,8 @@ export class NetasComponent implements OnInit {
     private changeDetector: ChangeDetectorRef
   ) { }
 
-  isAuthenticated$: Observable<boolean> | undefined;
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+  
   mainMenuItems: any = [
     {
       id: 'netas-for-you',
@@ -54,62 +51,12 @@ export class NetasComponent implements OnInit {
       link: 'netas-national',
       name: 'National',
       label: 'app.netas.tab.netas-national'
-    },
-    // {
-    //   id: 'netas-party',
-    //   link: 'netas-party',
-    //   name: 'Party',
-    //   label: 'app.netas.tab.netas-party'
-    // },
-  ];
-  selectedType: any;
-  HELPERS: any[] = [
-    {
-      id: '0',
-      name: 'Name',
-      image:
-        'https://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/06/21/931/524/694940094001_5800293009001_5800284148001-vs.jpg?ve=1&tl=1',
-      designation: 'Chief',
-      abbr: 'TO',
-      description: 'testing data'
-    },
-    {
-      id: '1',
-      name: 'Email',
-      image:
-        'https://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/06/21/931/524/694940094001_5800293009001_5800284148001-vs.jpg?ve=1&tl=1',
-      designation: 'Chief',
-      abbr: 'TO',
-      description: 'testing data'
-    },
-    {
-      id: '2',
-      name: 'Type',
-      image:
-        'https://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/06/21/931/524/694940094001_5800293009001_5800284148001-vs.jpg?ve=1&tl=1',
-      designation: 'Chief',
-      abbr: 'TO',
-      description: 'testing data'
     }
   ];
-
-  value = '';
-
-  activeIndex1: number = 0;
-
-  activeIndex2: number = 0;
-
-  scrollableTabs: any[] = Array.from({ length: 50 }, (_, i) => ({
-    title: `Tab ${i + 1}`,
-    content: `Tab ${i + 1} Content`
-  }));
-
-  handleClickMainMenuItem(item: any) {
-    this.selectedType = item;
-  }
+ 
 
   ngOnInit() {
-    this.isAuthenticated$ = of(true);
+    
   }
 
   ngAfterViewInit() {
@@ -117,27 +64,4 @@ export class NetasComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
-  onSequenceChangeEvent(event: MatTabChangeEvent) {
-    // console.log(event.index);
-    let link: any = this.mainMenuItems[event.index].link;
-    let currentUrl: any = `/netas/${link}`;
-    this.router.navigate([currentUrl]);
-  }
-
-  OnSearch() {
-    console.log('OnSearch', this.value);
-  }
-
-  OnSearchNext() {
-    console.log('OnSearchNext', this.value);
-  }
-
-  OnSearchPrevious() {
-    console.log('OnSearchPrevious', this.value);
-  }
-
-  OnClear() {
-    console.log('OnClear');
-    this.value = '';
-  }
 }

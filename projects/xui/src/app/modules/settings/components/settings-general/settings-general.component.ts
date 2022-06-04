@@ -44,16 +44,11 @@ export class SettingsGeneralComponent implements OnInit {
 
   constructor(
     private store: Store<State>,
-    private userservice: UserService,
+    private userservice: UserService
   ) { }
 
   ngOnInit() {
     this.settings$ = this.store.pipe(select(selectSettings));
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (user && user.uid) {
-      this.getNetaDetails(user);
-    }
   }
 
   onLanguageSelect(change: MatSelectChange) {
@@ -105,14 +100,6 @@ export class SettingsGeneralComponent implements OnInit {
     const user = auth.currentUser; // null if
     const res1 = { username: this.usernameaccount, manifesto: {}, videos: {}, news: {}, basicinfo: {}, location: {} };
     this.userservice.requestNetaDetailsChange(user.uid, res1).then(res => { }, err => { });
-  }
-
-  getNetaDetails(user) {
-    this.userservice.getNetaInfoSettings(user.uid).then(res => {
-      this.netaInfoAvailable = true;
-    }, err => {
-      this.netaInfoAvailable = false;
-    });
   }
 
 }

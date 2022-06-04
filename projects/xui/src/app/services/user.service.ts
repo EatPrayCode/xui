@@ -16,6 +16,7 @@ import { FileUpload } from '../models/FileUpload.Model';
   providedIn: 'root'
 })
 export class UserService {
+
   private users: User[] = [];
   private user!: User;
   private db: any;
@@ -35,6 +36,12 @@ export class UserService {
     const news$ = collectionData(db) as Observable<any[]>;
     return news$;
   }
+
+  getSettings() {
+		const db = collection(this.firestore, 'sitesettings');
+		const settings$ = collectionData(db) as Observable<any[]>;
+		return settings$;
+	}
 
   emitUsers() {
     this.usersSubject.next(this.users);

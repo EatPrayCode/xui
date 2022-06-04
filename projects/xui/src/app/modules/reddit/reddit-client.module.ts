@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { RedditDiscoverComponent } from './components/reddit-discover/reddit-discover.component';
+import { RedditFeedComponent } from './components/reddit-feed/reddit-feed.component';
 
 
 export function httpLoaderFactory(http: HttpClient) {
@@ -46,7 +47,8 @@ export function httpLoaderFactory(http: HttpClient) {
     LoginComponent,
     LogoutComponent,
     AuthenticateComponent,
-    RedditDiscoverComponent
+    RedditDiscoverComponent,
+    RedditFeedComponent
   ],
   providers: []
 })

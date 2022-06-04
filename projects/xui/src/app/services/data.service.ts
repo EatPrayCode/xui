@@ -1,20 +1,17 @@
-import { of, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
-// import { Observable, throwError } from 'rxjs';
-// import { delay, map, tap } from 'rxjs/operators';
-// import { AngularFirestore } from '@angular/fire/firestore';
-
-// import { ActivatedRoute, Params, Router } from '@angular/router';
+import { of, throwError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
 
+import { Observable, Subject } from 'rxjs';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
+
+
 	constructor(
-		// public afs: AngularFirestore,
-		public router: Router
-	) { }
+		private firestore: Firestore
+	) {}
 
 	apiURL = 'sampleurl';
 
@@ -41,6 +38,7 @@ export class DataService {
 		// );
 		return of([{}, {}])
 	}
+
 
 	responseHandlerFn(payload: any, data: any) {
 		return data;

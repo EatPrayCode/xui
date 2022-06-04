@@ -1,3 +1,5 @@
+import { RedditDiscoverComponent } from './components/reddit-discover/reddit-discover.component';
+import { RedditFeedComponent } from './components/reddit-feed/reddit-feed.component';
 import { RedditClientComponent } from './containers/reddit-client/reddit-client.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,39 +15,46 @@ const routes: Routes = [
   {
     path: '',
     component: RedditClientComponent,
+    canActivate: [RedditLoggedInGuard],
     children: [
       {
         path: '',
-        redirectTo: 'reddit-discover',
+        redirectTo: 'reddit-feed',
         pathMatch: 'full'
       },
+
       {
-        path: 'reddit-landing',
-        component: RedditLandingComponent,
+        path: 'reddit-feed',
+        component: RedditFeedComponent,
         data: { title: 'app.dashboard.other' },
       },
       {
         path: 'reddit-discover',
-        component: RedditDashboardComponent,
+        component: RedditDiscoverComponent,
         data: { title: 'app.dashboard.other' },
       },
-      {
-        path: "login",
-        component: LoginComponent,
-        canActivate: [RedditLoggedOutGuard]
-      },
-      {
-        path: "authenticate",
-        component: AuthenticateComponent,
-        canActivate: [RedditLoggedOutGuard]
-      },
-      {
-        path: "logout",
-        component: LogoutComponent,
-        canActivate: [RedditLoggedInGuard]
-      },
     ]
-  }
+  },
+  {
+    path: 'reddit-landing',
+    component: RedditLandingComponent,
+    data: { title: 'app.dashboard.other' },
+  },
+  {
+    path: "login",
+    component: LoginComponent,
+    canActivate: [RedditLoggedOutGuard]
+  },
+  {
+    path: "authenticate",
+    component: AuthenticateComponent,
+    canActivate: [RedditLoggedOutGuard]
+  },
+  {
+    path: "logout",
+    component: LogoutComponent,
+    canActivate: [RedditLoggedInGuard]
+  },
 ];
 
 @NgModule({

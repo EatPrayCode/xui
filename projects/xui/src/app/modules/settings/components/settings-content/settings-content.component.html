@@ -1,177 +1,20 @@
-<div class="multi-select">
-    <div class="multi-select__wrapper is-grid">
-      <div class="multi-select__search">
-        <input type="text" placeholder="Type your search..." />
-      </div>
-      <div class="multi-select__content is-grid">
-        <div class="multi-select__categories is-grid">
-          <div class="multi-select__category">
-            <p>Section 1</p>
-          </div>
-          <div class="multi-select__category">
-            <p>Section 2</p>
-          </div>
-          <div class="multi-select__category">
-            <p>Section 3</p>
-          </div>
-          <div class="multi-select__category">
-            <p>Section 4</p>
-          </div>
-        </div>
+<ng-container *ngIf="leftSideNav$ | async as sideNavItems">
 
-        <div class="multi-select__items-wrapper">
-          <div class="multi-select__items is-grid">
+  <div class="row" rtl *ngFor="let item of sideNavItems">
 
-            <div class="multi-select__item is-grid">
-
-              <div class="multi-select__item-description is-grid">
-                <div class="multi-select__item-check">
-                  <label>
-                    <input type="checkbox"> Parent Item 1
-                  </label>
-                </div>
-              </div>
-
-              <div class="multi-select__item-childrens is-grid">
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox"> Children Item 1
-                    </label>
-                  </div>
-                </div>
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox"> Children Item 2
-                    </label>
-                  </div>
-                </div>
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox"> Children Item 3
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="multi-select__item is-grid">
-
-              <div class="multi-select__item-description is-grid">
-                <div class="multi-select__item-check">
-                  <label>
-                    <input type="checkbox"> Parent Item 2
-                  </label>
-                </div>
-              </div>
-
-              <div class="multi-select__item-childrens is-grid">
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox">Children Item 1
-                    </label>
-                  </div>
-                </div>
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox"> Children Item 2
-                    </label>
-                  </div>
-                </div>
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox"> Children Item 3
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="multi-select__item is-grid">
-
-              <div class="multi-select__item-description is-grid">
-                <div class="multi-select__item-check">
-                  <label>
-                    <input type="checkbox"> Parent Item 3
-                  </label>
-                </div>
-              </div>
-
-              <div class="multi-select__item-childrens is-grid">
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox"> Children Item 1
-                    </label>
-                  </div>
-                </div>
-
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox"> Children Item 2
-                    </label>
-                  </div>
-                </div>
-
-
-
-              </div>
-
-            </div>
-
-            <div class="multi-select__item is-grid">
-
-              <div class="multi-select__item-description is-grid">
-                <div class="multi-select__item-check">
-                  <label>
-                    <input type="checkbox"> Parent Item 4
-                  </label>
-                </div>
-              </div>
-
-              <div class="multi-select__item-childrens is-grid">
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox"> Children Item 1
-                    </label>
-                  </div>
-                </div>
-
-                <div class="multi-select__item-children is-grid">
-                  <div class="multi-select__item-children-check">
-                    <label>
-                      <input type="checkbox"> Children Item 2
-                    </label>
-                  </div>
-                </div>
-
-
-
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-
-
-
-      </div>
-      <div class="multi-select__footer">
-        <div class="multi-select__button-set">
-          <button>CANCELAR</button>
-          <button>OK</button>
-        </div>
-
-      </div>
+    <div class="col-md-6 group">
+      <h2>{{item}}</h2>
     </div>
+
+    <div class="col-md-6 group">
+      {{obj[item].length | json}}
+    </div>
+
   </div>
+
+  <a mat-raised-button class="actions-main" color="accent" (click)="savesettings()">
+    Save Settings
+  </a>
+
+
+</ng-container>

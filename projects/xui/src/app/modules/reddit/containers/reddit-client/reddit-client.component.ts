@@ -23,7 +23,7 @@ export class RedditClientComponent implements OnInit {
   mainMenuItems: any = [
     {
       id: 'Feed',
-      link: '/reddit-client/reddit-landing',
+      link: '/reddit-client/reddit-feed',
       name: 'Feed',
       label: 'app.dashboard.tab.home'
     },
@@ -57,42 +57,7 @@ export class RedditClientComponent implements OnInit {
       info: "Google search - I'm feeling lucky.",
       CSSClass: 'icon-angular',
       id: 'allnetainfo'
-    },
-    // {
-    //   link: 'https://google.com/',
-    //   caption: 'Narendra Modi',
-    //   info: "Google search - I'm feeling lucky.",
-    //   CSSClass: 'icon-google',
-    //   id: 'nmodi'
-    // },
-    // {
-    //   link: 'https://microsoft.com/',
-    //   caption: 'Shashi Tharoor',
-    //   info: "Be what's next.",
-    //   CSSClass: 'icon-microsoft',
-    //   id: 'shashi'
-    // },
-    // {
-    //   link: 'https://microsoft.com/',
-    //   caption: 'Amit Shah',
-    //   info: "Be what's next.",
-    //   CSSClass: 'icon-microsoft',
-    //   id: 'amits'
-    // },
-    // {
-    //   link: 'https://angular.io/',
-    //   caption: 'Rahul Gandhi',
-    //   info: 'One framework. Mobile & desktop.',
-    //   CSSClass: 'icon-angular',
-    //   id: 'rahulg'
-    // },
-    // {
-    //   link: 'https://facebook.com/',
-    //   caption: 'Sonia Gandhi',
-    //   info: 'Facebook helps you connect and share with the people in your life.',
-    //   CSSClass: 'icon-facebook',
-    //   id: 'soniag'
-    // },
+    }
   ];
 
   handleClickMainMenuItem(item: any) {
