@@ -34,8 +34,6 @@ const testFn = fn => async (req, res) => {
 module.exports = testFn(handler);
 
 async function getNewsSources(req, res, data) {
-  const p1 = Promise.resolve(3);
-  const p2 = 1337;
   const p3 = new Promise((resolve, reject) => {
     setTimeout(() => {
       newsapi.v2.topHeadlines({
@@ -72,7 +70,7 @@ async function getNewsSources(req, res, data) {
       });
     }, 100);
   });
-  Promise.all([p1, p2, p3, p4, p5]).then(values => {
+  Promise.all([p3, p4, p5]).then(values => {
     uploadNewsAPIDataToFirebase(req, res, values);
     console.log(values[2]); // [3, 1337, "foo"]
   });

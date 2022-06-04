@@ -22,7 +22,6 @@ export class NewsFeedComponent implements OnInit {
     this.userService.getLiveNews().subscribe(res => {
       let data: any = res[0].data.articles || [];
       this.feeds$.next(data);
-      console.log(data);
       this.loading = false;
     });
   }
