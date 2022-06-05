@@ -1,3 +1,24 @@
+<div class="">
+
+    <nav mat-tab-nav-bar class="d-none d-sm-flex">
+        <a mat-tab-link *ngFor="let e of examples" (click)="handleClickSubTab(e)" routerLinkActive
+            #rla="routerLinkActive" [active]="rla.isActive" [disabled]="e.auth && !(isAuthenticated$ | async)">
+            {{e.link}}
+            <!-- {{e.about?.title || 'noname'}} {{e.newCount}} -->
+        </a>
+    </nav>
+
+    <nav class="nav-responsive d-sm-none d-flex justify-content-center">
+        <mat-select [(value)]="selectedValue">
+            <mat-option *ngFor="let e of examples" [value]="e" (click)="handleClickSubTab(e)"
+                [disabled]="e.auth && !(isAuthenticated$ | async)">
+                {{e.link}}
+            </mat-option>
+        </mat-select>
+    </nav>
+
+</div>
+
 <app-spinner [loading]="loading" [message]="'Loading your news..'"></app-spinner>
 
 <div class="basic-container" *ngIf="feeds$ | async as itemsList">

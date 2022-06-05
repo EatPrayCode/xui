@@ -77,6 +77,9 @@ async function getNewsSources(req, res, data) {
 }
 
 async function uploadNewsAPIDataToFirebase(req, res, data) {
+  data = data.map(obj => {
+    return obj.articles
+  });
   const entry = {
     status: 200,
     syncDate: new Date().toISOString(),
