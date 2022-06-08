@@ -31,7 +31,7 @@ export const environment = {
   refreshType: "refresh_token",
   tokenEndpoint: "https://www.reddit.com/api/v1/access_token",
   secret: 'jZg9zBuXwH8P6qiwcopBl1d9Av8kgA',
-  redirectUrl: "https://xui-wine.vercel.app/home/authenticate", //replace
+  redirectUrl: "https://indiandebates.com/home/authenticate", //replace
   scope: "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread",
   newsapi: {
     API_KEY: '1b6ebad4ea2e433dbe0f4ce3521ff563'
