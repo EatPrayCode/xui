@@ -23,13 +23,13 @@ export class RedditClientComponent implements OnInit {
   mainMenuItems: any = [
     {
       id: 'Feed',
-      link: '/reddit-client/reddit-feed',
+      link: '/home/reddit-feed',
       name: 'Feed',
       label: 'app.dashboard.tab.home'
     },
     {
       id: 'Discover',
-      link: '/reddit-client/reddit-discover',
+      link: '/home/reddit-discover',
       name: 'Discover',
       label: 'app.dashboard.tab.home'
     },
@@ -37,27 +37,28 @@ export class RedditClientComponent implements OnInit {
   selectedType: any;
 
   sidemenuItems: any[] = [
+    
     {
       link: 'https://google.com/',
-      caption: 'unnapprovednetainfo',
-      info: "Google search - I'm feeling lucky.",
-      CSSClass: 'icon-google',
-      id: 'unnapprovednetainfo'
-    },
-    {
-      link: 'https://google.com/',
-      caption: 'approvednetainfo',
+      caption: 'Trending',
       info: "Google search - I'm feeling lucky.",
       CSSClass: 'icon-microsoft',
       id: 'approvednetainfo'
     },
     {
       link: 'https://google.com/',
-      caption: 'allnetainfo',
+      caption: 'All time greats',
       info: "Google search - I'm feeling lucky.",
       CSSClass: 'icon-angular',
       id: 'allnetainfo'
-    }
+    },
+    {
+      link: 'https://google.com/',
+      caption: 'Contests',
+      info: "Google search - I'm feeling lucky.",
+      CSSClass: 'icon-google',
+      id: 'unnapprovednetainfo'
+    },
   ];
 
   handleClickMainMenuItem(item: any) {
@@ -84,7 +85,7 @@ export class RedditClientComponent implements OnInit {
   ngOnInit(): void { }
 
   handleSelectNeta(neta: any) {
-    let netaId: any = neta.id || 'DEFAULT';
+    // let netaId: any = neta.id || 'DEFAULT';
     // this.router.navigate([`/admin-dashboard/admin-home/${netaId}`]);
   }
 

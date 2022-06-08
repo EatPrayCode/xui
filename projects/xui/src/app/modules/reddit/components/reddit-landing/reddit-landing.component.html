@@ -1,11 +1,11 @@
 <div *ngIf="!oauth.getLoggedIn()">
     Not Logged in
-    <button [routerLink]="'/reddit-client/login'">Login</button>
+    <button [routerLink]="'/home/login'">Login</button>
 </div>
 
 
 <div *ngIf="oauth.getLoggedIn()">
     Logged In
-    <button [routerLink]="'/reddit-client/logout'">Logout</button>
+    <button [routerLink]="'/home/logout'">Logout</button>
     <!-- <router-outlet></router-outlet> -->
 </div>

@@ -25,7 +25,7 @@ const routes: Routes = [
 
       {
         path: 'reddit-feed',
-        component: RedditFeedComponent,
+        component: RedditDashboardComponent,
         data: { title: 'app.dashboard.other' },
       },
       {
@@ -38,7 +38,6 @@ const routes: Routes = [
   {
     path: 'reddit-landing',
     component: RedditLandingComponent,
-    data: { title: 'app.dashboard.other' },
   },
   {
     path: "login",

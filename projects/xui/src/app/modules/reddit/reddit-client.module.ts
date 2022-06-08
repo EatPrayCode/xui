@@ -1,3 +1,6 @@
+import { PostCommentComponent } from './components/reddit/post-comment/post-comment.component';
+import { PostFooterComponent } from './components/reddit/post-footer/post-footer.component';
+import { PostVoteComponent } from './components/reddit/post-vote/post-vote.component';
 import { RedditClientComponent } from './containers/reddit-client/reddit-client.component';
 import { RedditClientLeftMenuComponent } from './containers/reddit-client-left-menu/reddit-client-left-menu.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -18,6 +21,12 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { RedditDiscoverComponent } from './components/reddit-discover/reddit-discover.component';
 import { RedditFeedComponent } from './components/reddit-feed/reddit-feed.component';
+import { SubredditModalComponent } from './components/view/subreddit-modal/subreddit-modal.component';
+import { PostModalComponent } from './components/view/post-modal/post-modal.component';
+import { PostSubtitleComponent } from './components/reddit/post-subtitle/post-subtitle.component';
+import { SafeHTMLPipe } from './components/others/safe-html.pipe';
+import { CallbackPipePipe } from './components/others/callback-pipe.pipe';
+import { SortPipePipe } from './components/others/sort-pipe.pipe';
 
 
 export function httpLoaderFactory(http: HttpClient) {
@@ -32,7 +41,6 @@ export function httpLoaderFactory(http: HttpClient) {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
-    DemoMaterialModule,
     SharedModule,
     PickListModule,
     FormsModule,
@@ -48,7 +56,19 @@ export function httpLoaderFactory(http: HttpClient) {
     LogoutComponent,
     AuthenticateComponent,
     RedditDiscoverComponent,
-    RedditFeedComponent
+    RedditFeedComponent,
+
+    PostSubtitleComponent,
+    PostCommentComponent,
+    PostFooterComponent,
+    PostVoteComponent,
+    SubredditModalComponent,
+    PostModalComponent,
+
+    SafeHTMLPipe,
+    AuthenticateComponent,
+    CallbackPipePipe,
+    SortPipePipe,
   ],
   providers: []
 })

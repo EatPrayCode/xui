@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
-import { BehaviorSubject, merge, Subject, Subscription } from "rxjs";
+import { BehaviorSubject, merge, Observable, Subject, Subscription } from "rxjs";
 import { debounceTime, first, skip, takeUntil } from "rxjs/operators";
 import { OauthService } from "~/app/services/oauth.service";
 import { environment } from "~/environments/environment";
@@ -18,6 +18,7 @@ import { PostInfoService } from "../reddit/post-info.service";
 import { RedditFeedService } from "../reddit/reddit-feed.service";
 import { FilterModes, SortModes, SortService } from "../reddit/sort.service";
 import { UserInfoService } from "../reddit/user-info.service";
+import { PostModalComponent } from "../view/post-modal/post-modal.component";
 
 const scrollDelay: number = 100;
 
@@ -68,6 +69,11 @@ export class RedditDashboardComponent implements OnInit, AfterViewInit, OnDestro
   loading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   ngUnsubscribe = new Subject<void>();
 
+  selected = false;
+  value = '';
+  isAuthenticated$: Observable<boolean> | undefined;
+  public feeds$: BehaviorSubject<any> = new BehaviorSubject(null);
+
   constructor(
     private rs: RedditFeedService,
     private scroll: ScrollDispatcher,
@@ -79,7 +85,78 @@ export class RedditDashboardComponent implements OnInit, AfterViewInit, OnDestro
     private ui: UserInfoService,
     private ngZone: NgZone,
     private postInfo: PostInfoService
-  ) {}
+  ) { }
+
+  examples: any = [
+    { link: 'All', label: 'anms.examples.menu.todos' },
+    { link: 'History', label: 'anms.examples.menu.stocks' },
+    { link: 'Politics', label: 'anms.examples.menu.theming' },
+    { link: 'Arts', label: 'anms.examples.menu.crud' },
+    { link: 'Bollywood', label: 'anms.examples.menu.crud' },
+    { link: 'Cricket', label: 'anms.examples.menu.crud' },
+    { link: 'Business', label: 'anms.examples.menu.auth', auth: true }
+  ];
+  selectedValue = this.examples[0];
+
+  handleClickSubTab(e) {
+
+  }
+
+  isListView = false;
+
+  // Template props 
+  numCols = 0;
+  rowHeight = '1:1';
+  gutterSize = '0';
+
+  // Defaults props
+  defaultCols = 3;
+  defaultRowHeight = '1:1';
+  defaultGutterSize = '10';
+
+  // View specific props
+  listViewHeight = '100px';
+  gridColumns = 3;
+  refreshLoader: boolean = false;
+
+  toggleView() {
+    this.isListView = !this.isListView;
+    if (this.isListView) {
+      this.setListView();
+    } else {
+      this.setCardView();
+    }
+  }
+
+  setCardView() {
+    this.numCols = this.defaultCols;
+    this.rowHeight = this.defaultRowHeight;
+    this.gutterSize = this.defaultGutterSize;
+  }
+
+  setListView() {
+    this.numCols = 1;
+    this.rowHeight = this.listViewHeight;
+    this.gutterSize = '5';
+  }
+
+  toggleGridColumns() {
+    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
+  }
+
+  refreshFeeds() {
+    this.refreshLoader = true;
+  }
+
+  addNewsPublication() {
+    // const rawFeedStrings = 'https://www.thehindu.com/news/national/?service=rss';
+    // // this.addFeeds(rawFeedStrings);
+    // // this.dbService.add(TABLES.FEEDS, { rawFeedStrings })
+    // this.coreService.addFeed({}).subscribe(res => {
+    //   this.getDefaultFeeds();
+    // });
+  }
+
 
   ngAfterViewInit(): void {
     this.ui.clearQueue();
@@ -154,7 +231,6 @@ export class RedditDashboardComponent implements OnInit, AfterViewInit, OnDestro
 
     let value: string | null = idAttr;
     if (!value) return;
-
     this.openPost(this.posts[parseInt(value.replace("post-", ""))]);
   }
 
@@ -173,14 +249,14 @@ export class RedditDashboardComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   openPost(post: Post) {
-    // let dialogRef = this.dialog.open(PostModalComponent, {
-    //   maxWidth: "none",
-    //   //width: Math.round(Math.min(window.innerWidth*0.8,window.innerHeight*1)/window.innerWidth*100).toString() + "%",
-    //   //height:  "90%",
-    //   autoFocus: false,
-    //   panelClass: "post-modal",
-    //   data: { post: post }
-    // });
+    let dialogRef = this.dialog.open(PostModalComponent, {
+      maxWidth: "none",
+      //width: Math.round(Math.min(window.innerWidth*0.8,window.innerHeight*1)/window.innerWidth*100).toString() + "%",
+      //height:  "90%",
+      autoFocus: false,
+      panelClass: "post-modal",
+      data: { post: post }
+    });
   }
 
   cancelFetch(): void {

@@ -45,17 +45,17 @@ export class DefaultLayoutComponent implements OnInit {
     {
       link: 'home',
       label: 'app.menu.home',
-      icon: 'person'
-    },
-    {
-      link: 'news',
-      label: 'app.menu.news',
       icon: 'home'
     },
+    // {
+    //   link: 'news',
+    //   label: 'app.menu.news',
+    //   icon: 'theaters'
+    // },
     {
-      link: 'reddit-client',
-      label: 'app.menu.reddit-content',
-      icon: 'trip_origin'
+      link: 'youtube-content',
+      label: 'app.menu.store',
+      icon: 'theaters'
     },
     {
       link: 'settings',
@@ -65,26 +65,26 @@ export class DefaultLayoutComponent implements OnInit {
   ];
   navigationSideMenu = [
     ...this.navigation,
-    {
-      link: 'dashboard',
-      label: 'app.menu.dashboard',
-      icon: 'person'
-    },
-    {
-      link: 'netas',
-      label: 'app.menu.netas',
-      icon: 'phone'
-    },
+    // {
+    //   link: 'dashboard',
+    //   label: 'app.menu.dashboard',
+    //   icon: 'person'
+    // },
     // {
     //   link: 'visualize',
     //   label: 'app.menu.visualise',
     //   icon: 'cog'
     // },
-    {
-      link: 'youtube-content',
-      label: 'app.menu.youtube-content',
-      icon: 'theaters'
-    },
+    // {
+    //   link: 'youtube-content',
+    //   label: 'app.menu.youtube-content',
+    //   icon: 'theaters'
+    // },
+    // {
+    //   link: 'netas',
+    //   label: 'app.menu.netas',
+    //   icon: 'phone'
+    // },
   ];
 
   isAuthenticated$: Observable<boolean> | undefined;

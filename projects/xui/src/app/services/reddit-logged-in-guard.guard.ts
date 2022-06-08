@@ -34,7 +34,7 @@ export class RedditLoggedInGuard implements CanActivate {
       this.snack.open(notLoggedIn, action, {
         duration: 2000
       });
-      this.router.navigateByUrl("/reddit-client/reddit-landing");
+      this.router.navigateByUrl("/home/reddit-landing");
     }
     return this.oauth.getLoggedIn();
   }

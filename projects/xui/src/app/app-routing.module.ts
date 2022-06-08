@@ -12,7 +12,7 @@ import { SettingsLayoutComponent } from './layouts/settings-layout/settings-layo
 const routes: Routes = [
   {
     path: '',
-    component: DefaultLayoutComponent,
+    component: BlankComponent,
     children: [
       {
         path: '',
@@ -37,7 +37,6 @@ const routes: Routes = [
     path: '',
     component: DefaultLayoutComponent,
     children: [
-
       {
         path: 'netas',
         loadChildren: () =>
@@ -48,41 +47,41 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/news/news.module').then((m) => m.NewsModule)
       },
-      {
-        path: 'home',
-        loadChildren: () =>
-          import('./modules/home/home.module').then((m) => m.HomeModule)
-      },
-      {
-        path: 'contacts',
-        loadChildren: () =>
-          import('./modules/contacts/contacts.module').then((m) => m.ContactsModule)
-      },
-      {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('./modules/admin-dashboard/admin-dashboard.module').then((m) => m.AdminDashboardModule)
-      },
-      {
-        path: 'reddit-client',
-        loadChildren: () =>
-          import('./modules/reddit/reddit-client.module').then((m) => m.RedditClientModule)
-      },
+      // {
+      //   path: 'home',
+      //   loadChildren: () =>
+      //     import('./modules/home/home.module').then((m) => m.HomeModule)
+      // },
+      // {
+      //   path: 'contacts',
+      //   loadChildren: () =>
+      //     import('./modules/contacts/contacts.module').then((m) => m.ContactsModule)
+      // },
+      // {
+      //   path: 'dashboard',
+      //   loadChildren: () =>
+      //     import('./modules/admin-dashboard/admin-dashboard.module').then((m) => m.AdminDashboardModule)
+      // },
       {
         path: 'home',
         loadChildren: () =>
           import('./modules/reddit/reddit-client.module').then((m) => m.RedditClientModule)
       },
+      // {
+      //   path: 'home',
+      //   loadChildren: () =>
+      //     import('./modules/reddit/reddit-client.module').then((m) => m.RedditClientModule)
+      // },
       {
         path: 'youtube-content',
         loadChildren: () =>
           import('./modules/youtube-content/youtube-content.module').then((m) => m.YoutubeContentModule)
       },
-      {
-        path: 'rss-reader',
-        loadChildren: () =>
-          import('./modules/rss-reader/app.module').then((m) => m.AppModule)
-      }
+      // {
+      //   path: 'rss-reader',
+      //   loadChildren: () =>
+      //     import('./modules/rss-reader/app.module').then((m) => m.AppModule)
+      // }
     ]
   },
   {
