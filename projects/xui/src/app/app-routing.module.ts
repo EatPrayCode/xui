@@ -8,6 +8,7 @@ import { AboutComponent } from './modules/about/about.component';
 import { NetaDateLoadGuard } from './services/neta-data-load-guard.guard';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { SettingsLayoutComponent } from './layouts/settings-layout/settings-layout.component';
+import { HomeComponent } from './modules/home/home/home.component';
 
 const routes: Routes = [
   {
@@ -69,8 +70,7 @@ const routes: Routes = [
       // },
       {
         path: 'home',
-        loadChildren: () =>
-          import('./modules/reddit/reddit-client.module').then((m) => m.RedditClientModule)
+        component: HomeComponent
       },
       // {
       //   path: 'home',

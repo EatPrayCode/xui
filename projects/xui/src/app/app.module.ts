@@ -31,6 +31,7 @@ import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SharedModule } from './shared/shared.module';
 import { SettingsLayoutComponent } from './layouts/settings-layout/settings-layout.component';
+import { HomeComponent } from './modules/home/home/home.component';
 
 @NgModule({
   imports: [
@@ -76,7 +77,8 @@ import { SettingsLayoutComponent } from './layouts/settings-layout/settings-layo
     RedditLayoutComponent,
     NotFoundComponent,
     NetaLayoutComponent,
-    SettingsLayoutComponent
+    SettingsLayoutComponent,
+    HomeComponent
   ],
   providers: [
     {

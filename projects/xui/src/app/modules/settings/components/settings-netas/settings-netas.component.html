@@ -7,22 +7,29 @@
         </div>
     </div>
 
-    <div class="row contributors" rtl [ngClass]="routeAnimationsElements">
-        <div class="contributors-wrapper">
-            <a *ngFor="let feature of (allNetas$ | async)" (click)="onSelectCard(feature)" class="contributor">
-                <img [ngClass]="selectedNetas[feature.netaid] ? 'card-selected' : 'image-card'" alt
-                    src="./../../../../../assets/sample.png">
-                <span>{{feature.netaid}}</span>
+    <ng-container *ngIf='(dataLoaded$ | async); else loading'>
+
+        <div class="row contributors" rtl [ngClass]="routeAnimationsElements">
+            <div class="contributors-wrapper">
+                <a *ngFor="let feature of (allNetas$ | async)" (click)="onSelectCard(feature)" class="contributor">
+                    <img [ngClass]="selectedNetas[feature.netaid] ? 'card-selected' : 'image-card'" alt
+                        src="./../../../../../assets/sample.png">
+                    <span>{{feature.netaid}}</span>
+                </a>
+            </div>
+    
+            <a mat-raised-button *ngIf="!loading" class="actions-main" color="accent" (click)="saveNetaPreferences()"
+                [ngClass]="routeAnimationsElements">
+                Save Settings
             </a>
-        </div>
+    
+        </div>    
+      
+      </ng-container>
+      
+      <ng-template #loading>
+        <app-spinner [message]="'Loading your preferences'"></app-spinner>
+      </ng-template>
 
-        <a mat-raised-button *ngIf="!loading" class="actions-main" color="accent" (click)="saveNetaPreferences()"
-            [ngClass]="routeAnimationsElements">
-            Save Settings
-        </a>
-
-        <app-spinner [loading]="loading" [message]="'Loading Netas preferences..'"></app-spinner>
-
-    </div>
 
 </ng-container>

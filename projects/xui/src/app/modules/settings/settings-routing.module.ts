@@ -1,27 +1,28 @@
-import { SettingsNetasComponent } from './components/settings-netas/settings-netas.component';
-import { SettingsGeneralComponent } from './components/settings-general/settings-general.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { SettingsNetasComponent } from './components/settings-netas/settings-netas.component';
+import { SettingsGeneralComponent } from './components/settings-general/settings-general.component';
 import { SettingsContainerComponent } from './containers/settings-container/settings-container.component';
-import { SettingsContentComponent } from './components/settings-content/settings-content.component';
 
 const routes: Routes = [
   {
     path: '',
     component: SettingsContainerComponent,
-    data: { title: 'app.menu.settings' },
     children: [
       {
         path: '',
-        redirectTo: 'settings-content',
+        redirectTo: 'general',
         pathMatch: 'full'
       },
       {
-        path: 'settings-content',
-        component: SettingsContentComponent,
-        data: { title: 'app.settings.general.title' }
-        
+        path: 'general',
+        component: SettingsGeneralComponent
       },
+      {
+        path: 'preferences',
+        component: SettingsNetasComponent
+      }
     ]
   }
 ];

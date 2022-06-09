@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth';
 import { AppService } from './../../../../services/app.service';
 import { tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/animations/route.animations';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { UserService } from '~/app/services/user.service';
@@ -18,6 +18,8 @@ export class SettingsNetasComponent implements OnInit {
   allNetas$: Observable<any> = of([]);
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   loading: any = true;
+  dataLoaded$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  sideNavItems: any = ['general'];
 
   constructor(
     public userService: UserService,
@@ -26,6 +28,9 @@ export class SettingsNetasComponent implements OnInit {
 
   ngOnInit(): void {
     this.allNetas$ = this.userService.getAllNetas();
+    this.allNetas$.subscribe(res=>{
+      this.dataLoaded$.next(true);
+    });
   }
 
   onSelectCard(card) {

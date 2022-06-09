@@ -21,24 +21,12 @@ export class DataService {
 		})
 	};
 
-	getAllNetas(payload: any) {
-		// return this.afs.collection('/netas').snapshotChanges().pipe(
-		// 	delay(1000),
-		// 	map((changes: any) => {
-		// 		// return this.responseHandlerFn(payload, changes);
-		// 		return changes.map((a: { payload: { doc: { data: () => any; id: any; }; }; }) => {
-		// 			const data = a.payload.doc.data();
-		// 			(<any>data).id = a.payload.doc.id;
-		// 			return data;
-		// 		});
-		// 	}),
-		// 	tap((res: any) => {
-		// 		console.log('Netas', res);
-		// 	})
-		// );
-		return of([{}, {}])
+	getSettings() {
+		
+		const db = collection(this.firestore, 'sitesettings');
+		const settings$ = collectionData(db) as Observable<any[]>;
+		return settings$;
 	}
-
 
 	responseHandlerFn(payload: any, data: any) {
 		return data;

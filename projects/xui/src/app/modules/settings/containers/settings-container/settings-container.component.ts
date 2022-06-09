@@ -1,37 +1,24 @@
-import { Router } from '@angular/router';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
+
+import { State } from '../../../../core/settings/settings.model';
+import { DefaultSettings } from '../../models';
+import { DataService } from '~/app/services/data.service';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'app-settings-container',
   templateUrl: './settings-container.component.html',
   styleUrls: ['./settings-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsContainerComponent {
+export class SettingsContainerComponent implements OnInit {
 
-  mainMenuItems: any = [
-    {
-      id: 'General',
-      link: 'settings-general',
-      name: 'General',
-      label: 'app.settings.general-settings'
-    },
-    {
-      id: 'Netas',
-      link: 'settings-netas',
-      name: 'Netas',
-      label: 'app.settings.netas-settings'
-    },
-    {
-      id: 'Content',
-      link: 'settings-content',
-      name: 'Content',
-      label: 'app.settings.netas-settings'
-    },
-  ];
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+  sideNavItems: any = DefaultSettings;
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor() { }
+
+  ngOnInit(): void {}
 
 }
