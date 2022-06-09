@@ -17,12 +17,7 @@ const routes: Routes = [
       {
         path: '',
         component: AboutComponent
-      },
-      {
-        path: 'store',
-        loadChildren: () =>
-          import('./modules/store/app.module').then((m) => m.AppModule)
-      },
+      }
     ]
   },
   {
@@ -35,6 +30,11 @@ const routes: Routes = [
           import('./modules/settings/settings.module').then(
             (m) => m.SettingsModule
           )
+      },
+      {
+        path: 'store',
+        loadChildren: () =>
+          import('./modules/store/app.module').then((m) => m.AppModule)
       },
     ]
   },
