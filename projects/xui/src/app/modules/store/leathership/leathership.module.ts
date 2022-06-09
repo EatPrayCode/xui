@@ -29,7 +29,7 @@ import { CartComponent } from './pages/cart/cart.component';
   imports: [
     CommonModule,
     //
-    DialogModule.forRoot(),
+
     SwiperModule,
     //
     LeathershipRoutingModule,

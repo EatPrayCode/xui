@@ -26,7 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { environment } from '../../environments/environment';
-
+import { DialogModule } from '@ngneat/dialog';
 import {
   AppState,
   reducers,
@@ -116,6 +116,7 @@ export function httpLoaderFactory(http: HttpClient) {
 
     // ngrx
     StoreModule.forRoot(reducers, { metaReducers }),
+    DialogModule.forRoot(),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([SettingsEffects, GoogleAnalyticsEffects]),
     FontAwesomeModule,
