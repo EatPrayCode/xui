@@ -17,7 +17,7 @@ export class SettingsNetasComponent implements OnInit {
   selectedNetas: any = {};
   allNetas$: Observable<any> = of([]);
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  loading: any = false;
+  loading: any = true;
 
   constructor(
     public userService: UserService,
@@ -25,24 +25,7 @@ export class SettingsNetasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.allNetas$ = this.userService.getAllNetas().pipe(tap(res => {
-      // this.loading = false;
-    }));
-    const auth = getAuth();
-    const user = auth.currentUser; // null if
-    if (user) {
-      const uid: any = user.uid;
-      this.userService.getNetaInfoSettings(uid).then((res: any) => {
-        const arr = res.netapreferences || [];
-        arr.forEach(element => {
-          this.selectedNetas[element] = true;
-        });
-      },
-        err => {
-
-        });
-    }
+    this.allNetas$ = this.userService.getAllNetas();
   }
 
   onSelectCard(card) {

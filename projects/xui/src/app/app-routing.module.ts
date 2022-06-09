@@ -34,7 +34,7 @@ const routes: Routes = [
       {
         path: 'store',
         loadChildren: () =>
-          import('./modules/store/app.module').then((m) => m.AppModule)
+          import('./modules/store/leathership/leathership.module').then((m) => m.LeathershipModule)
       },
     ]
   },

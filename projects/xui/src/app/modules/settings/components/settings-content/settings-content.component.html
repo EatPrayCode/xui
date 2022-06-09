@@ -1,39 +1,27 @@
-<ng-container *ngIf="leftSideNav$ | async as sideNavItems">
+<ng-container *ngIf='(dataLoaded$ | async); else loading'>
 
-  <div class="row" rtl>
+  <mat-drawer-container class="example-container">
 
-    <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" class="example-sidenav" opened>
 
-      <mat-drawer mode="side" class="example-sidenav" opened>
+      <mat-nav-list *ngFor="let item of sideNavItems" (click)="selectSideNavItem(item)">
+        <a mat-list-item (click)="selectSideNavItem(item)">{{item}}</a>
+      </mat-nav-list>
 
-        <mat-nav-list *ngFor="let item of sideNavItems" (click)="selectSideNavItem(item)">
-          <a mat-list-item (click)="selectSideNavItem(item)">{{item}}</a>
-        </mat-nav-list>
+    </mat-drawer>
 
-      </mat-drawer>
+    <mat-drawer-content class="example-sidenav-content">
 
-      <mat-drawer-content class="example-sidenav-content">
+      <app-settings-general *ngIf="selectedNavItem == 'general'"></app-settings-general>
 
-        <div class="row contributors" rtl [ngClass]="routeAnimationsElements">
-          
-          <div class="contributors-wrapper">
-          
-            <a *ngFor="let feature of (allNetas$ | async)" (click)="onSelectCard(feature)" class="contributor">
-              <img [ngClass]="selectedNetas[feature.netaid] ? 'card-selected' : 'image-card'" alt
-                src="./../../../../../assets/sample.png">
-              <span>{{feature.netaid}}</span>
-            </a>
-          
-          </div>
+      <app-settings-netas *ngIf="selectedNavItem == 'netas'"></app-settings-netas>
 
-        </div>
+    </mat-drawer-content>
 
-      </mat-drawer-content>
-
-    </mat-drawer-container>
-
-  </div>
+  </mat-drawer-container>
 
 </ng-container>
 
-<app-spinner [loading]="loading" [message]="'Loading content preferences..'"></app-spinner>
+<ng-template #loading>
+  <app-spinner [message]="'Loading your settings..'"></app-spinner>
+</ng-template>

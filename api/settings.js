@@ -37,7 +37,7 @@ module.exports = testFn(handler);
 async function getAllSettings(req, res, data) {
   var Airtable = require('airtable');
   var base = new Airtable({ apiKey: 'key3ITRiEPhABhtTC' }).base('appWvCVRmhAlOUo5T');
-  base('SETTINGS').select({
+  base('INDIANDEBATESSETTINGS').select({
     maxRecords: 100,
     view: "DEFAULTVIEW"
   }).eachPage(function page(records, fetchNextPage) {
