@@ -164,7 +164,20 @@ export class DefaultLayoutComponent implements OnInit {
         obj: {}
       }
     };
-    let dialogRef = this.dialog.open(SigninComponent, config);
+    const newConfig: any = {
+      disableClose: false,
+      hasBackdrop: true,
+      backdropClass: '',
+      width: '90vh',
+      height: '100vh',
+      position: {
+        top: '',
+        bottom: '',
+        left: '',
+        right: ''
+      }
+    };
+    let dialogRef = this.dialog.open(SigninComponent, newConfig);
     dialogRef.afterClosed().subscribe((result) => {
       // console.log(result, 'The dialog was closed');
     });
