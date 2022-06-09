@@ -1,0 +1,52 @@
+.home {
+  .home__slider {
+    height: 65vh;
+
+    .swiper {
+      height: 100%;
+
+      .slide__content {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("https://leathership.s3.eu-central-1.amazonaws.com/images/ls__banners/ls_banner--1.jpg");
+        background-size: cover;
+      }
+    }
+  }
+
+  .swiper-button-next {
+    top: 90%;
+    right: 2rem;
+  }
+  .swiper-button-prev {
+    top: 90%;
+    right: 8rem;
+    left: auto;
+  }
+}
+
+// Media Queries::Start
+
+@media (min-width: 1201px) {
+  // Extra Large Screens - TV
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  // Desktops - Large Screens
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  // Small Screens - Laptops
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  // iPads - Tablets
+}
+
+@media (max-width: 480px) {
+  // Mobile Devices
+}
+
+// Media Queries::End

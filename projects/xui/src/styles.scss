@@ -40,7 +40,7 @@
 
   @include app-settings-netas-component-theme($theme);
   @include app-settings-content-component-theme($theme);
-  
+
   @include app-netas-component-theme($theme);
   @include app-spinner-component-theme($theme);
   // @include app-examples-component-theme($theme);
@@ -65,7 +65,7 @@
   @include mat.all-component-themes($app-nature-theme);
   @include custom-components-theme($app-nature-theme);
 }
-@import url('https://fonts.googleapis.com/css?family=Arima+Madurai:300');
+@import url("https://fonts.googleapis.com/css?family=Arima+Madurai:300");
 
 @font-face {
   font-family: "Pacifico";
@@ -76,10 +76,12 @@
   font-display: swap;
 }
 
-body {
-  // background-image: url("./assets/skulls.png");
+// body {
+//   background-image: url("./assets/skulls.png");
+// }
+
+.text-justify {
+  text-align: justify;
 }
 
-
 /* You can add global styles to this file, and also import other style files */
-

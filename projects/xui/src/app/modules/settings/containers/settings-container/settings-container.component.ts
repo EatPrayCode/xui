@@ -16,12 +16,12 @@ export class SettingsContainerComponent {
       name: 'General',
       label: 'app.settings.general-settings'
     },
-    // {
-    //   id: 'Netas',
-    //   link: 'settings-netas',
-    //   name: 'Netas',
-    //   label: 'app.settings.netas-settings'
-    // },
+    {
+      id: 'Netas',
+      link: 'settings-netas',
+      name: 'Netas',
+      label: 'app.settings.netas-settings'
+    },
     {
       id: 'Content',
       link: 'settings-content',

@@ -1,0 +1,20 @@
+<!-- Home Slider::Start -->
+
+<section class="home px-1">
+  <div class="home__slider">
+    <swiper [config]="config" class="swiper">
+      <ng-template
+        swiperSlide
+        class="slide__content h-100 d-flex align-items-center justify-content-center"
+      >
+        <div class="text-center text-white">
+          <h4 class="py-2">Your iPhone will thank you, Forever.</h4>
+          <button class="btn btn-light" routerLink="collections">
+            Explore
+          </button>
+        </div>
+      </ng-template>
+    </swiper>
+  </div>
+</section>
+<!-- Home Slider::End -->

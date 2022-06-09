@@ -1,0 +1,44 @@
+// Header Style
+
+.router__container {
+  padding-top: 3.7rem;
+}
+
+.navbar {
+  padding: 2.5rem 2rem;
+
+  .figure__logo {
+    width: 15rem;
+  }
+
+  .figure__cart {
+    width: 1.6rem;
+  }
+}
+
+// Media Queries for Header::Start
+
+@media (min-width: 1201px) {
+  // Extra Large Screens - TV
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  // Desktops - Large Screens
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  // Small Screens - Laptops
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  // iPads - Tablets
+}
+
+@media (max-width: 480px) {
+  // Mobile Devices
+  .navbar {
+    padding: 1rem 0;
+  }
+}
+
+// Media Queries for Header::End

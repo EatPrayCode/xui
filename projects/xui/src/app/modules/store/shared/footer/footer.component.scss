@@ -1,0 +1,21 @@
+// Footer Section::Start
+
+.footer {
+  background-color: #f4f4f4;
+
+  .card {
+    background-color: transparent;
+  }
+  .list-group-item {
+    background-color: transparent;
+    transition: 0.6s;
+    cursor: pointer;
+
+    &:hover {
+      transition: 0.5s;
+      margin-left: 1rem;
+    }
+  }
+}
+
+// Footer Section::End

@@ -53,7 +53,7 @@ export class DefaultLayoutComponent implements OnInit {
     //   icon: 'theaters'
     // },
     {
-      link: 'youtube-content',
+      link: 'store',
       label: 'app.menu.store',
       icon: 'theaters'
     },

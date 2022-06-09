@@ -35,5 +35,6 @@ export const environment = {
   scope: "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread",
   newsapi: {
     API_KEY: '1b6ebad4ea2e433dbe0f4ce3521ff563'
-  }
+  },
+  _commerceApi: 'sk_test_3480938c200a55747619555979931a0aec83b9d1ebef7',
 };

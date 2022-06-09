@@ -13,19 +13,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'settings-general',
+        redirectTo: 'settings-content',
         pathMatch: 'full'
-      },
-      {
-        path: 'settings-general',
-        component: SettingsGeneralComponent,
-        data: { title: 'app.settings.general.title' }
-        
-      },
-      {
-        path: 'settings-netas',
-        component: SettingsNetasComponent,
-        data: { title: 'app.settings.general.settings-title' }
       },
       {
         path: 'settings-content',

@@ -41,10 +41,10 @@ export const environment = {
   secret: 'jZg9zBuXwH8P6qiwcopBl1d9Av8kgA',
   redirectUrl: "http://localhost:3000/home/authenticate", //replace
   scope: "account edit flair history identity mysubreddits read report save submit subscribe vote wikiread",
-
   newsapi: {
     API_KEY: '1b6ebad4ea2e433dbe0f4ce3521ff563'
-  }
+  },
+  _commerceApi: 'sk_test_3480938c200a55747619555979931a0aec83b9d1ebef7',
 };
 
 

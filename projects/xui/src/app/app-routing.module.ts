@@ -17,7 +17,12 @@ const routes: Routes = [
       {
         path: '',
         component: AboutComponent
-      }
+      },
+      {
+        path: 'store',
+        loadChildren: () =>
+          import('./modules/store/app.module').then((m) => m.AppModule)
+      },
     ]
   },
   {
@@ -72,11 +77,7 @@ const routes: Routes = [
       //   loadChildren: () =>
       //     import('./modules/reddit/reddit-client.module').then((m) => m.RedditClientModule)
       // },
-      {
-        path: 'youtube-content',
-        loadChildren: () =>
-          import('./modules/youtube-content/youtube-content.module').then((m) => m.YoutubeContentModule)
-      },
+
       // {
       //   path: 'rss-reader',
       //   loadChildren: () =>

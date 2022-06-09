@@ -1,0 +1,187 @@
+<!-- Spinner:Start -->
+<div class="spinner_part" *ngIf="loading">
+  <div>
+    <div class="bg-light vw-100 vh-100">
+      <div class="d-flex align-items-center justify-content-center w-100 h-100">
+        <div class="spinner-border text-dark" role="status">
+          <span class="sr-only">Processing...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Spinner:End -->
+
+<section class="cart__section d-flex align-items-center">
+  <div class="card" *ngIf="cart?.line_items?.length; else isEmpty">
+    <form>
+      <div class="row">
+        <div class="col-md-8 p-5">
+          <div class="title">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <h5 class="fw-bold">Shopping Cart</h5>
+              </div>
+              <div
+                class="col-12 col-md-6 align-self-center text-start text-md-end text-muted"
+              >
+                <p class="m-0">
+                  <span class="fw-bold">Total :</span>
+                  <span class="me-2">
+                    {{ total_Items$ | async }} product(s)</span
+                  ><a (click)="emptyCart()"
+                    ><i
+                      title="Delete all"
+                      class="fas fa-times text-danger fs-5"
+                    ></i
+                  ></a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row border-top" *ngFor="let item of cart?.line_items">
+            <div class="row py-3 w-100 align-items-center">
+              <div class="col-12 col-md-2 px-3">
+                <img class="img-fluid" [src]="item.image.url" />
+              </div>
+              <div class="col-12 col-md-4 px-3">
+                <div class="row">
+                  <h5 class="d-flex fs-6 justify-content-between mt-1 mt-md-0">
+                    <span class="m-0 d-block d-md-none">Couleur :</span>
+                    <span class="fw-bold text-info">
+                      {{ item.name }}
+                    </span>
+                  </h5>
+                </div>
+                <div class="row">
+                  <h6
+                    class="d-flex justify-content-between mt-1 mt-md-0"
+                    *ngFor="let variant of item.selected_options"
+                  >
+                    <span class="m-0 d-block d-md-none">Modèle :</span>
+                    <span class="fw-bold text-muted">{{
+                      variant.option_name
+                    }}</span>
+                  </h6>
+                </div>
+              </div>
+              <div class="d-none d-md-block d-block col-12 col-md-2 px-3">
+                <input
+                  type="number"
+                  class="border quantity text-center"
+                  [value]="item.quantity"
+                  readonly
+                />
+              </div>
+              <div
+                class="col-12 col-md-4 px-3 d-flex justify-content-between justify-content-md-around align-items-center align-items-md-start"
+              >
+                <h6
+                  class="fw-bold d-flex fs-6 justify-content-between mt-1 mt-md-0"
+                >
+                  <span class="m-0 d-block d-md-none">Prix :</span>
+                  <span class="fw-bold text-muted">
+                    {{ item.line_total.formatted_with_code }}
+                  </span>
+                </h6>
+                <a
+                  (click)="removeCartItem(item.id)"
+                  class="float-none float-md-end"
+                  ><i
+                    title="Delete item"
+                    class="fas fa-times text-danger fs-5"
+                  ></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-top back__to__shop py-2" routerLink="/collections">
+            <a><i class="fas fa-long-arrow-alt-left me-2"></i></a
+            ><span class="text-muted fw-bold">Back to shop</span>
+          </div>
+        </div>
+        <div class="col-md-4 cart__summary p-4">
+          <div>
+            <h5 class="fw-bold">Summary</h5>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-6 col-md-6">
+              <h6>{{ cart?.total_items }} product(s)</h6>
+            </div>
+            <div class="col-6 col-md-6 text-end">
+              <h6 class="fw-bold">
+                {{ cart?.subtotal?.formatted_with_code }}
+              </h6>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="row">
+            <div class="col-6 col-md-6"><p class="m-0">Shipping :</p></div>
+            <div class="col-6 col-md-6 text-end">
+              <p class="m-0 fw-bold">Free</p>
+            </div>
+          </div>
+
+          <hr />
+          <div class="row">
+            <div class="col-6"><p class="m-1">Discount :</p></div>
+            <div class="col-6">
+              <input id="code" class="form-control" placeholder="Code ..." />
+            </div>
+          </div>
+          <hr class="w-100" />
+          <div class="row my-3 align-items-center border-secondary">
+            <div class="col px-3"><h5>Total :</h5></div>
+            <div class="col px-3 text-end">
+              <h6 class="fw-bold">
+                {{ cart?.subtotal?.formatted_with_code }}
+              </h6>
+            </div>
+          </div>
+          <button type="button" (click)="checkout()" class="btn fw-bold w-100">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <ng-template #isEmpty>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Cart :</h5>
+            </div>
+            <div class="card-body">
+              <div class="col-12 text-center">
+                <img
+                  src="https://i.imgur.com/dCdflKN.png"
+                  width="130"
+                  height="130"
+                  class="img-fluid mb-4 me-3"
+                />
+                <h3><strong>Your shopping cart is empty</strong></h3>
+                <h4>
+                  It looks like you haven't added any products to your shopping
+                  cart yet.
+                </h4>
+                <a
+                  class="btn btn-outline-dark text-muted m-3"
+                  routerLink="/collections"
+                >
+                  Explore</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</section>

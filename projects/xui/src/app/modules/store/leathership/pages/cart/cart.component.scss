@@ -1,0 +1,58 @@
+.cart__section {
+  background: #ddd;
+  min-height: 100vh;
+  text-decoration: none;
+
+  .title {
+    margin-bottom: 5vh;
+  }
+
+  .card {
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent;
+
+    .quantity {
+      width: 60%;
+    }
+  }
+
+  .cart__summary {
+    background-color: #dddddd;
+    color: #414141;
+
+    .btn {
+      background-color: #000;
+      border-color: #000;
+      color: white;
+    }
+  }
+  .back__to__shop {
+    span {
+      cursor: pointer;
+    }
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+}
+
+// Spinner::End
+
+// Custom Reset
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

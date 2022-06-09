@@ -1,0 +1,183 @@
+<!-- Hero Slider::Start -->
+
+<app-home-slider></app-home-slider>
+
+<!-- Hero Slider::End -->
+
+<!-- Category Slider::Start -->
+
+<div class="container">
+  <div class="category__container">
+    <div class="category__slider p-2">
+      <swiper class="swiper" [config]="config">
+        <ng-template swiperSlide *ngFor="let category of categories">
+          <!-- Card::Start -->
+          <div
+            class="card align-items-center"
+            *ngFor="let image of category.assets"
+            routerLink="collections"
+          >
+            <img [src]="image.url" class="card-img-top w-50" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{{ category.name }} Cases</h5>
+            </div>
+          </div>
+          <!-- Card::End -->
+        </ng-template>
+      </swiper>
+    </div>
+  </div>
+</div>
+
+<!-- Category Slider::End -->
+
+<!-- Banner About Us Section::Start -->
+
+<section class="banner__container py-4">
+  <div class="container">
+    <div class="row mx-md-0 p-md-1">
+      <div class="col-12 aboutUs__container d-none d-md-block">
+        <div class="row h-100 align-items-center">
+          <div class="col-5">
+            <div class="card border border-0">
+              <div class="card-body text-white">
+                <h5 class="card-title fs-4 py-1">100% Moroccan Quality</h5>
+                <p class="card-text py-2">
+                  LEATHERSHIP is the first brand in Morocco which offers you
+                  very high quality leather cases to protect your iPhone.
+                </p>
+                <p class="fw-light">
+                  Don't forget ! Who says leather means luxury.
+                </p>
+                <a
+                  routerLink="collections"
+                  class="btn btn-light px-3 float-start"
+                  >Explore</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 aboutUs__container d-block d-md-none">
+        <div class="row h-100 align-items-end">
+          <div class="col-12">
+            <div class="card border border-0">
+              <div class="card-body text-white text-center">
+                <p class="card-text">
+                  LEATHERSHIP is the first brand in Morocco which offers you
+                  very high quality leather cases to protect your iPhone.
+                </p>
+                <a
+                  routerLink="collections"
+                  class="btn btn-light px-3 float-start"
+                  >Explore</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Banner About Us Section::End -->
+
+<!-- All Products Section::Start -->
+
+<section class="products">
+  <div class="container">
+    <!-- Product Box::Start -->
+    <div class="row p-2 text-center">
+      <div
+        class="col-6 col-sm-4 col-md-2 g-2"
+        *ngFor="let product of products; let i = index"
+      >
+        <div
+          class="card border-0"
+          [routerLink]="['product-detail', product.id]"
+        >
+          <img
+            [src]="product.assets[0].url"
+            [alt]="product.name"
+            class="w-100"
+          />
+          <div class="card-body border">
+            <h5 class="card-title fs-5">{{ product.name }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Product Box::End -->
+  </div>
+</section>
+
+<!-- All Products Section::End -->
+
+<!-- Banner Leader::Start -->
+
+<section class="banner__container py-4">
+  <div class="container">
+    <div class="row mx-md-0 p-md-1">
+      <div class="col-12 leader__container d-none d-md-block">
+        <div class="row h-100 align-items-center">
+          <div class="col-5">
+            <div class="card border border-0">
+              <div class="card-body">
+                <h5 class="card-title fs-3 py-1 text-warning">
+                  Be a leader not a follower.
+                </h5>
+                <p class="card-text py-1 text-white">
+                  Your phone is an important accessory to protect as it reflects
+                  your image and your personality. We are here to make it
+                  unique.
+                </p>
+                <p class="card-text py-1 text-white">
+                  Leathership is the brand that will make your phone picturesque
+                  by providing you with the best quality, most luxurious leather
+                  case at the best price.
+                </p>
+                <a
+                  routerLink="collections"
+                  class="btn btn-warning px-3 float-start"
+                  >Explore</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 leader__container d-block d-md-none">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <div class="card border border-0">
+              <div class="card-body">
+                <h5 class="card-title fs-3 py-1 text-warning">
+                  Be a leader not a follower.
+                </h5>
+                <p class="card-text py-1 text-white">
+                  Your phone is an important accessory to protect as it reflects
+                  your image and your personality. We are here to make it
+                  unique.
+                </p>
+                <p class="card-text py-1 text-white">
+                  Leathership is the brand that will make your phone picturesque
+                  by providing you with the best quality, most luxurious leather
+                  case at the best price.
+                </p>
+                <a
+                  routerLink="collections"
+                  class="btn btn-warning px-3 float-start"
+                  >Explore</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Banner Leader::End -->

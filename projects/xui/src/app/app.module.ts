@@ -24,63 +24,13 @@ import { LandingLayoutComponent } from './layouts/landing-layout/landing-layout.
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { CartIconComponent } from './shared/cart-icon/cart-icon.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
-import { NgxAirtableModule } from 'ngx-airtable';
-import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.component';
 import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component';
 
-import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { TABLES } from './modules/rss-reader/constants';
 import { SharedModule } from './shared/shared.module';
 import { SettingsLayoutComponent } from './layouts/settings-layout/settings-layout.component';
-
-export function migrationFactory() {
-  return {
-      2: (db, transaction) => {
-          const store = transaction.objectStore(TABLES.FEEDS);
-          store.createIndex('newPostIds', 'newPostIds', { unique: false });
-          store.createIndex('postIds', 'postIds', { unique: false });
-      }
-  };
-};
-
-const dbConfig: DBConfig = {
-  name: 'Stupid-RSS-Reader',
-  version: 2,
-  objectStoresMeta: [
-      {
-          store: TABLES.POSTS,
-          storeConfig: { keyPath: 'id', autoIncrement: true },
-          storeSchema: [
-              { name: 'title', keypath: 'title', options: { unique: false } },
-              { name: 'feedId', keypath: 'feedId', options: { unique: false } },
-              { name: 'pubDate', keypath: 'pubDate', options: { unique: false } },
-              { name: 'link', keypath: 'link', options: { unique: false } },
-              { name: 'guid', keypath: 'guid', options: { unique: true } },
-              { name: 'author', keypath: 'author', options: { unique: false } },
-              { name: 'thumbnail', keypath: 'thumbnail', options: { unique: false } },
-              { name: 'description', keypath: 'description', options: { unique: false } },
-              { name: 'content', keypath: 'content', options: { unique: false } },
-              { name: 'categories', keypath: 'categories', options: { unique: false } },
-              { name: 'enclosure', keypath: 'enclosure', options: { unique: false } },
-              { name: 'isNew', keypath: 'isNew', options: { unique: false } }
-          ]
-      },
-      {
-          store: TABLES.FEEDS,
-          storeConfig: { keyPath: 'id', autoIncrement: true },
-          storeSchema: [
-              { name: 'url', keypath: 'url', options: { unique: true } },
-              { name: 'about', keypath: 'about', options: { unique: false } },
-              { name: 'newCount', keypath: 'newCount', options: { unique: false } },
-              { name: 'count', keypath: 'count', options: { unique: false } },
-          ]
-      }
-  ],
-  migrationFactory    
-};
 
 @NgModule({
   imports: [
@@ -101,19 +51,14 @@ const dbConfig: DBConfig = {
 
     // core
     CoreModule,
-    HttpClientModule,
     SharedModule,
 
     AppRoutingModule,
     ReactiveFormsModule,
 
-    HttpClientJsonpModule,
-
     // app
     AppRoutingModule,
-    NgxAirtableModule.forRoot({ apiKey: 'key3ITRiEPhABhtTC' }),
 
-    NgxIndexedDBModule.forRoot(dbConfig),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
