@@ -44,8 +44,14 @@ export const environment = {
   newsapi: {
     API_KEY: '1b6ebad4ea2e433dbe0f4ce3521ff563'
   },
-  _commerceApi: 'sk_test_3480938c200a55747619555979931a0aec83b9d1ebef7',
+  _commerceApi: 'pk_test_439791ba01c9da0eaa82b3b0f5cae56e9b244ba23bf87',
+  notionApi: 'secret_jdRAqexTp7xN5VheluF8qNAiPYuy5MhYUGfMNpyF6Xc',
+  twitter: {
+    APIKey: '1ewWjG1fLVZIjVkAquKHuRiae',
+    APISecret: '8g3ASsQ4rw5yWix50CTYxXsYErO3GoSp1Cj4MHH85SWqI5tghy',
+    BearerToken: 'AAAAAAAAAAAAAAAAAAAAAMBIdgEAAAAAG2J%2Be950rUdUmUytsRqZ9ZJhgqo%3DarwV1lHSVmVJ8P3HGcc4vKNBceXMNcoo3YPjRDsqWEe0LTqoJm',
+    AccessToken: '1524896935651721216-ON5BAUTQguqXW8vRNIczbEk7MFtgGq',
+    AccessSecret: 'LLEZfnwa54yIYWWgqNVtL1LKvvI7deOOFf9mX5YRpEYOf',
+    APPID: 24529088
+  }
 };
-
-
-//TWITTER_API u3bLVQAAAAAA6BRSAAABgLCNobM

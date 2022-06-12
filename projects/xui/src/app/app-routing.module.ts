@@ -35,7 +35,7 @@ const routes: Routes = [
       {
         path: 'store',
         loadChildren: () =>
-          import('./modules/store/leathership/leathership.module').then((m) => m.LeathershipModule)
+          import('./modules/news/news.module').then((m) => m.NewsModule)
       },
     ]
   },
@@ -68,15 +68,15 @@ const routes: Routes = [
       //   loadChildren: () =>
       //     import('./modules/admin-dashboard/admin-dashboard.module').then((m) => m.AdminDashboardModule)
       // },
-      {
-        path: 'home',
-        component: HomeComponent
-      },
       // {
       //   path: 'home',
-      //   loadChildren: () =>
-      //     import('./modules/reddit/reddit-client.module').then((m) => m.RedditClientModule)
+      //   component: HomeComponent
       // },
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('./modules/reddit/reddit-client.module').then((m) => m.RedditClientModule)
+      },
 
       // {
       //   path: 'rss-reader',

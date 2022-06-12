@@ -36,5 +36,6 @@ export const environment = {
   newsapi: {
     API_KEY: '1b6ebad4ea2e433dbe0f4ce3521ff563'
   },
-  _commerceApi: 'sk_test_3480938c200a55747619555979931a0aec83b9d1ebef7',
+  _commerceApi: 'pk_test_439791ba01c9da0eaa82b3b0f5cae56e9b244ba23bf87',
+  notionApi: 'secret_jdRAqexTp7xN5VheluF8qNAiPYuy5MhYUGfMNpyF6Xc'
 };

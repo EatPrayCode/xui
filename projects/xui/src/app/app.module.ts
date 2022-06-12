@@ -26,7 +26,6 @@ import { CartIconComponent } from './shared/cart-icon/cart-icon.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedditLayoutComponent } from './layouts/reddit-layout/reddit-layout.component';
-import { NetaLayoutComponent } from './layouts/neta-layout/neta-layout.component';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SharedModule } from './shared/shared.module';
@@ -76,7 +75,6 @@ import { HomeComponent } from './modules/home/home/home.component';
     CartIconComponent,
     RedditLayoutComponent,
     NotFoundComponent,
-    NetaLayoutComponent,
     SettingsLayoutComponent,
     HomeComponent
   ],

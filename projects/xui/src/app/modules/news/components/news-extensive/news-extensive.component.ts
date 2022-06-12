@@ -65,7 +65,7 @@ export class NewsExtensiveComponent implements OnInit, OnDestroy {
   identify = (index: number, feed: FeedItem) => feed.id;
 
   constructor(
-    private dbService: NgxIndexedDBService,
+    // private dbService: NgxIndexedDBService,
     private userService: UserService,
     private coreService: CoreService,
     private router: Router

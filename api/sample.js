@@ -37,9 +37,9 @@ module.exports = testFn(handler);
 async function getFromAirtable(req, res) {
   var Airtable = require('airtable');
   var base = new Airtable({ apiKey: 'key3ITRiEPhABhtTC' }).base('appWvCVRmhAlOUo5T');
-  base('NEWSFEED').select({
+  base('twitter-all').select({
     maxRecords: 100,
-    view: "NEWSFEEDVIEW"
+    view: "popular"
   }).eachPage(function page(records, fetchNextPage) {
 
     records.forEach(function (record) {
@@ -53,9 +53,34 @@ async function getFromAirtable(req, res) {
     const minimalRecords = recordsList.map(ele => {
       return ele.fields;
     });
+    console.log(minimalRecords)
     uploadToFirebase(req, res, minimalRecords);
     if (err) { console.error(err); return; }
   });
+}
+
+
+async function updateBulkToAirtable(req, res) {
+
+  var Airtable = require('airtable');
+  var base = new Airtable({ apiKey: 'key3ITRiEPhABhtTC' }).base('appWvCVRmhAlOUo5T');
+  var table = base('twitter-all');
+
+  const record = { "name": "hi", "wikipediaurl": "hiasas", "party": "BJP", "twitterurl": "asas", "district": "asas", "dob": "2022-06-08" };
+  const req_ = {
+    fields: record
+  }
+  const bulkData = [req_, req_, req_, req_, req_, req_, req_, req_, req_, req_];
+  table.create(
+    bulkData
+    , (err, record) => {
+      if (err) {
+        console.error(err)
+        return;
+      }
+      console.log(record)
+      res.status(200).json(record);
+    });
 }
 
 function testName(payload) {
@@ -76,7 +101,7 @@ async function uploadToFirebase(req, res, data) {
   };
   // console.log(data);
   const collectionRef = await db.collection("siterefresh")
-    .doc('newsfeed').set(entry)
+    .doc('preferences').set(entry)
     .then(querySnapshot => {
       res.status(200).json([]);
     })

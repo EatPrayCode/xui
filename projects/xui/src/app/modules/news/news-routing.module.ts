@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'news-live',
-        component: NewsFeedComponent
+        component: NewsExtensiveComponent
       },
       // {
       //   path: 'news-feed/:id',

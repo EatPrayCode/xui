@@ -44,31 +44,29 @@
     <div class="content" *ngIf="feeds$ | async as itemsList">
         <div fxLayout="row wrap" fxLayoutGap="5px grid">
             <div [fxFlex]="'20%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let neta of itemsList">
-                <mat-card class="item-bg"
-                    [ngStyle]="{'background-image': 'url(' + neta?.urlToImage + ')'}"
-                    [ngClass]="{'card-selected mat-elevation-z4': selected} ">
+                <mat-card class="example-card">
                     <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{neta.publicationName}}</mat-card-title>
-
-                        <mat-card-subtitle>{{neta.party}}</mat-card-subtitle>
-                        <mat-card-subtitle>{{neta.state}}</mat-card-subtitle>
-                        <span [matTooltip]="!selected ? 'Select note' : 'Selected'" class="selection">
-                            <mat-icon>check_circle</mat-icon>
-                        </span>
+                      <div mat-card-avatar class="example-header-image"></div>
+                      <mat-card-title>Shiba Inu Dog</mat-card-title>
+                      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
                     </mat-card-header>
-                    <!-- <img mat-card-image class="main-image" [src]="neta?.image?.url" alt="Photo of a Shiba Inu"> -->
+                    <!-- <picture>
+                      <source media='(min-width:0px)' srcset="https://material.angular.io/assets/img/examples/shiba2.jpg">
+                      <img mat-card-image src="" alt="Photo of a Shiba Inu">
+                    </picture> -->
                     <mat-card-content>
-                        <p style="font-size: 14px;">
-                            {{neta?.description}}
-                        </p>
+                      <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                        bred for hunting.
+                      </p>
                     </mat-card-content>
-                    <mat-card-actions align="end">
-                        <button mat-button mat-stroked-button color="primary">Follow</button>
-                        <button mat-button mat-stroked-button color="accent" (click)="onViewNeta(neta)">View</button>
+                    <mat-card-actions>
+                      <button mat-button>LIKE</button>
+                      <button mat-button>SHARE</button>
                     </mat-card-actions>
-                    <mat-card-footer style="font-size: 14px;"> Section anchored to the bottom</mat-card-footer>
-                </mat-card>
+                  </mat-card>
+                  
             </div>
         </div>
     </div>

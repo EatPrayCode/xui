@@ -88,18 +88,18 @@ export class SettingsGeneralComponent implements OnInit {
   }
 
   savesettings() {
-    this.settings$.pipe(take(1)).subscribe(res1 => {
-      const auth = getAuth();
-      const user = auth.currentUser; // null if no user
-      this.userservice.setUserSettingsTestUid(user.uid, res1).then(res => {
-      },
-        err => {
-        });
-    });
-    const auth = getAuth();
-    const user = auth.currentUser; // null if
-    const res1 = { username: this.usernameaccount, manifesto: {}, videos: {}, news: {}, basicinfo: {}, location: {} };
-    this.userservice.requestNetaDetailsChange(user.uid, res1).then(res => { }, err => { });
+    // this.settings$.pipe(take(1)).subscribe(res1 => {
+    //   const auth = getAuth();
+    //   const user = auth.currentUser; // null if no user
+    //   this.userservice.setUserSettingsTestUid(user.uid, res1).then(res => {
+    //   },
+    //     err => {
+    //     });
+    // });
+    // const auth = getAuth();
+    // const user = auth.currentUser; // null if
+    // const res1 = { username: this.usernameaccount, manifesto: {}, videos: {}, news: {}, basicinfo: {}, location: {} };
+    // this.userservice.requestNetaDetailsChange(user.uid, res1).then(res => { }, err => { });
   }
 
 }

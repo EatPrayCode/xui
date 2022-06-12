@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, timer } from 'rxjs';
+import { Observable, Subject, timer, of } from 'rxjs';
 import { Firestore, collectionData, collection, addDoc, where, query, getDocs, deleteDoc, updateDoc } from '@angular/fire/firestore';
 import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
@@ -29,6 +29,10 @@ export class UserService {
     private firestore: Firestore
   ) {
     this.db = collection(this.firestore, 'users');
+  }
+
+  getPreferences() {
+    return of([]);
   }
 
   getLiveNews() {

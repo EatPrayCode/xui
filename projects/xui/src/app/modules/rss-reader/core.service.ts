@@ -5,6 +5,7 @@ import { catchError, delay, map, switchMap, tap, toArray } from 'rxjs/operators'
 import { FeedError, FeedItem, FeedLoading, Post, SiteFeed, SiteFeedAbout } from './models';
 import { RSS2JSON, TABLES } from './constants';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
+import { UserService } from '~/app/services/user.service';
 
 
 @Injectable({
@@ -15,7 +16,9 @@ export class CoreService {
     feedLoading$ = new BehaviorSubject<FeedLoading>({});
     feedError$ = new BehaviorSubject<FeedError>({});
 
-    constructor(private http: HttpClient, private dbService: NgxIndexedDBService) {
+    constructor(private http: HttpClient, 
+        private dbService: UserService
+        ) {
     }
 
     setFeedLoading(id: number, isLoadind: boolean) {
@@ -29,32 +32,32 @@ export class CoreService {
     }
 
     updateFeed(url: string, id: number, about: SiteFeedAbout): void {
-        this.dbService.update(TABLES.FEEDS, { url, id, about });
+        // this.dbService.update(TABLES.FEEDS, { url, id, about });
     }
 
     addPosts(posts: Post[], feedId: number, url: string, about: SiteFeedAbout): void {
-        const add$ = (post: Post): Observable<number> => this.dbService
-            .add(TABLES.POSTS, { ...post, feedId, isNew: true })
-            .pipe(catchError(() => of(-1)));
+        // const add$ = (post: Post): Observable<number> => this.dbService
+        //     .add(TABLES.POSTS, { ...post, feedId, isNew: true })
+        //     .pipe(catchError(() => of(-1)));
 
-        combineLatest(posts.map(add$))
-            .pipe(
-                switchMap(() => this.dbService.getAllByIndex(TABLES.POSTS, 'feedId', IDBKeyRange.only(feedId))),
-                map(posts => [posts.length, posts.filter(p => p.isNew).length]),
-                map(([count, newCount]) => ({ url, id: feedId, about, count, newCount } as FeedItem))
-            )
-            .subscribe(feedItem => this.dbService.update(TABLES.FEEDS, feedItem));
+        // combineLatest(posts.map(add$))
+        //     .pipe(
+        //         switchMap(() => this.dbService.getAllByIndex(TABLES.POSTS, 'feedId', IDBKeyRange.only(feedId))),
+        //         map(posts => [posts.length, posts.filter(p => p.isNew).length]),
+        //         map(([count, newCount]) => ({ url, id: feedId, about, count, newCount } as FeedItem))
+        //     )
+        //     .subscribe(feedItem => this.dbService.update(TABLES.FEEDS, feedItem));
     }
 
     getDefaultFeeds(payload): Observable<any> {
-        const getAll$: any = this.dbService.getAll(TABLES.FEEDS);
+        const getAll$: any = this.dbService.getAllNetas();
         return getAll$;
     }
 
     addFeed(payload): Observable<any> {
         const url = 'https://www.thehindu.com/news/national/?service=rss';
-        const addFeed$: any = this.dbService.add(TABLES.FEEDS, { url });
-        return addFeed$;
+        // const addFeed$: any = this.dbService.add(TABLES.FEEDS, { url });
+        return of([]);
     }
 
     getNewPostsAndUpdateStore(url: string, id: number): Observable<SiteFeed> {

@@ -24,7 +24,7 @@ export class FeedComponent implements OnInit {
 
     identify = (index: number, post: Post) => post.id;
 
-    constructor(private dbService: NgxIndexedDBService,
+    constructor(
         private router: Router,
         private route: ActivatedRoute,
         private _location: Location
@@ -45,7 +45,7 @@ export class FeedComponent implements OnInit {
     }
 
     markAsReadFeed(feed: FeedItem): void {
-        this.dbService.update(TABLES.FEEDS, { ...feed, newCount: 0 }).subscribe();
+        // this.dbService.update(TABLES.FEEDS, { ...feed, newCount: 0 }).subscribe();
     }
 
     markAsReadPosts(): void {
@@ -68,21 +68,21 @@ export class FeedComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.posts$ = this.route.params
-            .pipe(
-                map(params => params.id),
-                tap(id => this.feedId = +id),
-                switchMap(id => this.dbService.getByID(TABLES.FEEDS, +id)),
-                tap((feed: FeedItem) => {
-                    this.feed = feed;
-                    this.about = feed.about;
-                }),
-                switchMap(feed => this.dbService.getAllByIndex(TABLES.POSTS, 'feedId', IDBKeyRange.only(this.feedId))),
-                tap((posts) => {
-                    // this.posts.next(posts);
-                    console.log(posts);
-                })
-            );
+        // this.posts$ = this.route.params
+        //     .pipe(
+        //         map(params => params.id),
+        //         tap(id => this.feedId = +id),
+        //         switchMap(id => this.dbService.getByID(TABLES.FEEDS, +id)),
+        //         tap((feed: FeedItem) => {
+        //             this.feed = feed;
+        //             this.about = feed.about;
+        //         }),
+        //         switchMap(feed => this.dbService.getAllByIndex(TABLES.POSTS, 'feedId', IDBKeyRange.only(this.feedId))),
+        //         tap((posts) => {
+        //             // this.posts.next(posts);
+        //             console.log(posts);
+        //         })
+        //     );
     }
 
     readMore(news) {

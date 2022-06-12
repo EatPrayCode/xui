@@ -22,7 +22,6 @@ export class DataService {
 	};
 
 	getSettings() {
-		
 		const db = collection(this.firestore, 'sitesettings');
 		const settings$ = collectionData(db) as Observable<any[]>;
 		return settings$;
