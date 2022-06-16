@@ -42,7 +42,7 @@ const getAuth = async () => {
       }
     })
     //return access token
-    return response.data.access_token;
+    return response.data;
     //console.log(response.data.access_token);   
   } catch (error) {
     //on fail, log the error in console
@@ -51,7 +51,6 @@ const getAuth = async () => {
 }
 
 async function getFromAirtable(req, res) {
-  const access_token = await getAuth();
-  console.log(access_token);
-  res.status(200).json({ status: 200, token: access_token });
+  const data = await getAuth();
+  res.status(200).json({ status: 200, data: data });
 }
